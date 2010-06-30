@@ -1,0 +1,70 @@
+% this file is called up by thesis.tex
+% content in this file will be fed into the main document
+
+%: ----------------------- name of chapter  -------------------------
+
+\chapter{Homotopical constructions from globular higher categories}
+
+%: ----------------------- contents from here ------------------------
+
+(NON)SECTION AIM: Motivate constructing the simplicial nerve, and hence the model structure.  TODO: cut down, too discursive??  Maybe move this to end of previous section, or even to introduction, and here give an overview of simplicial structures / methods?
+
+\para % Having constructed weak $\omega$-categories from the syntax of type theory, the natural next step is to use them for something!
+The great power of classifying categories in 1-categorical logic come from [`depends on'?] an analysis of the logical constructors and rules in categorical terms: substitution as pullbacks, $\Pi$- and $\Sigma$-types as adjoints, and so on.  So, a natural first impulse is to try to analyse the universal properties of the type constructors within $\Clw(\T)$, which we would expect to be weak-higher-categorical analogues of the usual logical structure.
+
+Unfortunately, the theory of logical structure on globular higher-categories is not yet well-understood.  Of course, we can hope that the developing dictionary with type theory will help understand how such structure should behave!  However, there is an alternative model of higher categories for which the relevant theory is already much further advanced: Joyal's quasi-categories.  Quasi-categories are not a fully general theory of higher categories: they only model so-called ($\infty$,1)-categories, in which all cells above dimension 1 are (weakly) invertible.  However, as we have seen, the classifying categories of type theories are of this form; so quasi-categories seem potentially excellently-suited for our desired analysis, if only we can give quasi-category models for $Clw(\T)$!
+
+\para In other words, we would like to construct a functor
+$$ \ClwQCat \colon \Th \to \QCat .$$
+
+TODO: Hmm, this doesn't work if the reader doesn't know yet that quas-cateogries are simplicial things!  Work out how to re-organise to fit that in nicely.
+
+There are two obvious options.  Firstly, we could construct $\ClwQCat(\T)$ directly from the theory $\T$.  [TODO: Ask Michael whether/how much to mention simplicial type theory.]  However, $\Id$-types as they stand are inescapably globular; there seems no obvious way to extract simplicial sets from the theory as cleanly and directly as one can extract globular sets.  (The intriguing approach of re-axiomatising $\Id$-types to be ``naturally simplicial in shape'' has, however, been considered by Warren and Gambino \cite{??}.)
+
+It thus seems natural to take a different approach: to construct $\ClwQCat$ in two steps, composing $\Clw$ from the previous section with a functor
+$$ \N^\qcat \colon \Alg{P} \to \QCat $$
+giving the ``quasi-category nerve'' of a globular weak $n$-category.  This has the added payoff that such a functor would be of independent interest, since the comparison between globular and simplicial higher categories is as yet little-understood in the fully weak case.
+
+\para In Section \ref{sec:simplicial-nerves}, we will thus construct several candidate nerve functors.  Constructing simplicial objects is straightforward; the hard part is proving the requisite horn filling conditions to show that they are quasi-categories.
+
+It is for this that we construct, in Sections \label{sec:model-strux-general} and \label{sec:model-strux-specific}, a Quillen model structure on categories of globular higher categories (under certain extra hypotheses).   The computational tools provided by such a structure provide precisely what we need to show that the horns arising in our nerve constructions can be filled, and hence that the nerves are indeed quasi-categories.
+
+In fact, we construct an \emph{algebraic} model structure in the sense of \cite{riehl:alg-mod-strux}.  This is a Quillen model structure in which both weak factorisation systems are NWS's and there is moreover a comparison map connecting the two.  While we will not need any of the extra power of an algebraic model structure, the algebraicity comes almost for free given the form of our proof.
+
+\section{Cellular algebraic model structures} \label{sec:model-strux-general}
+
+SECTION AIM: The general construction of an algebraic model structure from a collection of generating cells.  (TODO: read/ask around in case I've missed where something closer to this has already been done; work out terminology for this general construction.)
+
+\para Recall what a AWFS and AMS are.  (Or put this in appendix?)
+
+\para We start by recalling from \cite{garner:understanding}, \cite{garner:homomorphisms} the construction of an AWFS on $\strnCat$ whose right maps are precisely the contractible maps.
+
+...do it by the Garner small-object argument!  Algebraic freeness shows the right maps are what we think.  And Garner shows that this is also the adjunction with computads, fwiw (maybe leave this out if not needed).
+
+Point out how this comes from the map $D(\ob \G) \to \G \to \GSets \to \wknCat$ of cells/boundaries.
+
+\para In fact, the remainder of the construction of the AMS (though not the proof that it really is one) can be given entirely in terms of this set of generating cofibrations; and, indeed, $L'$ categories will give another example.  Thus for the remainder of this section, we will fix a category $\E$ that admits the small object argument [TODO: define this here or elsewhere!], a set $\I$, and a functor $\I \to \E^\Two$, which   
+
+\para Some experimenting: $22$ to $2\!2$ to $2\!\!2$ to $2\!\!\!2$ to $2\!\!\!2$.
+
+
+\para Another para just to see how it gets numbered!
+
+\section{An algebraic model structure on globular higher categories?} \label{sec:model-strux-specific}
+
+\para Discuss instantiating the theorem of the previous section to (a) L'-categories, (b) P-algebras; prove as many of the lemmas as possible!
+
+\section{Simplicial nerves of globular higher categories} \label{sec:simplicial-nerves}
+
+\para Give aim; different NWFS for different nerves; proof with model structure that these give nerves!
+
+\para Prove from model strux that these really do give quasi-categories. 
+
+TODO: read up Dugger references properly.
+
+
+
+
+% ---------------------------------------------------------------------------
+%: ----------------------- end of thesis sub-document ------------------------
+% ---------------------------------------------------------------------------

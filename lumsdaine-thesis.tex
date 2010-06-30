@@ -1,0 +1,135 @@
+\documentclass{amsbook}
+
+\usepackage{ifpdf}
+% \usepackage{makeindex}
+
+%% following Cisinski's style, which I found excellent, the theorem-like environments are set up to number _all_ paragraphs [in the conceptual rather than typographic sense] consecutively.  the major advantage of this is making any paragraph referenceable, and hence making the (always rather arbitrary) decision of what to pick out as theorems, definitions, etc. much less consequential and more flexible.
+
+\theoremstyle{plain} 
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{para}[thm]{}
+
+%\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{notation}[thm]{Notations}
+\newtheorem{example}[thm]{Example}
+\newtheorem{examples}[thm]{Examples}
+\newtheorem{sch}[thm]{Scholium}
+
+\include{thesismacros}
+
+% \makeindex
+
+%%
+%% PDFJUNK
+%% Can add /CreationDate, /Creator, /Subject, /Keywords
+%%
+\ifpdf
+\pdfinfo{
+  /Author (Peter LeFanu Lumsdaine) 
+  /Title (TODO: put thesis title here when decided!)
+}
+\fi
+%%
+%% BEGIN DOCUMENT:
+%\onehalfspacing
+\begin{document}
+
+
+\frontmatter
+
+%% TITLE INFORMATION
+
+\title[Higher-categorical Structures and Type Theories]{Higher-categorical Strucures and Type Theories: DRAFT!}
+
+\author[P. LeF. Lumsdaine]{{\large\bf Peter LeFanu Lumsdaine}\\~\\\normalsize
+  \bf July 2010}
+
+\maketitle
+\newpage
+\thispagestyle{empty}
+\begin{center}
+  {\Large\textbf{Carnegie Mellon University}}\\
+  \vspace{1cm}
+  {\large\textbf{TODO: Title Here!}}\\
+  \vspace{.5cm}
+  Peter LeFanu Lumsdaine\\
+  \vspace{.5cm}
+  July 2010\\
+  \vspace{3cm}
+  \textbf{Committee}\\~\\
+  Steven M. Awodey (advisor)\\
+  someone \\
+  someone else \\
+  some more \\
+
+\end{center}
+ 
+\setcounter{page}{3}
+
+
+% \clearpage
+% \thispagestyle{empty}
+% \vspace*{13.5pc}
+% \begin{center}
+%   Dedication text (use \\[2pt] for line break if necessary)
+% \end{center}
+% \cleardoublepage 
+
+
+\tableofcontents
+
+
+% Unnumbered chapters
+
+
+\include{0-introduction}
+%\include{ack}
+%\include{decl}
+
+
+% Main Matter
+
+\mainmatter
+
+\include{1-univ-alg-aspects}
+
+\include{2-globular-structures}
+
+\include{3-higher-categorical-constructions}
+
+% Appendices
+
+\include{A-type-theoretic-background}
+
+\include{B-globular-background}
+
+\include{C-homotopical-background}
+
+
+\appendix
+
+\include{2-globular-structures}
+
+%% Backmatter
+
+\backmatter
+
+
+%% Bibliography Info
+
+% \nocite{CRM:ACSMHC}
+% \bibliographystyle{amsplain}
+% \bibliography{disbib}
+
+%% Index Info
+
+%% END DOCUMENT
+
+\end{document}
