@@ -27,7 +27,7 @@ giving the ``quasi-category nerve'' of a globular weak $n$-category.  This has t
 
 \para In Section \ref{sec:simplicial-nerves}, we will thus construct several candidate nerve functors.  Constructing simplicial objects is straightforward; the hard part is proving the requisite horn filling conditions to show that they are quasi-categories.
 
-It is for this that we construct, in Sections \label{sec:model-strux-general} and \label{sec:model-strux-specific}, a Quillen model structure on categories of globular higher categories (under certain extra hypotheses).   The computational tools provided by such a structure provide precisely what we need to show that the horns arising in our nerve constructions can be filled, and hence that the nerves are indeed quasi-categories.
+It is for this that we construct, in Sections \ref{sec:model-strux-general} and \ref{sec:model-strux-specific}, a Quillen model structure on categories of globular higher categories (under certain extra hypotheses).   The computational tools provided by such a structure provide precisely what we need to show that the horns arising in our nerve constructions can be filled, and hence that the nerves are indeed quasi-categories.
 
 In fact, we construct an \emph{algebraic} model structure in the sense of \cite{riehl:alg-mod-strux}.  This is a Quillen model structure in which both weak factorisation systems are NWS's and there is moreover a comparison map connecting the two.  While we will not need any of the extra power of an algebraic model structure, the algebraicity comes almost for free given the form of our proof.
 
@@ -35,7 +35,7 @@ In fact, we construct an \emph{algebraic} model structure in the sense of \cite{
 
 SECTION AIM: The general construction of an algebraic model structure from a collection of generating cells.  (TODO: read/ask around in case I've missed where something closer to this has already been done; work out terminology for this general construction.)
 
-\para Recall what a AWFS and AMS are.  (Or put this in appendix?)
+\para Recall what an \AWFS and \AMS are.  (Or put this in appendix?)
 
 \para We start by recalling from \cite{garner:understanding}, \cite{garner:homomorphisms} the construction of an AWFS on $\strnCat$ whose right maps are precisely the contractible maps.
 
@@ -43,12 +43,15 @@ SECTION AIM: The general construction of an algebraic model structure from a col
 
 Point out how this comes from the map $D(\ob \G) \to \G \to \GSets \to \wknCat$ of cells/boundaries.
 
-\para In fact, the remainder of the construction of the AMS (though not the proof that it really is one) can be given entirely in terms of this set of generating cofibrations; and, indeed, $L'$ categories will give another example.  Thus for the remainder of this section, we will fix a category $\E$ that admits the small object argument [TODO: define this here or elsewhere!], a set $\I$, and a functor $\I \to \E^\Two$, which   
+\para In fact, the remainder of the construction of the \AMS (though not the proof that it really is one) can be given entirely in terms of this set of generating cofibrations; and, indeed, $L'$ categories will give another example.  Thus for the remainder of this section, we will fix a category $\E$ that admits the small object argument [TODO: define this here or elsewhere!], a set $\I$ (considered as a discrete category), and a functor $\I \to \E^\Two$.  The functor will remain nameless, but we will write maps in its image as  $d_i \into c_i$, for $i \in \I$.  (They are to be thought of as inclusions of boundaries into cells.)
 
-\para Some experimenting: $22$ to $2\!2$ to $2\!\!2$ to $2\!\!\!2$ to $2\!\!\!2$.
+\para Construct $(\CC,\FF_t)$; construct ``canonical squares''.  Describe how to see them as equivs.
 
+\para Construct $\WW$, $\W$, $(\CC_t,\FF)$ from this.  Infer $\xi$, by \cite[Rmk 3.6]{Riehl} (and hence get $\C_t \Imp \C$, $\F_t \Imp \F$).
 
-\para Another para just to see how it gets numbered!
+\para Give $TF \Leftrightarrow F \cap W$, i.e.\ $\Alg{\FF_t} \Leftrightarrow \Alg{\FF} \times_{\E^\Two} \Alg{\WW}$.  Give: $\WW \to \E^\Two$ ``creates retracts'', so $\W$ closed under retracts.
+
+\para Now the hard stuff!
 
 \section{An algebraic model structure on globular higher categories?} \label{sec:model-strux-specific}
 

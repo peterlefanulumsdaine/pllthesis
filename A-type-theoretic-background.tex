@@ -2,18 +2,134 @@
 % content in this file will be fed into the main document
 
 %: ----------------------- name of chapter  -------------------------
-\chapter{Globular structures from type theory}
+\chapter{Background: Martin-L\"o{}f Type Theory}
+
+Possibly just make this a presentation of the type theory?
+
+\section{Presentation overview}
+
+\para The type theories we consider are all essentially variants on the basic type theory originally presented in \cite{ML:predicative-part}.  See also (TODO: pick out good references!)
+
+The core of the type theory, its basic judgements and structural rules, is given in Section \ref{sec:structural-core}; this will remain constant in all the theories we consider.
+
+The type-constructors and various other rules that will be used are given in Section \ref{sec:further-rules}; we will consider theories including various different subsets of these rules.
+
+Section \ref{sec:tt-lemmas} contains some fundamental lemmas concerning the resulting type theories: basic proof-theoretic properties, admissible rules, and so on.
+
+For further discussion, see \cite{pitts:cat-logic} (a notably thorough and precise presentation, on which the present one is largely based), \cite[\S6]{jacobs:book} (for a thoughtful discussion of this system within the wider type-theoretic context), \cite{hofmann:syntax-and-semantics}, \cite[Ch.3]{n-p-s:programming} (an explanation of the use of simply-typed calculus as the ``raw language'), and \cite{martin-loef:predicative-part} (the originial presentation of the theory).
+ 
+(TODO: perhaps fully expound the presentation rather than just recapping?)
+
+Notes (re-order later):
+
+--- point of using $\lambda$-calculus as raw language: to separate the subtleties of binding and capture-avoiding substitution from those of dependency and well-formedness.
+
+--- point of having the raw language already simply-typed, not completely un(i)typed: to maintain decidability of $\equiv$. 
+
+--- abuse of notation: making variables explicit
+
+--- dependent contexts and maps: to formulate Frobenius rule
+
+--- dependent maps: really only need $\Gamma \types \vec f : \Delta \To \Delta'$ in case either $\Gamma = \diamond$ (for substitution rules) or $Delta = \diamond$ (for Frobenius rules).  However, it's simpler to give this than those two separately, plus natural for syntactic cwa.
+
+--- I'm using: the formalism of Pitts, the notation of Jacobs, and a pinch of new stuff (the dependent cxts/maps)!
+
+--- syntactic sugar: $\x : \Gamma \types a(\x) : A(\x)$ really means $\Gamma \types a : A$, where all of these are \emph{closed} metaexpressions, but $a$, $A$ have arities $\term^n \to \term$, $\term^n \to \type$, where $n$ is the length of $\Gamma$; and so on.
 
 %: ----------------------- contents from here ------------------------
 
-\section{The fundamental weak omega-groupoid of a type}
+\section{Structural core} \label{sec:structural-core}
 
-Update of my prev paper (+ more detailed comparison with Richard + Benno): type gives internal weak omega-groupoid in the classifying category.
+\begin{center}\begin{tabular}{|@{\ }c@{\qquad \qquad}c@{\ }|}
+\hline
+\multicolumn{2}{|c|}{Basic judgement forms} \\
+\hline
+$\Gamma \types A \ \type $ & $ \Gamma \types a:A $ \\
+$\Gamma \types A = A' \ \type $& $ \Gamma \types a = a' : A $ \\
+\hline
+\end{tabular}
 
-First, 
+Query: perhaps remove ``context'' from these, make it a derived judgement?  likewise ``context morphism'', ``dependent context'', ``dependent context morphism''\ldots ?  Perhaps add intended meanings here, as in Pitts?
 
-\section{The classifying weak omega-category of a type theory}
+\begin{tabular}{|@{\ }c@{\qquad \qquad}c@{\ }|}
+\hline
+\multicolumn{2}{|c|}{Derived judgement forms} \\
+\hline
+$ \Gamma \types \Delta \ \cxt$ & $\Gamma \types {\vec f} : \Delta \To \Delta' $  \\
+$ \Gamma \types \Delta = \Delta' \ \cxt$ & $\Gamma \types {\vec f} = {\vec f}' : \Delta \To \Delta'$ \\
+\hline
+\end{tabular}
 
+\phantom{yahoo}
+
+\begin{tabular}{c}
+Rules for contexts:
+\\ \ \\
+$\inferrule*[right=$\cxt$-$\diamond\diamond$]{\ }{\diamond \types \diamond \ \cxt}$ \quad $\inferrule*[right=$\cxt$-$\diamond$]{\diamond \types \Gamma\ \cxt}{\Gamma \types \diamond \ \cxt}$ \quad $\inferrule*[right={$\cxt$=-$\diamond$}]{\diamond \types \Gamma\ \cxt}{\diamond \types \diamond = \diamond \ \cxt}$
+\\ \ \\
+$\inferrule*[right=$\cxt$-$\cons$]{\Gamma \types \Delta\ \cxt \\\\ \Gamma , \Delta \types A \ \type}{\quad \Gamma \types \Delta, A\ \cxt\quad}$ \qquad
+$\inferrule*[right={$\cxt$=-$\cons$}]{\Gamma \types \Delta = \Delta'\ \cxt \\\\ \Gamma, \Delta \types A = A'\ \type}{\quad \Gamma \types \Delta, A = \Delta', A'\ \cxt \quad}$ 
+\\ \ \\
+% $\inferrule*[right=$\cxt$-$\subst$]{\x : \Gamma \types \Delta(\x)\ \cxt \\\\ \diamond \types \f : \Gamma' \To \Gamma}{\quad \y : \Gamma' \types \Delta(\f(\y))\ \cxt \quad}$ \qquad 
+% $\inferrule*[right={$\cxt$=-$\subst$}]{\x : \Gamma \types \Delta(\x) = \Delta'(\x)\ \cxt \\\\ \diamond \types \f = \f' : \Gamma' \To \Gamma}{\quad \y : \Gamma' \types \Delta(\f(\y)) = \Delta'(\f'(\y))\ \cxt\quad }$ 
+% \\ \ \\ 
+\end{tabular}
+
+\begin{tabular}{c}
+Rules for types: \\ \ \\
+$\inferrule*[right={$\type$=-$\refl$}]{\Gamma \types A\ \type}{\quad \Gamma \types A = A\ \type \quad} \qquad
+\inferrule*[right={$\type$=-$\sym$}]{\Gamma \types A = B\ \type}{\quad \Gamma \types B = A\ \type \quad}$ \\ \ \\
+$\inferrule*[right={$\type$=-$\trans$}]{\Gamma \types A = B\ \type \\\\ \Gamma \types B = C\ \type}{\quad \Gamma \types A = C\ \type \quad} \qquad 
+\inferrule*[right=$\type$-$\subst$]{\x : \Gamma \types A(\x)\ \type \\\\ \diamond \types \f : \Gamma' \To \Gamma}{\quad \y : \Gamma' \types A(\f(\y))\ \type \quad}$ \\ \ \\
+$\inferrule*[right={$\type$=-$\subst$}]{\x : \Gamma \types A = A'\ \type \\\\ \diamond \types \f = \f' : \Gamma' \To \Gamma}{\quad \y:\Gamma' \types A(\f(\y)) = A'(\f'(\y))\ \type\quad }$ \\ \ \\
+\end{tabular}
+
+\begin{tabular}{c}
+Rules for terms: \\ \ \\
+$\inferrule*[right={\sf var}]{\Gamma \types A\ \type \\ \Gamma, A \types \Delta\ \cxt}{\quad \Gamma, x:A, \Delta \types x : A \quad}$ \\ \ \\
+$\inferrule*[right={\sf term-coerce}]{\Gamma \types a : A \\\\ \Gamma \types A = A'\ \type}{\quad \Gamma \types a : A' \quad}$ \qquad \quad
+$\inferrule*[right={\sf term=-coerce}]{\Gamma \types a = a' : A \\\\ \Gamma \types A = A'\ \type}{\quad \Gamma \types a = a' : A' \quad}$
+\\ \ \\
+$\inferrule*[right={$\term$=-$\refl$}]{\Gamma \types a : A}{\quad \Gamma \types a = a : A\quad} \qquad \qquad
+\inferrule*[right={$\term$=-$\sym$}]{\Gamma \types a = b : A}{\quad \Gamma \types b = a : A \quad}$
+\\ \ \\
+$\inferrule*[right={$\term$=-$\trans$}]{\Gamma \types a = b : A \\\\ \Gamma \types b = c : A}{\quad \Gamma \types a = c : A \quad} \qquad 
+\inferrule*[right=$\term$-$\subst$]{\x : \Gamma \types a(\x) : A(\x) \\\\ \diamond \types \f : \Gamma' \To \Gamma}{\quad \y : \Gamma' \types a(\f(\y)) : A(\f(\y)) \quad}$
+\\ \ \\
+$\inferrule*[right={$\term$=-$\subst$}]{\x : \Gamma \types a(\x) = a'(\x) : A(\x) \\\\ \diamond \types \f = \f' : \Gamma' \To \Gamma}{\quad \y:\Gamma' \types a(\f(\y)) = a'(\f'(\y)) : A(\f(\y)) \quad}$
+\end{tabular}
+
+
+\begin{tabular}{c}
+Rules for context maps: 
+\\ \ \\
+$\inferrule*[right=$\cxt$-$\diamond$]{\diamond \types \Gamma\ \cxt}{\diamond \types \diamond : \Gamma \To \diamond}$ \qquad $\inferrule*[right={$\cxt$=-$\diamond$}]{\diamond \types \Gamma\ \cxt}{\diamond \types \diamond = \diamond : \Gamma \To \diamond}$
+\\ \ \\
+$\inferrule*[right=$\cxt$-$\cons$]{\Gamma \types \f : \Delta' \To \Delta \\\\ \x : \Gamma , \y : \Delta(\x) \types A(\x,\y) \ \type \\\\ \x : \Gamma, \z : \Delta'(\x) \types a(\x,\z) : A(\x,\f(\x,\z))}{\quad \Gamma \types (\f,a) : \Delta' \To (\Delta, A) \quad}$ \qquad
+$\inferrule*[right=$\cxt$-$\cons$]{\Gamma \types \f : \Delta' \To \Delta \\\\ \x : \Gamma , \y : \Delta(\x) \types A(\x,\y) \ \type \\\\ \x : \Gamma, \z : \Delta'(\x) \types a(\x,\z) : A(\x,\f(\x,\z))}{\quad \Gamma \types (\f,a) : \Delta' \To (\Delta, A) \quad}$ \qquad
+\\ \ \\
+% $\inferrule*[right=$\cxt$-$\subst$]{\x : \Gamma \types \Delta(\x)\ \cxt \\\\ \diamond \types \f : \Gamma' \To \Gamma}{\quad \y : \Gamma' \types \Delta(\f(\y))\ \cxt \quad}$ \qquad 
+% $\inferrule*[right={$\cxt$=-$\subst$}]{\x : \Gamma \types \Delta(\x) = \Delta'(\x)\ \cxt \\\\ \diamond \types \f = \f' : \Gamma' \To \Gamma}{\quad \y : \Gamma' \types \Delta(\f(\y)) = \Delta'(\f'(\y))\ \cxt\quad }$ 
+% \\ \ \\ 
+\end{tabular}
+\end{center}
+
+\section{Type constructors and miscellaneous rules} \label{sec:further-rules}
+
+
+
+\section{Basic properties} \label{sec:tt-lemmas}
+
+--- lemma: $\Gamma \types \Delta \cxt$ iff $\diamond \types \Gamma , \Delta \cxt$
+--- lemma: if $\Gamma$ appears on the left of any judgement, then $\diamond \types \Gamma \cxt$.  Generally: can derive boundaries of derived judgements.
+--- judgements are stable under equality of the boundary.
+--- lemma: can derive wkg, subst.
+--- lemma: can concatenate context maps like contexts.
+--- lemma: having given only substitution along closed context maps, can get it along all.  
+--- lemma: $\equiv$ decidable.
+--- lemma: if no equality axioms, then judgemental equality decidable.
+--- lemma: if no equality axioms, then typing unique.
+\para 
 
 
 

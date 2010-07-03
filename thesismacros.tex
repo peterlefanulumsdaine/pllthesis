@@ -29,6 +29,7 @@
 % \newcommand{\bD}{\mathbf{D}}
 % \renewcommand{\d}{\partial}
 \newcommand{\E}{\mathcal{E}}
+\newcommand{\f}{\vec f}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\FF}{\mathbb{F}}
 \newcommand{\G}{\mathbb{G}}
@@ -45,11 +46,12 @@
 \newcommand{\W}{\mathcal{W}}
 \newcommand{\WW}{\mathbb{W}}
 % \newcommand{\X}{X_\bullet}
-% \newcommand{\x}{\vec x}
+\newcommand{\x}{\vec x}
 % \newcommand{\uX}[1][]{\underline{X}_{#1}}
 % \newcommand{\Y}{Y_\bullet}
-% \newcommand{\y}{\vec y}
+\newcommand{\y}{\vec y}
 % \newcommand{\yon}{\mathbf{y}}
+\newcommand{\z}{\vec z}
 
 %%%%
 % Styled words: general
@@ -90,6 +92,8 @@
 
 % \newcommand{\comp}{\textsc{comp}}
 % \newcommand{\Contr}{\mathsf{Contr}}
+\newcommand{\cons}{\mathsf{cons}}
+\newcommand{\cxt}{\mathsf{cxt}}
 % \newcommand{\elim}{\textsc{elim}}
 % \newcommand{\Exch}{\mathsf{Exch}}
 % \newcommand{\form}{\textsc{form}}
@@ -97,14 +101,18 @@
 % \newcommand{\varidelim}[5]{#4\mathsf{ for }#3\mathsf{ in }#1.#2\mathsf{ via }#5}
 % \newcommand{\idelim}[5]{J_{#1.#2}(#3,#4,#5)}
 % \newcommand{\intro}{\textsc{intro}}
-% \newcommand{\Subst}{\mathsf{Subst}}
+\newcommand{\refl}{\mathsf{refl}}
+\newcommand{\subst}{\mathsf{subst}}
 % \newcommand{\src}{\mathsf{src}}
 % \newcommand{\scterm}{\textsc{term}}
+\newcommand{\sym}{\mathsf{sym}}
 % \newcommand{\tgt}{\mathsf{tgt}}
-% \newcommand{\type}{\mathsf{type}}
+\newcommand{\term}{\mathsf{term}}
+\newcommand{\trans}{\mathsf{trans}}
+\newcommand{\type}{\mathsf{type}}
 % \newcommand{\sctype}{\textsc{type}}
-% \newcommand{\Weak}{\mathsf{Wkg}}
-% \newcommand{\Vble}{\mathsf{Vble}}
+% \newcommand{\Weak}{\mathsf{wkg}}
+\newcommand{\var}{\mathsf{var}}
 
 %%%%
 % Other operators
@@ -118,13 +126,18 @@
 %%%%
 
 % \renewcommand{\equiv}{\simeq}
-% \newcommand{\into}{\rightarrowtail}
+\newcommand{\Iff}{\Leftrightarrow}
+\newcommand{\Imp}{\Rightarrow}
+\newcommand{\into}{\hookrightarrow}
 % \newcommand{\iso}{\cong}
-% \newcommand{\types}{\vdash}
+\newcommand{\To}{\Rightarrow}
+\newcommand{\types}{\vdash}
 
 %%%%
 % Other symbols
 %%%%
+
+% \newcommand{\irule}[3]{\inferrule*[#1]{#2}{\quad #3 \quad}}  I can't seem to get this to work, not sure why, so just putting in extra spacing by hand...
 
 % \newcommand{\lscott}{[\![}
 % \newcommand{\rscott}{]\!]}
