@@ -10,17 +10,17 @@ Possibly just make this a presentation of the type theory?
 
 \para The type theories we consider are all essentially variants on the basic type theory originally presented in \cite{ML:predicative-part}.  See also (TODO: pick out good references!)
 
-The core of the type theory, its basic judgements and structural rules, is given in Section \ref{sec:structural-core}; this will remain constant in all the theories we consider.
+The core of the type theory, its basic judgements and structural rules, is given in Section \ref{para:structural-core}; this will remain constant in all the theories we consider.
 
-The type-constructors and various other rules that will be used are given in Section \ref{sec:further-rules}; we will consider theories including various different subsets of these rules.
+The type-constructors and various other rules that will be used are given in Section \ref{para:further-rules}; we will consider theories including various different subsets of these rules.
 
-Section \ref{sec:tt-lemmas} contains some fundamental lemmas concerning the resulting type theories: basic proof-theoretic properties, admissible rules, and so on.
+Section \ref{para:tt-lemmas} contains some fundamental lemmas concerning the resulting type theories: basic proof-theoretic properties, admissible rules, and so on.  TODO: this has changed!  Memo to self: don't write overviews of chapters before starting the chapters themselves...
 
-For further discussion, see \cite{pitts:cat-logic} (a notably thorough and precise presentation, on which the present one is largely based), \cite[\S6]{jacobs:book} (for a thoughtful discussion of this system within the wider type-theoretic context), \cite{hofmann:syntax-and-semantics}, \cite[Ch.3]{n-p-s:programming} (an explanation of the use of simply-typed calculus as the ``raw language'), and \cite{martin-loef:predicative-part} (the originial presentation of the theory).
- 
+For further background, see \cite{pitts:categorical-logic} (a notably thorough and precise presentation), \cite[\S6]{jacobs:categorical-logic} (for a thoughtful discussion of this system within the wider type-theoretic context), \cite{hofmann:syntax-and-semantics}, \cite[Ch.3]{n-p-s:programming} (discussion of the use of simply-typed calculus as the ``raw language'), and \cite{martin-loef:predicative-part} (the originial presentation of the theory).  The presentation uses essentially the formal presentation of \cite{pitts:categorical-logic}, in the notation of \cite{jacobs:categorical-logic}, slightly modified to include dependent contexts and their morphisms. 
+
 (TODO: perhaps fully expound the presentation rather than just recapping?)
 
-Notes (re-order later):
+Notes (re-organise and/or remove later):
 
 --- point of using $\lambda$-calculus as raw language: to separate the subtleties of binding and capture-avoiding substitution from those of dependency and well-formedness.
 
@@ -32,13 +32,16 @@ Notes (re-order later):
 
 --- dependent maps: really only need $\Gamma \types \vec f : \Delta \To \Delta'$ in case either $\Gamma = \diamond$ (for substitution rules) or $Delta = \diamond$ (for Frobenius rules).  However, it's simpler to give this than those two separately, plus natural for syntactic cwa.
 
---- I'm using: the formalism of Pitts, the notation of Jacobs, and a pinch of new stuff (the dependent cxts/maps)!
-
 --- syntactic sugar: $\x : \Gamma \types a(\x) : A(\x)$ really means $\Gamma \types a : A$, where all of these are \emph{closed} metaexpressions, but $a$, $A$ have arities $\term^n \to \term$, $\term^n \to \type$, where $n$ is the length of $\Gamma$; and so on.
 
-%: ----------------------- contents from here ------------------------
 
-\section{Structural core} \label{sec:structural-core}
+\para{Raw syntax} \label{para:raw-syntax}
+
+Define: ``raw language''.  (NB: sometimes called \emph{metalanguage}, but not meaning the language in which we reason about the type theory; rather, plays a similar r\^o{}le to that of strings (or trees) of symbols in simpler systems.)
+
+Define: signature, pre-terms, pre-types, pre-terms, judgements.
+
+\para{Judgement forms} \label{para:judgement-forms}
 
 \begin{center}\begin{tabular}{|@{\ }c@{\qquad \qquad}c@{\ }|}
 \hline
@@ -49,8 +52,6 @@ $\Gamma \types A = A' \ \type $& $ \Gamma \types a = a' : A $ \\
 \hline
 \end{tabular}
 
-Query: perhaps remove ``context'' from these, make it a derived judgement?  likewise ``context morphism'', ``dependent context'', ``dependent context morphism''\ldots ?  Perhaps add intended meanings here, as in Pitts?
-
 \begin{tabular}{|@{\ }c@{\qquad \qquad}c@{\ }|}
 \hline
 \multicolumn{2}{|c|}{Derived judgement forms} \\
@@ -60,7 +61,14 @@ $ \Gamma \types \Delta = \Delta' \ \cxt$ & $\Gamma \types {\vec f} = {\vec f}' :
 \hline
 \end{tabular}
 
-\phantom{yahoo}
+Explain in what sense these are derived judgements!
+
+(Discuss in parens why we use dependent cxts and morphisms.)
+
+Perhaps (if feeling pedantic, or can find way to say it non-pedantically) discuss arities of things in judgements, etc.?
+
+\para{Rules: Structural core} \label{para:structural-core}
+
 
 \begin{tabular}{c}
 Rules for contexts:
@@ -114,22 +122,48 @@ $\inferrule*[right=$\cxt$-$\cons$]{\Gamma \types \f : \Delta' \To \Delta \\\\ \x
 \end{tabular}
 \end{center}
 
-\section{Type constructors and miscellaneous rules} \label{sec:further-rules}
+\para{Type constructors and miscellaneous rules} \label{para:further-rules}
+
+Rules for type-constructors go here: $\Id$-, $\Pi$-, $\Sigma$-, with just a tip of the hat to $\NN$-, $\Bool$, \ldots
+
+Include optional things: $\eta$- and extensionality rules for function-types; K and the truncation rules for $\Id$-types. 
+
+Discuss implications between these?
+
+\para{Translations} \label{para:translations}
+
+Define translation, category of type theories.
+
+\section{Categories with attributes}
+
+TODO: chase up references on these!  In particular: names --- type-categories, categories with attributes, categories with families, split comprehension categories, \ldots ?
+
+TODO: ask around about reachable vs.\ ``stratified'' cwa's.
+
+\para{Equivalence with type theories}
+
+Define: categories with attributes.  \cite[\S 6.4]{pitts:categorical-logic}
+
+Recall (from Pitts again): \emph{equivalence} (honest 1-equivalence!) between type theories with no constructors and cwa's.
+
+Define: $\Id$-structure, $\Pi$-structure, etc. on cwa's.  (Reference: \cite{awodey-warren}.)
+
+Extend equivalence above.
 
 
 
-\section{Basic properties} \label{sec:tt-lemmas}
-
---- lemma: $\Gamma \types \Delta \cxt$ iff $\diamond \types \Gamma , \Delta \cxt$
---- lemma: if $\Gamma$ appears on the left of any judgement, then $\diamond \types \Gamma \cxt$.  Generally: can derive boundaries of derived judgements.
---- judgements are stable under equality of the boundary.
---- lemma: can derive wkg, subst.
---- lemma: can concatenate context maps like contexts.
---- lemma: having given only substitution along closed context maps, can get it along all.  
---- lemma: $\equiv$ decidable.
---- lemma: if no equality axioms, then judgemental equality decidable.
---- lemma: if no equality axioms, then typing unique.
-\para 
+% \section{Basic properties} \label{sec:tt-lemmas}
+% 
+% --- lemma: $\Gamma \types \Delta \cxt$ iff $\diamond \types \Gamma , \Delta \cxt$
+% --- lemma: if $\Gamma$ appears on the left of any judgement, then $\diamond \types \Gamma \cxt$.  Generally: can derive boundaries of derived judgements.
+% --- judgements are stable under equality of the boundary.
+% --- lemma: can derive wkg, subst.
+% --- lemma: can concatenate context maps like contexts.
+% --- lemma: having given only substitution along closed context maps, can get it along all.  
+% --- lemma: $\equiv$ decidable.
+% --- lemma: if no equality axioms, then judgemental equality decidable.
+% --- lemma: if no equality axioms, then typing unique.
+% \para 
 
 
 

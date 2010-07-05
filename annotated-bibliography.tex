@@ -1,0 +1,31 @@
+\documentclass{article}
+
+\begin{document}
+
+\title{Higher categories and type theory: an annotated bibliography}
+
+\section{Homotopy Type Theory proper}
+
+\section{Other type theory}
+
+\cite{jacobs:categorical-logic} Bart Jacobs, \emph{Categorical Logic and Type Theory}: Nice wide-ranging exposition of (mainly the fibration approach to) categorical logic, for various different type systems.  Some good discussions of subtle points often either overlooked or taken for granted.  Slight caveat on presentation of DTT: doesn't fully formalise the syntax, refers to \cite{pitts:categorical-logic}, \cite{hofmann:syntax-and-semantics} and others for details.
+
+\cite{hofmann:syntax-and-semantics} Martin Hofmann, \emph{Syntax and semantics of dependent types}: ???
+
+\cite{n-p-s:programming} Bengt Nordstr\"o{}m, Ken Petersson, Jan M. Smith, \emph{Programming in Martin-L\"o{}f's type theory}: Lovely, leisurely exposition of MLTT.  Useful discussion of having binding built into the raw syntax (Ch. 3).
+
+\cite{pitts:categorical-logic}, Andy Pitts, \emph{Categorical Logic}: The best full, formal presentation of dependent type theory I've been able to find.  Presentation is completely full \& precise, and includes extensions by signatures/axioms.  (No constructors beyond $\Pi$-types are done, but it's set up well for extensibility.)  Sketches the equivalence between dependent algebraic theories and categories-with-attributes (Prop. 6.11, Rmk 6.22), and states it for the case with $\Pi$-types (Prop. 6.25).
+
+Names for categories with attributes: \emph{contextual cats}, Cartmell 1978 (not quite equivalent yet); \emph{categories with attributes}, \cite{hofmann:lcccs}, \cite{hofmann:syntax-and-semantics}; \emph{type-categories} \cite{pitts:categorical-logic}; \emph{categories with families} \cite{dybjer:internal-type-theory}; \emph{full split comprehension categories}, \cite[4.10]{jacobs:comprehension-categories}.
+
+\section{Globular higher cats}
+
+\cite{garner:understanding} Richard Garner, \emph{Understanding the small-object argument}:  Fundamental tool for the construction of ``cofibrantly generated'' algebraic weak factorisation systems.
+
+
+\section{Homotopy Theory}
+
+\bibliographystyle{amsalpha}
+\bibliography{pll-thesis-bib}
+
+\end{document}
