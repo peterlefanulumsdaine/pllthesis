@@ -126,6 +126,29 @@ $\inferrule*[right=$\cxt$-$\cons$]{\Gamma \types \f : \Delta' \To \Delta \\\\ \x
 
 Rules for type-constructors go here: $\Id$-, $\Pi$-, $\Sigma$-, with just a tip of the hat to $\NN$-, $\Bool$, \ldots
 
+\begin{center}
+\begin{tabular}{c}
+Rules for $\Id$-types: 
+\\ \ \\
+$\inferrule*[right=$\Id$-$\form$]{\Gamma \types A\ \type}{\Gamma, x,y : A \types \Id_A(x,y)\ \type}$ \qquad $\inferrule*[right={$\Id$-$\intro$}]{\Gamma \types A\ \type}{\Gamma, x : A \types r(x) : \Id_A(x,x)}$
+\\ \ \\
+$\inferrule*[right=$\Id$-$\elim$]{\Gamma, x,y : A, p : \Id_A(x,y), \w : \Delta(x,y,p) \types C(x,y,p,\w)\ \type \\
+\Gamma, z:A, \v : \Delta(z,z,r(z)) \types d(z,\v) : C(z,z,r(z),\v)}
+{\Gamma, x,y:A, p:\Id_A(x,y), \w:\Delta(x,y,p) \types J_{A;\  x,y,p.\Delta;\ x,y,p,\w.C}(z,\v.\ d(z,\v);\ x,y,p,\w) : C(x,y,p,\w)}$
+\\ \ \\
+$\inferrule*[right=$\Id$-$\comp$]{\Gamma, x,y : A, p : \Id_A(x,y), \w : \Delta(x,y,p) \types C(x,y,p,\w)\ \type \\
+\Gamma, z:A, \v : \Delta(z,z,r(z)) \types d(z,\v) : C(z,z,r(z),\v)}
+{\Gamma, x:A, \w:\Delta(x,y,p) \types J_{A;\ x,y,p.\Delta}(z,\v.\ d(z,\v);\ x,x,r(x),\w) = d(x,\w): C(x,y,p,\w)}$
+\\ \ \\
+$\inferrule*[right={reflection}]{\Gamma \types e : \Id_A(a,b)}{\Gamma \types a = b : A}$
+\\ \ \\
+$\inferrule*[right=K]{\Gamma, x: A, p : \Id_A(x,x), \w : \Delta(x,p) \types C(x,p,\w)\ \type \\
+\Gamma, z:A, \v : \Delta(z,r(z)) \types d(z,\v) : C(z,r(z),\v)}
+{\Gamma, x:A, p:\Id_A(x,x), \w:\Delta(x,p) \types K_{A;\ x,p.\Delta;\ x,p,\w.C}(z,\v.\ d(z,\v);\ x,p,\w) : C(x,p,\w)}$
+\\ \ \\
+\end{tabular}
+\end{center}
+
 Include optional things: $\eta$- and extensionality rules for function-types; K and the truncation rules for $\Id$-types. 
 
 Discuss implications between these?
@@ -142,14 +165,23 @@ TODO: ask around about reachable vs.\ ``stratified'' cwa's.
 
 \para{Equivalence with type theories}
 
-Define: categories with attributes.  \cite[\S 6.4]{pitts:categorical-logic}
+Define: full split comprehension categories \cite[4.10]{jacobs:comprehension-categories} / categories with attributes.  \cite[\S 6.4]{pitts:categorical-logic}
 
-Recall (from Pitts again): \emph{equivalence} (honest 1-equivalence!) between type theories with no constructors and cwa's.
+Recall (from Pitts): \emph{equivalence} (honest 1-equivalence!) between type theories with no constructors and cwa's.  TO DO: read Jacobs in full (\& chase further\ldots) re theories with constructors!
 
 Define: $\Id$-structure, $\Pi$-structure, etc. on cwa's.  (Reference: \cite{awodey-warren}.)
 
-Extend equivalence above.
+Extend equivalence above; define $\ThId$, $\ThIdPi$, etc.  
 
+Fact: since all essentially algebraic (or otherwise), these categories are all co-complete!
+
+\para{The ``strong $\Sigma$'s'' monad}  Explicitly give the monad on $\ThId$ throwing in all dependent contexts as new types, and interpreting equality as described in loc.~cit.  TODO: look up that interpretation of equality!  Refer to Thorsten's OTT also.
+
+Point out how this corresponds closely (2-equivalence?) but not precisely to adding strong $\Sigma$-types in the type theory.
+
+Ask: is this induced by the adjunction with $\Id$-type categories?  or categories with appropriate nwfs's, or something?  or Hyland-Pitts style ``categories with \ldots?''
+
+Discuss the Kleisli of this monad: ``modelling types as contexts''.
 
 
 % \section{Basic properties} \label{sec:tt-lemmas}
