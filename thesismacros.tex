@@ -8,6 +8,19 @@
 % - Single letters
 
 
+%%%%
+% Binary relations, operators
+%%%%
+
+\newcommand{\cotensor}{\pitchfork}
+\renewcommand{\equiv}{\simeq}
+\newcommand{\Iff}{\Leftrightarrow}
+\newcommand{\Imp}{\Rightarrow}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\iso}{\cong}
+\newcommand{\tensor}{\otimes}
+\newcommand{\To}{\Rightarrow}
+\newcommand{\types}{\vdash}
 
 %%%% 
 % Single styled characters (or almost single)
@@ -40,20 +53,22 @@
 % \renewcommand{\P}{P_{\MLfrag}}
 % \newcommand{\operadP}{P_{\MLfrag}}
 % \newcommand{\Pfull}{P_{\ML}}
+\newcommand{\pow}{\mathcal{P}}
 % \newcommand{\p}{\vec p}
 % \renewcommand{\S}{\mathcal{S}}    % Another generic type theory
 \newcommand{\T}{\mathcal{T}}      % A generic type theory
 \renewcommand{\u}{\vec u}
+\newcommand{\V}{\mathcal{V}}
 \renewcommand{\v}{\vec v}
 \newcommand{\W}{\mathcal{W}}
 \newcommand{\WW}{\mathbb{W}}
 \newcommand{\w}{\vec w}
-% \newcommand{\X}{X_\bullet}
+\newcommand{\X}{X_\bullet}
 \newcommand{\x}{\vec x}
 % \newcommand{\uX}[1][]{\underline{X}_{#1}}
-% \newcommand{\Y}{Y_\bullet}
+\newcommand{\Y}{Y_\bullet}
 \newcommand{\y}{\vec y}
-% \newcommand{\yon}{\mathbf{y}}
+\newcommand{\yon}{\mathbf{y}}
 \newcommand{\z}{\vec z}
 
 %%%%
@@ -61,20 +76,30 @@
 %%%%
 
 \newcommand{\Alg}[1]{#1\mbox{-}\mathbf{Alg}}
+\newcommand{\IntAlg}[2]{\mathbf{Alg}_{#2}(#1)}
 \newcommand{\AMS}{AMS}
 \newcommand{\AWFS}{AWFS}
 \newcommand{\Cat}{\mathbf{Cat}}
 \newcommand{\CatId}{\mathbf{Cat}_{\Id}}
 % \newcommand{\cat}[1][-]{\mathbf{Cat}(#1)}
-% \newcommand{\cod}{\mathrm{cod}}
-% \newcommand{\dom}{\mathrm{dom}}
-% \newcommand{\End}{\mathrm{End}}
+\newcommand{\enrCat}[1][\V]{#1\mbox{-}\mathbf{Cat}}
+\newcommand{\Coll}{\mathbf{Coll}}
+\newcommand{\cod}{\mathrm{cod}}
+\newcommand{\dom}{\mathrm{dom}}
+\newcommand{\End}{\mathrm{End}}
 % \newcommand{\ev}{\mathbf{ev}}
 \newcommand{\FibSpans}{\mathbf{FibSpans}}
+\newcommand{\FSCC}{\mathbf{FSCC}}
+\newcommand{\fscc}{\textsc{fscc}}
+\newcommand{\fsccs}{\textsc{fscc}'s}
+\newcommand{\FSCS}{\mathbf{FSCS}}
+\newcommand{\fscs}{\textsc{fscs}}
+\newcommand{\fscss}{\textsc{fscs}'s}
 % \newcommand{\colim}{\varinjlim}
 % \newcommand{\longGSets}{[\mathbb{G}^\op,\mathbf{Sets}]}
 \newcommand{\GSets}{\widehat{\mathbb{G}}}
 % \renewcommand{\lim}{\varprojlim}
+\newcommand{\lax}{\mathrm{lax}}
 \newcommand{\MonGlobCat}{\mathbf{MonGlobCat}}
 \newcommand{\ob}{\operatorname{ob}}
 % \newcommand{\op}{\mathrm{op}}
@@ -83,6 +108,7 @@
 \newcommand{\QCat}{\mathbf{QCat}}
 \newcommand{\qcat}{\mathit{qcat}}
 % \newcommand{\Sets}{\mathbf{Sets}}
+\newcommand{\strat}{\textrm{strat}}
 \newcommand{\Th}{\mathbf{Th}}
 \newcommand{\ThId}{\mathbf{Th}_{\Id}}
 \newcommand{\ThIdPi}{\mathbf{Th}_{\Id,\Pi}}
@@ -100,7 +126,7 @@
 
 \newcommand{\Bool}{\mathsf{Bool}}
 \newcommand{\comp}{\textsc{comp}}
-\renewcommand{\cong}{\textsc{cong}}
+\newcommand{\CONG}{\textsc{cong}}
 % \newcommand{\Contr}{\mathsf{Contr}}
 \newcommand{\cons}{\mathsf{cons}}
 \newcommand{\cxt}{\mathsf{cxt}}
@@ -130,18 +156,6 @@
 
 \newcommand{\Clw}{\mathbb{Cl}_\omega}
 \newcommand{\ClwQCat}{\mathbb{Cl}^\qcat_\omega}
-
-%%%%
-% Binary relations
-%%%%
-
-% \renewcommand{\equiv}{\simeq}
-\newcommand{\Iff}{\Leftrightarrow}
-\newcommand{\Imp}{\Rightarrow}
-\newcommand{\into}{\hookrightarrow}
-% \newcommand{\iso}{\cong}
-\newcommand{\To}{\Rightarrow}
-\newcommand{\types}{\vdash}
 
 %%%%
 % Other symbols

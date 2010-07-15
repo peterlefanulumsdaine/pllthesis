@@ -159,29 +159,23 @@ Define translation, category of type theories.
 
 \section{Categories with attributes}
 
-TODO: chase up references on these!  In particular: names --- type-categories, categories with attributes, categories with families, split comprehension categories, \ldots ?
+Define: full split comprehension categories \cite[4.10]{jacobs:comprehension-categories} / categories with attributes.  \cite[\S 6.4]{pitts:categorical-logic}
 
 TODO: ask around about reachable vs.\ ``stratified'' cwa's.
 
-\para{Equivalence with type theories}
-
-Define: full split comprehension categories \cite[4.10]{jacobs:comprehension-categories} / categories with attributes.  \cite[\S 6.4]{pitts:categorical-logic}
-
-Recall (from Pitts): \emph{equivalence} (honest 1-equivalence!) between type theories with no constructors and cwa's.  TO DO: read Jacobs in full (\& chase further\ldots) re theories with constructors!
-
 Define: $\Id$-structure, $\Pi$-structure, etc. on cwa's.  (Reference: \cite{awodey-warren}.)
 
-Extend equivalence above; define $\ThId$, $\ThIdPi$, etc.  
+\para{Equivalence with type theories}
+
+Recall (from Pitts): \emph{equivalence} (honest 1-equivalence!) between type theories with no constructors and stratified fscc's.  TO DO: read Jacobs in full (\& chase further\ldots) re theories with constructors!
+
+Note: $\FSCC_\strat$ is a \emph{full} subcat of $\FSCC$, and coreflective (with comonad induced by adjunction from $\Th$, so closed under colims!
+
+Extend equivalence above to constructors: $\ThId$, $\ThIdPi$, etc.  
 
 Fact: since all essentially algebraic (or otherwise), these categories are all co-complete!
 
-\para{The ``strong $\Sigma$'s'' monad}  Explicitly give the monad on $\ThId$ throwing in all dependent contexts as new types, and interpreting equality as described in loc.~cit.  TODO: look up that interpretation of equality!  Refer to Thorsten's OTT also.
 
-Point out how this corresponds closely (2-equivalence?) but not precisely to adding strong $\Sigma$-types in the type theory.
-
-Ask: is this induced by the adjunction with $\Id$-type categories?  or categories with appropriate nwfs's, or something?  or Hyland-Pitts style ``categories with \ldots?''
-
-Discuss the Kleisli of this monad: ``modelling types as contexts''.
 
 
 % \section{Basic properties} \label{sec:tt-lemmas}

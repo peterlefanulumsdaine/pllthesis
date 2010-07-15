@@ -10,9 +10,50 @@ Possibly fold this chapter into the next??
 
 \section{A category of Type Theories}
 
-\para If poss, use elegant Fiore et al ``second-order\ldots '' as framework for this!  Explain: this is \emph{much more literal to the syntax} than Cartmell, categories with attributes etc; but on the other hand, much more categorically tractable than more ad hoc presentations of the syntax.
+\para Give brief, semi-formal outline of the type theory, referring to Appendix
 
-Mention possible tie-in with formalisation in Agda??  (*)
+\para In fact, we will not work directly with the category of type theories, but with an equivalent category of algebraic models.
+
+\begin{definition} A \emph{split full comprehension category}\cite{jacobs:comprehension-categories} (\fscc) is a category $\C$ together with a split fibration $p : \E \to \C$ and a factorisation $p = \cod \cdot \pow : \E \to \C^\rightarrow \to \C$, such that (a) $\pow$ maps cartesion arrows to pullback squares, and (b) $\pow$ is full and faithful.  By abuse of notation, we will often refer to $\C$ itself as the comprehension category; the pair $(p,\pow)$ is called a \emph{comprehension structure} on $\E$.  
+
+A (strict) map of \fsccs{} is just a functor $F: \C \to \C'$ and a map of fibrations $p \to p'$ over $F$, commuting with the factorisations $\pow$, $\pow'$.  A \emph{map of comprehension structures} on $\C$ is just the case $F = 1_C$.
+\end{definition}
+
+If $\C$ has all pullbacks, then condition (a) just says that $\pow$ is a map of fibrations.  
+ 
+In fact, for fixed $\C$, $\FSCS(\C)$ is (equivalent to) a presheaf category---specifically, to to the slice of $\hat{\C}$ over the presheaf $P$ in which an element of $P(A)$ is a map $f : B \to A$ together with chosen pullbacks along all maps $j : A' \to A$.  (This is neat, but maybe not needed!  Perhaps take it out?)
+
+\begin{example}For any type theory $\T$, its category of context $\C(\T)$ is a comprehension category, in which objects of $\pow_0(\Gamma)$ are types dependent over $\Gamma$, and $\pow$ sends a type $A \in \pow_0(\Gamma)$ to the dependent projection $\Gamma, x : A \to \Gamma$.
+\end{example}
+
+In fact, this construction is part of an equivalence between $\Th$ and a certain full co-reflexive subcategory of $\FSCC$: see Appendix \ref{app:??} for details.  In light of this, we will typically refer to the objects of any \fscc\ as contexts, and the objects of the fibration as dependent types.
+
+\para
+
+
+This all extends to theories with type constructors.
+
+Define: a lax map of comprehension structures (do I mean colax??)
+
+Point out: the 2-category $\mathbf{\FSCS(\C)_\lax}$ has finite products.  (And these are probably better seen as 2-limits in $\FSCS(\C)$.)
+
+\begin{definition}
+An \emph{\fscs\ with units} on a category $\C$ is an \fscs\ $(p,\pow_0)$ together with a strict map of \fscss\ $1 : (1_B,\textit{id}) \to (p,\pow_0)$. 
+
+An \emph{\fscs\ with binary products} on $\C$ is an \fscs\ $(p,\pow_0)$ with a strict map $ \times : (p times_B p, \pow_0 \times_B) \to (p,\pow_0)$. 
+\end{definition}
+
+Note: this implies a certain adjunction, so does corresponds to Jacobs' ``fscc with units''.  [Show this??]
+
+\begin{definition}
+\para{The ``dependent contexts'' monad}  Explicitly give the monad on $\ThId$ throwing in all dependent contexts as new types, and interpreting equality as described in loc.~cit.  TODO: look up that interpretation of equality!  Refer to Thorsten's OTT also.
+\end{definition}
+
+Point out how this corresponds closely (2-equivalence?) but not precisely to adding (very) strong $\Sigma$-types in the type theory.
+
+Ask: is this induced by the adjunction with $\Id$-type categories?  or categories with appropriate nwfs's, or something?  or Hyland-Pitts style ``categories with \ldots?''
+
+Discuss the Kleisli of this monad: ``modelling types as contexts''.
 
 \section{Internal algebras for operads}
 
@@ -20,7 +61,32 @@ Mention possible tie-in with formalisation in Agda??  (*)
 
 Lovely rarely-cited WEBER paper gives source for most of this!  Possibly even \emph{everything} I need is there, in which case possibly move this section to appendix, and fold the first part of this chapter into the next chapter???
 
+\begin{definition}[Endomorphism operads] For $\E$ any category, $\X$ any globular operad in $\E$, we write $\End_\E(\X)$ for the operad (construction\ldots\ either by monoidal globular categories, or by ``representable'' style of my previous paper; latter is slicker here, but seems very difficult for showing the functoriality).  More generally, really want the $\Coll$-enriched category structure on (appropriate subcategory of) $[\G,\E]$.
+\end{definition}
 
-% ---------------------------------------------------------------------------
-% ----------------------- end of thesis sub-document ------------------------
-% ---------------------------------------------------------------------------
+\proposition If $\E$ has enough limits, then for any pasting diagram $\pi$, $$\End_\E(\X)(\pi) \iso [\G/n,\E](X \cotensor \hat{\pi},X \cotensor \yon(n))$$
+where the right hand side consists of ``pylon diagrams'':
+$$\textrm{draw the diagram here.}$$
+
+\begin{proof} Straightforward (in either construction of $\End$).
+\end{proof}
+
+\proposition $\End_\E(\X)$ is functorial in $\E$: a functor $F : \E \to \F$ preserving appropriate limits induces a map $\End_\E(\X) \to \End_\F(F\X)$.
+
+\begin{proof} Straightforward in the ``monoidal globular categories'' approach.  Can't currently see how to do it in the ``representable'' approach!?
+\end{proof}
+
+\definition An \emph{algebra} for an operad $P$ on an object $\X$ of $\E$ is an operad map $\xi \colon P \to \End_\E (\X)$ (the \emph{action} of $P$ on $\X$); a map of $P$-algebras is a globular map $\f \colon \X \to \Y$ commuting with the action maps, i.e.\ such that the square 
+$$\xymatrix{P \ar[r]^{\xi} \ar[d]^{\upsilon} & [\X,\X] \ar[d]^{f \cdot\ } \\ [\Y,\Y] \ar[r]^{\ \cdot f} & [\X,\Y]}$$
+commutes.
+
+In enriched terms, the resulting category $\IntAlg{P}{\E}$ is $\enrCat(\Coll)(P,[\G,\E])$.
+
+% but it's alright now
+% I learned my lesson, yeah
+% can't please everyone, so...
+% Caffé Nero, Davygate, 14.vii
+
+We can also consider $P$ as defining a certain finite-limit sketch $\mathrm{Sk}(P)$, and compare the internal algebras defined here with models of this sketch in $\E$.
+
+\proposition $\IntAlg{P}{\E} \equiv \mathbf{CmpSpan}\mathbf{Mod}_\E(\mathrm{Sk}(P))$
