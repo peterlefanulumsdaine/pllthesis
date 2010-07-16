@@ -13,24 +13,47 @@ Possibly fold this chapter into the next??
 \para Give brief, semi-formal outline of the type theory, referring to Appendix
 
 \para In fact, we will not work directly with the category of type theories, but with an equivalent category of algebraic models.
+but 
+The theory of such models is attractive, but suffers from rather an \emph{embaras de richesse} of frameworks: for instance \cite{jacobs:comprehension-categories}, \cite{pitts:categorical-logic}, \cite{hofmann:syntax-and-semantics} and \cite{dybjer:internal-type-theory} each [TODO: chronologicise these] define slightly different notions of categorical models (several after the unpublished \cite{cartmell:thesis}), all equivalent (in some sense) to each other and to syntactically presented dependent type theories.   (TODO: also look up ``categories with families''.)
+
+Of course, these notions each have advantages and disadvantages: some are more elementary to present; some are more categorically elegant; some are more easily adaptable to extensions of the type theory\ldots\  We thus take this opportunity to survey several of the various options, and the comparisons between them.  (TODO: do this!  Mention all the definitions above, at least briefly; and discuss stratified/reachable versions.)
 
 \begin{definition} A \emph{split full comprehension category}\cite{jacobs:comprehension-categories} (\fscc) is a category $\C$ together with a split fibration $p : \E \to \C$ and a factorisation $p = \cod \cdot \pow : \E \to \C^\rightarrow \to \C$, such that (a) $\pow$ maps cartesion arrows to pullback squares, and (b) $\pow$ is full and faithful.  By abuse of notation, we will often refer to $\C$ itself as the comprehension category; the pair $(p,\pow)$ is called a \emph{comprehension structure} on $\E$.  
 
 A (strict) map of \fsccs{} is just a functor $F: \C \to \C'$ and a map of fibrations $p \to p'$ over $F$, commuting with the factorisations $\pow$, $\pow'$.  A \emph{map of comprehension structures} on $\C$ is just the case $F = 1_C$.
 \end{definition}
 
-If $\C$ has all pullbacks, then condition (a) just says that $\pow$ is a map of fibrations.  
+If $\C$ has all pullbacks, then condition (a) just says that $\pow$ is a map of fibrations.
  
-In fact, for fixed $\C$, $\FSCS(\C)$ is (equivalent to) a presheaf category---specifically, to to the slice of $\hat{\C}$ over the presheaf $P$ in which an element of $P(A)$ is a map $f : B \to A$ together with chosen pullbacks along all maps $j : A' \to A$.  (This is neat, but maybe not needed!  Perhaps take it out?)
+In fact, for fixed $\C$, $\FSCS(\C)$ is (equivalent to) a presheaf category---specifically, to to the slice of $\hat{\C}$ over the presheaf $\cod^{\mathrm{spl}}$ in which an element of $P(A)$ is a map $f : B \to A$ together with chosen pullbacks along all maps $j : A' \to A$.  (Explain how??)  comprehension categories will frequently be presented in this form.
 
-\begin{example}For any type theory $\T$, its category of context $\C(\T)$ is a comprehension category, in which objects of $\pow_0(\Gamma)$ are types dependent over $\Gamma$, and $\pow$ sends a type $A \in \pow_0(\Gamma)$ to the dependent projection $\Gamma, x : A \to \Gamma$.
+
+\begin{example}For any type theory $\T$, its category of context $\C(\T)$ is a comprehension category, in which objects of $p(\Gamma)$ are types dependent over $\Gamma$, and $\pow$ sends a type $A \in p(\Gamma)$ to the dependent projection $\Gamma, x : A \to \Gamma$.
 \end{example}
 
 In fact, this construction is part of an equivalence between $\Th$ and a certain full co-reflexive subcategory of $\FSCC$: see Appendix \ref{app:??} for details.  In light of this, we will typically refer to the objects of any \fscc\ as contexts, and the objects of the fibration as dependent types.
 
-\para
+\para{Categories with attributes} 
 
+From \cite{pitts:categorical-logic}, \cite{hoffman:syntax-and-semantics}, \cite{dybjer:internal-type-theory}, under various names.  Give definitions; (in notation to match that used above); give equivalence (honest 1-equivalence) with comprehension categories.
 
+\para{Stratification}
+
+Define \emph{stratified} cwa, \& map of; note that it's (perhaps unexpectedly) a \emph{full subcategory}(!) of cwa's, closed under connected limits and colimits. (NB: this deinition seems to be new (though comparable to Cartmell); have I missed something?)
+
+Proposition: there is an \emph{honest 1-equivalence} between stratified cwa's and dependent algebraic theories as laid out in appendix.
+
+Note: since morphisms of DAT's are most easily defined by transfer from cwa's, the content of this proposition is really just that there are maps of \emph{objects} from stratified cwa's to dat's and back, with an isomorphism $\C \iso FG(\G)$.
+
+Define \emph{reachable} cwa's after Pitts.
+
+Theorem: there is a \emph{2-equivalence} between reachable cwa's and stratified cwa's.
+
+Discuss significance of 1- versus 2-equivalence: latter gives equivalence of ``type theories'', which is fine on the categorical side, but not on the syntactic side: we care about the difference between \emph{isomorphism} and \emph{equivalence} there as syntactic presentations of theories are \emph{0-categorical objects} (Voevodsky slogan!).
+
+Also point out: type theory with \emph{context and their maps and equalities as primitive judgements} (hence allowing equalities and maps between contexts of different lengths) should correspond to general cwa's.
+
+\para{Constructors}
 This all extends to theories with type constructors.
 
 Define: a lax map of comprehension structures (do I mean colax??)
@@ -45,17 +68,118 @@ An \emph{\fscs\ with binary products} on $\C$ is an \fscs\ $(p,\pow_0)$ with a s
 
 Note: this implies a certain adjunction, so does corresponds to Jacobs' ``fscc with units''.  [Show this??]
 
-\begin{definition}
-\para{The ``dependent contexts'' monad}  Explicitly give the monad on $\ThId$ throwing in all dependent contexts as new types, and interpreting equality as described in loc.~cit.  TODO: look up that interpretation of equality!  Refer to Thorsten's OTT also.
+To introduce the structure corresponding to identity types, we will need a little more terminology.
+
+\begin{definition}[Dependent contexts]
+Given any comprehension category $(\C,p,\pow)$, we may construct another comprehension structure $(p^\cxt,\pow^\cxt)$ on $\C$:
+
+An object of $p^\cxt[\Gamma]$ is a list $A_1,\ldots,A_n$, where $A_i \in p(\Gamma . A_1 \ldots . A_{i-1})$, for each $i \leq n$; context extension is defined by $\Gamma . (A_1 \ldots , A_n) = \Gamma . A_1 \ldots . A_n$, and pullback $f^* : p^\cxt(\Gamma) \to p^\cxt(\Delta)$ is similarly defined in terms of pullback in $p$.
+
+This is the object part of an evident functor $(-)*$ on $\FSCS(\C)$.
 \end{definition}
 
-Point out how this corresponds closely (2-equivalence?) but not precisely to adding (very) strong $\Sigma$-types in the type theory.
+The $(-)^\cxt$-construction has a natural type-theoretic interpretation: if $(\C,p,\pow)$ was obtained from a type theory, then for any $\Gamma$, $p^\cxt(\Gamma)$ is (isomorphic to) the category of dependent contexts over $\Gamma$ and dependent context morphisms between them.
 
-Ask: is this induced by the adjunction with $\Id$-type categories?  or categories with appropriate nwfs's, or something?  or Hyland-Pitts style ``categories with \ldots?''
+Morevoer, $(-)^\cxt$ has a natural monad structure, and indeed is the ``free monoid'' monad for a certain monoidal structure on $\FSCS(\C)$; and all this is natural in $\C$, giving a total monad $(-)^\cxt$ on $\FSCC$ over $\Cat$.  However, these aspects will not concern us further.
 
-Discuss the Kleisli of this monad: ``modelling types as contexts''.
+(If I included a discussion of ``stratified comp cats'' earlier, mention how this construction naturally takes us outside of them unless we soup it up; and how the souped-up version gives a ``strong $\Sigma$-types'' monad; but why it \emph{doesn't} at the moment.)
 
-\section{Internal algebras for operads}
+\para[The nice slice] Even if $(\C,p,\pow)$ was stratified, $(\C,p^\cxt,\pow^\cxt)$ will generally not be: extending a context by a dependent context may increase its length by more than 1!
+
+However, for any $(\C,p,\pow)$ and $\Gamma \in \C$, there is an evident stratified attributes structure on $p^\cxt(\Gamma)$; the resulting cwa may be called the \emph{nice slice} $(\C,p,\pow)/\Gamma$, and corresponds type-theoretically to working in context $\Gamma$.
+
+\begin{definition}An \emph{elim-structure} on a map $f \colon \Xi \to \Theta$ is a function $E$, assigning to each $C \in p(\Theta)$ and each map $d \colon \Xi \to \Theta.C$ over $\Theta$ a section $E(C,d) \colon \Theta \to \Theta.C$ of the dependent projection $\pi_C$ satisfying $E(C,d) \cdot f = d$.
+\end{definition}
+
+Syntactically, this corresponds to the usual style elimination rule
+$$\inferrule*{ \y : \Theta \types C(\y)\ \type \\
+\x : \Xi \types d(\x) : C(f(\x)) }
+{\y : \Theta \types E(C,d;\y) : C(\y)}$$
+with computation rule concluding $E(C,d;f(\x)) = d(\x)$.  (Compare $\Id$-elim.)
+
+Categorically, $E$ gives fillers for certain triangles:
+$$\xymatrix{ \Xi \ar[d]_f \ar[r]^-d & \Theta.C \ar@/^/@{->>}[dl] \\
+\Theta \ar@/^/@{..>}[ur]|-{E(C,d)} } $$  %TODO: prettify the spacing of this a bit!
+
+This in turn implies a more familiar square-filling
+$$\xymatrix{ \Xi \ar[d]_f \ar[r] & \Gamma.\Delta \ar@{->>}[d] \\
+\Theta \ar@{.>}[ur] \ar[r] & \Gamma }$$
+(exhibiting $f$ as weakly orthogonal to all dependent projections; see Section \ref{???} below, and cf.\ \cite{gambino-garner}), together with some stability conditions on the resulting fillers. 
+
+\begin{definition}A \emph{Frobenius elim-structure} on a map $f \colon \Xi \to \Theta$ is a choice of elim-structure $E_\Delta$ on $(f.\Delta) \colon \Xi.(f^*\Delta) \to \Theta.\Delta$, for each $\Delta \in p^\cxt(\Theta)$.
+\end{definition}
+
+Syntactically this corresponds to an extra parameter in all the contexts of the rule:
+$$\inferrule*{ \y : \Theta, \z : \Delta(\y) \types C(\y,\z)\ \type \\
+\x : \Xi, \z: \Delta(f(\x)) \types d(\x,\z) : C(f(\x),\z) }
+{\y : \Theta, \z : \Delta(\y) \types E_\Delta(C,d;\y,\z) : C(\y,\z)}$$
+
+\begin{definition}An \emph{$\Id$-structure} on a (plain or stratified) comprehension category $(\C,p,\pow)$ consists of the following data for each context $\Gamma \in \C$ and type $A \in p(\Gamma)$:
+
+\begin{enumerate}
+\item a type $\Id_A \in p(\Gamma . A . A)$;
+
+\item a map $r_A \colon \Gamma.A \to \Gamma.A.A.\Id_A$ lifting the diagonal (contraction) map $\diag_A \colon \Gamma.A \to \Gamma.A.A$ over $\Gamma$
+
+$$\xymatrix{ & \Gamma.A.A.\Id_A \ar@{->>}[d] \\
+\Gamma.A \ar[ur]^{r_A} \ar[r]^{\delta_A} \ar@{->>}[dr] & \Gamma.A.A \ar@{->>}[d] \\ & \Gamma}$$
+
+\item a Frobenius elim-structure $J_A$ on $r_A$,
+$$\xymatrix{ \Gamma.A.\Delta \ar[dr]_{r_A.\Delta} \ar[rr]^d & & \Gamma.A.A.\Id_A.C \ar@/^/@{->>}[dl] \\
+& \Gamma.A.A.\Id_A \ar@/^/@{..>}[ur]|-{J_{A,\Delta}(C,d)} } $$
+%TODO: prettify the spacing of this a bit!
+\end{enumerate}
+
+all stably in $\Gamma$, in that for $A \in p(\Gamma)$ and $f \colon \Theta \to \Gamma$,
+
+\begin{enumerate}
+\item $ (f.A.A)^*\Id_A = \Id_{f^*A} \in p(\Theta.{f^*A}.{f^*A})$: 
+
+$$\xymatrix{\Id_{f^*A} & & Id_A \ar@{|->}[ll] \\
+\Theta.f^*A.f^*A \ar[rr]^{f.A.A} & & \Gamma.A.A }$$
+
+\item $f^*(r_A) = r_{f^*A}$; equivalently, the following square commutes:
+$$\xymatrix{\Theta.f^*A \ar[d]^{r_{f^*A}} \ar[r] & \Gamma.A \ar[d]^{r_A} \\
+\Theta.f^*A.f^*A.\Id_{f^*A} \ar[r] & \Gamma.A.A.\Id_A}$$
+
+\item and, for all suitable $\Delta, C, d$, we have $f^*(J_{A,\Delta}(C,d)) = J_{f^*A,f^*\Delta}(f^*C,f^*d)$; in other words, the square
+$$\xymatrix{
+\{\mbox{triangles over}\ r_A.\Delta\} \ar[d]^{J_{A,\Delta}} \ar[rr]^{f^*} 
+    & & \{\mbox{triangles over} r_{f^*A}.f^*\Delta\} \ar[d]^{J_{f^*A,f^*\Delta}} \\
+\{\mbox{filled triangles}\} \ar[rr]^{f^*}
+    & & \{\mbox{filled triangles}\} }$$
+commutes.
+\end{enumerate}
+\end{definition}
+
+(TO DO: sleep on this for a while, try to find a nice way of wrapping this up, eg fibrationally or similar!)
+
+TO DO: define the various categories $\CwA^\Id$, etc.
+
+\begin{proposition} \label{prop:thid-equiv-cwaid} If $\T$ is any DTT with $\Id$-types, then $\cl(\T)$ admits a canonical $\Id$-structure.  Conversely, if $\T$ is any (plain or stratified) category with attributes, then $\th(\C)$ admits an interpretation of the $\Id$-rules; and the maps $\epsilon_\C \colon \cl(\th(\C)) \to \C$ and $\eta \colon \T \to \T'$ preserve the resulting $\Id$-structure.
+
+In particular, the equivalence $\Th \equiv \CwA_\strat$ lifts to an equivalence $\ThId \equiv \CwA^\Id$.
+
+\begin{proof}Straighforward verification.
+\end{proof}
+\end{proposition}
+
+\begin{proposition}[Identity contexts] An $\Id$-structure on $(\C,p,\pow)$ lifts to one on $(\C,p^\cxt,\pow^\cxt)$.
+\end{proposition}
+
+Note the interesting type-theoretic content: this shows that from identity \emph{types} for dependent types, we can build identity \emph{contexts} for dependent contexts, satisfying all the same rules.
+
+\begin{proof}
+We just sketch the proof here; see \cite[2.3.1]{garner:2d-models} for details.  By Proposition \ref{prop:thid-equiv-cwaid}, we may work type-theoretically.
+
+(TODO: is this worth the notation that it requires developing?)
+\end{proof}
+
+\para{The coslice construction}
+
+
+
+\section{Internal algebras for operads}  (This should probably be a separate chapter.)
 
 \para Give fuller account of what I rush through in my previous paper: show  correspondence btn different notions of algebras for an operad!  (a) models of ess. alg. (Lawvere) theory (poss with extra structure: "P-maps"); (b) Batanin: monoidal globular categories (as used + nicely expounded in [GvdB]); (c) Leinster: (weak) T-structured categories.
 
