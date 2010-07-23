@@ -1,7 +1,7 @@
 % this file is called up by thesis.tex
 % content in this file will be fed into the main document
 
-\chapter{Universal-algebraic aspects}
+\chapter{Algebraic structures from dependent type theory}
 
 
 % ----------------------- contents from here ------------------------
@@ -10,9 +10,9 @@ Possibly fold this chapter into the next??
 
 \section{A category of Type Theories}
 
-\para Give brief, semi-formal outline of the type theory, referring to Appendix
+\subsection{}Give brief, semi-formal outline of the type theory, referring to Appendix
 
-\para In fact, we will not work directly with the category of type theories, but with an equivalent category of algebraic models.
+\subsection{}In fact, we will not work directly with the category of type theories, but with an equivalent category of algebraic models.
 but 
 The theory of such models is attractive, but suffers from rather an \emph{embaras de richesse} of frameworks: for instance \cite{jacobs:comprehension-categories}, \cite{pitts:categorical-logic}, \cite{hofmann:syntax-and-semantics} and \cite{dybjer:internal-type-theory} each [TODO: chronologicise these] define slightly different notions of categorical models (several after the unpublished \cite{cartmell:thesis}), all equivalent (in some sense) to each other and to syntactically presented dependent type theories.   (TODO: also look up ``categories with families''.)
 
@@ -33,11 +33,11 @@ In fact, for fixed $\C$, $\FSCS(\C)$ is (equivalent to) a presheaf category---sp
 
 In fact, this construction is part of an equivalence between $\Th$ and a certain full co-reflexive subcategory of $\FSCC$: see Appendix \ref{app:??} for details.  In light of this, we will typically refer to the objects of any \fscc\ as contexts, and the objects of the fibration as dependent types.
 
-\para{Categories with attributes} 
+\subsection{Categories with attributes} 
 
-From \cite{pitts:categorical-logic}, \cite{hoffman:syntax-and-semantics}, \cite{dybjer:internal-type-theory}, under various names.  Give definitions; (in notation to match that used above); give equivalence (honest 1-equivalence) with comprehension categories.
+From \cite{pitts:categorical-logic}, \cite{hofmann:syntax-and-semantics}, \cite{dybjer:internal-type-theory}, under various names.  Give definitions; (in notation to match that used above); give equivalence (honest 1-equivalence) with comprehension categories.
 
-\para{Stratification}
+\subsection{Stratification}
 
 Define \emph{stratified} cwa, \& map of; note that it's (perhaps unexpectedly) a \emph{full subcategory}(!) of cwa's, closed under connected limits and colimits. (NB: this deinition seems to be new (though comparable to Cartmell); have I missed something?)
 
@@ -53,7 +53,7 @@ Discuss significance of 1- versus 2-equivalence: latter gives equivalence of ``t
 
 Also point out: type theory with \emph{context and their maps and equalities as primitive judgements} (hence allowing equalities and maps between contexts of different lengths) should correspond to general cwa's.
 
-\para{Constructors}
+\subsection{Constructors}
 This all extends to theories with type constructors.
 
 Define: a lax map of comprehension structures (do I mean colax??)
@@ -84,7 +84,15 @@ Morevoer, $(-)^\cxt$ has a natural monad structure, and indeed is the ``free mon
 
 (If I included a discussion of ``stratified comp cats'' earlier, mention how this construction naturally takes us outside of them unless we soup it up; and how the souped-up version gives a ``strong $\Sigma$-types'' monad; but why it \emph{doesn't} at the moment.)
 
-\para[The nice slice] Even if $(\C,p,\pow)$ was stratified, $(\C,p^\cxt,\pow^\cxt)$ will generally not be: extending a context by a dependent context may increase its length by more than 1!
+\begin{definition} A \emph{dependent projection} in $(\C,p,\pow)$ is a map isomorphic to one of the form $\Gamma.\Delta \to \Gamma$, for some $\Delta \in p^\cxt(\Gamma)$.  Graphically, dependent projections will be distinguished as
+$\Gamma' \to/->>/ \Gamma$.
+\end{definition}
+
+Note that any composite of dependent projections is again one.  [TODO: is this clear?  or draw the diagram for it?  see notes, 16.vii]  Moreover, pulbacks of dependent projections along arbitrary maps exist, and are again dependent projections.
+
+[TODO: in some ways, better to take dependent projection to be extra structure, a \emph{chosen}isomorphism and a \emph{chosen} $\Delta \in p^\cxt(\Gamma)$.  The distinction doesn't seem to seriously affect anything I do; make it, perhaps?]
+
+\subsection{The nice slice} Even if $(\C,p,\pow)$ was stratified, $(\C,p^\cxt,\pow^\cxt)$ will generally not be: extending a context by a dependent context may increase its length by more than 1!
 
 However, for any $(\C,p,\pow)$ and $\Gamma \in \C$, there is an evident stratified attributes structure on $p^\cxt(\Gamma)$; the resulting cwa may be called the \emph{nice slice} $(\C,p,\pow)/\Gamma$, and corresponds type-theoretically to working in context $\Gamma$.
 
@@ -102,7 +110,7 @@ $$\xymatrix{ \Xi \ar[d]_f \ar[r]^-d & \Theta.C \ar@/^/@{->>}[dl] \\
 \Theta \ar@/^/@{..>}[ur]|-{E(C,d)} } $$  %TODO: prettify the spacing of this a bit!
 
 This in turn implies a more familiar square-filling
-$$\xymatrix{ \Xi \ar[d]_f \ar[r] & \Gamma.\Delta \ar@{->>}[d] \\
+$$\xymatrix{ \Xi \ar[d]_f \ar[r] & \Delta \ar@{->>}[d] \\
 \Theta \ar@{.>}[ur] \ar[r] & \Gamma }$$
 (exhibiting $f$ as weakly orthogonal to all dependent projections; see Section \ref{???} below, and cf.\ \cite{gambino-garner}), together with some stability conditions on the resulting fillers. 
 
@@ -170,47 +178,42 @@ In particular, the equivalence $\Th \equiv \CwA_\strat$ lifts to an equivalence 
 Note the interesting type-theoretic content: this shows that from identity \emph{types} for dependent types, we can build identity \emph{contexts} for dependent contexts, satisfying all the same rules.
 
 \begin{proof}
-We just sketch the proof here; see \cite[2.3.1]{garner:2d-models} for details.  By Proposition \ref{prop:thid-equiv-cwaid}, we may work type-theoretically.
+We just sketch the proof here; see \cite[2.3.1]{garner:2-d-models} for details.  By Proposition \ref{prop:thid-equiv-cwaid}, we may work type-theoretically.
 
 (TODO: is this worth the notation that it requires developing?)
 \end{proof}
 
-\para{The coslice construction}
+Thus the $(-)^\cxt \colon \CwA \to \CwA$ lifts to a functor $\CwAId \to CwAId$.  Note, however, that the monad structure does not lift on the nose: its multiplication fails to preserve $\Id$-structure.  %% see notes of 16.vii
 
+\subsection{The coslice construction}
+\begin{proposition}[Co-slice categories with attributes] If $\C$ is a cwa, and $\Theta$ any context of $\C$, then there is a natural cwa structure on the co-slice category $\Theta/\C$.
 
+If $\C$ was stratified, then so is $\Theta/\C$.
 
-\section{Internal algebras for operads}  (This should probably be a separate chapter.)
+If $\C$ had unit types, sum types, or $\Id$-types, then so does $\Theta/\C$.
 
-\para Give fuller account of what I rush through in my previous paper: show  correspondence btn different notions of algebras for an operad!  (a) models of ess. alg. (Lawvere) theory (poss with extra structure: "P-maps"); (b) Batanin: monoidal globular categories (as used + nicely expounded in [GvdB]); (c) Leinster: (weak) T-structured categories.
+In all of these cases, the forgetful functor $\cod \colon \Theta/\C \to \C$ preserves all the given structure.
+\end{proposition}
 
-Lovely rarely-cited WEBER paper gives source for most of this!  Possibly even \emph{everything} I need is there, in which case possibly move this section to appendix, and fold the first part of this chapter into the next chapter???
+\begin{proof}
+Recall that an object of $\Theta/\C$ is a pair $(\Gamma,k)$, where $\Gamma \in \C$ and $\g \colon \Theta \to \Gamma$ (``a $\Theta$-pointed object of $\C$''); a map $f \colon (\Gamma',\g') \to (\Gamma,\g)$ is a map in $\C$ preserving the pointings:
+$$\xymatrix{ & \Gamma' \ar[r]^f & \Gamma \\ \Theta \ar[ur]^{\g'} \ar[urr]_\g \\ }$$
+% not sure: would it be better to have $\Theta$ above or below?  which will transition more smoothly to mental pictures of the examples we use later?
 
-\begin{definition}[Endomorphism operads] For $\E$ any category, $\X$ any globular operad in $\E$, we write $\End_\E(\X)$ for the operad (construction\ldots\ either by monoidal globular categories, or by ``representable'' style of my previous paper; latter is slicker here, but seems very difficult for showing the functoriality).  More generally, really want the $\Coll$-enriched category structure on (appropriate subcategory of) $[\G,\E]$.
-\end{definition}
+We define the attributes structure on $\Theta/\C$ by taking an object of $p(\Gamma,\g)$ to be a type $A \in p(\Gamma)$ together with a map $\g.a : \Theta \to \Gamma.A$ over $\g$
+$$\xymatrix{ & & \Gamma.A \ar@{->>}[d] \\ \Theta \ar[urr]^{\g.a} \ar[rr]_\g & & \Gamma}$$
+and defining $(\Gamma,\g).(A,\g.a) = (\Gamma.A,\g.a)$.
 
-\proposition If $\E$ has enough limits, then for any pasting diagram $\pi$, $$\End_\E(\X)(\pi) \iso [\G/n,\E](X \cotensor \hat{\pi},X \cotensor \yon(n))$$
-where the right hand side consists of ``pylon diagrams'':
-$$\textrm{draw the diagram here.}$$
+All the remaining structure is determined straightforwardly by the requirement that is preserved by $\cod \colon \Theta/\C \to \C$.  We give here the details just for $\Id$-structure, which is the case we will need later.
 
-\begin{proof} Straightforward (in either construction of $\End$).
+Given a type $(A,\g.a) \in p(\Gamma,\g)$, the underlying object of $\Id_{(A,\g.a)}$ has to be $\Id_A$; and in order to make the intro map $r_A$ commute with pointings, we must give $\Id_A$ the pointing $r_A \cdot (\g.a)$:
+$$\xymatrix{ & \Gamma.A \ar[r]^-{r_A} \ar@{->>}[dr] & \Gamma.A.A.\Id_A \ar@{->>}[d] \\
+\Theta \ar[ur]^{\g.a} \ar@{.>}[urr] \ar[rr]^\g & & \Gamma}$$
+
+This gives us $\Id_{(A,\g.a)}$ and $r_{(A,\g.a)}$.  To lift the elim structure, we just need to check that the map $J_{A,\Delta}(C,d)$ will commute with all pointings involved whenever $d$ does, but this follows straightforwardly from the equation $J_{A,\Delta}(C,d) \cdot r_A.\Delta = d$.
+$$\xymatrix{ & & & \Gamma.A.\Delta \ar[d]_{r_A.\Delta} \ar[r]^-d & \Gamma.A.A.\Id_A.\Delta.C \ar@/^/@{->>}[dl] \\
+\Theta \ar[rrr] \ar[urrr] & & & \Gamma.A.A.\Id_A.\Delta \ar@/^/@{..>}[ur]|-{J_{A,\Delta}(C,d)} } $$
 \end{proof}
 
-\proposition $\End_\E(\X)$ is functorial in $\E$: a functor $F : \E \to \F$ preserving appropriate limits induces a map $\End_\E(\X) \to \End_\F(F\X)$.
 
-\begin{proof} Straightforward in the ``monoidal globular categories'' approach.  Can't currently see how to do it in the ``representable'' approach!?
-\end{proof}
 
-\definition An \emph{algebra} for an operad $P$ on an object $\X$ of $\E$ is an operad map $\xi \colon P \to \End_\E (\X)$ (the \emph{action} of $P$ on $\X$); a map of $P$-algebras is a globular map $\f \colon \X \to \Y$ commuting with the action maps, i.e.\ such that the square 
-$$\xymatrix{P \ar[r]^{\xi} \ar[d]^{\upsilon} & [\X,\X] \ar[d]^{f \cdot\ } \\ [\Y,\Y] \ar[r]^{\ \cdot f} & [\X,\Y]}$$
-commutes.
-
-In enriched terms, the resulting category $\IntAlg{P}{\E}$ is $\enrCat(\Coll)(P,[\G,\E])$.
-
-% but it's alright now
-% I learned my lesson, yeah
-% can't please everyone, so...
-% Caffé Nero, Davygate, 14.vii
-
-We can also consider $P$ as defining a certain finite-limit sketch $\mathrm{Sk}(P)$, and compare the internal algebras defined here with models of this sketch in $\E$.
-
-\proposition $\IntAlg{P}{\E} \equiv \mathbf{CmpSpan}\mathbf{Mod}_\E(\mathrm{Sk}(P))$

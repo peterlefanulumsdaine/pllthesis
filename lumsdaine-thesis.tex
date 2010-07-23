@@ -3,30 +3,16 @@
 \usepackage{ifpdf}
 \usepackage{mathpartir}
 \usepackage{amssymb}
-\usepackage[curve]{xypic}
+\usepackage[all]{xypic}
+\xyoption{2cell}
+%\xyoption{curve}
+\UseTwocells
+\input{diagxy}
 
 % \usepackage{makeindex}
 
-%% following Cisinski's style, which I found excellent, the theorem-like environments are set up to number _all_ paragraphs [in the conceptual rather than typographic sense] consecutively.  the major advantage of this is making any paragraph referenceable, and hence making the (always rather arbitrary) decision of what to pick out as theorems, definitions, etc. much less consequential and more flexible.
-
-\theoremstyle{plain} 
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{proposition}[thm]{Proposition}
-\newtheorem{lemma}[thm]{Lemma}
-\newtheorem{cor}[thm]{Corollary}
-
-\theoremstyle{definition}
-\newtheorem{definition}[thm]{Definition}
-\newtheorem{para}[thm]{}
-
-%\theoremstyle{remark}
-\newtheorem{rem}[thm]{Remark}
-\newtheorem{notation}[thm]{Notations}
-\newtheorem{example}[thm]{Example}
-\newtheorem{examples}[thm]{Examples}
-\newtheorem{sch}[thm]{Scholium}
-
 \include{thesismacros}
+\include{thesisdiagrams}
 
 % \makeindex
 

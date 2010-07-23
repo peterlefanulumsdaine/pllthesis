@@ -15,7 +15,7 @@
 
 Fact: Cartesian, as can see from familial rep'bility\cite{street:petit-topos},\cite{carboni-johnstone}.
 
-\section{Weak higher categories}
+\section{Globular operads: Leinster presentation}
 
 \definition Contractible map of glob sets.
 
@@ -23,12 +23,216 @@ Fact: Cartesian, as can see from familial rep'bility\cite{street:petit-topos},\c
 
 \para Equivalent: local presentation of Leinster operad: object over $T1$, with appropriate structure.
 
-\para Equivalent (by Weber): Batanin presentation!
 \definition 
 \para Contractibility.
 
 
 
+\section{Globular operads: Batanin/Weber presentation}
+
+\section{Internal algebras for operads}  (This should probably be split up and moved: the globular part moved into the ``Globular background'' appendix, and then the construction of a monoidal globular category from a comprehension category folded into the construction of the fundamental things.)
+
+\subsection{Monoidal globular categories} Recall definition from Batanin. 
+
+Examples: $\Spans$; $\Spans(\C)$, for $\C$ with pullbacks; $\FibSpans(\C)$, for $\C$ with a distinguished class of ``fibrations'', closed under composition and pullbacks.
+
+\para[Pasting diagrams]
+
+Example of a mon glob cat: $T1$.  Give representation as Batanin trees; also as free monoids.
+
+Give realisation as globular sets, by (a) iterated pushout, (b) colimit.
+
+Define ``one-leaf prunings''.  
+
+In free monoid terms, defined inductively: removing an (extremal?) $()$ at some depth.  In tree terms: removing a leaf (an endpoint leaf?) at some height!
+
+(``Any leaf'' is more natural---then these really do correspond to places one can apply $\Id$-elim.  On the other hand, ``extremal leaf'' makes pushout/pullback decompositions/lemmas simpler.  Ah!  Idea: maybe just define $\pi^-$, and then mention that could use more general one-leaf prunings.)
+
+Note: every non-point pasting diagram has some; eg in free monoid terms: 
+$$((),\pi_1,\ldots,\pi_{r-1})^- = (\pi_1,\ldots,\pi_{r-1})$$
+$$(\pi_0,\ldots,\pi_{r-1})^- = (\pi_0^-,\ldots,\pi_{r-1})$$
+is a nice straightforward one, corresponding (in tree terms) to following the leftmost branch to its end, and removing the leaf reached.
+
+Show how realisation is pushout:
+
+\newbox\potlbox
+\setbox\potlbox=\hbox{\xy 
+(-340,170)*{}="tlleft"; % "left": 0-source
+(340,170)*{}="trleft";
+(-340,-170)*{}="blleft";
+(340,-170)*{}="brleft";
+"tlleft";"trleft" **\dir{.};
+"tlleft";"blleft" **\dir{.};
+"trleft";"brleft" **\dir{.};
+"blleft";"brleft" **\dir{.};
+(-300,0)*+{\cdot}="a";
+(0,0)*+{\cdot}="b";
+{\ar "a";"b"};
+\endxy}
+\def\potl{\copy\potlbox}
+
+\newbox\potrbox
+\setbox\potrbox=\hbox{\xy 
+(-340,170)*{}="tlleft"; % "left": 0-source
+(340,170)*{}="trleft";
+(-340,-170)*{}="blleft";
+(340,-170)*{}="brleft";
+"tlleft";"trleft" **\dir{.};
+"tlleft";"blleft" **\dir{.};
+"trleft";"brleft" **\dir{.};
+"blleft";"brleft" **\dir{.};
+(-300,0)*+{\cdot}="a";
+(0,0)*+{\cdot}="b";
+{\ar@/^1.2pc/ "a";"b"};
+{\ar "a";"b"};
+{\ar@{=>} (-150,120)*{};(-150,25)*{}} ;
+\endxy}
+\def\potr{\copy\potrbox}
+
+\newbox\poblbox
+\setbox\poblbox=\hbox{\xy 
+(-340,170)*{}="tlleft"; % "left": 0-source
+(340,170)*{}="trleft";
+(-340,-170)*{}="blleft";
+(340,-170)*{}="brleft";
+"tlleft";"trleft" **\dir{.};
+"tlleft";"blleft" **\dir{.};
+"trleft";"brleft" **\dir{.};
+"blleft";"brleft" **\dir{.};
+(-300,0)*+{\cdot}="a";
+(0,0)*+{\cdot}="b";
+(300,0)*+{\cdot}="c";
+{\ar "a";"b"};
+{\ar@/_1.2pc/ "a";"b"};
+{\ar@{=>} (-150,-20)*{};(-150,-115)*{}} ;
+{\ar@/^0.7pc/ "b";"c"};
+{\ar@/_0.7pc/ "b";"c"};
+{\ar@{=>} (150,60)*{};(150,-60)*{}} ;
+\endxy}
+\def\pobl{\copy\poblbox}
+
+\newbox\pobrbox
+\setbox\pobrbox=\hbox{\xy 
+(-340,170)*{}="tlleft"; % "left": 0-source
+(340,170)*{}="trleft";
+(-340,-170)*{}="blleft";
+(340,-170)*{}="brleft";
+"tlleft";"trleft" **\dir{.};
+"tlleft";"blleft" **\dir{.};
+"trleft";"brleft" **\dir{.};
+"blleft";"brleft" **\dir{.};
+(-300,0)*+{\cdot}="a";
+(0,0)*+{\cdot}="b";
+(300,0)*+{\cdot}="c";
+{\ar@/^1.2pc/ "a";"b"};
+{\ar "a";"b"};
+{\ar@/_1.2pc/ "a";"b"};
+{\ar@{=>} (-150,120)*{};(-150,25)*{}} ;
+{\ar@{=>} (-150,-20)*{};(-150,-115)*{}} ;
+{\ar@/^0.7pc/ "b";"c"};
+{\ar@/_0.7pc/ "b";"c"};
+{\ar@{=>} (150,60)*{};(150,-60)*{}} ;
+\endxy}
+\def\pobr{\copy\pobrbox}
+
+$$\bfig \square[y(i)`y(i-1)`\widehat{\pi^-}`\widehat{\pi};```]
+\place(400,100)[\po]
+\efig
+\quad \quad \quad
+\bfig \Square[\potl`\potr`\pobl`\pobr;```]
+\place(625,175)[\po]
+\efig
+$$
+
+\subsection{Operads in monoidal categories}
+
+Define: globular object.  Define: operad!  Endomorphism operad!
+
+\subsection{Endomorphism operads, explicitly}
+
+In $\FibSpans(\C)$, a globular object $\X$ is\ldots
+
+Then for $\pi \in T1_n$, the peak of the $n$-span $(\X)\pi$ is the object
+$$X^\pi := \lim_{c \in \int\! \hat{\pi}} X_{\dim c}$$
+
+This somewhat cryptic formula is perhaps best illuminated by a couple of examples: if $\pi = (\xymatrix{ \bullet \rtwocell & \bullet \rtwocell & \bullet})$, then
+\begin{eqnarray*} X_\pi & := & \lim \left( 
+\bfig
+\node X0l(0,0)[X_0]
+\node X0m(700,0)[X_0]
+\node X0r(1400,0)[X_0]
+\node X1tl(350,300)[X_1]
+\node X1tr(1050,300)[X_1]
+\node X1bl(350,-300)[X_1]
+\node X1br(1050,-300)[X_1]
+\node X2l(350,0)[X_2]
+\node X2r(1050,0)[X_2]
+\arrow[X1tl`X0l;s]
+\arrow[X1tl`X0m;t]
+\arrow[X1tr`X0m;s]
+\arrow[X1tr`X0r;t]
+\arrow[X2l`X1tl;s]
+\arrow[X2r`X1tr;s]
+\arrow[X2l`X1bl;t]
+\arrow[X2r`X1br;t]
+\arrow[X1bl`X0l;s]
+\arrow[X1bl`X0m;t]
+\arrow[X1br`X0m;s]
+\arrow[X1br`X0r;t]
+\efig
+\right) \\
+& \iso & X_2 \times_{X_0} X_2,
+\end{eqnarray*}
+giving the object of 0-composable pairs of 2-cells in $X$.  Similarly, if $\pi$ is the basic $n$-cell, then $X_\pi = X_n$.
+
+\example{Fundamental $\omega$-groupoid of a space}
+Describe the gloulbar hom-functor between $n$-objects \cite[3.6]{batanin:natural-environment} and hence into and out of globular objects.  Note: in the case of $\Spans$, this is monoidal. (Check: Batanin doesn't show this anywhere, does he? although he does use it!  Or, better, is it in Weber somewhere, or easily deucible?)
+
+
+
+
+
+\subsection{Connection with Leinster approach}
+
+Recall from Weber paper.
+
+
+\subsection{Enriched point of view}
+
+TODO: the below is from a different earlier approach; fold this into the current presentation!
+
+\begin{definition}[Endomorphism operads] For $\E$ any category, $\X$ any globular operad in $\E$, we write $\End_\E(\X)$ for the operad (construction\ldots\ either by monoidal globular categories, or by ``representable'' style of my previous paper; latter is slicker here, but seems very difficult for showing the functoriality).  More generally, really want the $\Coll$-enriched category structure on (appropriate subcategory of) $[\G,\E]$.
+\end{definition}
+
+
+
+\proposition If $\E$ has enough limits, then for any pasting diagram $\pi$, $$\End_\E(\X)(\pi) \iso [\G/n,\E](X \cotensor \hat{\pi},X \cotensor \yon(n))$$
+where the right hand side consists of ``pylon diagrams'':
+$$\textrm{draw the diagram here.}$$
+
+\begin{proof} Straightforward (in either construction of $\End$).
+\end{proof}
+
+\proposition $\End_\E(\X)$ is functorial in $\E$: a functor $F : \E \to \F$ preserving appropriate limits induces a map $\End_\E(\X) \to \End_\F(F\X)$.
+
+\begin{proof} Straightforward in the ``monoidal globular categories'' approach.  Can't currently see how to do it in the ``representable'' approach!?
+\end{proof}
+
+\definition An \emph{algebra} for an operad $P$ on an object $\X$ of $\E$ is an operad map $\xi \colon P \to \End_\E (\X)$ (the \emph{action} of $P$ on $\X$); a map of $P$-algebras is a globular map $\f \colon \X \to \Y$ commuting with the action maps, i.e.\ such that the square 
+$$\xymatrix{P \ar[r]^{\xi} \ar[d]^{\upsilon} & [\X,\X] \ar[d]^{f \cdot\ } \\ [\Y,\Y] \ar[r]^{\ \cdot f} & [\X,\Y]}$$
+commutes.
+
+In enriched terms, the resulting category $\IntAlg{P}{\E}$ is $\enrCat(\Coll)(P,[\G,\E])$.
+
+% but it's alright now
+% I learned my lesson, yeah
+% can't please everyone, so...
+% Caffé Nero, Davygate, 14.vii
+
+We can also consider $P$ as defining a certain finite-limit sketch $\mathrm{Sk}(P)$, and compare the internal algebras defined here with models of this sketch in $\E$.
+
+\begin{proposition}$\IntAlg{P}{\E} \equiv \mathbf{CmpSpan}\mathbf{Mod}_\E(\mathrm{Sk}(P))$
+\end{proposition}
 
 % ---------------------------------------------------------------------------
 %: ----------------------- end of thesis sub-document ------------------------

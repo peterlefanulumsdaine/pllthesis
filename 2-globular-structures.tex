@@ -6,20 +6,146 @@
 
 %: ----------------------- contents from here ------------------------
 
+
 \section{The fundamental weak omega-groupoid of a type}
 
-Update of my prev paper (+ more detailed comparison with Richard + Benno): type gives internal weak omega-groupoid in the classifying category.
 
-Put here: an informal overview as in the paper!
+TODO: either here or in introduction, give historical background: the move from seeing it as a transitive relation, to a groupoid-up-to-prop-eq, to (``the parallels with the fundamental group of a space are inescapable'') a weak $\omega$-groupoid.
 
-\para functor $\FibSpans: \ThId \to \strMonGlobCat$: imitate the original Batanin ``higher spans'' construction, but using doubly-dependent types instead of spans.
+\subsection{Hacking} \label{sec:hacking} To understand how the $\omega$-groupoid structure arises, it is instructive to make a start on its construction by hand.
 
-\para now for $\C \in \ThId$, get for each context $X \in \C$ a globular element of $fibSpans(\C)$.  
+(A few notes on derivations: read bottom-up; and obvious premises are omitted.  TODO: maybe put this earlier?)
+
+The first term often derived for identity types is a witness for the transitivity of equality on $X$---which for us, of course, will give binary composition of 1-cells in $\Pi_\omega(X)$:
+$$ x,y,z:X, u:\Id_X(x,y), v:\Id(y,z) \types c_X(v,u) : \Id(x,z)$$
+
+How do we derive such a term?  We can just use $\Id$-elim:
+
+TODO: give the derivation.
+
+Of course, we could also have eliminated on $v$ first instead of $u$.  Alternatively, we didn't need to stop after one use of $\Id$-elim: we could have applied it to the second variable as well:
+
+TODO: give this version too!
+
+\begin{exercise}Derive terms witnessing one or more of the following:
+\begin{enumerate}
+\item ``symmetry of equality'', i.e.\ (weak) inverses of 1-cells:
+$$x,y:X, u:\Id(x,y) \types ? : \Id(y,x)$$
+
+\item \label{ex:assoc}associativity, for any one of the binary compositions terms above (or a mixture):
+$$x,y,z,w:X, t:\Id(x,y), u:\Id(y,z), v:\Id(z,w)\ \types\ ? : \Id_{\Id_X}(\ c(c(v,u),t)\ ,\ c(v,c(u,t))\ )$$
+(For bonus points, give a single derivation which works for any of the binary compositions above!)
+
+\item horizontal composition of 2-cells:
+$$ x,y,z:X, u,u':\Id(x,y), p:\Id(u,u'), v,v':\Id(y,z), q:\Id(v,v')\ \types\ ? : ? $$
+\end{enumerate}
+\end{exercise}
+
+\subsection{Outline of the proof}
+Having tackled a few examples, we can now generalise the tactics involved, giving the main points of the full proof:
+
+\begin{enumerate}
+\item We constructed our composition operations as maps in the syntactic category, from contexts built out of the identity types of $X$ back into those identity types themselves.  This suggests that these are operations in some kind of \emph{endomorphism operad in the syntactic category}.
+
+\item We used no special information about the type $X$; in other words, we effectively were deriving composition operations just over a \emph{generic type}, which can then be implemented on any other type.  (On this point, \cite{garner-van-den-berg}\ take a different approach; see \PARA\ref{sec:gvdb-comparison} below.)
+
+\item We now want to see that this composition operad is \emph{contractible}!  What does this mean?  The exercises above, particularly the last two, are typical instances of the liftings that contractibility requires: given two parallel composition operations, we have to find another connecting them one dimension up; that is, given two terms $\sigma,\tau$ we have to derive a term of idenity type $\Id(\sigma,\tau)$ between them.
+
+\item How do we do that?  Our context is built out of identity types, so we \emph{repeatedly apply $\Id$-elim} and hope that our target type simplifies until we can inhabit it.  As in the first derivation above, one might sometimes stop early; but as Ex.\ref{ex:assoc} shows, the most generally powerful approach is to eliminate away \emph{all} higher variables in the context, until only a single variable $x:X$ remains; so it is enough to show that $\sigma$ and $\tau$ are propositionally equal once $x$ and its (higher) reflexivity terms $r(x), r(r(x)),\ldots$ have been plugged in for all the variables of $\sigma$ and $\tau$. 
+
+\item In all the examples above, $\sigma$ and $\tau$ then computed down to higher reflexivity terms themselves, and so were definitionally equal.  In fact this turns out to be typical: \emph{the context $x:X$ is an initial object}, so $\sigma$ and $\tau$ must always simplify in this way, and we are done.
+\end{enumerate}
+
+\subsection{Globular contexts, and their endomorphism operads}
+
+For any cwa $\C$, the class of dependent projections is closed under pullbacks, so by \PARA\ref{para:fibspans}, we can form the monoidal globular category $\FibSpans(\C)$; and maps of cwa's preserve dependent projections and pullbacks of them, so we have a functor $\FibSpans : \CwA \to \MonGlobCat$.
+
+A globular object of $\FibSpans(\C)$ is then just a globular object $\Gamma_\bullet :  \G \to \C$ in $\C$, in which all the maps (equivalently, the basic $s_i,t_i$, for all $i$) are dependent projections:
+$$\xymatrix{ \Gamma_0 & \ar@<0.5ex>[l]^s \ar@<-0.5ex>[l]^t \Gamma_1 & \ar@<0.5ex>[l]^s \ar@<-0.5ex>[l]^t \Gamma_2 & \ar@<0.5ex>[l]^s \ar@<-0.5ex>[l]^t \cdots}$$
+
+Mention abuses of notation: $\End_\C(\A)$, $\End_\T(\A)$.
+
+\subsection{The theory of a generic type} TODO: Construct $\MLId[X]$; state universal property.
+
+\begin{definition}Let $\MLId[X] \in \ThId$ be the extension of $\MLId$ by a single new type
+$$\inferrule*[right=$X$-$\form$]{\ }{\diamond \types X\ \type}$$
+and no further terms or axioms.
+\end{definition}
+
+$\MLId[X]$ is thus the free theory on a closed type (in $\ThId$): any closed type $A$ of a theory $\T$ uniquely determines a translation $F_A: \MLId[X] \to \T$ with $F_A(X) = A$.
+
+By the adjunctions of \PARA\ref{para:??}, $\cl_\strat(\MLId[X])$ is thus the free object of $\CwAId_\strat$ with a distinguished closed type, and $\cl(\MLId[X])$ is free among CwA's $\C \in \CwAId$ with a distinguished context $\Gamma$ and type $A \in p(\Gamma)$.
+
+In particular, for any such $\C$, $\diamond$, $A$, this gives a monoidal globular functor $\FibSpans(\cl(\MLId[X])) \to \FibSpans(\C)$, sending $\X$ to $\A$, and hence an operad map $\End_{\MLId[X]}(\X) \to \End_{\C}(\A)$.
+
+So $\End_{\MLId[X]}(\A)$ acts on all other types $\A \in \C(\Gamma)$, naturally in $\C$ and $\Gamma$.  In view of this, we will give the operad a less unwieldy name:
+
+\begin{definition}We will write $\PML$ for the globular operad $\End_{\MLId[X]}(\A)$ of \emph{generically definable composition laws}.
+\end{definition}
+
+\subsection{} See what contractibility asks for, syntactically then diagramatically.
+
+\subsection{} Show $\X$ is initial, by giving $\cl(\MLId[X]) \to X/\cl(\MLId[X])$.
+
+(Point out: normalisation could also be used.)
+
+\subsection{} Conclude: contractibility!  Action!  Functors!
+
+\subsection{} Compare: \cite{garner-van-den-berg}, with tailor-made operad from $A/\C$.
+
+\subsection{} Add: groupoidality!
 
 
-\section{The classifying weak omega-category of a type theory}
+\section{The classifying weak $\omega$-category of a theory}
 
+\subsection{} Overview: what are we trying to build?
 
+\subsection{Representability: the type theoretic globes} More abstract view: set  up Kan situation!  Type-theoretic globes.
+
+Make analogy with $\Top$.  How much detail to go into?  Separate subsection?  Compare: \cite[\SEC 9]{batanin:natural-environment}, 
+
+\begin{definition}
+Let $\globe{n}$, the \emph{type-theoretic $n$-globe}, be the theory defined by the following axioms:
+$$\begin{array}{l c}
+n = 0: & \inferrule{\ }{\diamond \types X\ \type} \\
+n > 0 : & \inferrule{\ }{\diamond \types X^s\ \type} \qquad \inferrule{\ }{\diamond \types X^t\ \type} \\
+n = 1: & \inferrule{\ }{x: X_s \types p_1(x) : X_t} \\
+n > 1:  & \inferrule{\ }{x:X_s \types p_1^s (x) : X_t} \qquad \inferrule{\ }{x:X_s \types p_1^t (x) : X_t} \\
+\quad (1 < i < n) & \inferrule{\ }{x:X_s \types p_i^s(x) : \Id(p_{i-1}^s,p_{i-1}^t)} \qquad \inferrule{\ }{x:X_s \types p_i^t(x) : \Id(p_{i-1}^s,p_{i-1}^t)} \\
+& \inferrule{\ }{x:X_s \types p_n(x) : \Id(p_{n-1}^s,p_{n-1}^t)} \\
+\end{array}$$
+\end{definition}
+
+Then $\cl^-_\omega(\TT) := \ThId(\globes,\TT)$ is the underlying globular set of our desired classifying weak $\omega$-category of types of $\TT$.
+
+Indeed, since $\ThId$ is co-complete, Kan extension of $\globes$ along the Yoneda embedding gives a left adjoint $\TT [-] \dashv \cl^-_\omega$.  Analogously to the geometric realisation $|X|$ of a globular or simplicial set, we call $\TT[X]$ the \emph{type-theoretic realisation} of $X$, a theory with axioms implementing 0-cells of $X$ as closed types, 1-cells as open terms mapping between these, and higher cells as terms of $\Id$-type.  (This follows from the colimit formula for Kan extensions\cite[??]{maclane:cwm} and the description of colimits in \ref{prop:colims-in-thid} above.)  In particular, $\TT[y(n)] = \globe{n}$.
+
+$$\quad \xymatrix{ \GSets \ar@/_/[rrr]_{\TT [-]\, :=\, \Lan_\yon \globes \qquad \ \, } \ar@{}[rrr]|\top & & & \ThId \ar@/_/[lll]_{\cl^-_\omega\ :=\ \hom(\globes,-)} \\ \G \ar@{^{ (}->}[u]^\yon \ar@/_/[urrr]_{\globes} }
+$$
+
+% spent fucking hours trying to get P-Alg into this diagram too,
+% eventually gave up...
+
+So to put a natural weak $\omega$-category structure on $\cl^-_\omega(\T)$ should be equivalent to putting a co-(weak $\omega$-category) structure on $\globes$, in $(\ThId)^\op$.
+
+If we had presented internal algebras as models of a sketch, finite limit theory, or similar, this would be immediate from the usual generalities.  Since we hav
+
+Yoneda lemma for globular cats:
+
+$\C \to \GSets(\C^\op,\Spans)$ is fully faithful
+
+\subsection{} Point out: want to make it a \emph{co-$\omega$-category}!  Look at (sub-operad of) its co-endomorphism operad.
+
+\subsection{} Give pylon diagrams to be connected.  Give squares to be filled!
+
+\subsection{} Introduce contractible maps; give nwfs by Garner small-object argument!
+
+\subsection{} Conjecture various forms of $\bar{J}$
+
+\subsection{} Theorem: if any of above conjectures holds, then have $\cl^-_\omega$.
+
+\begin{para} Corollary: have $\cl_\omega$ by using $(-)^\cxt$!
+\end{para}
 
 
 % ---------------------------------------------------------------------------

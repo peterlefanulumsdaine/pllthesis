@@ -19,7 +19,7 @@ $$ \ClwQCat \colon \Th \to \QCat .$$
 
 TODO: Hmm, this doesn't work if the reader doesn't know yet that quas-cateogries are simplicial things!  Work out how to re-organise to fit that in nicely.
 
-There are two obvious options.  Firstly, we could construct $\ClwQCat(\T)$ directly from the theory $\T$.  [TODO: Ask Michael whether/how much to mention simplicial type theory.]  However, $\Id$-types as they stand are inescapably globular; there seems no obvious way to extract simplicial sets from the theory as cleanly and directly as one can extract globular sets.  (The intriguing approach of re-axiomatising $\Id$-types to be ``naturally simplicial in shape'' has, however, been considered by Warren and Gambino \cite{??}.)
+There are two obvious options.  Firstly, we could construct $\ClwQCat(\T)$ directly from the theory $\T$.  [TODO: Ask Michael whether/how much to mention simplicial type theory.]  However, $\Id$-types as they stand are inescapably globular; there seems no obvious way to extract simplicial sets from the theory as cleanly and directly as one can extract globular sets.  (Alternatively, the intriguing approach of re-axiomatising $\Id$-types to be ``naturally simplicial in shape'' has been considered by Warren and Gambino \cite{??}.)
 
 It thus seems natural to take a different approach: to construct $\ClwQCat$ in two steps, composing $\Clw$ from the previous section with a functor
 $$ \N^\qcat \colon \Alg{P} \to \QCat $$
@@ -47,7 +47,7 @@ Point out how this comes from the map $D(\ob \G) \to \G \to \GSets \to \wknCat$ 
 
 \para Construct $(\CC,\FF_t)$; construct ``canonical squares''.  Describe how to see them as equivs.
 
-\para Construct $\WW$, $\W$, $(\CC_t,\FF)$ from this.  Infer $\xi$, by \cite[Rmk 3.6]{Riehl} (and hence get $\C_t \Imp \C$, $\F_t \Imp \F$).
+\para Construct $\WW$, $\W$, $(\CC_t,\FF)$ from this.  Infer $\xi$, by \cite[Rmk 3.6]{riehl:alg-mod-strux} (and hence get $\C_t \Imp \C$, $\F_t \Imp \F$).
 
 \para Give $TF \Leftrightarrow F \cap W$, i.e.\ $\Alg{\FF_t} \Leftrightarrow \Alg{\FF} \times_{\E^\Two} \Alg{\WW}$.  Give: $\WW \to \E^\Two$ ``creates retracts'', so $\W$ closed under retracts.
 

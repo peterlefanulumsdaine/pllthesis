@@ -3,4 +3,5 @@
 *.toc
 *.bbl
 *.blg
+*.pdf
 .DS_Store

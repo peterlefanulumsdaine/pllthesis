@@ -9,6 +9,33 @@
 
 
 %%%%
+% Theorem-type environments
+%%%%
+
+%% following Cisinski's style, which I found excellent, the theorem-like environments are set up to number _all_ paragraphs [in the conceptual rather than typographic sense] consecutively.  the major advantage of this is making any paragraph referenceable, and hence making the (always rather arbitrary) decision of what to pick out as theorems, definitions, etc. much less consequential and more flexible.
+
+\theoremstyle{plain} 
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{sch}[thm]{Scholium}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{para}[thm]{}
+\newtheorem{exercise}[thm]{Exercise}
+
+%\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{notation}[thm]{Notations}
+\newtheorem{example}[thm]{Example}
+\newtheorem{examples}[thm]{Examples}
+
+
+
+
+%%%%
 % Binary relations, operators
 %%%%
 
@@ -23,11 +50,11 @@
 \newcommand{\types}{\vdash}
 
 %%%% 
-% Single styled characters (or almost single)
+% Single styled characters (or almost single) and character-like symbols
 %%%%
 
 \newcommand{\Two}{\mathbf{2}}
-% \newcommand{\A}{A_\bullet}
+\newcommand{\A}{A_\bullet}
 % \newcommand{\uA}[1][]{\underline{A}_{#1}}
 % \newcommand{\B}{B_\bullet}
 % \newcommand{\ML}{\mathit{ML_I}}
@@ -46,18 +73,22 @@
 \newcommand{\f}{\vec f}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\FF}{\mathbb{F}}
+\newcommand{\g}{\vec g}
 \newcommand{\G}{\mathbb{G}}
 \newcommand{\I}{\mathcal{I}}   % generating cofibrations.  mathscr is prettier,
 \newcommand{\J}{\mathcal{J}}   % but I find its I, J confusing.
 \newcommand{\NN}{\mathbb{N}}   % Natural numbers
 \newcommand{\N}{\mathcal{N}}   % Nerve
 % \renewcommand{\P}{P_{\MLfrag}}
-% \newcommand{\operadP}{P_{\MLfrag}}
+\newcommand{\PML}{P_{\MLId}}
 % \newcommand{\Pfull}{P_{\ML}}
+\newcommand{\PARA}{\textparagraph}
 \newcommand{\pow}{\mathcal{P}}
 % \newcommand{\p}{\vec p}
+\newcommand{\SEC}{\textsection}
 % \renewcommand{\S}{\mathcal{S}}    % Another generic type theory
-\newcommand{\T}{\mathcal{T}}      % A generic type theory
+\newcommand{\T}{\mathsf{T}}      % A generic type theory
+\newcommand{\TT}{\mathbb{T}}    % A generic type theory, seen as a categorical structure
 \renewcommand{\u}{\vec u}
 \newcommand{\V}{\mathcal{V}}
 \renewcommand{\v}{\vec v}
@@ -81,12 +112,12 @@
 \newcommand{\AMS}{AMS}
 \newcommand{\AWFS}{AWFS}
 \newcommand{\Cat}{\mathbf{Cat}}
-\newcommand{\CatId}{\mathbf{Cat}_{\Id}}
 % \newcommand{\cat}[1][-]{\mathbf{Cat}(#1)}
 \newcommand{\enrCat}[1][\V]{#1\mbox{-}\mathbf{Cat}}
 \newcommand{\cl}{\mathbf{cl}}
 \newcommand{\Coll}{\mathbf{Coll}}
 \newcommand{\CwA}{\mathbf{CwA}}
+\newcommand{\CwAId}{\mathbf{CwA}^{\Id}}
 \newcommand{\cod}{\mathrm{cod}}
 \newcommand{\dom}{\mathrm{dom}}
 \newcommand{\End}{\mathrm{End}}
@@ -98,24 +129,29 @@
 \newcommand{\FSCS}{\mathbf{FSCS}}
 \newcommand{\fscs}{\textsc{fscs}}
 \newcommand{\fscss}{\textsc{fscs}'s}
-% \newcommand{\colim}{\varinjlim}
+\newcommand{\globe}[1]{\mathfrak{g}_{#1}}
+\newcommand{\globes}{\mathfrak{g}_\bullet}
 % \newcommand{\longGSets}{[\mathbb{G}^\op,\mathbf{Sets}]}
 \newcommand{\GSets}{\widehat{\mathbb{G}}}
 % \renewcommand{\lim}{\varprojlim}
+\newcommand{\Lan}{\mathrm{Lan}}
 \newcommand{\lax}{\mathrm{lax}}
 \newcommand{\MonGlobCat}{\mathbf{MonGlobCat}}
+\newcommand{\MLId}{\mathsf{ML}^{\Id}}
 \newcommand{\ob}{\operatorname{ob}}
-% \newcommand{\op}{\mathrm{op}}
+\newcommand{\op}{\mathrm{op}}
 % \newcommand{\Operads}{\mathbf{Operads}}
 % \newcommand{\pd}{\mathbf{pd}}
 \newcommand{\QCat}{\mathbf{QCat}}
 \newcommand{\qcat}{\mathit{qcat}}
 % \newcommand{\Sets}{\mathbf{Sets}}
+\newcommand{\Spans}[1][]{\mathbf{Spans}_{#1}}
 \newcommand{\strat}{\textrm{strat}}
 \renewcommand{\th}{\mathbf{th}}
 \newcommand{\Th}{\mathbf{Th}}
 \newcommand{\ThId}{\mathbf{Th}^{\Id}}
 \newcommand{\ThIdPi}{\mathbf{Th}^{\Id,\Pi}}
+\newcommand{\Top}{\mathbf{Top}}
 \newcommand{\strMonGlobCat}{\mathbf{MonGlobCat}}
 \newcommand{\strwCat}{\mathbf{str}\mbox{-}\omega\mbox{-}\mathbf{Cat}}
 \newcommand{\strnCat}[1][n]{\mathbf{str}\mbox{-}#1\mbox{-}\mathbf{Cat}}
@@ -171,4 +207,29 @@
 % \newcommand{\rscott}{]\!]}
 
 
+%%%
+%%% Diagram annotations, work with diagxy
+%%%
+
+
+\newdir{|>}{!/4.7pt/\dir{|}
+        *:(1,-.2)\dir^{>}
+        *:(1,+.2)\dir_{>}}
+
+\newbox\pbbox
+\setbox\pbbox=\hbox{\xy \POS(75,0)\ar@{-} (0,0) \ar@{-} (75,75)\endxy}
+\def\pb{\copy\pbbox}
+\newbox\urpbbox
+\setbox\urpbbox=\hbox{\xy \POS(0,0)\ar@{-} (75,0) \ar@{-} (0,75)\endxy}
+\def\urpb{\copy\urpbbox}
+\newbox\pobox
+\setbox\pobox=\hbox{\xy \POS(0,75)\ar@{-} (0,0) \ar@{-} (75,75) \endxy}
+\def\po{\copy\pobox}
+
+%% typical usage:
+%
+% $$\bfig \square[A`B`C`D;```]
+% \place(100,400)[\pb]
+% \place(400,100)[\po]
+% \efig$$
 
