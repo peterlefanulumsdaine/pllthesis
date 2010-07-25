@@ -12,7 +12,7 @@
 
 TODO: either here or in introduction, give historical background: the move from seeing it as a transitive relation, to a groupoid-up-to-prop-eq, to (``the parallels with the fundamental group of a space are inescapable'') a weak $\omega$-groupoid.
 
-\subsection{Hacking} \label{sec:hacking} To understand how the $\omega$-groupoid structure arises, it is instructive to make a start on its construction by hand.
+\subsection*{Hacking} \label{sec:hacking} To understand how the $\omega$-groupoid structure arises, it is instructive to make a start on its construction by hand.
 
 (A few notes on derivations: read bottom-up; and obvious premises are omitted.  TODO: maybe put this earlier?)
 
@@ -41,7 +41,7 @@ $$ x,y,z:X, u,u':\Id(x,y), p:\Id(u,u'), v,v':\Id(y,z), q:\Id(v,v')\ \types\ ? : 
 \end{enumerate}
 \end{exercise}
 
-\subsection{Outline of the proof}
+\subsection*{Outline of the proof}
 Having tackled a few examples, we can now generalise the tactics involved, giving the main points of the full proof:
 
 \begin{enumerate}
@@ -56,7 +56,7 @@ Having tackled a few examples, we can now generalise the tactics involved, givin
 \item In all the examples above, $\sigma$ and $\tau$ then computed down to higher reflexivity terms themselves, and so were definitionally equal.  In fact this turns out to be typical: \emph{the context $x:X$ is an initial object}, so $\sigma$ and $\tau$ must always simplify in this way, and we are done.
 \end{enumerate}
 
-\subsection{Globular contexts, and their endomorphism operads}
+\subsection*{Globular contexts, and their endomorphism operads}
 
 For any cwa $\C$, the class of dependent projections is closed under pullbacks, so by \PARA\ref{para:fibspans}, we can form the monoidal globular category $\FibSpans(\C)$; and maps of cwa's preserve dependent projections and pullbacks of them, so we have a functor $\FibSpans : \CwA \to \MonGlobCat$.
 
@@ -65,7 +65,7 @@ $$\xymatrix{ \Gamma_0 & \ar@<0.5ex>[l]^s \ar@<-0.5ex>[l]^t \Gamma_1 & \ar@<0.5ex
 
 Mention abuses of notation: $\End_\C(\A)$, $\End_\T(\A)$.
 
-\subsection{The theory of a generic type} TODO: Construct $\MLId[X]$; state universal property.
+\subsection*{The theory of a generic type} TODO: Construct $\MLId[X]$; state universal property.
 
 \begin{definition}Let $\MLId[X] \in \ThId$ be the extension of $\MLId$ by a single new type
 $$\inferrule*[right=$X$-$\form$]{\ }{\diamond \types X\ \type}$$
@@ -83,26 +83,26 @@ So $\End_{\MLId[X]}(\A)$ acts on all other types $\A \in \C(\Gamma)$, naturally 
 \begin{definition}We will write $\PML$ for the globular operad $\End_{\MLId[X]}(\A)$ of \emph{generically definable composition laws}.
 \end{definition}
 
-\subsection{} See what contractibility asks for, syntactically then diagramatically.
+\subsection*{} See what contractibility asks for, syntactically then diagramatically.
 
-\subsection{} Show $\X$ is initial, by giving $\cl(\MLId[X]) \to X/\cl(\MLId[X])$.
+\subsection*{} Show $\X$ is initial, by giving $\cl(\MLId[X]) \to X/\cl(\MLId[X])$.
 
 (Point out: normalisation could also be used.)
 
-\subsection{} Conclude: contractibility!  Action!  Functors!
+\subsection*{} Conclude: contractibility!  Action!  Functors!
 
-\subsection{} Compare: \cite{garner-van-den-berg}, with tailor-made operad from $A/\C$.
+\subsection*{} Compare: \cite{garner-van-den-berg}, with tailor-made operad from $A/\C$.
 
-\subsection{} Add: groupoidality!
+\subsection*{} Add: groupoidality!
 
 
 \section{The classifying weak $\omega$-category of a theory}
 
-\subsection{} Overview: what are we trying to build?
+\subsection*{} Overview: what are we trying to build?
 
-\subsection{Representability: the type theoretic globes} More abstract view: set  up Kan situation!  Type-theoretic globes.
+\subsection*{Representability: the type theoretic globes} More abstract view: set  up Kan situation!  Type-theoretic globes.
 
-Make analogy with $\Top$.  How much detail to go into?  Separate subsection?  Compare: \cite[\SEC 9]{batanin:natural-environment}, 
+Make analogy with $\Top$.  How much detail to go into?  Separate subsection*?  Compare: \cite[\SEC 9]{batanin:natural-environment}, 
 
 \begin{definition}
 Let $\globe{n}$, the \emph{type-theoretic $n$-globe}, be the theory defined by the following axioms:
@@ -118,31 +118,106 @@ n > 1:  & \inferrule{\ }{x:X_s \types p_1^s (x) : X_t} \qquad \inferrule{\ }{x:X
 
 Then $\cl^-_\omega(\TT) := \ThId(\globes,\TT)$ is the underlying globular set of our desired classifying weak $\omega$-category of types of $\TT$.
 
-Indeed, since $\ThId$ is co-complete, Kan extension of $\globes$ along the Yoneda embedding gives a left adjoint $\TT [-] \dashv \cl^-_\omega$.  Analogously to the geometric realisation $|X|$ of a globular or simplicial set, we call $\TT[X]$ the \emph{type-theoretic realisation} of $X$, a theory with axioms implementing 0-cells of $X$ as closed types, 1-cells as open terms mapping between these, and higher cells as terms of $\Id$-type.  (This follows from the colimit formula for Kan extensions\cite[??]{maclane:cwm} and the description of colimits in \ref{prop:colims-in-thid} above.)  In particular, $\TT[y(n)] = \globe{n}$.
+Indeed, since $\ThId$ is co-complete, Kan extension of $\globes$ along the Yoneda embedding gives a left adjoint $\TT [-] \dashv \cl^-_\omega$.  Analogously to the geometric realisation $|X|$ of a globular (or simplicial) set, we call $\TT[X]$ the \emph{type-theoretic realisation} of $X$, a theory with axioms implementing 0-cells of $X$ as closed types, 1-cells as open terms mapping between these, and higher cells as terms of $\Id$-type.  (This follows from the usual colimit formula for Kan extensions\cite[??]{maclane:cwm} and the description of colimits in \ref{prop:colims-in-thid} above.)  In particular, $\TT[y(n)] = \globe{n}$.
 
-$$\quad \xymatrix{ \GSets \ar@/_/[rrr]_{\TT [-]\, :=\, \Lan_\yon \globes \qquad \ \, } \ar@{}[rrr]|\top & & & \ThId \ar@/_/[lll]_{\cl^-_\omega\ :=\ \hom(\globes,-)} \\ \G \ar@{^{ (}->}[u]^\yon \ar@/_/[urrr]_{\globes} }
+$$\quad \xymatrix{ \GSets \ar@/_/[rrr]_{\TT [-]\, :=\, \Lan_\yon \globes \qquad \ \, } \ar@{}[rrr]|\top & & & \ThId \ar@/_/[lll]_{\cl^-_\omega\ :=\ \ThId(\globes,-)} \\ \G \ar@{^{ (}->}[u]^\yon \ar@/_/[urrr]_{\globes} }
 $$
 
 % spent fucking hours trying to get P-Alg into this diagram too,
 % eventually gave up...
 
-So to put a natural weak $\omega$-category structure on $\cl^-_\omega(\T)$ should be equivalent to putting a co-(weak $\omega$-category) structure on $\globes$, in $(\ThId)^\op$.
+\para So, by \ref{para:homming-out-of-algebras}, to put a natural $P$-algebra structure on $\cl^-_\omega$ is equivalent to putting a co-$P$-algebra structure on $\globes$.  In particular, its coendomorphism operad $\End_{(\ThId)^\op}(\globes)$ acts naturally on $\cl^-\omega$; in other words, we can lift if to a functor into $\End_{(\ThId)^\op}(\globes)$:
+$$\xymatrix{ & & \Alg{\left[\End_{(\ThId)^\op}\globes \right]} \ar[d]^U \\ \ThId \ar[urr]^{\cl^-\omega} \ar[rr]^{\ThId(\globes,-)} & & \GSets }$$
 
-If we had presented internal algebras as models of a sketch, finite limit theory, or similar, this would be immediate from the usual generalities.  Since we hav
+With this in mind, we investigate this operad.  As usual, an operad element of dimension $n$ consists of a natural transformation $(S_0,T_0,\ldots,S_{n-1},T_{n-1},R)$ between pylon diagrams, but this time going from the pylon representing the $n$-globe to one representing a pasting diagram as in \ref{fig:coendo-op} below.
 
-Yoneda lemma for globular cats:
+Before proceeding to investigate contractibility in general, however, it is helpful to pause for a few observations on the low dimensions of this operad.
 
-$\C \to \GSets(\C^\op,\Spans)$ is fully faithful
+TODO: points to make: by arguments like before, or by normalisation, $X_0$ is again initial in the theory of any one-dimensional pasting diagram (i.e.\ path), and so the only elements of the operad in dimensions 0 and 1 are the ones you'd expect: the identity in dim 0, and a unique $k$-ary composition for each $k$ in dim 1.  But, more importantly, we also get that any map out of a globe (or any colimit of globes) into any $\TT[\hat \pi]$ (for 1-dimensional $\pi$) is determined by what it does to in dimensions 0 and 1.
 
-\subsection{} Point out: want to make it a \emph{co-$\omega$-category}!  Look at (sub-operad of) its co-endomorphism operad.
 
-\subsection{} Give pylon diagrams to be connected.  Give squares to be filled!
+\para[Contractibility]  Figure \ref{fig:coendo-op}\ depicts the lifting condition required for contractibility of $\End_{(\ThId)^\op}(\globes)$: this amounts to showing that whenever $(S_0,T_0,\ldots,S_{n-1},T_{n-1}$ are given making the lower dimensions commute, some $R$ can be found to complete the diagram.
 
-\subsection{} Introduce contractible maps; give nwfs by Garner small-object argument!
+\begin{figure}[htbp] \label{fig:coendo-op}
+$$\bfig
+%%%%%%%%%%%%%%%%%%%
+% left hand pylon %
+%%%%%%%%%%%%%%%%%%%
+\node gn(250,0)[\globe{n}]
+\node gn1l(0,-250)[\globe{n-1}]
+\node gn1r(500,-400)[\globe{n-1}]
+\node gn2l(0,-650)[\globe{n-2}]
+\node fakegn2l(450,-650)[]
+\node gn2r(500,-800)[\globe{n-2}]
+\node g1l(0,-1150)[\globe{1}]
+\node g1r(500,-1300)[\globe{1}]
+\node g0l(0,-1550)[\globe{0}]
+\node g0r(500,-1700)[\globe{0}]
+\arrow[gn1l`gn;]
+\arrow[gn1r`gn;]
+\arrow[gn2l`gn1l;]
+\arrow[gn2r`gn1l;]
+\arrow[gn2l`gn1r;]
+\arrow[gn2r`gn1r;]
+\arrow/@{}|<>(0.58)\vdots/[g1l`gn2l;]
+\arrow/@{}|<>(0.58)\vdots/[g1r`gn2r;]
+\arrow[g0l`g1l;]
+\arrow[g0r`g1l;]
+\arrow[g0l`g1r;]
+\arrow[g0r`g1r;]
+%%%%%%%%%%%%%%%%%%%%
+% right hand pylon %
+%%%%%%%%%%%%%%%%%%%%
+\node Tpi(1750,0)[{\TT[\widehat{\pi}]}]
+\node Tspi(1500,-250)[{\TT[\widehat{s\pi}]}]
+\node Ttpi(2000,-400)[{\TT[\widehat{t\pi}]}]
+\node Ts2pi(1500,-650)[{\TT[\widehat{s^2\pi}]}]
+\node Tt2pi(2000,-800)[{\TT[\widehat{t^2\pi}]}]
+\node Ts1pi(1500,-1150)[{\TT[\widehat{s_1\pi}]}]
+\node Tt1pi(2000,-1300)[{\TT[\widehat{t_1\pi}]}]
+\node Ts0pi(1500,-1550)[{\TT[\widehat{s_0\pi}]}]
+\node Tt0pi(2000,-1700)[{\TT[\widehat{t_0\pi}]}]
+\arrow[Tspi`Tpi;]
+\arrow[Ttpi`Tpi;]
+\arrow/@{>}|!{(500,-400);(2000,-400)}\hole/[Ts2pi`Tspi;]
+\arrow/@{>}|!{(500,-400);(2000,-400)}\hole/[Tt2pi`Tspi;]
+\arrow[Ts2pi`Ttpi;]
+\arrow[Tt2pi`Ttpi;]
+\arrow/@{}|<>(0.58)\vdots/[Ts1pi`Ts2pi;]
+\arrow/@{}|<>(0.58)\vdots/[Tt1pi`Tt2pi;]
+\arrow/@{>}|!{(500,-1300);(2000,-1300)}\hole/[Ts0pi`Ts1pi;]
+\arrow/@{>}|!{(500,-1300);(2000,-1300)}\hole/[Tt0pi`Ts1pi;]
+\arrow[Ts0pi`Tt1pi;]
+\arrow[Tt0pi`Tt1pi;]
+%%%%%%%%%%%%%%%%%%%%
+% connecting wires %
+%%%%%%%%%%%%%%%%%%%%
+\arrow/.>/[gn`Tpi;R]
+\arrow/@{>}|!{(250,0);(500,-400)}\hole/[gn1l`Tspi;S_{n-1}]
+\arrow[gn1r`Ttpi;T_{n-1}]
+\arrow/@{>}|<>(.19)\hole|!{(500,-800);(500,-400)}\hole/[gn2l`Ts2pi;S_{n-2}]
+\arrow[gn2r`Tt2pi;T_{n-2}]
+\arrow[g1l`Ts1pi;S_1]
+\arrow[g1r`Tt1pi;T_1]
+\arrow/@{>}|<>(.21)\hole|!{(500,-1700);(500,-1300)}\hole/[g0l`Ts0pi;S_0]
+\arrow[g0r`Tt0pi;T_0]
+\efig$$
+\end{figure}
 
-\subsection{} Conjecture various forms of $\bar{J}$
+We can restate this as an extension problem:
+$$\xymatrix{ \TT[\delta (n)] \ar@{^{ (}->}[d] \ar[r]^{(\vec S, \vec T)} & \TT[\delta \widehat{\pi}] \ar@{^{ (}->}[r] & \TT[\widehat{\pi}] \\
+\globe{n} = \TT[\yon(n)] \ar@{.>}[urr]^R}$$
+By the observations above (TODO: work out where to put them!) this ``corner'' completes to a commutative square, so we in fact have a square-filling problem:
+$$\xymatrix{ \TT[\delta (n)] \ar@{^{ (}->}[d] \ar[r]^{(\vec S, \vec T)} & \TT[\delta \widehat{\pi}] \ar@{^{ (}->}[r] & \TT[\widehat{\pi}] \ar[d] \\
+\globe{n} = \TT[\yon(n)] \ar@{.>}[urr]^R \ar@{->>}[r] & \globe{1} \ar[r] & \TT[\widehat{s_1 \pi} = \widehat{t_1 \pi}]}$$
 
-\subsection{} Theorem: if any of above conjectures holds, then have $\cl^-_\omega$.
+(TODO: rephrase this to avoid duplicating the diagram, while still keeping the train of thought clear!)
+
+\subsection*{A NWFS on $\ThId$} Introduce contractible maps; give nwfs by Garner small-object argument!
+
+\subsection*{} Conjecture various forms of $\bar{J}$
+
+\subsection*{} Theorem: if any of above conjectures holds, then have $\cl^-_\omega$.
 
 \begin{para} Corollary: have $\cl_\omega$ by using $(-)^\cxt$!
 \end{para}

@@ -1,5 +1,6 @@
 \documentclass{amsart}
 
+\usepackage{wasysym}
 %\usepackage{ifpdf}
 %\usepackage{mathpartir}
 \usepackage{amssymb}
@@ -27,7 +28,7 @@ OK!  Here's what I think I want (5.vii):
 
 chapters, section: as usual.
 
-Subsections --- use just for their headings, \emph{not} numbered.  (display in toc?)
+Subsections --- use just for their headings, \emph{not} numbered.  (display in toc?  undecided!)
 
 Theorems, definitions, pars: \emph{all} numbered consecutively within section.
 Deliniated paras: numbered/named in bold, with no indent; ordinary paras: small indent.  As in: \\
@@ -38,8 +39,25 @@ The most fundamentally compelling reason for this is that\ldots \\
   
 \noindent \textbf{3.3}\ \ However, if we look at some of the alternative eliminators for $\Id$-types, \ldots \\
 
+Hmmm\ldots but what should (sub)section headings look like?  Bold and/or small caps?  Centred and/or left-aligned?  Probably: both centred, section in bold small caps, subsections (if used) in just bold?  (So: all amsbook default, except making sections bold (and maybe also giving them more space?), for better prominence.)
+
+Indentation: the amsbook paragraph indent is rather big!  Make it like in amsart instead?
+
+Also note: text beginning directly after a (sub)section heading thus needs a \texttt{\\newline} and a \texttt{\\noindent}.  (Maybe just put a \texttt{\\newline} in the definiton of subsection somehow?)  CHECKLIST at end: make sure of this!
+
 Running page headers and references: if numbering paras (etc.) within sections,  reference that as [2.3.11] (and show it in running header for easy navigation?)
 
 \section{Notations}
+\para The classifying $\CwA_\strat$ of a theory: $\cl_\strat(\TT)$?  Problem: $\cl$ looks like ``closure'' not classifying!  $\C(\TT)$ or $\CC(\TT)$ is more usual, but not brilliant by any means\ldots\ and gets worse as we decorate it $\C_\strat$, $\C_\omega$, $\C^-_\omega$, etc.\ldots
+
+\para The boundary of a pasting diagram??  Batanin and others use $\delta \pi$ to mean the source/target of $\pi$ (since they're equal).  I DON'T LIKE THIS: several reasons!  Firstly, it's misleading: it's not the boundary in the usual well-established sense of $\delta$; that's the pushout of the source and target along their common boundary.  Secondly, it thus leaves us \emph{without} a natural notation for that boundary, even though it's something we use all the time!  Thirdly (this is minor and debatable) it's often helpful to distinguish $s\pi$ and $t\pi$ when working with them, since they each have natural embeddings into $\pi$, etc.
+
+I certainly want to avoid supporting this usage: I'll just write $s\pi$ and $t\pi$ for these.  Question: should I actually conflict with Batanin's usage by using $\delta \pi$ for what I argue it \emph{should} mean, or is this too potentially misleading/confusing?  (Probably, I fear.)  If so, what other notation can I use for the boundary?  $B(\pi)$??  Ugh\ldots
+
+In any case, make sure to explain all this usage in the background introducing pasting diagrams.
+
+\section{Terminologies}
+
+Set up and explain in the first section: there are many equivalent presentations of a theory.  Main ones for us: syntactic; comprehension cat; cat with attributes.  For categorical models, have plain, based, and stratified.  Show: stratified.  Stratified: full, co-reflective subcategory of based, but not equivalent.  (Mention: Pitts' accessible = 2-equivalent to stratified, but still not equivalent.)  Having got equivalence, explain: \emph{agnostic} about representation; use $\ThId$ for any of the $\strat$ categories (strategories?? $\smiley$)
 
 \end{document}

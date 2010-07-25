@@ -10,22 +10,78 @@ Possibly fold this chapter into the next??
 
 \section{A category of Type Theories}
 
-\subsection{}Give brief, semi-formal outline of the type theory, referring to Appendix
+\subsection*{}Give brief, semi-formal outline of the type theory, referring to Appendix
 
-\subsection{}In fact, we will not work directly with the category of type theories, but with an equivalent category of algebraic models.
+\subsection*{}In fact, we will not work directly with the category of type theories, but with an equivalent category of algebraic models.
 but 
-The theory of such models is attractive, but suffers from rather an \emph{embaras de richesse} of frameworks: for instance \cite{jacobs:comprehension-categories}, \cite{pitts:categorical-logic}, \cite{hofmann:syntax-and-semantics} and \cite{dybjer:internal-type-theory} each [TODO: chronologicise these] define slightly different notions of categorical models (several after the unpublished \cite{cartmell:thesis}), all equivalent (in some sense) to each other and to syntactically presented dependent type theories.   (TODO: also look up ``categories with families''.)
+The theory of such models is attractive, but suffers from rather an embarassment of riches: for instance \cite{jacobs:comprehension-categories}, \cite{pitts:categorical-logic}, \cite{hofmann:syntax-and-semantics} and \cite{dybjer:internal-type-theory} each [TODO: chronologicise these] define slightly different notions of categorical models (several after the unpublished \cite{cartmell:thesis}), all equivalent (in some sense) to each other and to syntactically presented dependent type theories.   (TODO: also look up ``categories with families''.)
 
-Of course, these notions each have advantages and disadvantages: some are more elementary to present; some are more categorically elegant; some are more easily adaptable to extensions of the type theory\ldots\  We thus take this opportunity to survey several of the various options, and the comparisons between them.  (TODO: do this!  Mention all the definitions above, at least briefly; and discuss stratified/reachable versions.)
+Of course, these notions each have advantages and disadvantages: some are more elementary to present; some are more categorically elegant; some are more easily adaptable to extensions of the type theory\ldots\  We thus take this opportunity to survey several of the various options, and the comparisons between them.
 
-\begin{definition} A \emph{split full comprehension category}\cite{jacobs:comprehension-categories} (\fscc) is a category $\C$ together with a split fibration $p : \E \to \C$ and a factorisation $p = \cod \cdot \pow : \E \to \C^\rightarrow \to \C$, such that (a) $\pow$ maps cartesion arrows to pullback squares, and (b) $\pow$ is full and faithful.  By abuse of notation, we will often refer to $\C$ itself as the comprehension category; the pair $(p,\pow)$ is called a \emph{comprehension structure} on $\E$.  
+(TODO: reorganise/tidy all the below! 
+
+OK: new outline!   (See notes of 23.vii for details.)
+\begin{enumerate}
+\item sketch definition of the type theory, referring to appendix for full details
+\item categories with attributes
+\item (full split) comprehension categories
+\item equivalence of these
+\item based, stratified versions
+\item adjunction between syntactic theories and stratified CwA's.
+\item dependent contexts construction; slice construction.
+\item connections between plain, based, stratified, accessible CwA's.
+\item nice big figure!
+\end{enumerate}
+
+\begin{figure}[htbp]
+$$\bfig
+\node CC(0,0)[\mathbf{CompCat}]
+\node CCd(0,-400)[\mathbf{CompCat}_\diamond]
+\node FSCC(600,0)[\FSCC]
+\node FSCCd(600,-400)[\FSCC_\diamond]
+\node FSCCstrat(600,-800)[\FSCC_\strat]
+\node CwA(1200,0)[\CwA]
+\node CwAd(1200,-400)[\CwA_\diamond]
+\node CwAstrat(1200,-800)[\CwA_\strat]
+\node SynThy(1800,-800)[\SynThy]
+\node SynPres(1800,-1200)[\SynPres]
+\arrow|l|/{@/_/}/[FSCCd`FSCC;]
+\arrow|r|/{@/_/}/[FSCC`FSCCd;]
+\arrow|m|//[FSCC`FSCCd;\dashv]
+\arrow|l|/{@{^{ (}->}@/^/}/[FSCCstrat`FSCCd;]
+\arrow|r|/{@/^/}/[FSCCd`FSCCstrat;]
+\arrow|m|//[FSCCd`FSCCstrat;\dashv]
+\arrow|m|//[FSCC`CwA;\equiv]
+\arrow|m|//[FSCCd`CwAd;\equiv]
+\arrow|m|//[FSCCstrat`CwAstrat;\equiv]
+\arrow|l|/{@/_/}/[CwAd`CwA;]
+\arrow|r|/{@/_/}/[CwA`CwAd;]
+\arrow|m|//[CwA`CwAd;\dashv]
+\arrow|l|/{@{^{ (}->}@/^/}/[CwAstrat`CwAd;]
+\arrow|r|/{@/^/}/[CwAd`CwAstrat;]
+\arrow|m|//[CwAd`CwAstrat;\dashv]
+\arrow|m|//[CwAstrat`SynThy;\equiv]
+\arrow|l|/{@/^/}/[SynPres`CwAstrat;]
+\arrow|r|/{@/^/}/[CwAstrat`SynPres;]
+\place(1500,-1000)[\vdash] 
+% TODO: find how to use xyoption{rotate} to rotate this!
+% or give up and use the `rotating' package.
+% \arrow|m|//[SynPres`CwAstrat;\begin{turn}{45}$\dashv$\end{turn}]
+\arrow|l|/{@/^/}/[SynPres`SynThy;]
+\arrow|r|/{@/^/}/[SynThy`SynPres;]
+\arrow|m|//[SynPres`SynThy;\dashv]
+\efig$$
+\end{figure}
+
+\begin{definition} A \emph{split full comprehension category}\cite{jacobs:comprehension-categories} (\fscc) is a category $\C$ together with a split fibration $p : \E \to \C$ and a factorisation
+$$p = \cod \cdot \pow : \E \to \C^\rightarrow \to \C$$such that (a) $\pow$ maps cartesian arrows to pullback squares, and (b) $\pow$ is full and faithful.  By abuse of notation, we will often refer to $\C$ itself as the comprehension category; the pair $(p,\pow)$ is called a \emph{comprehension structure} on $\E$.  
 
 A (strict) map of \fsccs{} is just a functor $F: \C \to \C'$ and a map of fibrations $p \to p'$ over $F$, commuting with the factorisations $\pow$, $\pow'$.  A \emph{map of comprehension structures} on $\C$ is just the case $F = 1_C$.
 \end{definition}
 
 If $\C$ has all pullbacks, then condition (a) just says that $\pow$ is a map of fibrations.
  
-In fact, for fixed $\C$, $\FSCS(\C)$ is (equivalent to) a presheaf category---specifically, to to the slice of $\hat{\C}$ over the presheaf $\cod^{\mathrm{spl}}$ in which an element of $P(A)$ is a map $f : B \to A$ together with chosen pullbacks along all maps $j : A' \to A$.  (Explain how??)  comprehension categories will frequently be presented in this form.
+In fact, for fixed $\C$, $\FSCS(\C)$ is (equivalent to) a presheaf category---specifically, to the slice of $\hat{\C}$ over the presheaf $\cod^{\mathrm{spl}}$ in which an element of $P(A)$ is a map $f : B \to A$ together with chosen pullbacks along all maps $j : A' \to A$.  (Explain how??)  comprehension categories will frequently be presented in this form.
 
 
 \begin{example}For any type theory $\T$, its category of context $\C(\T)$ is a comprehension category, in which objects of $p(\Gamma)$ are types dependent over $\Gamma$, and $\pow$ sends a type $A \in p(\Gamma)$ to the dependent projection $\Gamma, x : A \to \Gamma$.
@@ -33,11 +89,11 @@ In fact, for fixed $\C$, $\FSCS(\C)$ is (equivalent to) a presheaf category---sp
 
 In fact, this construction is part of an equivalence between $\Th$ and a certain full co-reflexive subcategory of $\FSCC$: see Appendix \ref{app:??} for details.  In light of this, we will typically refer to the objects of any \fscc\ as contexts, and the objects of the fibration as dependent types.
 
-\subsection{Categories with attributes} 
+\subsection*{Categories with attributes} 
 
 From \cite{pitts:categorical-logic}, \cite{hofmann:syntax-and-semantics}, \cite{dybjer:internal-type-theory}, under various names.  Give definitions; (in notation to match that used above); give equivalence (honest 1-equivalence) with comprehension categories.
 
-\subsection{Stratification}
+\subsection*{Stratification}
 
 Define \emph{stratified} cwa, \& map of; note that it's (perhaps unexpectedly) a \emph{full subcategory}(!) of cwa's, closed under connected limits and colimits. (NB: this deinition seems to be new (though comparable to Cartmell); have I missed something?)
 
@@ -53,7 +109,7 @@ Discuss significance of 1- versus 2-equivalence: latter gives equivalence of ``t
 
 Also point out: type theory with \emph{context and their maps and equalities as primitive judgements} (hence allowing equalities and maps between contexts of different lengths) should correspond to general cwa's.
 
-\subsection{Constructors}
+\subsection*{Constructors}
 This all extends to theories with type constructors.
 
 Define: a lax map of comprehension structures (do I mean colax??)
@@ -70,13 +126,13 @@ Note: this implies a certain adjunction, so does corresponds to Jacobs' ``fscc w
 
 To introduce the structure corresponding to identity types, we will need a little more terminology.
 
-\begin{definition}[Dependent contexts]
+\begin{mydefinition}[Dependent contexts]
 Given any comprehension category $(\C,p,\pow)$, we may construct another comprehension structure $(p^\cxt,\pow^\cxt)$ on $\C$:
 
 An object of $p^\cxt[\Gamma]$ is a list $A_1,\ldots,A_n$, where $A_i \in p(\Gamma . A_1 \ldots . A_{i-1})$, for each $i \leq n$; context extension is defined by $\Gamma . (A_1 \ldots , A_n) = \Gamma . A_1 \ldots . A_n$, and pullback $f^* : p^\cxt(\Gamma) \to p^\cxt(\Delta)$ is similarly defined in terms of pullback in $p$.
 
-This is the object part of an evident functor $(-)*$ on $\FSCS(\C)$.
-\end{definition}
+This is the object part of an evident functor $(-)^\cxt$ on $\FSCS(\C)$.
+\end{mydefinition}
 
 The $(-)^\cxt$-construction has a natural type-theoretic interpretation: if $(\C,p,\pow)$ was obtained from a type theory, then for any $\Gamma$, $p^\cxt(\Gamma)$ is (isomorphic to) the category of dependent contexts over $\Gamma$ and dependent context morphisms between them.
 
@@ -92,9 +148,17 @@ Note that any composite of dependent projections is again one.  [TODO: is this c
 
 [TODO: in some ways, better to take dependent projection to be extra structure, a \emph{chosen}isomorphism and a \emph{chosen} $\Delta \in p^\cxt(\Gamma)$.  The distinction doesn't seem to seriously affect anything I do; make it, perhaps?]
 
-\subsection{The nice slice} Even if $(\C,p,\pow)$ was stratified, $(\C,p^\cxt,\pow^\cxt)$ will generally not be: extending a context by a dependent context may increase its length by more than 1!
+\subsection*{The nice slice} 
 
-However, for any $(\C,p,\pow)$ and $\Gamma \in \C$, there is an evident stratified attributes structure on $p^\cxt(\Gamma)$; the resulting cwa may be called the \emph{nice slice} $(\C,p,\pow)/\Gamma$, and corresponds type-theoretically to working in context $\Gamma$.
+\para $(\C,p^\cxt,\pow^\cxt)$ can never be stratified: for any choice of $\diamond$, the empty dependent context $() \in p^\cxt(\diamond)$ satisfies $\\diamond.() = \diamond$, so lengths cannot be consistently assigned.
+
+However, for any $(\C,p,\pow)$ and $\Gamma \in \C$, there is an evident stratified attributes structure on $p^\cxt(\Gamma)$; the resulting cwa may be called the \emph{nice slice} $(\C,p,\pow)/\Gamma$, and is the algebraic analogue of working in context $\Gamma$.
+
+\section{Type constructors}
+
+Thus far, we have considered only \emph{algebraic} theories, with just a fixed, given set of (dependent) types.  While such theories are interesting in their own right, one is more often interested in theories with type constructors: (dependent) sums and products, $\Id$-types (most crucially for the present work), and beyond.
+
+With this in mind, we look at what structure on the categorical side corresponds to the usual rules for such constructors.  For better comparision, we will again give two equivalent presentations: one very literal to the syntax of the theory (``elim-structure''), one more abstract
 
 \begin{definition}An \emph{elim-structure} on a map $f \colon \Xi \to \Theta$ is a function $E$, assigning to each $C \in p(\Theta)$ and each map $d \colon \Xi \to \Theta.C$ over $\Theta$ a section $E(C,d) \colon \Theta \to \Theta.C$ of the dependent projection $\pi_C$ satisfying $E(C,d) \cdot f = d$.
 \end{definition}
@@ -185,7 +249,7 @@ We just sketch the proof here; see \cite[2.3.1]{garner:2-d-models} for details. 
 
 Thus the $(-)^\cxt \colon \CwA \to \CwA$ lifts to a functor $\CwAId \to CwAId$.  Note, however, that the monad structure does not lift on the nose: its multiplication fails to preserve $\Id$-structure.  %% see notes of 16.vii
 
-\subsection{The coslice construction}
+\subsection*{The coslice construction}
 \begin{proposition}[Co-slice categories with attributes] If $\C$ is a cwa, and $\Theta$ any context of $\C$, then there is a natural cwa structure on the co-slice category $\Theta/\C$.
 
 If $\C$ was stratified, then so is $\Theta/\C$.

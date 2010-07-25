@@ -32,13 +32,15 @@ Fact: Cartesian, as can see from familial rep'bility\cite{street:petit-topos},\c
 
 \section{Internal algebras for operads}  (This should probably be split up and moved: the globular part moved into the ``Globular background'' appendix, and then the construction of a monoidal globular category from a comprehension category folded into the construction of the fundamental things.)
 
-\subsection{Monoidal globular categories} Recall definition from Batanin. 
+\subsection*{Monoidal globular categories} Recall definition from Batanin. 
 
 Examples: $\Spans$; $\Spans(\C)$, for $\C$ with pullbacks; $\FibSpans(\C)$, for $\C$ with a distinguished class of ``fibrations'', closed under composition and pullbacks.
 
 \para[Pasting diagrams]
 
 Example of a mon glob cat: $T1$.  Give representation as Batanin trees; also as free monoids.
+
+Notation note: I use $\delta(n)$ for the boundary of $\yon(n)$, which is standard, but also $\delta \widehat{\pi}$ for the boundary of the $\widehat{\pi}$ which is less standard: Batanin, Street (TODO: refs?) and others use $\delta \pi := s \pi = t \pi$ (since these are always equal), whereas I always distinguish these (yes, they're equal as pasting diagrams, but in use they're typically `intensionally' distinct) and my $\delta \widehat{\pi}$ is the pushout of $\widehat{s\pi}$ and $\widehat{t\pi}$ along their common boundary. 
 
 Give realisation as globular sets, by (a) iterated pushout, (b) colimit.
 
@@ -144,11 +146,11 @@ $$\bfig \square[y(i)`y(i-1)`\widehat{\pi^-}`\widehat{\pi};```]
 \efig
 $$
 
-\subsection{Operads in monoidal categories}
+\subsection*{Operads in monoidal categories}
 
 Define: globular object.  Define: operad!  Endomorphism operad!
 
-\subsection{Endomorphism operads, explicitly}
+\subsection*{Endomorphism operads, explicitly}
 
 In $\FibSpans(\C)$, a globular object $\X$ is\ldots
 
@@ -185,19 +187,19 @@ This somewhat cryptic formula is perhaps best illuminated by a couple of example
 \end{eqnarray*}
 giving the object of 0-composable pairs of 2-cells in $X$.  Similarly, if $\pi$ is the basic $n$-cell, then $X_\pi = X_n$.
 
+\para \label{para:homming-out-of-algebras} Describe the gloulbar hom-functor between $n$-objects \cite[3.6]{batanin:natural-environment} and hence into and out of globular objects.  Note: in the case of $\Spans$, this is monoidal. (Check: Batanin doesn't show this anywhere, does he? although he does use it!  Or, better, is it in Weber somewhere, or easily deducible?)
+
+Really, would like a Yoneda lemma: for a globular object $\A$ of a cat (with fibrations) $\C$, $\End_{\C}(\A) \iso \End_{[\C,\Sets]}(\yon \A)$.
+
 \example{Fundamental $\omega$-groupoid of a space}
-Describe the gloulbar hom-functor between $n$-objects \cite[3.6]{batanin:natural-environment} and hence into and out of globular objects.  Note: in the case of $\Spans$, this is monoidal. (Check: Batanin doesn't show this anywhere, does he? although he does use it!  Or, better, is it in Weber somewhere, or easily deucible?)
 
 
-
-
-
-\subsection{Connection with Leinster approach}
+\subsection*{Connection with Leinster approach}
 
 Recall from Weber paper.
 
 
-\subsection{Enriched point of view}
+\subsection*{Enriched point of view}
 
 TODO: the below is from a different earlier approach; fold this into the current presentation!
 

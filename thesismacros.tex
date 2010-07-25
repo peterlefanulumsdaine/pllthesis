@@ -22,6 +22,10 @@
 \newtheorem{sch}[thm]{Scholium}
 
 \theoremstyle{definition}
+\makeatletter
+\newtheoremstyle{mydefinition}{}{}{}{}{\bfseries}{.}{5\p@ plus\p@ minus\p@}{}
+\makeatother
+\theoremstyle{mydefinition}
 \newtheorem{definition}[thm]{Definition}
 \newtheorem{para}[thm]{}
 \newtheorem{exercise}[thm]{Exercise}
@@ -32,7 +36,10 @@
 \newtheorem{example}[thm]{Example}
 \newtheorem{examples}[thm]{Examples}
 
+\newtheorem{mydefinition}[thm]{Definition}
 
+% \setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{2}
 
 
 %%%%
@@ -144,7 +151,7 @@
 % \newcommand{\pd}{\mathbf{pd}}
 \newcommand{\QCat}{\mathbf{QCat}}
 \newcommand{\qcat}{\mathit{qcat}}
-% \newcommand{\Sets}{\mathbf{Sets}}
+\newcommand{\Sets}{\mathbf{Sets}}
 \newcommand{\Spans}[1][]{\mathbf{Spans}_{#1}}
 \newcommand{\strat}{\textrm{strat}}
 \renewcommand{\th}{\mathbf{th}}
@@ -155,6 +162,8 @@
 \newcommand{\strMonGlobCat}{\mathbf{MonGlobCat}}
 \newcommand{\strwCat}{\mathbf{str}\mbox{-}\omega\mbox{-}\mathbf{Cat}}
 \newcommand{\strnCat}[1][n]{\mathbf{str}\mbox{-}#1\mbox{-}\mathbf{Cat}}
+\newcommand{\SynPres}{\mathbf{SynPres}}
+\newcommand{\SynThy}{\mathbf{SynThy}}
 \newcommand{\wkwCat}{\mathbf{wk}\mbox{-}\omega\mbox{-}\mathbf{Cat}}
 \newcommand{\wknCat}[1][n]{\mathbf{wk}\mbox{-}#1\mbox{-}\mathbf{Cat}}
 
@@ -225,6 +234,9 @@
 \newbox\pobox
 \setbox\pobox=\hbox{\xy \POS(0,75)\ar@{-} (0,0) \ar@{-} (75,75) \endxy}
 \def\po{\copy\pobox}
+
+% \newbox\tiltvdashbox
+% \setbox\tiltvdashbox{\xy \POS( 
 
 %% typical usage:
 %
