@@ -32,9 +32,11 @@ TODO: give this version too!
 \item ``symmetry of equality'', i.e.\ (weak) inverses of 1-cells:
 $$x,y:X, u:\Id(x,y) \types ? : \Id(y,x)$$
 
-\item \label{ex:assoc}associativity, for any one of the binary compositions terms above (or a mixture):
-$$x,y,z,w:X, t:\Id(x,y), u:\Id(y,z), v:\Id(z,w)\ \types\ ? : \Id_{\Id_X}(\ c(c(v,u),t)\ ,\ c(v,c(u,t))\ )$$
-(For bonus points, give a single derivation which works for any of the binary compositions above!)
+\item \label{ex:assoc}associativity, for any one of the binary compositions terms above (or for a mixture of them):
+\begin{multline*}x,y,z,w:X, t:\Id(x,y), u:\Id(y,z), v:\Id(z,w) \\ 
+\types\ ? : \Id_{\Id_X} (\ c(c(v,u),t)\ ,\ c(v,c(u,t))\ )
+\end{multline*}
+(For bonus points, find a one-size-fits-all approach which works with any of the binary compositions operations.)
 
 \item horizontal composition of 2-cells:
 $$ x,y,z:X, u,u':\Id(x,y), p:\Id(u,u'), v,v':\Id(y,z), q:\Id(v,v')\ \types\ ? : ? $$
@@ -78,22 +80,116 @@ By the adjunctions of \PARA\ref{para:??}, $\cl_\strat(\MLId[X])$ is thus the fre
 
 In particular, for any such $\C$, $\diamond$, $A$, this gives a monoidal globular functor $\FibSpans(\cl(\MLId[X])) \to \FibSpans(\C)$, sending $\X$ to $\A$, and hence an operad map $\End_{\MLId[X]}(\X) \to \End_{\C}(\A)$.
 
-So $\End_{\MLId[X]}(\A)$ acts on all other types $\A \in \C(\Gamma)$, naturally in $\C$ and $\Gamma$.  In view of this, we will give the operad a less unwieldy name:
+So $\End_{\MLId[X]}(\X)$ acts on all other types $A \in p(\Gamma)$, naturally in $(\C,p,\pow)$ and $\Gamma$.  Syntactically, this is the fact that a compositin law on $X$ derived in $\MLId[X]$ could just as well have been derived for any ofther type $A$ in any theory with $\Id$-types.  In view of this, we will give the operad a less unwieldy name:
 
-\begin{definition}We will write $\PML$ for the globular operad $\End_{\MLId[X]}(\A)$ of \emph{generically definable composition laws}.
+\begin{definition}We will write $\PML$ for the globular operad $\End_{\MLId[X]}(\X)$ of \emph{generically definable composition laws}.
 \end{definition}
 
-\subsection*{} See what contractibility asks for, syntactically then diagramatically.
+\para According to \PARA \ref{para:endo-operad}, a composition law $\p \in \PML(\pi)$ consist of a natural transformation $(S_0,T_0,\ldots T_{n-1},R)$ between pylon diagrams as in Figure \ref{fig:endo-pylons}, where $\Gamma_n$ denotes the context
+$$ \Gamma_n\ :=\ x_0,y_0:X, x_1,y_1: \Id(x_0,y_0), \ldots\ z:\Id(x_{n-1},y_{n-1})$$
+and $\Gamma_{\widehat{\pi}}$ has\ldots [TODO: complete description!]
 
-\subsection*{} Show $\X$ is initial, by giving $\cl(\MLId[X]) \to X/\cl(\MLId[X])$.
+\begin{figure}[htbp] \label{fig:endo-pylons}
+$$\bfig
+%%%%%%%%%%%%%%%%%%%%
+% right hand pylon %
+%%%%%%%%%%%%%%%%%%%%
+\node Gpi(250,0)[{\Gamma_{\widehat{\pi}}}]
+\node Gspi(0,-250)[{\Gamma_{\widehat{s\pi}}}]
+\node Gtpi(500,-400)[{\Gamma_{\widehat{t\pi}}}]
+\node Gs2pi(0,-650)[{\Gamma_{\widehat{s^2\pi}}}]
+\node Gt2pi(500,-800)[{\Gamma_{\widehat{t^2\pi}}}]
+\node Gs1pi(0,-1150)[{\Gamma_{\widehat{s_1\pi}}}]
+\node Gt1pi(500,-1300)[{\Gamma_{\widehat{t_1\pi}}}]
+\node Gs0pi(0,-1550)[{\Gamma_{\widehat{s_0\pi}}}]
+\node Gt0pi(500,-1700)[{\Gamma_{\widehat{t_0\pi}}}]
+\arrow[Gpi`Gspi;]
+\arrow[Gpi`Gtpi;]
+\arrow[Gspi`Gs2pi;]
+\arrow[Gspi`Gt2pi;]
+\arrow[Gtpi`Gs2pi;]
+\arrow[Gtpi`Gt2pi;]
+\arrow/@{}|<>(0.42)\vdots/[Gs2pi`Gs1pi;]
+\arrow/@{}|<>(0.42)\vdots/[Gt2pi`Gt1pi;]
+\arrow[Gs1pi`Gs0pi;]
+\arrow[Gs1pi`Gt0pi;]
+\arrow[Gt1pi`Gs0pi;]
+\arrow[Gt1pi`Gt0pi;]
+%%%%%%%%%%%%%%%%%%%
+% left hand pylon %
+%%%%%%%%%%%%%%%%%%%
+\node Gn(1750,0)[\Gamma_{n}]
+\node Gn1l(1500,-250)[\Gamma_{n-1}]
+\node Gn1r(2000,-400)[\Gamma_{n-1}]
+\node Gn2l(1500,-650)[\Gamma_{n-2}]
+\node fakeGn2l(450,-650)[]
+\node Gn2r(2000,-800)[\Gamma_{n-2}]
+\node G1l(1500,-1150)[\Gamma_{1}]
+\node G1r(2000,-1300)[\Gamma_{1}]
+\node G0l(1500,-1550)[\Gamma_{0}]
+\node G0r(2000,-1700)[\Gamma_{0}]
+\arrow[Gn`Gn1l;]
+\arrow[Gn`Gn1r;]
+\arrow/@{>}|<>(0.316)\hole/[Gn1l`Gn2l;]
+\arrow/@{>}|!{(500,-400);(2000,-400)}\hole/[Gn1l`Gn2r;]
+\arrow[Gn1r`Gn2l;]
+\arrow[Gn1r`Gn2r;]
+\arrow/@{}|<>(0.42)\vdots/[Gn2l`G1l;]
+\arrow/@{}|<>(0.42)\vdots/[Gn2r`G1r;]
+\arrow/@{>}|<>(0.316)\hole/[G1l`G0l;]
+\arrow/@{>}|!{(500,-1300);(2000,-1300)}\hole/[G1l`G0r;]
+\arrow[G1r`G0l;]
+\arrow[G1r`G0r;]
 
-(Point out: normalisation could also be used.)
+%%%%%%%%%%%%%%%%%%%%
+% connecting wires %
+%%%%%%%%%%%%%%%%%%%%
+\arrow/.>/[Gpi`Gn;R]
+\arrow/@{>}|!{(250,0);(500,-400)}\hole^(.67){S_{n-1}}/[Gspi`Gn1l;]
+\arrow/@{>}^(.34){T_{n-1}}/[Gtpi`Gn1r;]
+\arrow/@{>}|<>(.19)\hole|!{(500,-800);(500,-400)}\hole^(.67){S_{n-2}}/[Gs2pi`Gn2l;]
+\arrow/@{>}^(.34){T_{n-2}}/[Gt2pi`Gn2r;]
+\arrow/@{>}^(.67){S_1}/[Gs1pi`G1l;]
+\arrow/@{>}^(.34){T_1}/[Gt1pi`G1r;]
+\arrow/@{>}|<>(.19)\hole|!{(500,-1700);(500,-1300)}\hole^(.67){S_0}/[Gs0pi`G0l;]
+\arrow/@{>}^(.34){T_0}/[Gt0pi`G0r;]
+\efig$$
+\end{figure}
+
+
+\begin{proposition} \label{prop:x-initial-in-g0}
+$X$ is an initial object in $\globe{0}$.
+\end{proposition}
+
+\begin{proof}
+By the universal property of $\globe{0}$, there is a unique translation $F_{1_X}$ from $\globe{0}$ to the coslice $X/\globe{0}$ sending $X$ to $1_X: X \to X$.  Again by the universal property, the composite $\globe{0} \to X/\globe{0} \to \globe{0}$ is equal to $1_{\globe{0}}$, since it fixes $X$.
+
+Thus the values of $F_{1_X}$ on objects give a natural map $\r_\Gamma := F_{1_X}(\Gamma) : X \to \Gamma$ for every $\Gamma \in \globe{0}$, with $\r_X = 1_X$.  From this, we see that $X$ is an initial object by considering the naturality square
+$$\xymatrix{ X \ar[r]^{\r_X = 1_X} \ar[d]_{1_X} & X \ar[d]^{f} \\
+X \ar[r]^{\r_\Gamma} & \Gamma }$$
+for any map $f \colon X \to \Gamma$.
+\end{proof}
+
+Syntactically, this is inductively constructing for each context $\Gamma$ a ``point'', a context morphism
+$$ x:X \types \r_\Gamma(x) : \Gamma $$
+such that every other context morphism preserves the point:
+$$ \inferrule{\y : \Gamma\ \types\ \f(\y) : \Delta}{x:X\ \types\ \f(\r_\Gamma(x)) = \r_\Delta(x) : \Delta}$$
+(See \cite{lumsdaine:tlca-journal} for a full presentation of this syntactic approach.)
+
+Concretely, since all contexts of $\globe{0}$ are constructed from $X$ and identity types over it, $\r_\Gamma(x)$ is built by plugging $x$ in for each variable of type $X$ in $\Gamma$, and reflexivity terms for all variables of $\Id$-types.
+
+% goal: get proof finished by the start of the Rondo-Burleske!
+% Goal succeeded!  :-)
 
 \subsection*{} Conclude: contractibility!  Action!  Functors!
 
 \subsection*{} Compare: \cite{garner-van-den-berg}, with tailor-made operad from $A/\C$.
 
 \subsection*{} Add: groupoidality!
+
+
+
+
 
 
 \section{The classifying weak $\omega$-category of a theory}
@@ -212,6 +308,19 @@ $$\xymatrix{ \TT[\delta (n)] \ar@{^{ (}->}[d] \ar[r]^{(\vec S, \vec T)} & \TT[\d
 \globe{n} = \TT[\yon(n)] \ar@{.>}[urr]^R \ar@{->>}[r] & \globe{1} \ar[r] & \TT[\widehat{s_1 \pi} = \widehat{t_1 \pi}]}$$
 
 (TODO: rephrase this to avoid duplicating the diagram, while still keeping the train of thought clear!)
+
+Rephrase \emph{syntactically}: completing the translation is just showing that a certain identity type is inhabited.   This motivates:
+
+\begin{conjecture}In the theories $\TT[\pi]/X_0$, any two closed terms of the same type are propositionally equal.
+\end{conjecture}
+
+If this holds, then the operad $\End_{(\ThId)^\op}(\globes)$ is contractible, and hence $\cl_\omega$ carries a natural weak $\omega$-category structure as desired.  In the following sections, we discuss various approaches to proving this conjecture: by direct syntactic attack on the theories $\TT[\pi]$, or by working more globally, using the structures on $(\ThId)^\op$ discussed in \ref{sec:thid-op}.  [TODO: put discussion of the structures on ${\ThId}^\op$ in later section of this chapter, or in previous chapter?  Big-picture-wise, belongs better there; pragmatically, more motivated here.]  First, however, we pause to discuss a variant of $\cl_\omega$ using $\Pi$-types, which is more easibly seen to be contractible.
+
+\subsection*{Approximation by $\Pi$-types}
+
+Work in $\ThIdPi$.  Define alternate globes using closed terms of $\Pi$-type and of their $\Id$-types (so $\Id_\Pi$ not $\Pi (\Id)$!) instead of open terms.
+
+Show this is \emph{is} contractble: since theories are now just extensions by $\Id$-types, induction works, and (by normalisation) in the base case (i.e.\ theories of 1-dimensional
 
 \subsection*{A NWFS on $\ThId$} Introduce contractible maps; give nwfs by Garner small-object argument!
 

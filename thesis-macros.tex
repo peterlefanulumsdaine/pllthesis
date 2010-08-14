@@ -9,40 +9,6 @@
 
 
 %%%%
-% Theorem-type environments
-%%%%
-
-%% following Cisinski's style, which I found excellent, the theorem-like environments are set up to number _all_ paragraphs [in the conceptual rather than typographic sense] consecutively.  the major advantage of this is making any paragraph referenceable, and hence making the (always rather arbitrary) decision of what to pick out as theorems, definitions, etc. much less consequential and more flexible.
-
-\theoremstyle{plain} 
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{proposition}[thm]{Proposition}
-\newtheorem{lemma}[thm]{Lemma}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem{sch}[thm]{Scholium}
-
-\theoremstyle{definition}
-\makeatletter
-\newtheoremstyle{mydefinition}{}{}{}{}{\bfseries}{.}{5\p@ plus\p@ minus\p@}{}
-\makeatother
-\theoremstyle{mydefinition}
-\newtheorem{definition}[thm]{Definition}
-\newtheorem{para}[thm]{}
-\newtheorem{exercise}[thm]{Exercise}
-
-%\theoremstyle{remark}
-\newtheorem{remark}[thm]{Remark}
-\newtheorem{notation}[thm]{Notations}
-\newtheorem{example}[thm]{Example}
-\newtheorem{examples}[thm]{Examples}
-
-\newtheorem{mydefinition}[thm]{Definition}
-
-% \setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{2}
-
-
-%%%%
 % Binary relations, operators
 %%%%
 
@@ -91,8 +57,9 @@
 % \newcommand{\Pfull}{P_{\ML}}
 \newcommand{\PARA}{\textparagraph}
 \newcommand{\pow}{\mathcal{P}}
-% \newcommand{\p}{\vec p}
+\newcommand{\p}{\vec p}
 \newcommand{\SEC}{\textsection}
+\renewcommand{\r}{\vec r}
 % \renewcommand{\S}{\mathcal{S}}    % Another generic type theory
 \newcommand{\T}{\mathsf{T}}      % A generic type theory
 \newcommand{\TT}{\mathbb{T}}    % A generic type theory, seen as a categorical structure
