@@ -62,8 +62,8 @@ Having tackled a few examples, we can now generalise the tactics involved, givin
 
 For any cwa $\C$, the class of dependent projections is closed under pullbacks, so by \PARA\ref{para:fibspans}, we can form the monoidal globular category $\FibSpans(\C)$; and maps of cwa's preserve dependent projections and pullbacks of them, so we have a functor $\FibSpans : \CwA \to \MonGlobCat$.
 
-A globular object of $\FibSpans(\C)$ is then just a globular object $\Gamma_\bullet :  \G \to \C$ in $\C$, in which all the maps (equivalently, the basic $s_i,t_i$, for all $i$) are dependent projections:
-$$\xymatrix{ \Gamma_0 & \ar@<0.5ex>[l]^s \ar@<-0.5ex>[l]^t \Gamma_1 & \ar@<0.5ex>[l]^s \ar@<-0.5ex>[l]^t \Gamma_2 & \ar@<0.5ex>[l]^s \ar@<-0.5ex>[l]^t \cdots}$$
+A globular object of $\FibSpans(\C)$ is then just a globular object $\Gamma_\bullet :  \G \to \C$ in $\C$, in which all the maps $s,t$ are dependent projections:
+$$\xymatrix{ \Gamma_0 & \ar@<0.5ex>@{->>}[l]^s \ar@<-0.5ex>@{->>}[l]_t \Gamma_1 & \ar@<0.5ex>@{->>}[l]^s \ar@<-0.5ex>@{->>}[l]_t \Gamma_2 & \ar@<0.5ex>@{->>}[l]^s \ar@<-0.5ex>@{->>}[l]_t \cdots}$$
 
 Mention abuses of notation: $\End_\C(\A)$, $\End_\T(\A)$.
 
@@ -85,7 +85,7 @@ So $\End_{\MLId[X]}(\X)$ acts on all other types $A \in p(\Gamma)$, naturally in
 \begin{definition}We will write $\PML$ for the globular operad $\End_{\MLId[X]}(\X)$ of \emph{generically definable composition laws}.
 \end{definition}
 
-\para According to \PARA \ref{para:endo-operad}, a composition law $\p \in \PML(\pi)$ consist of a natural transformation $(S_0,T_0,\ldots T_{n-1},R)$ between pylon diagrams as in Figure \ref{fig:endo-pylons}, where $\Gamma_n$ denotes the context
+\para According to \PARA \ref{para:endo-operad}, a composition law in $\PML(\pi)$ consists of a natural transformation $(S_0,T_0,\ldots T_{n-1},R)$ between pylon diagrams as in Figure \ref{fig:endo-pylons}, where $\Gamma_n$ denotes the context
 $$ \Gamma_n\ :=\ x_0,y_0:X, x_1,y_1: \Id(x_0,y_0), \ldots\ z:\Id(x_{n-1},y_{n-1})$$
 and $\Gamma_{\widehat{\pi}}$ has\ldots [TODO: complete description!]
 
@@ -164,24 +164,36 @@ $X$ is an initial object in $\globe{0}$.
 \begin{proof}
 By the universal property of $\globe{0}$, there is a unique translation $F_{1_X}$ from $\globe{0}$ to the coslice $X/\globe{0}$ sending $X$ to $1_X: X \to X$.  Again by the universal property, the composite $\globe{0} \to X/\globe{0} \to \globe{0}$ is equal to $1_{\globe{0}}$, since it fixes $X$.
 
-Thus the values of $F_{1_X}$ on objects give a natural map $\r_\Gamma := F_{1_X}(\Gamma) : X \to \Gamma$ for every $\Gamma \in \globe{0}$, with $\r_X = 1_X$.  From this, we see that $X$ is an initial object by considering the naturality square
-$$\xymatrix{ X \ar[r]^{\r_X = 1_X} \ar[d]_{1_X} & X \ar[d]^{f} \\
-X \ar[r]^{\r_\Gamma} & \Gamma }$$
+Thus the values of $F_{1_X}$ on objects give for each $\Gamma \in \globe{0}$ a natural map $\r^\Gamma := F_{1_X}(\Gamma) \colon X \to \Gamma$, with $\r^X = 1_X$.  From this, we see that $X$ is an initial object by considering the naturality square
+$$\xymatrix{ X \ar[r]^{\r^X = 1_X} \ar[d]_{1_X} & X \ar[d]^{f} \\
+X \ar[r]^{\r^\Gamma} & \Gamma }$$
 for any map $f \colon X \to \Gamma$.
 \end{proof}
 
-Syntactically, this is inductively constructing for each context $\Gamma$ a ``point'', a context morphism
-$$ x:X \types \r_\Gamma(x) : \Gamma $$
+Syntactically, deducing $F_{1_X}$ from the universal property of $\globe{o}$ corresponds to inductively constructing, for each context $\Gamma$, a context morphism
+$$ x:X \types \r^\Gamma(x) : \Gamma $$
 such that every other context morphism preserves the point:
-$$ \inferrule{\y : \Gamma\ \types\ \f(\y) : \Delta}{x:X\ \types\ \f(\r_\Gamma(x)) = \r_\Delta(x) : \Delta}$$
+$$ \inferrule{\y : \Gamma\ \types\ \f(\y) : \Delta}{x:X\ \types\ \f(\r^\Gamma(x)) = \r^\Delta(x) : \Delta}$$
 (See \cite{lumsdaine:tlca-journal} for a full presentation of this syntactic approach.)
 
-Concretely, since all contexts of $\globe{0}$ are constructed from $X$ and identity types over it, $\r_\Gamma(x)$ is built by plugging $x$ in for each variable of type $X$ in $\Gamma$, and reflexivity terms for all variables of $\Id$-types.
+Concretely, since all contexts of $\globe{0}$ are constructed from $X$ and identity types over it, $\r^\Gamma(x)$ is built by plugging $x$ in for each variable of type $X$ in $\Gamma$, and reflexivity terms for all variables of $\Id$-types.
 
 % goal: get proof finished by the start of the Rondo-Burleske!
 % Goal succeeded!  :-)
 
-\subsection*{} Conclude: contractibility!  Action!  Functors!
+\begin{corollary}The operad $\PML$ is contractible.
+\end{corollary}
+\begin{proof}By \PARA \ref{para:contractibility-as-square}, it suffices to show that for any pasting diagram $\pi$ and map $\Gamma_{\widehat{\pi}} \to \Gamma_{\delta(n)}$, we can complete the diagram to a triangle
+$$\xymatrix{ & \Gamma_{\yon(n)} \ar@{->>}[d] \\
+\Gamma_{\widehat{\pi}} \ar[r] \ar@{.>}[ur] & \Gamma_{\delta(n)} }$$
+
+But by the initiality of $X$, the diagram can always be completed to a square 
+$$\xymatrix{ X \ar[d] \ar[r] & \Gamma_{\yon(n)} \ar@{->>}[d] \\
+\Gamma_{\widehat{\pi}} \ar[r] \ar@{.>}[ur] & \Gamma_{\delta(n)} }$$
+and since $\r^{\Gamma_{\widehat{\pi}}}$ is an $I$-map, we can find a diagonal filler for this square, completing the original triangle as desired.
+\end{proof}
+
+Interpreted syntactically, this is precisely the process described in \PARA \ref{para:PML-outline}.  The ``problem'' we are given, lifting a map into $\Gamma_{\delta(n)}$ to one into $\Gamma_{\yon(n)}$, is just the problem of deriving a term $\y : \Gamma_{\widehat{\pi}}\ \types\ ? : \Id(S_{n-1}(\y),T_{n-1}(\y))$.  The fact that $\r^{\Gamma_{\widehat{\pi}}}$ is an $I$-map tells us that (by repeated application of $\Id$-$\elim$ and structural isomorphisms) it suffices to derive the term in the case where $\r^{\Gamma_{\widehat{\pi}}}(x)$ has been substituted for $\y$.  Finally, the initiality of $X$ ensures that after this substitution, (the last component of) the context morphism $\r^{\Gamma_{\yon(n)}}$ fits the bill---specifically, $S_{n-1}$ and $T_{n-1}$ must compute down to be definitionally equal, and so we can use a reflexivity term.
 
 \subsection*{} Compare: \cite{garner-van-den-berg}, with tailor-made operad from $A/\C$.
 
@@ -220,7 +232,7 @@ $$\quad \xymatrix{ \GSets \ar@/_/[rrr]_{\TT [-]\, :=\, \Lan_\yon \globes \qquad 
 $$
 
 % spent fucking hours trying to get P-Alg into this diagram too,
-% eventually gave up...
+% while staying good and readable; eventually gave up...
 
 \para So, by \ref{para:homming-out-of-algebras}, to put a natural $P$-algebra structure on $\cl^-_\omega$ is equivalent to putting a co-$P$-algebra structure on $\globes$.  In particular, its coendomorphism operad $\End_{(\ThId)^\op}(\globes)$ acts naturally on $\cl^-\omega$; in other words, we can lift if to a functor into $\End_{(\ThId)^\op}(\globes)$:
 $$\xymatrix{ & & \Alg{\left[\End_{(\ThId)^\op}\globes \right]} \ar[d]^U \\ \ThId \ar[urr]^{\cl^-\omega} \ar[rr]^{\ThId(\globes,-)} & & \GSets }$$
@@ -318,9 +330,13 @@ If this holds, then the operad $\End_{(\ThId)^\op}(\globes)$ is contractible, an
 
 \subsection*{Approximation by $\Pi$-types}
 
+\para
 Work in $\ThIdPi$.  Define alternate globes using closed terms of $\Pi$-type and of their $\Id$-types (so $\Id_\Pi$ not $\Pi (\Id)$!) instead of open terms.
 
 Show this is \emph{is} contractble: since theories are now just extensions by $\Id$-types, induction works, and (by normalisation) in the base case (i.e.\ theories of 1-dimensional
+
+
+
 
 \subsection*{A NWFS on $\ThId$} Introduce contractible maps; give nwfs by Garner small-object argument!
 

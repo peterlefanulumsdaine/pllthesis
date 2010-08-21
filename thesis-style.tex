@@ -4,21 +4,37 @@
 
 %% following Cisinski's style, which I found excellent, the theorem-like environments are set up to number _all_ paragraphs [in the conceptual rather than typographic sense] consecutively.  the major advantage of this is making any paragraph referenceable, and hence making the (always rather arbitrary) decision of what to pick out as theorems, definitions, etc. much less consequential and more flexible.
 
-\theoremstyle{plain} 
+
 \makeatletter
+
 \newtheoremstyle{mytheorem}{}{}{\itshape}{}{\bfseries}{.}{5\p@ plus\p@ minus\p@}{}
+
+\newtheoremstyle{mydefinition}{}{}{}{}{\bfseries}{.}{5\p@ plus\p@ minus\p@}{}
+
+%% proof environment taken almost verbatim from amsthm.sty, to remove the small caps and indentation that are used in amsbook.cls
+\renewenvironment{proof}[1][Proof]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+
 \makeatother
+
+
+
+\theoremstyle{mytheorem} 
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{proposition}[thm]{Proposition}
 \newtheorem{lemma}[thm]{Lemma}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem{sch}[thm]{Scholium}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{scholium}[thm]{Scholium}
 \newtheorem{conjecture}[thm]{Conjecture}
 
-\theoremstyle{definition}
-\makeatletter
-\newtheoremstyle{mydefinition}{}{}{}{}{\bfseries}{.}{5\p@ plus\p@ minus\p@}{}
-\makeatother
 \theoremstyle{mydefinition}
 \newtheorem{definition}[thm]{Definition}
 \newtheorem{para}[thm]{}
@@ -31,6 +47,7 @@
 \newtheorem{examples}[thm]{Examples}
 
 \newtheorem{mydefinition}[thm]{Definition}
+
 
 % \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{2}
