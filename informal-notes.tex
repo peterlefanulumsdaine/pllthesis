@@ -1,0 +1,355 @@
+\documentclass{amsart}
+
+\usepackage{ifpdf}
+\usepackage{mathpartir}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage[all]{xypic}
+\xyoption{2cell}
+\xyoption{rotate}
+%\xyoption{curve}
+\UseTwocells
+\input{diagxy}
+
+% \usepackage{makeindex}
+
+\include{thesis-style}
+\include{thesis-macros}
+
+\newcommand{\arr}{\mathrm{arr}}
+\newcommand{\tr}{\mathrm{tree}}
+\newcommand{\stuff}{{(\cdots)}}
+% \makeindex
+
+%%
+%% PDFJUNK
+%% Can add /CreationDate, /Creator, /Subject, /Keywords
+%%
+\ifpdf
+\pdfinfo{
+  /Author (Peter LeFanu Lumsdaine) 
+  /Title (TODO: put thesis title here when decided!)
+}
+\fi
+%%
+%% BEGIN DOCUMENT:
+%\onehalfspacing
+\begin{document}
+
+
+
+%% TITLE INFORMATION
+
+\title{The classifying wea $\omega$-category of a type theory (informal draft)}
+
+\author[P. LeF. Lumsdaine]{Peter LeFanu Lumsdaine}
+
+\maketitle
+\tableofcontents
+
+\section{General notes on the notes}
+
+\section{Endomorphism operads; categories with fibrations} \label{sec:endo-operads}
+
+\subsection{Background}
+
+Recall from \cite{batanin:natural-environment} Globular monoidal categories; operads.
+
+\subsection{Endomorphism operads, with right maps\ldots}
+
+\begin{definition} If $\C$ is a category with\ldots what?  ``a class of fibrations'' seems simplest, but in writing that down and refining the definition to be as principled as possible here, I just end up continuously deforming it into something much closer to a category with families.  Well\ldots let's go for the simplest and worry about making it more principled later.  Basically, the principled version should emphasise that being a fibration is extra structure, not a property\ldots or might not even be a structure: $\F$ needn't be an isofibration over $\C^\arr$.
+
+Suppose $\C$ is a \emph{category with right maps}, i.e.\ with a distinguished replete(?) class $\R$ of maps (\emph{right maps}\footnote{named by analogy with Right Whales} or \emph{fibrations}), closed under pullback (i.e.\ chosen(?) pullbacks of right maps along all maps exist and are again right maps) and composition and containing identities.  Then we can define a monoidal globular category $\FibSpans_\R(\C)$ (or just $\FibSpans(\C)$, when $\R$ is clear from context) as follows: \ldots
+
+A \emph{class of left maps} is of course a class of maps satisfying the dual axioms: closed under composition and identities and all pushouts. 
+\end{definition}
+
+A globular object in $\FibSpans(\C)$ is then just a globular object in $\C$, all of whose source and target maps are fibrations.
+
+Given such a globular object $\X$, its ``diagram objects'' $X^\pi$ in $\FibSpans$ are computed by $X^\pi = \lim_{c \in \widehat{\pi}_n} X_n$.  (So if $\C$ has enough limits that the pointwise right Kan extension $\Ran_{\yon}(\X) : \GSets^\op \to \C$ exists, then these objects can be computed by it: $X^\pi = \Ran_{\yon}(\X)(\pi)$.)
+
+So elements of the endomorphism operad consist in \emph{pylon diagrams} as follows: [diagram].
+
+\begin{example}
+If $\C$ is any category with all pullbacks, then by taking the right maps to be all maps, we have the case $\FibSpans(\C) = \Spans(\C)$, as constructed in \cite{batanin:natural-environment}.
+\end{example}
+
+\begin{example}
+The classifying category $\cl(\T)$ of a type theory, with the right maps as dependent projections.  This is of course our fundamental application!
+\end{example}
+
+\begin{example}
+$\Top^\op$, with relative cell complexes.  Better, think of these as left maps in $\Top$; and think of $\CofCosps(\Top) := \FibSpans(\Top^\op)$.
+\end{example}
+
+\subsection{\ldots and with left and right maps}
+
+(Adapted from Richard and Benno's analysis in \cite{garner-van-dan-berg}.)
+
+\begin{definition}A \emph{category with left and right maps} is a category $\C$, with a class $\R$ of right maps as above, and a class $\L$ of left maps, closed under pushout and composition and identities and weakly orthogonal to the right maps.  (Note: no factorisations asked for!) 
+
+(Again, should make this more principled/algebraic: not classes of maps, but extra (co-)structure on maps, etc.)
+\end{definition}
+
+\begin{example} \cite{ex:left-maps-from-right} From any category with right maps, can take the left maps to be all maps weakly orthogonal to the right maps.  (Or, more algebraically: maps equipped with a choice of filler for every suitable square.  Or, more coherently: equipped with \emph{coherent} such choices, equivalently with a filler for every \emph{triangle}, from which coherent choices are then determined via pullbacks.  Or, most relevantly at all: this, but starting just with triangles from a given \emph{generating set} or $\R$-maps.) [currently very cryptic, flesh it out!]
+\end{example}
+
+\begin{example}$\Top$, with relative cell complexes as left maps, and fibrations as right maps.
+\end{example}
+
+\begin{definition}For any other class of maps $\K$, a \emph{$\K$-absolute left (resp.\ right) map} in such a category is a map whose every pullback (pushout) along a $\K$-map is a left (right) map.  (NB: when $\K$ contains identities (it always will) this includes, of course, the map itself.)  When $\K$ is unspecified, ``absolute left map'' will generally mean $\R$-absolute, and vice-versa.
+
+(Algebraically: \ldots with a chosen left- (right-)map structure on its every pullback (pushout)\ldots)  
+\end{definition}
+
+\begin{example}In a classifying category $\cl(\T)$, with left maps determined by right maps as described above, the elim- and comp-rules give a left-map structure on the intro context morphism for any single-intro-rule constructor; this left map is absolute if the elim-rule is given with a Frobenius condition.
+\end{example}
+
+Now, work in a category $\C$ with left and right maps.  Suppose $\X$ is a globular object in $\FibSpans$, i.e.\ a globular object in $\C$; and suppose $\X$ extends to a \emph{reflexive} globular object, whose reflexivity maps $r$ are all absolute left maps.
+
+Then a whole bunch of maps between the objects $X^\pi$ are also left maps!  \ldots which ones??  Well\ldots any that realise maps of reflexive globular sets that can be built as composites of pushouts of $r$'s along composites of $s$'s and $t$'s.  In particular, any map $X^\rho \to X^\pi$ induced by an injection of Batanin trees $\tr(\pi) \to \tr(\rho)$ is a left map.
+
+(This is very cryptic!  Give examples of what this means.)
+
+\begin{example}
+In $\cl(\T)$, for a theory with identity types, the tower of identity types is a globular object of this sort.  From this it is a short step (see \cite{lumsdaine:tlca-journal}, \cite{garner-van-den-berg}, and \ref{subsec:endo-contractible} below) to constructing the fundamental weak $\omega$-groupoid of a type.
+\end{example}
+
+(Note: $\Top$ doesn't seem to quite give an example of this setup$\ldots$ at least, I can't see what classes of left/right maps make the reflexivity maps \emph{absolute} right-maps.  e.g.\ They're absolute w.e.'s since they have triv-cof sections, but they're not absolute fibrations; the particular pushouts involved do end up still giving fibrations, but I can't see an abstract explanation for why.)
+
+We can spin further variations on this principle.  In particular:
+
+\begin{proposition}
+Suppose $\C$ has left and right maps $\L \pitchfork \R$, and another class of left maps $\L' \supseteq \L$.  Suppose $\X$ is a globular object in $\CofCosps_{\L'}(\C)$, with reflexivity sections in dimension $\geq 1$ that are $\L'$-absolute $\R$-maps.  Then for any injection of Batanin trees $\tr(\pi) \to \tr(\rho)$ that is the identity in dimension $\leq 1$, the induced $X^\rho \to X^\pi$ is an $\R$-map.
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+\section{Type theories and categories with families}
+
+\subsection{Setting: a category of dependent algebraic type theories}
+
+\begin{definition}A \emph{category with families}: $\C$, $\Ty$, comprehension$\ldots$  Variations: with $\diamond$; with $1$, with nothing, accessible, contextual.
+\end{definition}
+
+\begin{proposition}[\cite{hofmann:syntax-and-semantics}, \cite{pitts:categorical-logic}] \label{prop:cwf-equivalence} Equivalence: small contextual CwF's are \emph{equivalent} to type theories presented by a small set of purely algebraic axioms (i.e.\ dependent terms and types, and equality axioms between them), via adjunction.  Hence: universal property of CwF's presented by axioms (need this precisely stated to allow us to use normalisation results below).
+\end{proposition}
+
+This equivalence justifies working with \emph{presentation-agnostic} category of type theories $\Th$: we will construct and work with objects of $\Th$ (\emph{theories}) sometimes as syntactic presentations, sometimes as categories with families.  Given any construction either on syntactically presented theories or on contextual CwF's, we'll extend it without comment to $\Th$, and so forth.
+
+\begin{definition}Given a CwF, define $\Cxt : \C^\op \to \Sets$, ``dependent contexts''.  We'll use this throughout.
+
+Also define, for $A \in \Ty(\Gamma)$, a \emph{term of type $A$}: a section $a : \Gamma \to \Gamma.A$ of the dependent projection $\Gamma.A \to \Gamma$.
+\end{definition}
+
+This also extends to two interesting constructions:
+
+Firstly, a monad on $\CwF$ over $\Cat$, sending $(\C,\Ty)$ to $(\C,\Cxt)$.  This can be seen as the monad for ``very strong, strictly associative $\Sigma$-types''.  This'll be useful to us crucially but briefly, in Corollary \ref{cor:types-to-contexts} at the very end (we'll need to know that it lifts to act on $\Id$-types too; see next section).
+
+Secondly, a comonad on $\CwF_\diamond$, sending $\C$ to $\Cxt(\diamond)$, with a fairly evident induced families structure.  This is an idempotent comonad; indeed, its fixed-points are precisely the contextual categories, so it exhibits these as a coreflective subcategory of $\CwF_\diamond$.
+
+Slicing!  Write + state the universal property of slices $\C//A$ carefully\ldots but wait for now, and see what precise statement we need to use later.
+
+\subsection{Constructors}
+
+Of course, we want categories not just of \emph{algebraic} dependent type theories, but of type theories with \emph{constructors}; in particular, $\Id$- and $\Pi$-types.  These too can be succinctly and profitably defined in terms of CwF's.  In particular:
+
+\begin{definition} An \emph{elim-structure} $J$ on a map $i : \Gamma \to \Theta$ is a function assigning, to every type $C \in \Ty(\Theta)$ and every term $d : \Gamma \to \Gamma.i^*C$ of type $i^*C$ (equivelently, every map $\hat{d} : \Gamma \to \Theta.C$ over $\Theta$) a term $J_{C,d} : \Theta \to \Theta.C$ of type $C$
+
+An \emph{absolute (Frobenius?) elim-structure} on $i : \Gamma \to \Theta$ is an elim-structure $J_\Delta$ on $i.\Delta$ for each $\Delta \in \Cxt(\Theta)$.
+\end{definition}
+
+(Compare the last refinement described in Example \ref{ex:left-maps-from-right} above, with the basic dependent projections $\Theta.A \to \Theta$ as the generating $\R$-maps (see next subsection).)
+
+This axiomatises the structure provided by the elimination/computation rules for an inductive type with just a single introduction form $i$.  (It can be nicely generalised to deal with multiple introduction forms, but we will not need that.) In particular:
+
+\begin{definition}
+A \emph{CwF with $\Id$-types} is a CwF $\C$, together with:
+\begin{itemize}
+\item for each context $\Gamma \in \C$ and type $A \in \Ty(\Gamma)$, a type $\Id_A \in \Ty(\Gamma.A.A)$, and a morphism $r_A : \Gamma.A \to \Gamma.A.A.\Id_A$ over $\Delta_A : \Gamma.A \to \Gamma.A.A$ with an absolute elim-structure $J_A$,
+\item all stable in $\Gamma$, in that for $f:\Gamma' \to \Gamma$ and $A \in \Ty(\Gamma)$, we have $(f.A.A)^*\Id_A = \Id_{f^*A} \in \Ty(\Gamma'.f^*A.f^*A)$, and so on.
+\end{itemize}
+\end{definition}
+
+Write $\CwF^\Id$, $\CwF_\diamond^\Id$, etc.\ for the various categories of CwF's with $\Id$-types.  
+
+\begin{proposition}[\cite{hofmann:syntax-and-semantics}, \cite{pitts:categorical-logic}] This structure really does correspond precisely to the $\Id$-type rules: the equivalence of Proposition \ref{prop:cwf-equivalence} lifts to an equivalence between $\CwF^\Id_\cxl$ and a category of syntactically presented theories with $\Id$-type rules plus algebraic axioms. 
+\end{proposition}
+
+Note that given $\Id$-types on a CwF $(\C,\Ty)$, we can extend this to give $\Id$-types on $(\C,\Cxt)$: see the ``identity contexts'' of \cite{streicher:habilitationsthesis} or \cite{garner-gambino}.  However, the monad this underlaid on $\CwF$ does \emph{not} lift to a monad on $\CwF^\Id$: the multiplication functor turns out not to preserve $\Id$-contexts strictly.  (This could presumably be accommodated by developing a theory of pseudo-maps of $\CwF^\Id$'s.)
+
+Also: define $\Pi$-types, $\eta$-rules, and extensional equality on them. 
+
+\subsection{Left and right maps in a CwF} \label{subsec:left-right-in-cwf}
+The above presentation of $\Id$-types via elim-structures is based on ideas of Gambino and Garner (\cite{gambino-garner}) which will be very useful to us: that any CwF has an important class of left and right maps, which in the presence of $\Id$-types is moreover a wfs.
+
+The right maps are just (maps isomorphic to) (compositions of basic) dependent projections.  The left maps are maps admitting an (or algebraically: with a chosen) elim-structure; following observations above, this gives exactly $\L = {}^\pitchfork \R$.  
+
+(\cite{gambino-garner} moreover gives a direct type-theoretic characterisation of $\R$-maps, and uses $\Id$-types to construct $\L,\R$ factorisations, but we will not need these.)
+
+\subsection{Miscellaneous facts}
+
+Normalisation result: syntactically presented theories in $\CwF$ or $\CwF^\Id$ presented just by terms (no extra equality axioms) are strongly normalising.  (Add remark maybe about how theories admitting such a presentation should be something like the projective or cofibrant ones?)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{The type-theoretic globes, J-bar, and the classifying whosemithingummy of a whatchamecallit}
+
+In this section, we'll construct classifying weak $\omega$-categories for theories with $\Id$-types and $\Pi$-types (with $\eta$-rules and functional extensionality), and discuss how it might be possible to extend this to require only the $\Id$-types.
+
+The construction of the classifying weak $\omega$-category of a theory is closely analogous to that of the fundamental weak $\omega$-groupoid of a space: it is obtained by homming out of a complex of representing objects (``globes''), and so it is enough to show that these representing objects form a co-(weak $\omega$-category), just as the topological globes ($D^0$, $D^1$, $D^2$) [diagram!] do in $\Top$.
+
+To this end, we set up various classes of left and right maps on $\CwF^{\stuff}_\diamond$, and
+then apply the machinery of Section \ref{sec:endo-operads} to show that the endomorphism operad of the globes is contractible.
+
+Among this, only one step (showing that certain maps are absolute right maps) seems to require the $\Pi$-types for its proof.  In particular, we isolate and conjecture a certain type-theoretical principle, $\Jbar$, which would suffice for the proof of this step, and which seems to be of independent interest.  In particular, we discuss equivalent natural statements of $\Jbar$ from several rather different points of view: as a conservativity statement for certain theory extensions; as a second-order form of the $\Id$-elim rule; and as a form of observational equality for $\Pi$-types. 
+
+
+\subsection{Left and right maps on $\CwF_\diamond$, etc.}
+
+For the remainder of this section, fix some collection $\stuff$ of the constructors and rules of Subsetcion \ref{subsec:construtors}, and work in $\CwF^\stuff_\cxl$ / $\CwF^\stuff_\diamond$.  (The cases we will use are where $\stuff$ to be $(\Id)$, $(\Id,\Pi,\eta)$, or $(\Id,\Pi,\eta,\ext)$.)
+
+For $n \geq 0$, let $\T_n = \T[A_1,\ldots,A_n]$ be the free theory on a context of length $n$; that is, presented by axioms [AXIOMATISE!].  Similarly, let $\T^+_n := \T[A_1,\ldots,A_n, a]$ be $\T_n$ extended by a term-former $\x: A_1 \ldots A_{n-1}\ \types\ a(\x) : A_n$.
+
+[Hang on.  Should $A_1$ start off closed, or over an arbitrary object $\Gamma$?  The latter, actually.  CORRECT THIS!]
+
+\begin{definition}
+The \emph{$n$th universal term extension} is the inclusion map $\T_n \to \T^+_n$.  A \emph{basic term extension} is a pushout (in $\CwF^\stuff_\diamond$) of any universal term extension.  A \emph{term extension} is a composite of basic term extensions; write $\L_\ty$ for the class of term extensions.
+\end{definition}
+
+So in syntactic terms, a basic term extension is just (up to isomorphism) any extension of a theory $\T$ by an axiom $\x: A_1 \ldots A_{n-1}(\x^{< n-1})\ \types\ a(\x) : A_n(\x)$, where the $A_i$ are existing types of the theory.
+
+\begin{definition}
+The \emph{$n$th universal type extension} is the inclusion map $\T_{n-1} \to \T_n$.  A \emph{basic term extension} is a pushout of any universal term extension.  A \emph{term extension} is a composite of basic term extensions.  A \emph{term-and-type extension} is a composite of basic term and/or type extensions.  Write $\L_{\tm}$, $\L_{\tm\ty}$ for the classes of type, term-and-type etensions respectively.
+\end{definition}
+
+The classes of term, type, and term-and-type extensions are all closed under composition, identities, and pushouts, so form classes of left maps in the sense of Section \ref{sec:endo-operads} above.
+
+\begin{definition}A \emph{term-} (resp.\ \emph{type-}, \emph{term-and-type-})\emph{contraction} on a map $F \colon \C \to \D$ is an operation assigning a filler to every square [diagram!] with left-hand-side a universal type (term, term-and-type) extension.  A map admits such fillers if and only if it is weakly orthognal to all type (term, term-and-type) extensions, in which case it is called \emph{type-} (\emph{term-}, \emph{term-and-type-})\emph{contractible}.  Write $\R_\tm$, $\R_\ty$, $R_{\tm\ty}$ for the classes of contractible maps.
+\end{defintion}
+
+Contractibility is familiar in type-theoretic terms as a form of conservativity.  Type-contractibility, for instance, states that whenever we have a type $\Gamma\ \types_\T\ A\ \type$ of $\T$ whose interpretation in $\S$ is inhabited by some term $F(\Gamma)\ \types_\S\ a:F(A)$, it is already inhabited in $\T$ by some term $\Gamma\ \types_\T\ \overline{a}:A$, for which moreover we can prove $F(\Gamma)\ \types_\S\ F(\overline{a}) = a : F(A)$ in $\S$.  Type-contractibility asserts the same sort of conservativity for types derivable in $\S$ over a context from $\T$.  (Compare for instance \cite{??} [conservativity of logical frameworks], also discussed in \cite[??]{hofmann:syntax-and-semantics}.)
+
+Note that while neither form of contractibility directly provides any kind of lifting for definitional equality judgements, in the presence of identity types one can obtain weak forms of such liftings just from term-contractibility.  If for instance $\Gamma\ \types_\T\ a,a': A$ and $F(\Gamma)\ \types_\S\ F(a) = F(a'):F(A)$, then term-contractibility lets us lift $r(a)$ to some term $\Gamma\ \types_\T\ \overline{r(a)} : \Id_A(a,a')$.  Essentially, definitional equality for terms implies propositional equality, and for types, isomorphism-up-to-prop.-eq.; and since these are matters of term-judgements, they can be lifted along a term-contractible map. 
+
+Since te classes of contractible maps are defined by an orthogonality condition, they are easily seen to be closed under retracts, by the standard argument (see eg \cite[where?]{hovey}).  (Is this too obvious to need citation, or not for non-homotopy-theorists?)
+
+\begin{example} \label{exple:elim-gives-contraction}
+Suppose $f : \Gamma \to \Delta$ is a map in $\C$ with a Frobenius elim-structure; for instance, the reflexivity map $r_A \colon \Gamma.A \to \Gamma.A.A.\Id_A$, if our constructors include $\Id$-types.  Then the induced map of slices $f^* \colon \C/\!/\Delta \to \C/\!/\Gamma$ is term-contractible.  Indeed, for any $f : \Gamma \to \Delta$, Frobenius elim-structures on $f$ correspond precisely to term-contractions on $f^*$.
+\end{example}
+
+\begin{example}
+As remarked above, if $\T$ is any theory and $\T^\mathrm{LF}$ is its presentation in a logical framework, then according to \cite{??}, the interpretation of $\T$ in $\T^\mathrm{LF}$ is type-contractible. 
+\end{example}
+
+\subsection{The principle $\Jbar$}
+
+The principle $\Jbar$ asserts, like many other interesting type-theoretic statements [hmm, can't think of any others right now, but I'm sure there are several\ldots find some, on a less tired day!], that something which is derivable for closed terms is moreover, under nice circumstances, admissible also for open terms.
+
+\begin{definition}Given a collection $\stuff$ of constructors, let $\T[k]$ be as above (at least, when above is corrected!  currently $\T_n^+$), and let $\T[k_0,k_1,l]$ be the theory given by (axiomatised)!  There is a natural map $r: \T[k_0,k_1,l] \to \T[k]$, interpreting each $k_i$ as $k$, and $l$ as $r(k)$.
+
+We say \emph{\Jbar holds for \stuff} if $r$ is an absolutely term-contractible map.  (Actually, for present purposes, $\L_\tm\ty$-absolutely would be quite enough.)
+\end{definition}
+
+So what does this state, in fact?  A pushout of $r$ [diagram] is of the form [BIG NOTATION ISSUE!  $\T$, $\T_0$ \ldots] $\C[k_0,k_1,l] \to \C[k]$, where $\C$ is an arbitrary theory with a chosen context $\Gamma$ and type $A \in \Ty(\Gamma)$, and $\C[k_0,k_1,l]$, $\C[k]$ are the evident extensions by terms of type $K$ and $\Id_K$ in context $\Gamma$.
+
+In the case where $\Gamma = \diamond$, this is just extension by closed terms---equivalently, by variables---so by (EXPLAIN MORE CLEARLY!) Example \ref{exple:elim-gives-contraction}, the elimination rules for $\Id$-types exactly tell us that this map is contractible.  (Unwinding what contractiblity asks for here, and so seeing concretely how it follows from $\Id$-elim, is an excellent exercise.)
+
+$\Jbar$ asserts that the same is the case for extension by open terms.  This seems a very natural and desirable property\ldots (elaborate, with examples!)
+
+\begin{proposition} \label{prop:jbar-holds}
+$\Jbar$ holds for $(\Id,\Pi,\ext)$, and any set of constructors extending this.
+\end{proposition}
+
+\begin{proof}
+The diagram
+$$\xymatrix{\T[k(\x):K(\x)] \ar[d] \ar@/_/[r] & \ar@/_/[l] \T[\hat{k}:\Pi_{\x} K(\x) \ar[d] \\ 
+\T[k_0(\x),k_1(\x):K(\x),\ l(\x):\Id(k_0(\x),k_1(\x))] \ar@/_/[r] & \ar@/_/[l] \T[\hat{k}_0,\hat{k}_1 : \Pi_{\x} K(\x),\ \hat{l}:\Id(\hat{k}_0,\hat{k}_1)]}$$
+exhibits its left-hand side (the map we wish to show contractible) as a retract of its right-hand side.  (The fact that the squares commutes and are a retraction requires the ``ext'' axiom to satisfy some reasonable computation rule.)  But the right-hand side is just the closed case of \Jbar, which we've seen is contractible.
+\end{proof}
+
+\begin{proposition} \label{prop:jbar-fails}
+$\Jbar$ fails for $(\Id,\Pi,\eta)$ and $(\Id,\Pi)$. 
+\end{proposition}
+
+\begin{proof}
+Any failure of ``ext'' gives a failure of \Jbar.
+\end{proof}
+
+\begin{conjecture}
+$\Jbar$ holds for $(\Id)$.
+\end{conjecture}
+
+Proposition \ref{prop:jbar-fails} shows that it's not stable under extensions of the constructor sets, so can't hold for $(\Id)$ in such a robust, algebraic way as it goes for $(\Id,\Pi,\ext)$.
+
+Maybe mention the analogous ``\overline{K}'' principle, and how it fails when UIP does?
+
+Waffle a bit about how to look at $\Jbar$, why even \footnote{(non-homotopically-inclined)}type theorists should care, etc\ldots
+
+\subsection{The type-theoretic globes, and the classifying weak $\omega$-category of a type theory}
+
+Once again, fix some set $\stuff$ of rules/constructors for this section, including at least the $\Id$-rules.
+
+The \emph{type-theoretic globes} are the sequence of theories \ldots\ They form a coglobular object in $\Th^\stuff$.  It has evident reflexivity maps in all dimensions.
+
+These globes represent the classifying weak $\omega$-category.  TODO: describe the Kan adjunction: realisations of globular sets\ldots
+
+\begin{proposition}If $\Jbar$ and the normalisation results of Proposition \ref{prop:normalisation} hold for $\stuff$, then the coendomorphism operad of the globes is contractible.
+\end{proposition}
+
+\begin{proof}By $\Jbar$, the reflexivity maps in dimension $\geq 1$ are absolutely term-contractible.  By \ref{prop:endo-operad}, certain maps between realisations of pasting diagrams are term-contractible.
+
+Contractibility of the operad asks for completing certain triangles.  Term-contractibility of the ``certain maps'' reduces this to completing certain squares.  The normalisation results above ensure that we can do this.  
+\end{proof}
+
+\begin{corollary}If $\Jbar$ and the normalisation results old for $\stuff$, then classifying weak $\omega$-category functor exists!
+\end{corollary}
+
+\subsection{A variant for non-extensional $\Pi$-types}
+
+As noted above, \Jbar (and hence this proof) fail in the category of theories with non-extensional $\Pi$-types.  Altering the globes a little lets us make things work there, so givs a little more generality for the classifying weak $\omega$-category.  On the other hand, this generality would come \emph{better} via our conjecture of \Jbar for $(\Id)$\ldots
+
+\subsection{CwF structures on $\CwF_\diamond^\op$ etc.}
+
+An alternate perspective on $\Jbar$, shows that it can be seen not just as analogous to the $\Id$-elim rule, but actually as instance of it for a certain families-structure:
+
+There are various important CwF-structures on categories of CwF's. In particular: there is a canonical CwF structure on $\CwF_\diamond^\op$, given by $\Ty^\mathrm{canon}_{\CwF_\diamond^\op}(\C) := \Ty_\C(\diamond)$, and $\C.A := \C/\!/A$.  The universal properties of slices (Proposition \ref{prop:slicing}), with general facts about free constructions, ensure that the requisite squares [diagram] are pullbacks.  (This is in some sense a universal CwF: certainly every small CwF may be obtained by pullback from it, a more precise statement can probably be formulated.)
+
+This extends to a canonical CwF-structure with $\Id$-types on $(\CwF^\Id_\diamond)^\op$, a CwF-structure with $\Id$- and $\Pi$-types with $\eta$-rule on $(\CwF^{\Id,\Pi,\eta}_\diamond)^\op$, and so on.
+
+However, we can bump up these structures a little further, to include certain ``formal $\Pi$-types'' (independently of what $\Pi$-types may already be present in the theories).  That is, we define $\Ty^\mathrm{canon + $\Pi$}(\C) := \sum_{\Gamma \in \C} \Ty_\C(\Gamma)$; so a type over $\C$, in this families structure, is a type $A$ in some context $\Gamma$ of $\C$, to be thought of as the formal dependent product $\prod_\Gamma A$.
+
+Context extension is by adjoining \emph{open} terms.
+
+\Jbar asserts that \emph{open} $\Id$-types in contexts are indeed $\Id$-types in this families structure.  (But danger, Will Robinson, danger: \Jbar doesn't assert, and afaics doesn't imply, the stability/coherence conditions required for ``this families structure has $\Id$-types''.)
+
+%% Bibliography Info
+
+\bibliographystyle{amsalpha}
+\bibliography{pll-thesis-bib}
+
+
+
+\end{document}
