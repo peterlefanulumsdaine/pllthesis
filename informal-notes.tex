@@ -18,6 +18,10 @@
 \include{thesis-macros}
 
 \newcommand{\arr}{\mathrm{arr}}
+\newcommand{\ty}{\mathrm{ty}}
+\newcommand{\tm}{\mathrm{tm}}
+\newcommand{\ext}{\mathrm{ext}}
+\newcommand{\Jbar}{\overline{J}}
 \newcommand{\tr}{\mathrm{tree}}
 \newcommand{\stuff}{{(\cdots)}}
 % \makeindex
@@ -50,20 +54,107 @@
 
 \section{General notes on the notes}
 
+Note on notation: all fibrations of categories are assumed cloven, but considered just as fibrations ($\Fib$), maps between them need not preserve the cleavings, whereas maps of cloven fibrations ($\ClovFib$) do.
+
 \section{Endomorphism operads; categories with fibrations} \label{sec:endo-operads}
 
 \subsection{Background}
 
-Recall from \cite{batanin:natural-environment} Globular monoidal categories; operads.
+To open: Quickly recall (as in prev paper) strict $\omega$-categories.
 
-\subsection{Endomorphism operads, with right maps\ldots}
+To do here: Recall from \cite{batanin:natural-environment} Globular monoidal categories; operads.
 
-\begin{definition} If $\C$ is a category with\ldots what?  ``a class of fibrations'' seems simplest, but in writing that down and refining the definition to be as principled as possible here, I just end up continuously deforming it into something much closer to a category with families.  Well\ldots let's go for the simplest and worry about making it more principled later.  Basically, the principled version should emphasise that being a fibration is extra structure, not a property\ldots or might not even be a structure: $\F$ needn't be an isofibration over $\C^\arr$.
+In moving to the weak case, we wish to formalise the idea that our laws may hold only up to homotopy: there may be not just one way of composing a given pasting diagram, there may be several, although they will all be equal up to cells of the next dimension.
 
-Suppose $\C$ is a \emph{category with right maps}, i.e.\ with a distinguished replete(?) class $\R$ of maps (\emph{right maps}\footnote{named by analogy with Right Whales} or \emph{fibrations}), closed under pullback (i.e.\ chosen(?) pullbacks of right maps along all maps exist and are again right maps) and composition and containing identities.  Then we can define a monoidal globular category $\FibSpans_\R(\C)$ (or just $\FibSpans(\C)$, when $\R$ is clear from context) as follows: \ldots
+This is formalised in the notion of a \emph{contractible globular operad}.  There are several equivalent presentations of this idea, as given in e.g. \cite{batanin:natural-environment}, \cite{leinster:book}, and \cite{weber:operads-within}.
 
-A \emph{class of left maps} is of course a class of maps satisfying the dual axioms: closed under composition and identities and all pushouts. 
+The presentation of Leinster (\cite{leinster:book}) (which I used in \cite{lumsdaine:tlca}), via cartesian monads and generalised multicategories, is perhaps the most accessible approach, but is less general than the others.  Some constructions may be extremely elegantly presented in this setting, but others become rather difficult.
+
+The original presentation of Batanin (\cite{batanin:natural-environment}), via monoidal globular categories in general and $\Spans$ in particular, is more elementary, but with this approach it can be difficult sometimes to see the wood for the trees; constructions in this setting are typically long but comparatively straightforward to verify.  
+
+The presentation of Weber (in e.g. \cite{weber:operads-within}), via \emph{monoidal pseudo-algebras} is, essentially, an abstraction of Batanin's approach, on the one hand allowing more generality, and on the other hand giving a clearer picture of how the various elements of Batanin's definition relate and fit together; \cite{weber:operads-within} also explicates the connection with Leinster's presentation.
+
+Here, we will use mostly the Batanin monoidal globular categories presentation, with occasional hints at the bigger picture of general monoidal pseudo-algebras, and a brief discussion of the connections with the use of Leinster's presentation in \cite{lumsdaine:tlca}.
+
+The setting for each of these approaches is the 2-category $[\G^\op,\Cat]$ of \emph{globular categories}, or equivalently, of \emph{internal categories in globular sets}: $\intCat[[\G^\op,\Sets]]$.  From the latter description, we see that the strict $\omega$-category monad $T_\str$ on $[\G^\op,\Sets]$, being cartesian, gives a 2-monad $\Tcal_\str := \intCat[T_\str]$ on globular categories.
+
+\begin{definition}[Weber, \protect{\cite[2.2; 6]{weber:operads-within}}]
+A \emph{Weber monoidal globular category} is a normalised pseudo-algebra for $\Tcal_\str$.  Together with pseudo-homomorphisms and pseudo-2-cells, these form a 2-category $\PsAlg[0]{\Tcal_\str}$.
 \end{definition}
+
+\begin{definition}[Batanin] \cite[2.3]{batanin:natural-environment} More concretely, though less succinctly, a \emph{(Batanin) monoidal globular category} is a globular category 
+$$\xymatrix{ \C_0 & \ar@<0.5ex>@{->>}[l]^s \ar@<-0.5ex>@{->>}[l]_t \C_1 & \ar@<0.5ex>@{->>}[l]^s \ar@<-0.5ex>@{->>}[l]_t \C_2 & \ar@<0.5ex>@{->>}[l]^s \ar@<-0.5ex>@{->>}[l]_t \cdots};$$
+together with functors
+$$ \tensor_k \colon \C_n \times_k \C_n \to \C_n, $$
+$$ Z \colon \C_n \to \C_n+1 $$
+satisfying source and target conditions analogous to those for composition and identities in a strict $\omega$-category, e.g.\ $s \cdot Z = 1 = t \cdot Z$, $s_i \cdot \tensor_k =  \tensor_k \cdot (s_i \times s_i)$ for $i > k$,  $s_i \cdot \tensor_k =  s_i \cdot \pi_2$ for $i \leq k$, etc;
+natural isomorphisms analogous to the associativity and unitality axioms of a srtict $\omega$-category:
+$$\alpha : R \tensor_k (S \tensor_k T) \iso (R \tensor_k S) \tensor_k T$$
+$$\epsilon_l : Z^{n-k}A \tensor_k R \iso R$$
+$$\epsilon_r : R \tensor Z^{n-k}A \iso R;$$
+all satisfying various coherence axioms.
+
+A pseudo-map of monoidal globular categories is\ldots
+
+A pseudo-transformation between these is\ldots
+
+Together, these form a 2-category $\MonGlobCat$.
+\end{definition}
+
+\begin{theorem}[\cite{weber:operads-within}] There is a 2-equivalence $\PsAlg{\Tcal_\str} \equiv_2 \MonGlobCat$.
+\end{theorem}
+
+This justifies our description of these definitions as, \emph{for 2-categorical purposes}, equivalent.  However, their underlying 1-categories (with non-identity 2-cells discarded) are not equivalent (CHECK CAREFULLY!), and it will not always be patently transparent that we deal only 2-categorically with them; so by ``monoidal globular category'', unmodified, we will always mean the Batanin version.
+
+\subsection{Categories with fibrations: three variations on a theme}
+
+
+We want to write: If $\C$ is a category with\ldots what?  ``a class of fibrations'' seems simplest, but in writing that down and refining the definition to be as principled as possible here, I just end up continuously deforming it into something much closer to a category with families.  Well\ldots let's go for the simplest and worry about making it more principled later.  Basically, the principled version should emphasise that being a fibration is extra structure, not a property\ldots or might not even be a structure: $\F$ needn't be an isofibration over $\C^\arr$.
+
+OK: \emph{give} these three versions; show the continuous deformation!  It's interesting!
+
+\begin{definition}(New version of the preceding.)  A category with \emph{right maps} is a category $C$ with a distinguished replete class $\R$ of maps (usually called \emph{right maps}\footnote{named by analogy with Right Whales} or \emph{fibrations}) such that:
+\begin{enumerate}
+\item considered as a subcategory of $\C^\Two$, $\R$ is closed under isomorphism;
+\item $\R$ is closed under all pullbacks (i.e.\ chosen(?) pullbacks of right maps along all maps exist and are again right maps); and
+\item $\R$ is closed under composition and contains identities.
+\end{enumerate}
+
+A \emph{class of left maps} is of a class of maps satisfying the dual axioms: closed under isomorphism, all pushouts, composition and identities and. 
+\end{definition}
+
+However, in practice one works with left or right maps as extra \emph{structure}, or ``\emph{co-structure}'', on maps of $\C$: for instance, cloven fibrations of categories, or Serre cofibrations presented as (retracts of) relative cell complexes.  This approach is systematically studied in the context of \emph{algebraic weak factorisation systems} (Tholen, Garner, et al (select citations!)); again, the definition we consider here is somewhat weaker.
+
+\begin{definition}A category with \emph{structured right maps} is a category $\C$, together with a category $p \cod \F \to \C^\Two$, such that:
+\item $p$ is a cloven isofibration;
+\item $\cod \cdot p \colon \F \to \C$ is a cloven fibration, and $p$ sends cartesian arrows to pullback squares;
+\item $p$ is a monoid with respect to the monoidal structure on $\Cat/\C^\Two$ given by $f \tensor g = (\dom \cdot f) \times_\C (\cod \cdot g)$, and the unit and multiplications structures are maps of cloven fibrations over $\C$.
+
+\emph{Structured right maps} are defined dually: $\cod \cdot p$ is a cloven opfibration, and $p$ sends co-cartesian arrows to pushout squares.
+\end{definition}
+
+These conditions are just algebraisations of those of the previous definition.  The monoidal structure tells us that for a composable pair of right maps $A \to^\fbf B \to^\gbf C$ (with underlying maps $A \to^f B \to^g C$), there is a right map $\gbf \cdot \fbf$, and so on.  That the structure maps preserves cleavings tell us that these compositions and identities are preserved by pullback: $k^* (\gbf \cdot \fbf) = (k^* \gbf) \cdot ((\gbf^*k)^* \fbf)$.
+
+However, in practice again, the most natural presentation of (co)fibrations is sometimes not as structures on maps of $\C$, but as structures over objects of $\C$. 
+In the case of Serre cofibrations, again, ``relative cell complexes over (check wording: `over'? `extending'?) a base space $B$'' are more fundamental objects, and often more convenient to work with, than ``maps out of $B$, with isomorphisms to the realisation of some cell complex''.  (This example isn't great, since definition of cell complex varies and with some it's \emph{always} only up to iso; maybe needs tweaked.)  Similarly, in our fundamental type-theoretic example, the map $\Gamma \to \Gamma,1$ (in a theory with strong unit types) is isomorphic to $1_\Gamma$ or $\Gamma,1 \to \Gamma$, but is not itself the dependent projection from any context extension; we may work with the \emph{context extensions} themselves, rather than with the class of ``maps isomorphic to some dependent projection''.
+
+This also arises in the formalisation of mathematics in dependent type theories, and more generally in the formation of internal structures in model categories and similar environments\ldots  [explain more!]
+
+To accommodate this, we simply drop the condition in the previous definition that $p$ should be an isofibration.  This brings us to the definition:
+
+\begin{definition}
+A \emph{something} on a category $\C$ is a functor $p: \F \to \C^\Two$, such that $\cod \cdot p$ is a cloven fibration, $p$ sends cartesian maps to pullback squares, and $p$ is equipped with a monoid structure in $(\Cat/\C,\tensor)$, whose structure maps preserve the cleavings.
+\end{definition}
+
+But we've seen this before!  This is simply a comprehension structure on $\C$ with strict sum and unit types, as defined in Section \ref{sec:comprehension} above, arrived at from a different direction.
+
+Connecting these three, we have adjunctions over $\Cat$:
+
+$$\CompCat_{\textrm{v-str-sum} \two/->`<-/^F_U \Cat-\mathbf{StrRMaps} \two/->`<-/^F_U \Cat-\mathbf{ClsRMaps}$$
+
+of which the second is a reflection, and the first might be (????) a $2$-equivalence.
+
+ Then we can define a monoidal globular category $\FibSpans_\R(\C)$ (or just $\FibSpans(\C)$, when $\R$ is clear from context) as follows: \ldots
 
 A globular object in $\FibSpans(\C)$ is then just a globular object in $\C$, all of whose source and target maps are fibrations.
 
@@ -248,7 +339,7 @@ The \emph{$n$th universal type extension} is the inclusion map $\T_{n-1} \to \T_
 The classes of term, type, and term-and-type extensions are all closed under composition, identities, and pushouts, so form classes of left maps in the sense of Section \ref{sec:endo-operads} above.
 
 \begin{definition}A \emph{term-} (resp.\ \emph{type-}, \emph{term-and-type-})\emph{contraction} on a map $F \colon \C \to \D$ is an operation assigning a filler to every square [diagram!] with left-hand-side a universal type (term, term-and-type) extension.  A map admits such fillers if and only if it is weakly orthognal to all type (term, term-and-type) extensions, in which case it is called \emph{type-} (\emph{term-}, \emph{term-and-type-})\emph{contractible}.  Write $\R_\tm$, $\R_\ty$, $R_{\tm\ty}$ for the classes of contractible maps.
-\end{defintion}
+\end{definition}
 
 Contractibility is familiar in type-theoretic terms as a form of conservativity.  Type-contractibility, for instance, states that whenever we have a type $\Gamma\ \types_\T\ A\ \type$ of $\T$ whose interpretation in $\S$ is inhabited by some term $F(\Gamma)\ \types_\S\ a:F(A)$, it is already inhabited in $\T$ by some term $\Gamma\ \types_\T\ \overline{a}:A$, for which moreover we can prove $F(\Gamma)\ \types_\S\ F(\overline{a}) = a : F(A)$ in $\S$.  Type-contractibility asserts the same sort of conservativity for types derivable in $\S$ over a context from $\T$.  (Compare for instance \cite{??} [conservativity of logical frameworks], also discussed in \cite[??]{hofmann:syntax-and-semantics}.)
 
@@ -270,7 +361,7 @@ The principle $\Jbar$ asserts, like many other interesting type-theoretic statem
 
 \begin{definition}Given a collection $\stuff$ of constructors, let $\T[k]$ be as above (at least, when above is corrected!  currently $\T_n^+$), and let $\T[k_0,k_1,l]$ be the theory given by (axiomatised)!  There is a natural map $r: \T[k_0,k_1,l] \to \T[k]$, interpreting each $k_i$ as $k$, and $l$ as $r(k)$.
 
-We say \emph{\Jbar holds for \stuff} if $r$ is an absolutely term-contractible map.  (Actually, for present purposes, $\L_\tm\ty$-absolutely would be quite enough.)
+We say \emph{$\Jbar$ holds for $\stuff$} if $r$ is an absolutely term-contractible map.  (Actually, for present purposes, $\L_\tm\ty$-absolutely would be quite enough.)
 \end{definition}
 
 So what does this state, in fact?  A pushout of $r$ [diagram] is of the form [BIG NOTATION ISSUE!  $\T$, $\T_0$ \ldots] $\C[k_0,k_1,l] \to \C[k]$, where $\C$ is an arbitrary theory with a chosen context $\Gamma$ and type $A \in \Ty(\Gamma)$, and $\C[k_0,k_1,l]$, $\C[k]$ are the evident extensions by terms of type $K$ and $\Id_K$ in context $\Gamma$.
@@ -287,7 +378,7 @@ $\Jbar$ holds for $(\Id,\Pi,\ext)$, and any set of constructors extending this.
 The diagram
 $$\xymatrix{\T[k(\x):K(\x)] \ar[d] \ar@/_/[r] & \ar@/_/[l] \T[\hat{k}:\Pi_{\x} K(\x) \ar[d] \\ 
 \T[k_0(\x),k_1(\x):K(\x),\ l(\x):\Id(k_0(\x),k_1(\x))] \ar@/_/[r] & \ar@/_/[l] \T[\hat{k}_0,\hat{k}_1 : \Pi_{\x} K(\x),\ \hat{l}:\Id(\hat{k}_0,\hat{k}_1)]}$$
-exhibits its left-hand side (the map we wish to show contractible) as a retract of its right-hand side.  (The fact that the squares commutes and are a retraction requires the ``ext'' axiom to satisfy some reasonable computation rule.)  But the right-hand side is just the closed case of \Jbar, which we've seen is contractible.
+exhibits its left-hand side (the map we wish to show contractible) as a retract of its right-hand side.  (The fact that the squares commutes and are a retraction requires the ``ext'' axiom to satisfy some reasonable computation rule.)  But the right-hand side is just the closed case of $\Jbar$, which we've seen is contractible.
 \end{proof}
 
 \begin{proposition} \label{prop:jbar-fails}
@@ -295,7 +386,7 @@ $\Jbar$ fails for $(\Id,\Pi,\eta)$ and $(\Id,\Pi)$.
 \end{proposition}
 
 \begin{proof}
-Any failure of ``ext'' gives a failure of \Jbar.
+Any failure of ``ext'' gives a failure of $\Jbar$.
 \end{proof}
 
 \begin{conjecture}
@@ -304,7 +395,7 @@ $\Jbar$ holds for $(\Id)$.
 
 Proposition \ref{prop:jbar-fails} shows that it's not stable under extensions of the constructor sets, so can't hold for $(\Id)$ in such a robust, algebraic way as it goes for $(\Id,\Pi,\ext)$.
 
-Maybe mention the analogous ``\overline{K}'' principle, and how it fails when UIP does?
+Maybe mention the analogous ``$\overline{K}$'' principle, and how it fails when UIP does?
 
 Waffle a bit about how to look at $\Jbar$, why even \footnote{(non-homotopically-inclined)}type theorists should care, etc\ldots
 
@@ -329,7 +420,7 @@ Contractibility of the operad asks for completing certain triangles.  Term-contr
 
 \subsection{A variant for non-extensional $\Pi$-types}
 
-As noted above, \Jbar (and hence this proof) fail in the category of theories with non-extensional $\Pi$-types.  Altering the globes a little lets us make things work there, so givs a little more generality for the classifying weak $\omega$-category.  On the other hand, this generality would come \emph{better} via our conjecture of \Jbar for $(\Id)$\ldots
+As noted above, $\Jbar$ (and hence this proof) fail in the category of theories with non-extensional $\Pi$-types.  Altering the globes a little lets us make things work there, so givs a little more generality for the classifying weak $\omega$-category.  On the other hand, this generality would come \emph{better} via our conjecture of $\Jbar$ for $(\Id)$\ldots
 
 \subsection{CwF structures on $\CwF_\diamond^\op$ etc.}
 
@@ -339,11 +430,11 @@ There are various important CwF-structures on categories of CwF's. In particular
 
 This extends to a canonical CwF-structure with $\Id$-types on $(\CwF^\Id_\diamond)^\op$, a CwF-structure with $\Id$- and $\Pi$-types with $\eta$-rule on $(\CwF^{\Id,\Pi,\eta}_\diamond)^\op$, and so on.
 
-However, we can bump up these structures a little further, to include certain ``formal $\Pi$-types'' (independently of what $\Pi$-types may already be present in the theories).  That is, we define $\Ty^\mathrm{canon + $\Pi$}(\C) := \sum_{\Gamma \in \C} \Ty_\C(\Gamma)$; so a type over $\C$, in this families structure, is a type $A$ in some context $\Gamma$ of $\C$, to be thought of as the formal dependent product $\prod_\Gamma A$.
+However, we can bump up these structures a little further, to include certain ``formal $\Pi$-types'' (independently of what $\Pi$-types may already be present in the theories).  That is, we define $\Ty^\mathrm{canon + Pi}(\C) := \sum_{\Gamma \in \C} \Ty_\C(\Gamma)$; so a type over $\C$, in this families structure, is a type $A$ in some context $\Gamma$ of $\C$, to be thought of as the formal dependent product $\prod_\Gamma A$.
 
 Context extension is by adjoining \emph{open} terms.
 
-\Jbar asserts that \emph{open} $\Id$-types in contexts are indeed $\Id$-types in this families structure.  (But danger, Will Robinson, danger: \Jbar doesn't assert, and afaics doesn't imply, the stability/coherence conditions required for ``this families structure has $\Id$-types''.)
+$\Jbar$ asserts that \emph{open} $\Id$-types in contexts are indeed $\Id$-types in this families structure.  (But danger, Will Robinson, danger: $\Jbar$ doesn't assert, and afaics doesn't imply, the stability/coherence conditions required for ``this families structure has $\Id$-types''.)
 
 %% Bibliography Info
 
