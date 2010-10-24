@@ -14,10 +14,13 @@
 
 \newcommand{\cotensor}{\pitchfork}
 \renewcommand{\equiv}{\simeq}
+\newcommand{\epi}{\twoheadrightarrow}
 \newcommand{\Iff}{\Leftrightarrow}
 \newcommand{\Imp}{\Rightarrow}
 \newcommand{\into}{\hookrightarrow}
 \newcommand{\iso}{\cong}
+\newcommand{\propeq}{\simeq}
+\newcommand{\mono}{\hookrightarrow}
 \newcommand{\tensor}{\otimes}
 \newcommand{\To}{\Rightarrow}
 \newcommand{\types}{\vdash}
@@ -28,6 +31,7 @@
 
 \newcommand{\Two}{\mathbf{2}}
 \newcommand{\A}{A_\bullet}
+\newcommand{\abar}{\overline{a}}
 % \newcommand{\uA}[1][]{\underline{A}_{#1}}
 % \newcommand{\B}{B_\bullet}
 % \newcommand{\ML}{\mathit{ML_I}}
@@ -66,8 +70,8 @@
 \newcommand{\SEC}{\textsection}
 \newcommand{\R}{\mathcal{R}}    % A class of right maps
 \renewcommand{\r}{\vec r}
-% \renewcommand{\S}{\mathcal{S}}    % Another generic type theory
-\newcommand{\T}{\mathsf{T}}      % A generic type theory
+\renewcommand{\S}{\mathcal{S}}    % Another generic type theory
+\newcommand{\T}{\mathcal{T}}      % A generic type theory
 \newcommand{\Tcal}{\mathcal{T}}      % A 2-monad
 \newcommand{\TT}{\mathbb{T}}    % A generic type theory, seen as a categorical structure
 \renewcommand{\u}{\vec u}
@@ -76,9 +80,11 @@
 \newcommand{\W}{\mathcal{W}}
 \newcommand{\WW}{\mathbb{W}}
 \newcommand{\w}{\vec w}
+\newcommand{\Xcal}{\mathcal{X}}
 \newcommand{\X}{X_\bullet}
 \newcommand{\x}{\vec x}
 % \newcommand{\uX}[1][]{\underline{X}_{#1}}
+\newcommand{\Ycal}{\mathcal{Y}}
 \newcommand{\Y}{Y_\bullet}
 \newcommand{\y}{\vec y}
 \newcommand{\yon}{\mathbf{y}}
@@ -95,6 +101,7 @@
 \newcommand{\Cat}{\mathbf{Cat}}
 \newcommand{\intCat}[1][-]{\mathbf{Cat}(#1)}
 \newcommand{\enrCat}[1][\V]{#1\mbox{-}\mathbf{Cat}}
+\newcommand{\nCat}[1][n]{#1\mbox{-}\mathbf{Cat}}
 \newcommand{\cl}{\mathbf{cl}}
 \newcommand{\ClovFib}{\mathbf{ClovFib}}
 \newcommand{\Coll}{\mathbf{Coll}}
@@ -107,6 +114,7 @@
 \newcommand{\CofCosps}{\mathbf{CofCosps}}
 \newcommand{\cod}{\mathrm{cod}}
 \newcommand{\dom}{\mathrm{dom}}
+\newcommand{\DTT}{\mathbf{DTT}}
 \newcommand{\End}{\mathrm{End}}
 % \newcommand{\ev}{\mathbf{ev}}
 \newcommand{\Fib}{\mathbf{Fib}}
@@ -143,14 +151,17 @@
 \newcommand{\ThId}{\mathbf{Th}^{\Id}}
 \newcommand{\ThIdPi}{\mathbf{Th}^{\Id,\Pi}}
 \newcommand{\Tm}{\mathrm{Tm}}
+\newcommand{\tm}{\textsf{tm}}
 \newcommand{\Top}{\mathbf{Top}}
 \newcommand{\Ty}{\mathrm{Ty}}
+\newcommand{\ty}{\textsf{ty}}
 \newcommand{\strMonGlobCat}{\mathbf{MonGlobCat}}
 \newcommand{\strwCat}{\mathbf{str}\mbox{-}\omega\mbox{-}\mathbf{Cat}}
 \newcommand{\strnCat}[1][n]{\mathbf{str}\mbox{-}#1\mbox{-}\mathbf{Cat}}
 \newcommand{\SynPres}{\mathbf{SynPres}}
 \newcommand{\SynThy}{\mathbf{SynThy}}
 \newcommand{\wkwCat}{\mathbf{wk}\mbox{-}\omega\mbox{-}\mathbf{Cat}}
+\newcommand{\wkwGpd}{\mathbf{wk}\mbox{-}\omega\mbox{-}\mathbf{Gpd}}
 \newcommand{\wknCat}[1][n]{\mathbf{wk}\mbox{-}#1\mbox{-}\mathbf{Cat}}
 
 % \newcommand{\wkwCat}{\mathbf{wk}\mbox{-}\omega\mbox{-}\mathbf{Cat}}
@@ -189,8 +200,8 @@
 % Other operators
 %%%%
 
-\newcommand{\Clw}{\mathbb{Cl}_\omega}
-\newcommand{\ClwQCat}{\mathbb{Cl}^\qcat_\omega}
+\newcommand{\Clw}{\mathbf{Cl}_\omega}
+\newcommand{\ClwQCat}{\mathbf{Cl}^\qcat_\omega}
 
 %%%%
 % Other symbols

@@ -17,6 +17,8 @@
 \include{thesis-style}
 \include{thesis-macros}
 
+\newcommand{\CompCat}{\mathbf{CompCat}}
+
 \newcommand{\arr}{\mathrm{arr}}
 \newcommand{\ty}{\mathrm{ty}}
 \newcommand{\tm}{\mathrm{tm}}
@@ -125,10 +127,12 @@ A \emph{class of left maps} is of a class of maps satisfying the dual axioms: cl
 
 However, in practice one works with left or right maps as extra \emph{structure}, or ``\emph{co-structure}'', on maps of $\C$: for instance, cloven fibrations of categories, or Serre cofibrations presented as (retracts of) relative cell complexes.  This approach is systematically studied in the context of \emph{algebraic weak factorisation systems} (Tholen, Garner, et al (select citations!)); again, the definition we consider here is somewhat weaker.
 
-\begin{definition}A category with \emph{structured right maps} is a category $\C$, together with a category $p \cod \F \to \C^\Two$, such that:
+\begin{definition}A category with \emph{structured right maps} is a category $\C$, together with a category $p \colon \F \to \C^\Two$, such that:
+\begin{enumerate}
 \item $p$ is a cloven isofibration;
 \item $\cod \cdot p \colon \F \to \C$ is a cloven fibration, and $p$ sends cartesian arrows to pullback squares;
 \item $p$ is a monoid with respect to the monoidal structure on $\Cat/\C^\Two$ given by $f \tensor g = (\dom \cdot f) \times_\C (\cod \cdot g)$, and the unit and multiplications structures are maps of cloven fibrations over $\C$.
+\end{enumerate}
 
 \emph{Structured right maps} are defined dually: $\cod \cdot p$ is a cloven opfibration, and $p$ sends co-cartesian arrows to pushout squares.
 \end{definition}
@@ -150,7 +154,7 @@ But we've seen this before!  This is simply a comprehension structure on $\C$ wi
 
 Connecting these three, we have adjunctions over $\Cat$:
 
-$$\CompCat_{\textrm{v-str-sum} \two/->`<-/^F_U \Cat-\mathbf{StrRMaps} \two/->`<-/^F_U \Cat-\mathbf{ClsRMaps}$$
+$$\CompCat_{\textrm{v-str-sum}} \two/->`<-/^F_U \Cat-\mathbf{StrRMaps} \two/->`<-/^F_U \Cat-\mathbf{ClsRMaps}$$
 
 of which the second is a reflection, and the first might be (????) a $2$-equivalence.
 
