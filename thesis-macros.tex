@@ -14,7 +14,6 @@
 
 \newcommand{\cotensor}{\pitchfork}
 \renewcommand{\equiv}{\simeq}
-\newcommand{\epi}{\twoheadrightarrow}
 \newcommand{\Iff}{\Leftrightarrow}
 \newcommand{\Imp}{\Rightarrow}
 \newcommand{\into}{\hookrightarrow}
@@ -70,9 +69,9 @@
 \newcommand{\SEC}{\textsection}
 \newcommand{\R}{\mathcal{R}}    % A class of right maps
 \renewcommand{\r}{\vec r}
-\renewcommand{\S}{\mathcal{S}}    % Another generic type theory
-\newcommand{\T}{\mathcal{T}}      % A generic type theory
-\newcommand{\Tcal}{\mathcal{T}}      % A 2-monad
+\renewcommand{\S}{\textsf{\textbf{S}}}    % Another generic type theory
+\newcommand{\T}{\textbf{\textsf{T}}}      % A generic type theory
+\newcommand{\Tcal}{\textsf{\textbf{T}}}      % A 2-monad
 \newcommand{\TT}{\mathbb{T}}    % A generic type theory, seen as a categorical structure
 \renewcommand{\u}{\vec u}
 \newcommand{\V}{\mathcal{V}}
@@ -82,6 +81,7 @@
 \newcommand{\w}{\vec w}
 \newcommand{\Xcal}{\mathcal{X}}
 \newcommand{\X}{X_\bullet}
+\newcommand{\Xbullet}{X_\bullet}
 \newcommand{\x}{\vec x}
 % \newcommand{\uX}[1][]{\underline{X}_{#1}}
 \newcommand{\Ycal}{\mathcal{Y}}
@@ -125,15 +125,16 @@
 \newcommand{\FSCS}{\mathbf{FSCS}}
 \newcommand{\fscs}{\textsc{fscs}}
 \newcommand{\fscss}{\textsc{fscs}'s}
-\newcommand{\globe}[1]{\mathfrak{g}_{#1}}
-\newcommand{\globes}{\mathfrak{g}_\bullet}
+\newcommand{\globe}[1][n]{\textsf{\textbf{G}}_{#1}}
+\newcommand{\globes}{\textsf{\textbf{G}}_\bullet}
 % \newcommand{\longGSets}{[\mathbb{G}^\op,\mathbf{Sets}]}
 \newcommand{\GSets}{\widehat{\mathbb{G}}}
 % \renewcommand{\lim}{\varprojlim}
 \newcommand{\Lan}{\mathrm{Lan}}
 \newcommand{\lax}{\mathrm{lax}}
 \newcommand{\MonGlobCat}{\mathbf{MonGlobCat}}
-\newcommand{\MLId}{\mathsf{ML}^{\Id}}
+\newcommand{\ML}{\textsf{\textbf{ML}}}
+\newcommand{\MLId}{\textsf{\textbf{ML}}^{\Id}}
 \newcommand{\ob}{\operatorname{ob}}
 \newcommand{\op}{\mathrm{op}}
 % \newcommand{\Operads}{\mathbf{Operads}}
@@ -151,10 +152,10 @@
 \newcommand{\ThId}{\mathbf{Th}^{\Id}}
 \newcommand{\ThIdPi}{\mathbf{Th}^{\Id,\Pi}}
 \newcommand{\Tm}{\mathrm{Tm}}
-\newcommand{\tm}{\textsf{tm}}
+% \newcommand{\tm}{\textsf{tm}}
 \newcommand{\Top}{\mathbf{Top}}
 \newcommand{\Ty}{\mathrm{Ty}}
-\newcommand{\ty}{\textsf{ty}}
+% \newcommand{\ty}{\textsf{ty}}
 \newcommand{\strMonGlobCat}{\mathbf{MonGlobCat}}
 \newcommand{\strwCat}{\mathbf{str}\mbox{-}\omega\mbox{-}\mathbf{Cat}}
 \newcommand{\strnCat}[1][n]{\mathbf{str}\mbox{-}#1\mbox{-}\mathbf{Cat}}
@@ -171,6 +172,7 @@
 %%%%
 
 \newcommand{\Bool}{\mathsf{Bool}}
+\newcommand{\cellrule}{\mathsf{cell}}
 \newcommand{\comp}{\textsc{comp}}
 \newcommand{\CONG}{\textsc{cong}}
 % \newcommand{\Contr}{\mathsf{Contr}}
@@ -184,11 +186,12 @@
 % \newcommand{\idelim}[5]{J_{#1.#2}(#3,#4,#5)}
 \newcommand{\intro}{\textsc{intro}}
 \newcommand{\refl}{\mathsf{refl}}
+\newcommand{\sourcerule}{\mathsf{src}}
 \newcommand{\subst}{\mathsf{subst}}
 % \newcommand{\src}{\mathsf{src}}
 % \newcommand{\scterm}{\textsc{term}}
 \newcommand{\sym}{\mathsf{sym}}
-% \newcommand{\tgt}{\mathsf{tgt}}
+\newcommand{\targetrule}{\mathsf{tgt}}
 \newcommand{\term}{\mathsf{term}}
 \newcommand{\trans}{\mathsf{trans}}
 \newcommand{\type}{\mathsf{type}}
