@@ -440,14 +440,45 @@ This is very nearly, but not quite, what we want for the underlying globular set
 
 Meanwhile, the left adjoint $\T_\Phi [-] \colon \GSets\ \to\ \DTT_\Phi$ is constructed as the left Kan extension of $\globes$ along $\yon$, and may be seen as freely adjoining a globular set to $\T_\Phi$, using the globes as templates.  Explicitly, for a globular set $\X$, the theory $\T[\X]$ has axioms for each cell of $\X$, realising the 0-cells as closed types, the 1-cells as terms between these types, and the higher-cells as terms of appropriate identity types.\footnote{A related construction is considered in \cite{awodey-hofstra-warren} and \cite{hofstra-warren}, corresponding to a slightly different co-globular theory: they omit our $\globe[0]$, giving instead just a single closed base type, and realise $0$-cells as closed terms of this type, $1$-cells as terms of identity type between these, and so forth.  Their $T_\mathbf{ML}$ is then the monad induced by the Kan adjunction.}
 
-\para In particular, $\T_\Phi[-]$ provides the realisations of pasting diagrams which appear in the coendomorphism operad of the globes.
+ In particular, $\T_\Phi[\yon(n)] = \globe[n]$.  Also useful will by the boundary of the  $n$-globe, $\del \globe[n] := \T_\Phi[\del \yon(n)]$; up to isomorphism, this is the theory given by $i$-$\sourcerule$ and $i$-$\targetrule$, for $0 \leq i < n$, i.e.\ all the axioms of $\globe[n]$ except for $n$-$\cellrule$ itself.
+ 
+\para Since $\DTT_\Phi$ is co-complete, we can consider (by Section \ref{sec:endo-operad}) the co-endomorphism operad of the globes, $\End_{\Spans(\DTT_\Phi^\op)}(\globes)$, or briefly just $\End(\globes)$.  We know that its operations of some shape $\pi$ are given by
+$$\End(\globes)(\pi) \iso [\G/n,\DTT_\Phi](\globes \cotensor \hat{\pi},globes \cotensor \yon(n))$$
+and hence, unwinding this formula, consist of pylon diagrams:
 
-\begin{proposition}If $\Jbar$ and the normalisation results of Proposition \ref{prop:normalisation} hold for $\stuff$, then the coendomorphism operad of the globes is contractible.
+\begin{center}[TODO: BIG PYLON DIAGRAM!  OH, THE HUGE MANATEE!]\end{center}
+
+\begin{proposition}If $\Jbar$ and the normalisation results of Proposition \ref{prop:normalisation} hold for $\stuff$, then $\End(\globes)$ is contractible.
 \end{proposition}
 
-\begin{proof}By $\Jbar$, the reflexivity maps in dimension $\geq 1$ are absolutely term-contractible.  By \ref{prop:endo-operad}, certain maps between realisations of pasting diagrams are term-contractible.
+\begin{proof}
+As seen in section \ref{sec:endo-operads}, contractibility for this operad demands that given $\pi \in T1(n)$, and $(S_0,T_0,\ldots T_{n-1})$ as above, we must construct $R$ to complete the span; that is, we must complete the triangle
+$$\xymatrix{ \del \globe[n] \ar[r]^{[S_i,T_i]} \ar@{ >->}[d] & \T_\Phi[\hat{\pi}] \\ \globe[n] \ar@{.>}[ur] & }.$$
 
-Contractibility of the operad asks for completing certain triangles.  Term-contractibility of the ``certain maps'' reduces this to completing certain squares.  The normalisation results above ensure that we can do this.  
+In the case $n = 0$, the only pasting diagram consists of a single 0-cell, and $\del \yon (n)$ is empty, so we can trivially fill with the identity map:
+$$\xymatrix{ \del \T_\Phi \ar[r]^{!} \ar@{ >->}[d]_{!} & \globe[0] \\ \globe[0] \ar@{.>}[ur] & }.$$
+
+When $n > 0$, it is immediate from the axiomatisations given that the map $\del \globe[n] \to/ >->/ \globe[n]$ is a term-extension.
+
+On the other hand, according to the pruning procedure described \ref{para:pruning} above, we can obtain $\T_\Phi[\hat{\pi}]$ as an extension of $\T_\Phi[\widehat{s_1\pi}]$ by propositional copies; so \emph{as long as $\Jbar$ holds for $\DTT_\Phi$}, the retraction
+$$\T_\Phi[\hat{\pi}] \epi \T_\Phi[\widehat{s_1\pi}]$$
+(interpreting all identity cells as reflexivity terms) is term-contractible.
+
+Thus to complete the triangle above, it is sufficient to complete the square
+$$\xymatrix{ \del \globe[n] \ar[r]^{[S_i,T_i]} \ar@{ >->}[d] & \T_\Phi[\hat{\pi}] \ar@{->>}[d] \\ \globe[n] \ar@{.>}[r] & \T_\Phi[\widehat{s_1\pi}]},$$
+i.e.\ to complete a triangle of the form
+$$\xymatrix{ \del \globe[n] \ar[dr] \ar@{ >->}[d] & \\ \globe[n] \ar@{.>}[r] & \T_\Phi[\widehat{s_1\pi}]}.$$
+
+Now $s_1\pi$ is just a 1-dimenstional pasting diagram, i.e.\ a path $(\cdot \to<200> \cdot \to<200> \ldots \to<200> \cdot)$ of some length $l \geq 0$, so $\T_\Phi[\widehat{s_1\pi}]$ admits a very simple axiomatisation:
+
+$$
+\inferrule{\ }{\diamond \types A_i\ \type} \quad (0 \leq i \leq l) \qquad 
+\inferrule{\ }{\Gamma \types a:A_{j-1} \types f_j(a) : A_j } \quad (1 \leq j \leq l) 
+$$
+
+This allows us to complete the job.  If $n = 1$, then the commutativity of the pylon diagram tells us that $\del \globe[1] \to \T_\Phi[\widehat{s_1\pi}]$ picks out the types $X_0$, $X_l$ as the interpretations of $S_0$, $T_0$, and so we interpret $c_1(x)$ by the obvious term $f_l(f_{l-1}(\ldots f_1(x)))$.
+
+On the other hand, for $n \geq 2$, we have interpreted $i$-$\sourcerule$ and $i$-$\targetrule$ in $\T_\Phi[\widehat{s_1\pi}]$, for $i < n$, and wish to interpret $n$-$\cellrule$; i.e.\ we wish to prove a propositional equality between the interpretations of $s_{n-1}(x)$ and $t_{n-1}(x)$.   But the normalisation results of Section \ref{sec:normalisation} apply, and in particular, Corollary \ref{cor:normalisation-all-ids-are-refls} tells us that any two terms of the same type in $\T_\Phi[\widehat{s_1\pi}]$ are \emph{definitionally} equal; so interpreting $c_n$ by a reflexivity term, we are done.
 \end{proof}
 
 \subsection{The classifying weak $\omega$-category of a type theory}
