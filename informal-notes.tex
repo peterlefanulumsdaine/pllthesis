@@ -20,8 +20,6 @@
 \newcommand{\CompCat}{\mathbf{CompCat}}
 
 \newcommand{\arr}{\mathrm{arr}}
-\newcommand{\ty}{\mathrm{ty}}
-\newcommand{\tm}{\mathrm{tm}}
 \newcommand{\ext}{\mathrm{ext}}
 \newcommand{\Jbar}{\overline{J}}
 \newcommand{\tr}{\mathrm{tree}}
@@ -54,7 +52,7 @@
 \maketitle
 \tableofcontents
 
-\section{General notes on the notes}
+\section*{General notes on these notes}
 
 Note on notation: all fibrations of categories are assumed cloven, but considered just as fibrations ($\Fib$), maps between them need not preserve the cleavings, whereas maps of cloven fibrations ($\ClovFib$) do.
 
@@ -180,14 +178,14 @@ $\Top^\op$, with relative cell complexes.  Better, think of these as left maps i
 
 \subsection{\ldots and with left and right maps}
 
-(Adapted from Richard and Benno's analysis in \cite{garner-van-dan-berg}.)
+(Adapted from Richard and Benno's analysis in \cite{garner-van-den-berg}.)
 
 \begin{definition}A \emph{category with left and right maps} is a category $\C$, with a class $\R$ of right maps as above, and a class $\L$ of left maps, closed under pushout and composition and identities and weakly orthogonal to the right maps.  (Note: no factorisations asked for!) 
 
 (Again, should make this more principled/algebraic: not classes of maps, but extra (co-)structure on maps, etc.)
 \end{definition}
 
-\begin{example} \cite{ex:left-maps-from-right} From any category with right maps, can take the left maps to be all maps weakly orthogonal to the right maps.  (Or, more algebraically: maps equipped with a choice of filler for every suitable square.  Or, more coherently: equipped with \emph{coherent} such choices, equivalently with a filler for every \emph{triangle}, from which coherent choices are then determined via pullbacks.  Or, most relevantly at all: this, but starting just with triangles from a given \emph{generating set} or $\R$-maps.) [currently very cryptic, flesh it out!]
+\begin{example} \label{ex:left-maps-from-right} From any category with right maps, can take the left maps to be all maps weakly orthogonal to the right maps.  (Or, more algebraically: maps equipped with a choice of filler for every suitable square.  Or, more coherently: equipped with \emph{coherent} such choices, equivalently with a filler for every \emph{triangle}, from which coherent choices are then determined via pullbacks.  Or, most relevantly at all: this, but starting just with triangles from a given \emph{generating set} or $\R$-maps.) [currently very cryptic, flesh it out!]
 \end{example}
 
 \begin{example}$\Top$, with relative cell complexes as left maps, and fibrations as right maps.
@@ -280,7 +278,7 @@ Write $\CwF^\Id$, $\CwF_\diamond^\Id$, etc.\ for the various categories of CwF's
 \begin{proposition}[\cite{hofmann:syntax-and-semantics}, \cite{pitts:categorical-logic}] This structure really does correspond precisely to the $\Id$-type rules: the equivalence of Proposition \ref{prop:cwf-equivalence} lifts to an equivalence between $\CwF^\Id_\cxl$ and a category of syntactically presented theories with $\Id$-type rules plus algebraic axioms. 
 \end{proposition}
 
-Note that given $\Id$-types on a CwF $(\C,\Ty)$, we can extend this to give $\Id$-types on $(\C,\Cxt)$: see the ``identity contexts'' of \cite{streicher:habilitationsthesis} or \cite{garner-gambino}.  However, the monad this underlaid on $\CwF$ does \emph{not} lift to a monad on $\CwF^\Id$: the multiplication functor turns out not to preserve $\Id$-contexts strictly.  (This could presumably be accommodated by developing a theory of pseudo-maps of $\CwF^\Id$'s.)
+Note that given $\Id$-types on a CwF $(\C,\Ty)$, we can extend this to give $\Id$-types on $(\C,\Cxt)$: see the ``identity contexts'' of \cite{streicher:habilitationsthesis} or \cite{gambino-garner}.  However, the monad this underlaid on $\CwF$ does \emph{not} lift to a monad on $\CwF^\Id$: the multiplication functor turns out not to preserve $\Id$-contexts strictly.  (This could presumably be accommodated by developing a theory of pseudo-maps of $\CwF^\Id$'s.)
 
 Also: define $\Pi$-types, $\eta$-rules, and extensional equality on them. 
 
@@ -310,35 +308,40 @@ Normalisation result: syntactically presented theories in $\CwF$ or $\CwF^\Id$ p
 
 
 
-\section{The type-theoretic globes, J-bar, and the classifying whosemithingummy of a whatchamecallit}
 
-In this section, we'll construct classifying weak $\omega$-categories for theories with $\Id$-types and $\Pi$-types (with $\eta$-rules and functional extensionality), and discuss how it might be possible to extend this to require only the $\Id$-types.
+
+
+\section{Left and right maps in $\DTT$; the conservativity principle $\Jbar$}
+
+\para In the next section, we'll construct classifying weak $\omega$-categories for theories with $\Id$-types and $\Pi$-types (with $\eta$-rules and functional extensionality), and discuss how it might be possible to extend this to require only the $\Id$-types.
 
 The construction of the classifying weak $\omega$-category of a theory is closely analogous to that of the fundamental weak $\omega$-groupoid of a space: it is obtained by homming out of a complex of representing objects (``globes''), and so it is enough to show that these representing objects form a co-(weak $\omega$-category), just as the topological globes ($D^0$, $D^1$, $D^2$) [diagram!] do in $\Top$.
 
-To this end, we set up various classes of left and right maps on $\CwF^{\stuff}_\diamond$, and
+To that end, we set up in this section various classes of left and right maps on $\CwF^{\stuff}_\diamond$, and
 then apply the machinery of Section \ref{sec:endo-operads} to show that the endomorphism operad of the globes is contractible.
 
 Among this, only one step (showing that certain maps are absolute right maps) seems to require the $\Pi$-types for its proof.  In particular, we isolate and conjecture a certain type-theoretical principle, $\Jbar$, which would suffice for the proof of this step, and which seems to be of independent interest.  In particular, we discuss equivalent natural statements of $\Jbar$ from several rather different points of view: as a conservativity statement for certain theory extensions; as a second-order form of the $\Id$-elim rule; and as a form of observational equality for $\Pi$-types. 
 
 
-\subsection{Left and right maps on $\CwF_\diamond$, etc.}
+\para[Type and term extensions]
 
-For the remainder of this section, fix some collection $\stuff$ of the constructors and rules of Subsetcion \ref{subsec:construtors}, and work in $\CwF^\stuff_\cxl$ / $\CwF^\stuff_\diamond$.  (The cases we will use are where $\stuff$ to be $(\Id)$, $(\Id,\Pi,\eta)$, or $(\Id,\Pi,\eta,\ext)$.)
+For the remainder of this section, fix some collection $\Phi$ of the constructors and rules of Subsetcion \ref{subsec:construtors}, and work in $\DTT_\Phi$.  (The main cases of interest in the sequel are where $\Phi$ is either $(\Id)$, $(\Id,\Pi,\eta)$, or $(\Id,\Pi,\eta,\ext)$.)
 
-For $n \geq 0$, let $\T_n = \T[A_1,\ldots,A_n]$ be the free theory on a context of length $n$; that is, presented by axioms [AXIOMATISE!].  Similarly, let $\T^+_n := \T[A_1,\ldots,A_n, a]$ be $\T_n$ extended by a term-former $\x: A_1 \ldots A_{n-1}\ \types\ a(\x) : A_n$.
+For $n \geq 0$, we define theories $\T_\Phi[\Gamma_{(n)}]$, $\T_\Phi [\Gamma_{(n)} \types A]$, and $\T_\Phi [\Gamma_{(n)} \types a : A]$ to be the free theories on, respectively, a context of length $n$; a dependent type, in context of length $n$; and a term in such a type.  Axiomatically, each may be  specified by some subset of the rules below: $\T_\Phi[\Gamma_{(n)}]$ by the rules $i$-$\cxtrule$, for $0 \leq i < n$; $\T_\Phi [\Gamma_{(n)} \types A]$, by these rules together with $n$-$\typerule$; and $\T_\Phi [\Gamma_{(n)} \types a : A]$ by all of the above, together with $n$-$\termrule$:
+$$\inferrule*[right={$i$-$\cxtrule$}]{\Gamma \types a_0:A_0\ \ldots\ \Gamma \types a_{i-1}:A_{i-1}}{\Gamma \types A_i(a_0,\ldots,a_{i-1})\ \type} \qquad \inferrule*[right={$i$-$\typerule$}]{\Gamma \types a_0:A_0\ \ldots\ \Gamma \types a_{i-1}:A_{i-1}}{\Gamma \types A(a_0,\ldots,a_{i-1})\ \type}$$
+$$\inferrule*[right={$i$-$\termrule$}]{\Gamma \types a_0:A_0\ \ldots\ \Gamma \types a_{i-1}:A_{i-1}}{\Gamma \types a(a_0,\ldots,a_{i-1}) : A_i(a_0,\ldots,a_{i-1})}$$
 
-[Hang on.  Should $A_1$ start off closed, or over an arbitrary object $\Gamma$?  The latter, actually.  CORRECT THIS!]
-
-\begin{definition}
-The \emph{$n$th universal term extension} is the inclusion map $\T_n \to \T^+_n$.  A \emph{basic term extension} is a pushout (in $\CwF^\stuff_\diamond$) of any universal term extension.  A \emph{term extension} is a composite of basic term extensions; write $\L_\ty$ for the class of term extensions.
-\end{definition}
-
-So in syntactic terms, a basic term extension is just (up to isomorphism) any extension of a theory $\T$ by an axiom $\x: A_1 \ldots A_{n-1}(\x^{< n-1})\ \types\ a(\x) : A_n(\x)$, where the $A_i$ are existing types of the theory.
+(Of course, this gives $\T[\Gamma_{(n-1)} \types A] \iso \T[\Gamma_{(n)}]$; we retain the distinction just for notational clarity.)
 
 \begin{definition}
-The \emph{$n$th universal type extension} is the inclusion map $\T_{n-1} \to \T_n$.  A \emph{basic term extension} is a pushout of any universal term extension.  A \emph{term extension} is a composite of basic term extensions.  A \emph{term-and-type extension} is a composite of basic term and/or type extensions.  Write $\L_{\tm}$, $\L_{\tm\ty}$ for the classes of type, term-and-type etensions respectively.
+The \emph{universal type (resp.\ term) extensions} are the inclusion maps
+$$ i^\ty_n \colon \T_\Phi [\Gamma_{(n)}] \mono \T_\Phi[\Gamma_{(n)} \types A],$$
+$$ i^\tm_n \colon \T_\Phi [\Gamma_{(n)} \types A] \mono \T_\Phi[\Gamma_{(n)} \types a : A].$$
+
+A \emph{basic term/type extension} is a pushout of one of the universal extensions.  A \emph{term/type/term-and-type extension} is any composite (possibly transfinite) of basic extensions.
 \end{definition}
+
+So in syntactic terms, a basic term extension is just any extension of a theory $\T$ by a new constructor $\x: A_1 \ldots A_{n-1}(\x^{< n-1})\ \types\ a(\x) : A_n(\x)$, where the $A_i$ are existing types of the theory.  Similarly, a basic type extension is an extension by a single algebraic term-forming axiom.  An arbitrary extension is any extension of theories formed by iteratively adding (possibly sets of) axioms of these forms.
 
 The classes of term, type, and term-and-type extensions are all closed under composition, identities, and pushouts, so form classes of left maps in the sense of Section \ref{sec:endo-operads} above.
 
@@ -403,9 +406,35 @@ Maybe mention the analogous ``$\overline{K}$'' principle, and how it fails when 
 
 Waffle a bit about how to look at $\Jbar$, why even \footnote{(non-homotopically-inclined)}type theorists should care, etc\ldots
 
-\subsection{The type-theoretic globes}
 
-\para Once again, fix some set $\Phi$ of constructors, including at least the $\Id$-rules.  The \emph{type-theoretic globes} (over $\Phi$) are then a sequence of theories $\globe[n]$ which play a similar r\^o{}le in $\DTT_\Phi$ to that which the discs $D^n$ play in $\Top$: they will \emph{almost} be representing objects for the classifying weak $\omega$-category functor we construct.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{The type-theoretic globes, and the classifying whosemithingummy of a whatchamecallit}
+
+\para Once again, fix some set $\Phi$ of constructors, including at least the $\Id$-rules.  The \emph{type-theoretic globes} (over $\Phi$) are then a sequence of theories $\globe[n]$ which play a similar r\^o{}le in $\DTT_\Phi$ to that which the discs $D^n$ play in $\Top$: they are an internal weak-$\omega$-cocategory, and as such will---almost---be representing objects for the classifying weak $\omega$-category functor.
 
 \begin{definition} $\globe[n]$ is the theory generated by axioms $i$-$\sourcerule$, $i$-$\targetrule$ (for $0 \leq i < n$), and $n$-$\cellrule$, as follows:
 $$
