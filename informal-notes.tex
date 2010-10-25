@@ -448,7 +448,7 @@ and hence, unwinding this formula, consist of pylon diagrams:
 
 \begin{center}[TODO: BIG PYLON DIAGRAM!  OH, THE HUGE MANATEE!]\end{center}
 
-\begin{proposition}If $\Jbar$ and the normalisation results of Proposition \ref{prop:normalisation} hold for $\stuff$, then $\End(\globes)$ is contractible.
+\begin{proposition}If $\Jbar$ and the normalisation results of Proposition \ref{prop:normalisation} hold for $\Phi$, then $\End(\globes)$ is contractible.
 \end{proposition}
 
 \begin{proof}
@@ -476,16 +476,29 @@ $$
 \inferrule{\ }{\Gamma \types a:A_{j-1} \types f_j(a) : A_j } \quad (1 \leq j \leq l) 
 $$
 
-This allows us to complete the job.  If $n = 1$, then the commutativity of the pylon diagram tells us that $\del \globe[1] \to \T_\Phi[\widehat{s_1\pi}]$ picks out the types $X_0$, $X_l$ as the interpretations of $S_0$, $T_0$, and so we interpret $c_1(x)$ by the obvious term $f_l(f_{l-1}(\ldots f_1(x)))$.
+This allows us to complete the job.  If $n = 1$, then the commutativity of the pylon diagram tells us that $\del \globe[1] \to \T_\Phi[\widehat{s_1\pi}]$ picks out the types $X_0$, $X_l$ as the interpretations of $S_0$, $T_0$, and so we interpret $c_1(x)$ by the obvious term $f_l(\ldots f_2(f_1(x))\ldots)$.
 
 On the other hand, for $n \geq 2$, we have interpreted $i$-$\sourcerule$ and $i$-$\targetrule$ in $\T_\Phi[\widehat{s_1\pi}]$, for $i < n$, and wish to interpret $n$-$\cellrule$; i.e.\ we wish to prove a propositional equality between the interpretations of $s_{n-1}(x)$ and $t_{n-1}(x)$.   But the normalisation results of Section \ref{sec:normalisation} apply, and in particular, Corollary \ref{cor:normalisation-all-ids-are-refls} tells us that any two terms of the same type in $\T_\Phi[\widehat{s_1\pi}]$ are \emph{definitionally} equal; so interpreting $c_n$ by a reflexivity term, we are done.
 \end{proof}
 
-\subsection{The classifying weak $\omega$-category of a type theory}
+\subsection{Classifying weak $\omega$-categories}
 % TODO: should be \\\texorpdfstring here
 
-\begin{corollary}If $\Jbar$ and the normalisation results old for $\stuff$, then classifying weak $\omega$-category functor exists!
-\end{corollary}
+Even when $\End(\globes)$ is not contractible, it still acts naturally on $\cl^-_{\omega}$, by Lemma \ref{lemma:homming-out-of-P-alg}.  When it is contractible, the resulting map $L \to \End(\globes)$ allows us to pull this back to an action of $L$.  In particular, this allows us to lift $\cl^-_\omega$ to a functor into $\Alg{L} = \wkwCat$, which by abuse of notation we still denote $\cl^-_\omega$:
+[diagram]
+
+(Maybe show here and/or above that there's a map of operads $P_\Cat \to \End(\globes)$, and that $\globe[0]$, $\globe[1]$ represent via this the ordinary category of types??)
+
+As mentioned before, this is not quite what we want; $\cl^-_\omega(\T)$ only has types as objects, where we would like contexts.  As a first attempt to remedy the situation, we can compose with the ``dependent contexts'' endofunctor $(-)^\cxt$ on $\DTT_\Phi$, and define $\cl^+(\T) := \cl^-_\omega(\T^\cxt)$.  
+
+
+This is still not exactly what we initially described, since by the description of $(-)^\cxt$ in \ref{para:endofunctor-cxt}, there are now \emph{too many} objects, since we have not only contexts but formal decompositions of contexts. However, on the one hand, every object is isomorphic (in $\cl(\T^\cxt)$ and hence in $\cl^+_\omega(\T)$) to one of the ones we want, so if we had a good theory of equivalence of weak $\omega$-categories, $\cl^+_\omega(\T)$ should be \emph{equivalent} to what we want; and for now, lacking such a theory, we can reach the Goldilocks spot by simply throwing away the unwanted copies, defining $\cl_\omega(\T)$ to be the full (in all dimensions $> 0$) subcategory of $\cl^+_\omega(\T)$ on the un-subdivided contexts.  (We retain functoriality since this is a natural subobject of $\cl^+_\omega(\T)_0$.)  [note: could we do this more elegantly by moving earlier to non-contextual CwF's?]  We thus have:
+
+\begin{theorem}If $\Phi$ is any set of rules for which $\Jbar$ and Corollary \ref{cor:normalisation} hold, then for any $\Phi$-theory $\T$, the globular set $\cl_\omega(\T)$ described in the introduction has a natural weak $\omega$-category structure; that is, we have a functor
+$$\cl_\omega \colon \DTT \to \wkwCat.$$
+
+In particular, this construction works when $\Phi$ is the rules for $\Id$-types, $\Pi$-types, and functional extensionality.
+\end{theorem}
 
 \subsection{A variant for non-extensional $\Pi$-types}
 
