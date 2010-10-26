@@ -533,7 +533,74 @@ Meanwhile, the left adjoint $\T_\stuff [-] \colon \GSets\ \to\ \DTT_\stuff$ is c
 $$\End(\globes)(\pi) \iso [\G/n,\DTT_\stuff](\globes \cotensor \hat{\pi},globes \cotensor \yon(n))$$
 and hence, unwinding this formula, consist of pylon diagrams:
 
-\begin{center}[TODO: BIG PYLON DIAGRAM!  OH, THE HUGE MANATEE!]\end{center}
+\newcommand{\newglobe}[1]{\globe[#1]}
+
+% \begin{figure}[htbp] \label{fig:endo-pylons}
+\begin{center}
+$$\bfig
+%%%%%%%%%%%%%%%%%%%
+% left hand pylon %
+%%%%%%%%%%%%%%%%%%%
+\node gn(250,0)[\newglobe{n}]
+\node gn1l(0,-250)[\newglobe{n-1}]
+\node gn1r(500,-400)[\newglobe{n-1}]
+\node gn2l(0,-650)[\newglobe{n-2}]
+\node fakegn2l(450,-650)[]
+\node gn2r(500,-800)[\newglobe{n-2}]
+\node g1l(0,-1150)[\newglobe{1}]
+\node g1r(500,-1300)[\newglobe{1}]
+\node g0l(0,-1550)[\newglobe{0}]
+\node g0r(500,-1700)[\newglobe{0}]
+\arrow[gn1l`gn;]
+\arrow[gn1r`gn;]
+\arrow[gn2l`gn1l;]
+\arrow[gn2r`gn1l;]
+\arrow[gn2l`gn1r;]
+\arrow[gn2r`gn1r;]
+\arrow/@{}|<>(0.58)\vdots/[g1l`gn2l;]
+\arrow/@{}|<>(0.58)\vdots/[g1r`gn2r;]
+\arrow[g0l`g1l;]
+\arrow[g0r`g1l;]
+\arrow[g0l`g1r;]
+\arrow[g0r`g1r;]
+%%%%%%%%%%%%%%%%%%%%
+% right hand pylon %
+%%%%%%%%%%%%%%%%%%%%
+\node Tpi(1750,0)[{\T_\Phi[\widehat{\pi}]}]
+\node Tspi(1500,-250)[{\T_\Phi[\widehat{s\pi}]}]
+\node Ttpi(2000,-400)[{\T_\Phi[\widehat{t\pi}]}]
+\node Ts2pi(1500,-650)[{\T_\Phi[\widehat{s^2\pi}]}]
+\node Tt2pi(2000,-800)[{\T_\Phi[\widehat{t^2\pi}]}]
+\node Ts1pi(1500,-1150)[{\T_\Phi[\widehat{s_1\pi}]}]
+\node Tt1pi(2000,-1300)[{\T_\Phi[\widehat{t_1\pi}]}]
+\node Ts0pi(1500,-1550)[{\T_\Phi[\widehat{s_0\pi}]}]
+\node Tt0pi(2000,-1700)[{\T_\Phi[\widehat{t_0\pi}]}]
+\arrow[Tspi`Tpi;]
+\arrow[Ttpi`Tpi;]
+\arrow/@{>}|!{(500,-400);(2000,-400)}\hole/[Ts2pi`Tspi;]
+\arrow/@{>}|!{(500,-400);(2000,-400)}\hole/[Tt2pi`Tspi;]
+\arrow[Ts2pi`Ttpi;]
+\arrow[Tt2pi`Ttpi;]
+\arrow/@{}|<>(0.58)\vdots/[Ts1pi`Ts2pi;]
+\arrow/@{}|<>(0.58)\vdots/[Tt1pi`Tt2pi;]
+\arrow/@{>}|!{(500,-1300);(2000,-1300)}\hole/[Ts0pi`Ts1pi;]
+\arrow/@{>}|!{(500,-1300);(2000,-1300)}\hole/[Tt0pi`Ts1pi;]
+\arrow[Ts0pi`Tt1pi;]
+\arrow[Tt0pi`Tt1pi;]
+%%%%%%%%%%%%%%%%%%%%
+% connecting wires %
+%%%%%%%%%%%%%%%%%%%%
+\arrow/.>/[gn`Tpi;R]
+\arrow/@{>}|!{(250,0);(500,-400)}\hole/[gn1l`Tspi;S_{n-1}]
+\arrow[gn1r`Ttpi;T_{n-1}]
+\arrow/@{>}|<>(.19)\hole|!{(500,-800);(500,-400)}\hole/[gn2l`Ts2pi;S_{n-2}]
+\arrow[gn2r`Tt2pi;T_{n-2}]
+\arrow[g1l`Ts1pi;S_1]
+\arrow[g1r`Tt1pi;T_1]
+\arrow/@{>}|<>(.21)\hole|!{(500,-1700);(500,-1300)}\hole/[g0l`Ts0pi;S_0]
+\arrow[g0r`Tt0pi;T_0]
+\efig$$
+\end{center}
 
 \begin{proposition}If $\Jbar$ and the normalisation results of Proposition \ref{prop:normalisation} hold for $\stuff$, then $\End(\globes)$ is contractible.
 \end{proposition}
