@@ -377,7 +377,7 @@ and $i$-$\targetrule$ , $i$-$\cellrule$\ exactly as $i$-$\sourcerule${} except w
 
 $$ \globe[0]\, \three/->`<-`->/<500>\ \globe[1]\, \three/->`<-`->/<500>\ \globe[2]\, \three/->`<-`->/<500> \ \ldots $$
 
-Forgetting for now about the reflexivity, we can see the globes as a functor
+Leaving aside the reflexivity for now, we can see the globes as a functor
 $$ \globes \colon \GSets \to \DTT_\stuff .$$
 Since $\DTT_\stuff$ is co-complete, this induces by general nonsense(\cite{find-citation-for-Kan-situation}) an adjoint pair of functors between $\GSets$ and $\DTT_\stuff$ (a ``Kan situation'').  Both these functors will be of central interest to us in the sequel:
 $$\quad \xymatrix{ \GSets \ar@/_/[rrr]_{\T_\stuff [-]\, :=\, \Lan_\yon \globes \qquad \ \, } \ar@{}[rrr]|\top & & & \DTT_\stuff \ar@/_/[lll]_{\cl^-_\omega\ :=\ \DTT_\stuff(\globes,-)} \\ \G \ar@{ >->}[u]^\yon \ar@/_/[urrr]_{\globes} }
@@ -463,6 +463,21 @@ $$\bfig
 \arrow[g0r`Tt0pi;T_0]
 \efig$$
 \end{center}
+
+
+
+\para By Lemma \ref{lemma:homming-out-of-P-alg}$\End(\globes)$ acts naturally on $\cl^-_{\omega}$.  This allows us to lift $\cl^-_\omega$ to a functor into $\Alg{L} = \wkwCat$, which by abuse of notation we still denote $\cl^-_\omega$:
+
+[diagram]
+
+As mentioned before, this is not quite what we want; $\cl^-_\omega(\T)$ only has types as objects, where we would like contexts.  As a first attempt to remedy the situation, we can compose with the ``dependent contexts'' endofunctor $(-)^\cxt \slice \diamond$ on $\DTT_\stuff$, and define $\cl^+(\T) := \cl^-_\omega(\T^\cxt \slice \diamond)$.
+
+This is still not exactly what we are aiming for  \todo{[Hang on!  Maybe it is after all!?]}, since by the description of $(-)^\cxt \slice \diamond$ in \ref{para:endofunctor-cxt}, there are now \emph{too many} objects, since we have not only contexts but formal decompositions of contexts. However, on the one hand, every object is isomorphic (in $\cl(\T^\cxt)$ and hence in $\cl^+_\omega(\T)$) to one of the ones we want, so if we had a good theory of equivalence of weak $\omega$-categories, $\cl^+_\omega(\T)$ should be \emph{equivalent} to what we want; and for now, lacking such a theory, we can reach the Goldilocks spot by simply throwing away the unwanted copies, defining $\cl_\omega(\T)$ to be the full (in all dimensions $> 0$) subcategory of $\cl^+_\omega(\T)$ on the maximally subdivided contexts.  (We retain functoriality since this is a natural subobject of $\cl^+_\omega(\T)_0$.)  [note: could we do this more elegantly by moving earlier to non-contextual CwF's?]
+
+
+\para (Maybe show here and/or above that there's a map of operads $P_\Cat \to \End(\globes)$, and that $\globe[0]$, $\globe[1]$ represent via this the ordinary category of types??  Yes!  This gives us an excuse to analyse the theories of 1-dimensional pasting diagrams a little here, so we can just refer back to it in the later contractibility proof rather than doing it inline as at present, which rather breaks the flow.)
+
+
 
 
 
@@ -708,15 +723,11 @@ On the other hand, for $n \geq 2$, we have interpreted $i$-$\sourcerule$ and $i$
 \subsection{Classifying weak $\omega$-categories}
 % TODO: should be \\\texorpdfstring here
 
-Even when $\End(\globes)$ is not contractible, it still acts naturally on $\cl^-_{\omega}$, by Lemma \ref{lemma:homming-out-of-P-alg}.  When it is contractible, the resulting map $L \to \End(\globes)$ allows us to pull this back to an action of $L$.  In particular, this allows us to lift $\cl^-_\omega$ to a functor into $\Alg{L} = \wkwCat$, which by abuse of notation we still denote $\cl^-_\omega$:
+When $\End(\globes)$ is contractible, the resulting map $L \to \End(\globes)$ allows us to pull its action on $\cl_\omega$ back to an action of $L$, which in flagrant abuse of notation we continue to denote $\cl_\omega$:
+
 [diagram]
 
-(Maybe show here and/or above that there's a map of operads $P_\Cat \to \End(\globes)$, and that $\globe[0]$, $\globe[1]$ represent via this the ordinary category of types??)
-
-As mentioned before, this is not quite what we want; $\cl^-_\omega(\T)$ only has types as objects, where we would like contexts.  As a first attempt to remedy the situation, we can compose with the ``dependent contexts'' endofunctor $(-)^\cxt$ on $\DTT_\stuff$, and define $\cl^+(\T) := \cl^-_\omega(\T^\cxt)$.  
-
-
-This is still not exactly what we initially described, since by the description of $(-)^\cxt$ in \ref{para:endofunctor-cxt}, there are now \emph{too many} objects, since we have not only contexts but formal decompositions of contexts. However, on the one hand, every object is isomorphic (in $\cl(\T^\cxt)$ and hence in $\cl^+_\omega(\T)$) to one of the ones we want, so if we had a good theory of equivalence of weak $\omega$-categories, $\cl^+_\omega(\T)$ should be \emph{equivalent} to what we want; and for now, lacking such a theory, we can reach the Goldilocks spot by simply throwing away the unwanted copies, defining $\cl_\omega(\T)$ to be the full (in all dimensions $> 0$) subcategory of $\cl^+_\omega(\T)$ on the un-subdivided contexts.  (We retain functoriality since this is a natural subobject of $\cl^+_\omega(\T)_0$.)  [note: could we do this more elegantly by moving earlier to non-contextual CwF's?]  We thus have:
+We thus have:
 
 \begin{theorem}If $\stuff$ is any set of rules for which $\Jbar$ and Corollary \ref{cor:normalisation} hold, then for any $\stuff$-theory $\T$, the globular set $\cl_\omega(\T)$ described in the introduction has a natural weak $\omega$-category structure; that is, we have a functor
 $$\cl_\omega \colon \DTT \to \wkwCat.$$
