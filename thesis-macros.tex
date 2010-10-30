@@ -131,19 +131,27 @@
 \newcommand{\fscs}{\textsc{fscs}}
 \newcommand{\fscss}{\textsc{fscs}'s}
 \newcommand{\globe}[1][n]{\textsf{\textbf{G}}_{#1}}
+\newcommand{\piglobe}[1][n]{{}^\Pi \textsf{\textbf{G}}_{#1}}
+\newcommand{\globefig}[1]{\globe[#1]}
+  % needed because commands with optional[arguments] seem to interact badly with parsing of square brackets inside \bfig...\efig.
 \newcommand{\globes}{\textsf{\textbf{G}}_\bullet}
+\newcommand{\piglobes}{{}^\Pi \textsf{\textbf{G}}_\bullet}
 % \newcommand{\longGSets}{[\mathbb{G}^\op,\mathbf{Sets}]}
 \newcommand{\GSets}{\widehat{\mathbb{G}}}
+\newcommand{\GnSets}[1][n]{\widehat{\mathbb{G}}_{#1}}
 % \renewcommand{\lim}{\varprojlim}
 \newcommand{\Lan}{\mathrm{Lan}}
 \newcommand{\lax}{\mathrm{lax}}
 \newcommand{\MonGlobCat}{\mathbf{MonGlobCat}}
+\newcommand{\ModSpans}[1][]{\mathbf{ModSpans}_{#1}}
 \newcommand{\ML}{\textsf{\textbf{ML}}}
 \newcommand{\MLId}{\textsf{\textbf{ML}}^{\Id}}
 \newcommand{\ob}{\operatorname{ob}}
 \newcommand{\op}{\mathrm{op}}
+\newcommand{\nOpd}[1][n]{#1\mbox{-}\mathbf{Opd}}
 % \newcommand{\Operads}{\mathbf{Operads}}
 % \newcommand{\pd}{\mathbf{pd}}
+\newcommand{\path}{\mathit{path}}
 \newcommand{\PsAlg}[2][]{\mathbf{Ps}_{#1}\mbox{-}{#2}\mbox{-}\mathbf{Alg}}
 \newcommand{\QCat}{\mathbf{QCat}}
 \newcommand{\qcat}{\mathit{qcat}}
@@ -187,10 +195,11 @@
 \newcommand{\elim}{\textsc{elim}}
 % \newcommand{\Exch}{\mathsf{Exch}}
 \newcommand{\form}{\textsc{form}}
-\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\Id}{\mathsf{Id}}
 % \newcommand{\varidelim}[5]{#4\mathsf{ for }#3\mathsf{ in }#1.#2\mathsf{ via }#5}
 % \newcommand{\idelim}[5]{J_{#1.#2}(#3,#4,#5)}
 \newcommand{\intro}{\textsc{intro}}
+\newcommand{\PiIdelim}{\Pi\mbox{-}\Id\mbox{-}\elim}
 \newcommand{\Nat}{\mathsf{Nat}}
 \newcommand{\One}{\mathsf{1}}
 \newcommand{\refl}{\mathsf{refl}}
@@ -256,4 +265,5 @@
 % \efig$$
 
 
-\newcommand{\todo}[1]{\textbf{#1}}
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+\newcommand{\comment}[1]{\textcolor{red}{#1}}

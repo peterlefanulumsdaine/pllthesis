@@ -12,7 +12,8 @@
 
 % \usepackage{makeindex}
 
-\include{thesismacros}
+\include{thesis-macros}
+\include{thesis-style}
 
 \begin{document}
 
@@ -47,20 +48,24 @@ Also note: text beginning directly after a (sub)section heading thus needs a \te
 
 Running page headers and references: if numbering paras (etc.) within sections,  reference that as [2.3.11] (and show it in running header for easy navigation?)
 
+\para Figures should also, surely, then be numbered in sequence with everything else.  Is it possible to make \LaTeX{} do this?
+
 \section{Notations}
 \para The classifying $\CwA_\strat$ of a theory: $\cl_\strat(\TT)$?  Problem: $\cl$ looks like ``closure'' not classifying!  $\C(\TT)$ or $\CC(\TT)$ is more usual, but not brilliant by any means\ldots\ and gets worse as we decorate it $\C_\strat$, $\C_\omega$, $\C^-_\omega$, etc.\ldots
 
 At least, identifying a theory transparently with its classifying (strat) CwA lets us avoid using $\cl$ except for as $\cl_\omega$.  
 
-\para The boundary of a pasting diagram??  Batanin and others use $\delta \pi$ to mean the source/target of $\pi$ (since they're equal).  I DON'T LIKE THIS: several reasons!  Firstly, it's misleading: it's not the boundary in the usual well-established sense of $\delta$; that's the pushout of the source and target along their common boundary.  Secondly, it thus leaves us \emph{without} a natural notation for that boundary, even though it's something we use all the time!  Thirdly (this is minor and debatable) it's often helpful to distinguish $s\pi$ and $t\pi$ when working with them, since they each have natural embeddings into $\pi$, etc.
+\para The boundary of a pasting diagram??  Batanin and others use $\delta \pi$ to mean the source/target of $\pi$ (since they're equal).  I DON'T LIKE THIS: several reasons!  Firstly, it's misleading: it's not the boundary in the usual well-established sense of $\delta$ for discs; that's the pushout of the source and target along their common boundary.  Secondly, it thus leaves us \emph{without} a natural notation for that boundary, even though it's something we use all the time!  Thirdly (this is minor and debatable) it's often helpful to distinguish $s\pi$ and $t\pi$ when working with them, since they have different natural embeddings into $\pi$, etc.
 
-I certainly want to avoid supporting this usage: I'll just write $s\pi$ and $t\pi$ for these.  Question: should I actually conflict with Batanin's usage by using $\delta \pi$ for what I argue it \emph{should} mean, or is this too potentially misleading/confusing?  (Probably, I fear.)  If so, what other notation can I use for the boundary?  $B(\pi)$??  Ugh\ldots
+I certainly want to avoid supporting this usage: I'll perhaps just write $s\pi$ and $t\pi$ for these.  Question: should I actually conflict with Batanin's usage by using $\delta \pi$ for what I argue it \emph{should} mean, or is this too potentially misleading/confusing?  (Probably, I fear.)  If so, what other notation can I use for the boundary?  $B(\pi)$??  Ugh\ldots
 
 In any case, make sure to explain all this usage in the background introducing pasting diagrams.
 
 \para In ``fundamental $\omega$-groupoid of a type'', what to call $\MLId[X]$?  $\MLId[X]$ is (I think) the best option in isolation (usefully evocative of polynomial rings), but $\globe{0}$ or $\\T[\yon(0)]$ fit better into bigger picture$\ldots$
 
-\para Give the type-theoretic operads catchy names, or just use the definitions (descriptive but unwieldy)?
+\para Give the type-theoretic operads catchy names, or just use the definitions (descriptive but unwieldy), or use slightly abbreviated forms of their definitions, i.e.\ $\End(\globes)$ etc.?  Probably this last.
+
+\para Adjunctions? ---remind myself how to place the adjunction symbol them, in each of the various diagram styles I've used!
 
 \section{Terminologies}
 
@@ -68,7 +73,9 @@ In any case, make sure to explain all this usage in the background introducing p
 
 \para ``pylon diagrama'': fun but probably unnecessary; we already have ``higher spans'', which does the job fine. (Not to mention both ``telescopes'' and ``ladders'', which I abhor; going by which, others might well dislike ``pylon'' just as much!)
 
-\para What term should we use for what $\globes_\bullet$ form?  A co-weak $\omega$-category, a co-weak-$\omega$-category, a weak co-$\omega$-category, a weak $\omega$-cocategory?  A co-$P$-algebra, or a $P$-co-algebra?
+\para What term should we use for what $\globes$ form?  A co-weak $\omega$-category, a co-weak-$\omega$-category, a weak co-$\omega$-category, a weak $\omega$-cocategory?  A co-$P$-algebra, or a $P$-co-algebra?
+
+\para Should I conscientiously talk about ``co-operations'' in ``co-endomorphism operads'', or is it clearer to drop the co-?
 
 \section{Checklist}  Notations etc.\ I should check for consistencty during proofing:
 \begin{itemize}
@@ -79,5 +86,5 @@ In any case, make sure to explain all this usage in the background introducing p
 
 \section{Other}
 
-\para Type-theoretic rules: give in ``hypothetical'' forms.  What does this mean for axioms with no hypotheses??  Shold they be given in the empty context?? 
+\para Type-theoretic rules: give in ``hypothetical'' forms.  What does this mean for axioms with no hypotheses?  Shold they be given in the empty context, or in arbitrary context? 
 \end{document}
