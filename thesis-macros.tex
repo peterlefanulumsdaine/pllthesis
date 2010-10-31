@@ -23,6 +23,7 @@
 \newcommand{\mono}{\to/ >->/}
 \newcommand{\slice}{\!\!\; / \!\!\!\; /}
 \newcommand{\tensor}{\otimes}
+\newcommand{\tightcdot}{\! \cdot \!}
 \newcommand{\tightcolon}{\!\!\, : \!\!\,}
 \newcommand{\To}{\Rightarrow}
 \newcommand{\types}{\vdash}
@@ -35,7 +36,7 @@
 \newcommand{\A}{A_\bullet}
 \newcommand{\abar}{\overline{a}}
 % \newcommand{\uA}[1][]{\underline{A}_{#1}}
-% \newcommand{\B}{B_\bullet}
+\newcommand{\B}{B_\bullet}
 % \newcommand{\ML}{\mathit{ML_I}}
 % \newcommand{\MLfrag}{\mathit{ML}^\Id}
 \newcommand{\C}{\mathcal{C}}
@@ -132,6 +133,7 @@
 \newcommand{\fscss}{\textsc{fscs}'s}
 \newcommand{\globe}[1][n]{\textsf{\textbf{G}}_{#1}}
 \newcommand{\piglobe}[1][n]{{}^\Pi \textsf{\textbf{G}}_{#1}}
+  % oh dear, I keep reading this as "pig lobe".  It's clearly too late at night…
 \newcommand{\globefig}[1]{\globe[#1]}
   % needed because commands with optional[arguments] seem to interact badly with parsing of square brackets inside \bfig...\efig.
 \newcommand{\globes}{\textsf{\textbf{G}}_\bullet}
@@ -143,21 +145,23 @@
 \newcommand{\Lan}{\mathrm{Lan}}
 \newcommand{\lax}{\mathrm{lax}}
 \newcommand{\MonGlobCat}{\mathbf{MonGlobCat}}
-\newcommand{\ModSpans}[1][]{\mathbf{ModSpans}_{#1}}
 \newcommand{\ML}{\textsf{\textbf{ML}}}
 \newcommand{\MLId}{\textsf{\textbf{ML}}^{\Id}}
 \newcommand{\ob}{\operatorname{ob}}
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\nOpd}[1][n]{#1\mbox{-}\mathbf{Opd}}
 % \newcommand{\Operads}{\mathbf{Operads}}
-% \newcommand{\pd}{\mathbf{pd}}
+\newcommand{\pd}{\mathbf{pd}}
 \newcommand{\path}{\mathit{path}}
 \newcommand{\PsAlg}[2][]{\mathbf{Ps}_{#1}\mbox{-}{#2}\mbox{-}\mathbf{Alg}}
 \newcommand{\QCat}{\mathbf{QCat}}
 \newcommand{\qcat}{\mathit{qcat}}
 \newcommand{\Ran}{\mathrm{Ran}}
+% \newcommand{\RefGlob}[1][]{\mathbf{RefGlob}_{#1}}
+% \newcommand{\RefOneGlob}[1][]{\mathbf{Ref}_1\mathbf{Glob}_{#1}}
+\newcommand{\RefnGlob}[2]{\mathbf{Ref}_{#1}\mathbf{Glob}(#2)}
 \newcommand{\Sets}{\mathbf{Sets}}
-\newcommand{\Spans}[1][]{\mathbf{Spans}_{#1}}
+\newcommand{\Spans}[1][]{\mathbf{Spans}(#1)}
 \newcommand{\str}{\mathrm{str}}
 \newcommand{\strat}{\textrm{strat}}
 \renewcommand{\th}{\mathbf{th}}
@@ -199,7 +203,7 @@
 % \newcommand{\varidelim}[5]{#4\mathsf{ for }#3\mathsf{ in }#1.#2\mathsf{ via }#5}
 % \newcommand{\idelim}[5]{J_{#1.#2}(#3,#4,#5)}
 \newcommand{\intro}{\textsc{intro}}
-\newcommand{\PiIdelim}{\Pi\mbox{-}\Id\mbox{-}\elim}
+\newcommand{\PiIdelim}{{\Pi\mbox{-}\Id\mbox{-}\elim}}
 \newcommand{\Nat}{\mathsf{Nat}}
 \newcommand{\One}{\mathsf{1}}
 \newcommand{\refl}{\mathsf{refl}}
