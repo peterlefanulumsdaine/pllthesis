@@ -24,7 +24,7 @@
 
 \newcommand{\arr}{\mathrm{arr}}
 \newcommand{\ext}{\mathrm{ext}}
-\newcommand{\Jbar}{\overline{J}}
+% \newcommand{\Jbar}{\overline{J}}
 \newcommand{\tree}{\mathrm{tree}}
 \newcommand{\tr}{\mathrm{tr}}
 \newcommand{\stuff}{{\Phi}}
@@ -197,9 +197,9 @@ It is currently somewhat unclear to what extent one can retain strong normalisat
 
 \section{Globular structures from $\DTT$}
 
-\todo{[Recall from background: general construction of $\Spans(\C)$, operads therein.  Homming-out facts? or put those in main body?]}
+\comment{Recall from background: general construction of $\Spans[\C]$, operads therein.  Homming-out facts? or put those in main body?}
 
-\todo{[Give: the globes, and variants of globes; the Kan constructions; fact that pasting diagrams get realised by these; resulting functors $\DTT \to \Alg{\End(\globes)}$.]}
+\comment{Give: the globes, and variants of globes; the Kan constructions; fact that pasting diagrams get realised by these; resulting functors $\DTT \to \Alg{\End(\globes)}$.]}
 
 \subsection{Endomorphism operads; categories with fibrations: Background}
 \label{subsec:endo-operads}
@@ -311,7 +311,7 @@ Given such a globular object $\X$, its ``diagram objects'' $X^\pi$ in $\FibSpans
 So elements of the endomorphism operad consist in \emph{pylon diagrams} as follows: [diagram].
 
 \begin{example}
-If $\C$ is any category with all pullbacks, then by taking the right maps to be all maps, we have the case $\FibSpans(\C) = \Spans(\C)$, as constructed in \cite{batanin:natural-environment}.
+If $\C$ is any category with all pullbacks, then by taking the right maps to be all maps, we have the case $\FibSpans(\C) = \Spans[\C]$, as constructed in \cite{batanin:natural-environment}.
 \end{example}
 
 \begin{example}
@@ -391,15 +391,15 @@ $$
 and $i$-$\targetrule$ , $i$-$\cellrule$\ exactly as $i$-$\sourcerule${} except with term-formers $t_i$, $c_i$ in place of $s_i$.
 \end{definition}
 
-We will usually work with some fixed $\Phi$, and write just $\globe[n]$.
+Often, when working with some fixed $\Phi$, we will write just $\globe[n]$.
 
 \begin{para} There are evident interpretations between these theories, forming a reflexive coglobular object $\globes$ in $\DTT_\stuff$:
 
 $$ \globe[0]\, \three/->`<-`->/<500>\ \globe[1]\, \three/->`<-`->/<500>\ \globe[2]\, \three/->`<-`->/<500> \ \ldots $$
 
-Leaving aside the reflexivity for now, we can see the globes as a functor
+Leaving aside the reflexivity for now, we can thus see the globes as a functor
 $$ \globes \colon \GSets \to \DTT_\stuff .$$
-Since $\DTT_\stuff$ is co-complete, this induces by general nonsense(\cite{find-citation-for-Kan-situation}) an adjoint pair of functors between $\GSets$ and $\DTT_\stuff$ (a ``Kan situation'').  Both these functors will be of central interest to us in the sequel:
+Since $\DTT_\stuff$ is co-complete, this induces by general nonsense(\cite[VII.2]{mac-lane-moerdijk}\todo{(??)}) an adjoint pair of functors between $\GSets$ and $\DTT_\stuff$ (a ``Kan situation'').  Both these functors will be of central interest to us in the sequel:
 $$\quad \xymatrix{ \GSets \ar@/_/[rrr]_{\T_\stuff [-]\, :=\, \Lan_\yon \globes \qquad \ \, } \ar@{}[rrr]|\top & & & \DTT_\stuff \ar@/_/[lll]_{\cl^-_\omega\ :=\ \DTT_\stuff(\globes,-)} \\ \G \ar@{ >->}[u]^\yon \ar@/_/[urrr]_{\globes} }
 $$
 
@@ -407,12 +407,12 @@ The right adjoint, $\cl^-_\omega \colon \DTT_\stuff\ \to\ \GSets$, is defined by
 
 This is very nearly, but not quite, what we wanted for the underlying globular set of $\cl_\omega(\T)$.  The difference is that it has only the \emph{types} of $\T$ as 0-cells, not all the contexts; however, we will proceed for now with $\cl^-_\omega$, and remedy this deficiency later.
 
-Meanwhile, the left adjoint $\T_\stuff [-] \colon \GSets\ \to\ \DTT_\stuff$ is constructed as the left Kan extension of $\globes$ along $\yon$, and may be seen as freely adjoining a globular set to $\T_\stuff$, using the globes as templates.  Explicitly, for a globular set $\X$, the theory $\T[\X]$ has axioms for each cell of $\X$, realising the 0-cells as closed types, the 1-cells as terms between these types, and the higher-cells as terms of appropriate identity types.\footnote{A related construction is considered in \cite{awodey-hofstra-warren} and \cite{hofstra-warren}, corresponding to a slightly different co-globular theory: they omit our $\globe[0]$, giving instead just a single closed base type, and realise $0$-cells as closed terms of this type, $1$-cells as terms of identity type between these, and so forth.  Their $T_\mathbf{ML}$ is then the monad induced by the Kan adjunction.}
+Meanwhile, the left adjoint $\T_\stuff [-] \colon \GSets\ \to\ \DTT_\stuff$ is constructed as the left Kan extension of $\globes$ along $\yon$, and may be seen as freely adjoining a globular set to $\T_\stuff$, using the globes as templates.  Explicitly, for a globular set $\X$, the theory $\T[\X]$ has an axiom for each cell of $\X$, realising the 0-cells as closed types, the 1-cells as terms between these types, and the higher-cells as terms of appropriate identity types.\footnote{A related construction is considered in \cite{awodey-hofstra-warren} and \cite{hofstra-warren}\todo{[get Awodey--Hofstra--Warren citation]}, corresponding to a slightly different co-globular theory: they omit our $\globe[0]$, giving instead just a single closed base type, and realise $0$-cells as closed terms of this type, $1$-cells as terms of identity type between these, and so forth.  Their $T_\mathbf{ML}$ is then the monad induced by the Kan adjunction.}
 
  In particular, $\T_\stuff[\yon(n)] = \globe[n]$.  Also useful will be the boundary of the  $n$-globe, $\del \globe[n] := \T_\stuff[\del \yon(n)]$; up to isomorphism, this is the theory given by $i$-$\sourcerule$ and $i$-$\targetrule$, for $0 \leq i < n$, i.e.\ all the axioms of $\globe[n]$ except for $n$-$\cellrule$ itself.
 \end{para}
  
-\begin{para} Since $\DTT_\stuff$ is co-complete, we can consider (by Section \ref{sec:endo-operad}) the co-endomorphism operad of the globes, $\End_{\Spans(\DTT_\stuff^\op)}(\globes)$, or briefly just $\End(\globes)$.  We know that its operations of some shape $\pi$ are given by
+\begin{para} Since $\DTT_\stuff$ is co-complete, we can consider (by Section \ref{sec:endo-operad}) the co-endomorphism operad of the globes, $\End_{\Spans[\DTT_\stuff^\op]}(\globes)$, or briefly just $\End(\globes)$.  We know that its operations of some shape $\pi$ are given by
 $$\End(\globes)(\pi) \iso [\G/n,\DTT_\stuff](\globes \cotensor \hat{\pi},\globes \cotensor \yon(n))$$
 and hence, unwinding this formula, consist of pylon diagrams as in Fig.\ \ref{fig:endo-pylons}.
 
@@ -498,7 +498,7 @@ $$\bfig
 %\arrow[wkwCat`GSets;]
 \efig$$
 
-Moreover, since $U$ reflects and the original $\cl^-_\omega$ preserves all limits, so does the lifted $\cl^-_\omega$; so since both $\DTT_\Phi$ and $\Alg{\End(\globes)}$ are nice categories, we see by the Something Adjoint Functor Theorem \todo{find reference for most easily applicable form} that $\cl^-_\omega$ has a left adjoint, realising any $\End{\globes}$-algebra as a theory.  (Its cells are realised as types and terms as under $\T_\Phi[-]$, and the $\End{\globes}$-action specifies various definitional-equality axioms between them.)
+Moreover, since $U$ reflects and the original $\cl^-_\omega$ preserves all limits, so does the lifted $\cl^-_\omega$; so since both $\DTT_\Phi$ and $\Alg{\End(\globes)}$ are nice categories, we see by the Something Adjoint Functor Theorem \cite{mac-lane:cwm}\todo{[find optimal AFT to cite]} that $\cl^-_\omega$ has a left adjoint, realising any $\End{\globes}$-algebra as a theory.  (Its cells are realised as types and terms as under $\T_\Phi[-]$, and the $\End(\globes)$-action specifies various definitional-equality axioms between them.)
 \end{para}
 
 \begin{para} As mentioned before, this is not quite what we want; $\cl^-_\omega(\T)$ only has types as objects, where we would like contexts.  To remedy the situation, we can compose with the ``dependent contexts'' endofunctor $(-)^\cxt \slice \diamond$ on $\DTT_\stuff$, and define $\cl(\T) := \cl^-_\omega(\T^\cxt \slice \diamond)$.
@@ -508,12 +508,11 @@ Now the objects of $\cl(\T)$ are closed types of $\T^\cxt \slice \diamond$, i.e.
 
 \begin{para} In Section \ref{sec:contractibility} below, we will investigate the question of when $\End(\globes)$ is contractible, or at least of finding a contractible suboperad.  This will require, however, the development of some more type-theoretic machinery.  For now, we may content ourselves with showing that at least in dimensions $\leq 1$, $\End(\globes)$ is very nice.
 
-Specifically, recall that there is an adjunction
-$$ \nOpd[1] \two/->`<-/^{D}_{\tr^1} \nOpd[\omega]$$
-where $DQ$ is the \emph{discrete} $\omega$-operad on a 1-operad $Q$, with only unit cells (i.e.\ units of the operad structure) in higher dimensions, and $\tr^1P$ is the 1-truncation of an $\omega$-operad $Q$, with $\tr^1(P)_i = P_i$ for $i \leq 1$.  % (In fact $\tr^1$ also has a right adjoint, but that will not concern us here.)  \todo{[Hmm, is this true??]}
-\todo{[Check Batanin's terminology: (co-)skeleton, (co-)truncation??]}
+Specifically, recall that there is a triple adjunction
+$$ \nOpd[1] \three/->`<-`->/^{D}|{\tr^1}_{I} \nOpd[\omega]$$
+where $DP$ is the \emph{discrete} $\omega$-operad on a 1-operad $P$, with only unit cells (i.e.\ units of the operad structure) in higher dimensions; $\tr^1Q$ is the 1-truncation of an $\omega$-operad $Q$, with $\tr^1(Q)_i = Q_i$ for $i \leq 1$; and $IP$ is the indiscrete $\omega$-operad on $P$, with a unique operation of shape $\pi$ for each pasting diagram $\pi$ together with a choice of $\leq 1$-dimensional source and target from $P$.  \todo{[Check Batanin's terminology for this: (co-)skeleton, (co-)truncation??]}
 
-Now take $P_\Cat \in \nOpd[1]$ to be the operad for categories, i.e.\ the terminal $\nOpd[1]$.  Then there is a map $D(P_{\Cat}) \to \End(\globes)$, or equivalently $\psi \colon P_{\Cat} \to \tr^1 \End(\globes)$.  Truncating algebras and pulling back along this map thus induce a map $\psi^* \Alg{\End(\globes)} \to \Cat$, which when applied to $\cl_\omega(\T)$ simply recovers the classifying category $\cl(\T)$:
+Now take $P_\Cat \in \nOpd[1]$ to be the operad for categories, i.e.\ the terminal $\nOpd[1]$.  Then there should be a map $D(P_{\Cat}) \to \End(\globes)$, or equivalently $\psi \colon P_{\Cat} \to \tr^1 \End(\globes)$, so that truncating algebras and pulling back along this map thus induce a map $\psi^* \Alg{\End(\globes)} \to \Cat$, which when applied to $\cl_\omega(\T)$ recovers the classifying category $\cl(\T)$:
 $$\bfig
 \node DTT(0,0)[\DTT_\Phi]
 \node EndGAlg(1000,500)[\Alg{\End(\globes)}]
@@ -532,10 +531,10 @@ $$\bfig
 \arrow/@{>}@/^0em//[DTT`Cat;\cl]
 \efig$$
 
-This points us towards an easy abstract construction of the map $\psi$.  We know that the 1-globular object $\globe[0] \two/<-`<-/ \globe[1]$ represents the functor $\cl : \DTT_\Phi \to \Cat$; so by the Yoneda lemma, $\globe[0] \two/<-`<-/ \globe[1]$ must carry some co-category structure; but such a structure corresponds exactly to an operad map of the form we want.
+This points us towards an easy abstract construction of the map $\psi$.  We know that the 1-globular object $\globe[0] \two/<-`<-/ \globe[1]$ represents the original classifying category functor $\cl : \DTT_\Phi \to \Cat$; so by the Yoneda lemma, $\globe[0] \two/<-`<-/ \globe[1]$ must carry some co-category structure; but such a structure corresponds exactly to an operad map of the form we want.
 \end{para}
 
-\begin{para} \label{para:map-from-cat} However, explicitly constructing the map gives us an excuse to analyse low dimensions of $\End(\globes)$.  A 0-dimensional operation in $\End(\globes)$ is perforce just a unary map $\globe[0] \to \globe[0]$ (there is only one 0-dimensional pasting diagram); so the single 0-dimensional operation in $\Cat$ (the identity on 0-cells) we send to the identity map $1_{\globe[0]}$.  (There is no choice: $\psi$ must preserve the operad structure, and $1_{\globe[0]}$ is the $0$-dimensional operad unit of $\End(\globes)$.)
+\begin{para} \label{para:map-from-cat} However, constructing $\psi$ concretely gives us an excuse to analyse low dimensions of $\End(\globes)$.  A 0-dimensional operation in $\End(\globes)$ is perforce just a unary map $\globe[0] \to \globe[0]$ (there is only one 0-dimensional pasting diagram); so the single 0-dimensional operation in $\Cat$ (the identity on 0-cells) we send to the identity map $1_{\globe[0]}$.  (There is no freedom here: $\psi$ must preserve the operad structure, and $1_{\globe[0]}$ is the $0$-dimensional operad unit of $\End(\globes)$.)
 
 A 1-dimensional pasting diagram is just a path $\path_l = (\cdot \to<200> \cdot \to<200> \ldots \to<200> \cdot)$ of some length $l \geq 0$.  \todo{[Dangit, need a better notation than $\path_l$!]} An operation of shape $\path_l$ in $\End(\globes)$ with source and target $1_{\globe[0]}$ is a map of cospans
 $$\bfig
@@ -571,18 +570,18 @@ $$
 simply adjoining basic types and type formers
 $$ \xymatrix{ A_0 \ar[r]^{f_1} & A_1 \ar[r]^{f_2} & \ \ar@{}[r]|{\ldots} & \ \ar[r]^{f_l} & A_l} .$$
 
-The source and target maps of the right-hand cospan interpret the type of $\globe[0]$ as $A_0$ and $A_l$ respectively; so suitable maps $H : \globe[1] \to \T_\Phi[\path_l]$ correspond to interpretations of the type-constructor of $\globe[1]$ as some term
+The source and target maps of the right-hand cospan interpret the type of $\globe[0]$ as $A_0$ and $A_l$ respectively; so suitable maps $H : \globe[1] \to \T_\Phi[\widehat{\path_l}]$ correspond to interpretations of the type-constructor of $\globe[1]$ as some term
 $$ x : A_0 \ \types\ t(x) : A_l $$
-For the unique $l$-ary operation of $P_\Cat$, we thus use the obvious term $f_l(f_{l-1}(\ldots (f_1(x))\ldots))$.  It is routine to check that this indeed gives an operad map.
+For the unique $l$-ary operation of $P_\Cat$, we thus use the obvious composite term $f_l(f_{l-1}(\ldots (f_1(x))\ldots))$.  It is routine to check that this indeed gives an operad map.
 \end{para}
 
 \begin{para} \label{para:canonicity-in-Tpath} When $\Phi$ gives a particularly well-behaved type system, we can say a little more.
 
-In the case when $\Phi$ consists of just the $\Id$-rules, then firstly $\globe[0]$ has no other closed types besides the basic $C$, so $1_{\globe[0]}$ is its only endomorphism, and the only element of $\End(\globes)$ in dimension $0$; and secondly,  (\cite{canonicity-reference?}) $\T_\Phi[\path_l]$ enjoys both normalisation and \emph{canonicity}\footnote{canonicity: the property that every closed normal form is an intro (aka canonical) form; there are no stuck (aka neutral) normal forms}, so the ``obvious term'' we used was in fact the only possible such term: there is only one $l$-ary operation in $\End(\globes)$ with source and target $1_{\globe{0}}$.
+In the case when $\Phi$ consists of just the $\Id$-rules, then firstly $\globe[0]$ has no other closed types besides the basic $C$, so $1_{\globe[0]}$ is its only endomorphism, and the only element of $\End(\globes)$ in dimension $0$; and secondly,  (\todo{\cite{canonicity-reference?}}) $\T_\Phi[\widehat{\path_l}]$ enjoys both normalisation and \emph{canonicity}\footnote{canonicity: the property that every closed normal form is an intro (aka canonical) form; there are no stuck (aka neutral) normal forms}, so the ``obvious term'' we used was in fact the only possible such term: there is only one $l$-ary operation in $\End(\globes)$ with source and target $1_{\globe{0}}$.
 
-So in this case, the map $P_\Cat \to \tr^1\End(\globes)$ (always injective, since $P_\Cat$ is terminal) is moreover surjective, so gives an isomorphism $\tr^1\End(\globes) \iso P_\Cat$.
+So in this case, the map $P_\Cat \to \tr^1\End(\globes)$ (always injective, since $P_\Cat$ is terminal) is moreover surjective, and gives an isomorphism $\tr^1\End(\globes) \iso P_\Cat$.
 
-In richer type systems, $\globe[0]$ will typically have more closed types (e.g.\ $C \rightarrow C$), and hence $\End(\globe[0])$ will have more $0$-dimensional operations.  But in important cases, such as when $\Phi$ consists of just the $\Id$- and $\Pi$-rules, we retain normalisation and canonicity for $\T_\Phi[\path_l]$, so by the argument above our map is at least an isomorphism from $P_\Cat$ to the \emph{normalised core} of $\End(\globes)$.\todo{[Define the normalised core in the globular background!]}
+In richer type systems, $\globe[0]$ will typically have more closed types (e.g.\ $C \rightarrow C$), and hence $\End(\globe[0])$ will have more $0$-dimensional operations.  But in important cases, such as when $\Phi$ consists of just the $\Id$- and $\Pi$-rules, we retain normalisation and canonicity for $\T_\Phi[\widehat{\path_l}]$, so by the argument above our map is at least an isomorphism from $P_\Cat$ to the \emph{normalised core} of $\End(\globes)$. \comment{[Make sure to define the normalised core in the globular background!]}
 \end{para}
 
 
@@ -603,7 +602,7 @@ $$ \clpi_\omega \colon \DTT_\Phi \to \Alg{\End({}^\Pi \globes)}$$
 
 The objects of $\clpi_\omega (\T)$ are the same as those of $\cl_\omega(\T)$.  The difference is in the higher cells: rather than open context maps, $1$-cells are now context maps from the empty context $\diamond$ into ``$\Pi$-contexts'', and higher cells are context maps from $\diamond$ into the identity contexts over these.
 
-\todo{[Question: do we also need $\Pi-\eta$, at least propositionally, to get contractibility of operad in dimension 1?  I think so.]}
+\todo{[To add here: fixing the $\Pi$,$\eta$ version, add discussion of how $\psi$ fails to work analogously here, and of how we get around this.}
 \end{para}
 
 
@@ -621,15 +620,15 @@ The objects of $\clpi_\omega (\T)$ are the same as those of $\cl_\omega(\T)$.  T
 
 \section{Homotopical structures on $\DTT$}
 
-Recall from background: orthogonality; other exples of cofibrantly generated wfs' (or include these in main text??)
+\comment{Recall from background: orthogonality; other exples of cofibrantly generated wfs'.  Or include these in main text?  No, put them in background.}
 
-Include: basic extensions; contractible maps; $\Jbar$ and discussion.
+\comment{Include: basic extensions; contractible maps; $\Jbar$ and discussion.}
 
 \subsection{Left and right maps in $\DTT$}
 
 \begin{para} In the next section, we'll construct classifying weak $\omega$-categories for theories with $\Id$-types and $\Pi$-types (with $\eta$-rules and functional extensionality), and discuss how it might be possible to extend this to require only the $\Id$-types.
 
-The construction of the classifying weak $\omega$-category of a theory is closely analogous to that of the fundamental weak $\omega$-groupoid of a space: it is obtained by homming out of a complex of representing objects (``globes''), and so it is enough to show that these representing objects form a co-(weak $\omega$-category), just as the topological globes ($D^0$, $D^1$, $D^2$) [diagram!] do in $\Top$.
+The construction of the classifying weak $\omega$-category of a theory is closely analogous to that of the fundamental weak $\omega$-groupoid of a space: it is obtained by homming out of a complex of representing objects (``globes''), and so it is enough to show that these representing objects form a co-(weak $\omega$-category), just as the topological globes ($D^0 \two D^1 \two D^2 \two \cdots\quad$) do in $\Top$.
 
 To that end, we set up in this section various classes of left and right maps on $\CwF^{\stuff}_\diamond$, and
 then apply the machinery of Section \ref{sec:endo-operads} to show that the endomorphism operad of the globes is contractible.
@@ -640,13 +639,13 @@ Among this, only one step (showing that certain maps are absolute right maps) se
 
 \begin{para}[Type and term extensions]
 
-For the remainder of this section, fix some collection $\stuff$ of the constructors and rules of Subsetcion \ref{subsec:construtors}, and work in $\DTT_\stuff$.  (The main cases of interest in the sequel are where $\stuff$ is either $(\Id)$, $(\Id,\Pi,\eta)$, or $(\Id,\Pi,\eta,\ext)$.)
+For the remainder of this section, fix some collection $\stuff$ of the constructors and rules of Subsection \ref{subsec:construtors}, and work in $\DTT_\stuff$.  (The main cases of interest in the sequel are where $\stuff$ is either $(\Id)$, $(\Id,\Pi,\eta)$, or $(\Id,\Pi,\PiIdelim)$.)
 
 For $n \geq 0$, we define theories $\T_\stuff[\Gamma_{(n)}]$, $\T_\stuff [\Gamma_{(n)} \types A]$, and $\T_\stuff [\Gamma_{(n)} \types a : A]$ to be the free theories on, respectively, a context of length $n$; a dependent type, in context of length $n$; and a term in such a type.  Axiomatically, each may be  specified by some subset of the rules below: $\T_\stuff[\Gamma_{(n)}]$ by the rules $i$-$\cxtrule$, for $0 \leq i < n$; $\T_\stuff [\Gamma_{(n)} \types A]$, by these rules together with $n$-$\typerule$; and $\T_\stuff [\Gamma_{(n)} \types a : A]$ by all of the above, together with $n$-$\termrule$:
 $$\inferrule*[right={$i$-$\cxtrule$}]{\Gamma \types a_0:A_0\ \ldots\ \Gamma \types a_{i-1}:A_{i-1}}{\Gamma \types A_i(a_0,\ldots,a_{i-1})\ \type} \qquad \inferrule*[right={$i$-$\typerule$}]{\Gamma \types a_0:A_0\ \ldots\ \Gamma \types a_{i-1}:A_{i-1}}{\Gamma \types A(a_0,\ldots,a_{i-1})\ \type}$$
 $$\inferrule*[right={$i$-$\termrule$}]{\Gamma \types a_0:A_0\ \ldots\ \Gamma \types a_{i-1}:A_{i-1}}{\Gamma \types a(a_0,\ldots,a_{i-1}) : A_i(a_0,\ldots,a_{i-1})}$$
 
-(Of course, this gives $\T[\Gamma_{(n-1)} \types A] \iso \T[\Gamma_{(n)}]$; we retain the distinction just for notational clarity.)
+(Of course, we have $\T[\Gamma_{(n-1)} \types A] \iso \T[\Gamma_{(n)}]$; we retain the distinction just for notational clarity.)
 \end{para}
 
 \begin{para} The importance of these theories lies in their universal mapping properties.  For any theory $\T$, maps $\T_\Phi[\Gamma_{(l)}] \to \T$ correspond precisely to contexts of length $n$ in $\T$; maps $\T_\Phi[\Gamma_{(l)} \types A\ \type] \to \T$, to types over such a context; and maps $\T_\Phi[\Gamma_{(l)} \types a:A] \to \T$ to terms of such a type.
@@ -656,7 +655,7 @@ An analogy can profitably be drawn here between type theories and higher categor
 But now, many important apspects of higher category theory---in particular, their homotopical structure---can be described in terms of the inclusions of boundaries into those basic cells.  Much of this carries over substantially to type theories once we observe that \emph{judgements have boundaries too!}  ---indeed, this idea is already implicit in referring to e.g.\ $\Gamma \types a:A$ as a \emph{term judgement}: we are thinking of $a$ as the essential substance of the judement, and the function of $\Gamma$ and $A$ as just to situate $a$ within its surroundings.
 \end{para}
 
-The ``inclusions of boundaries into cells'' are thus defined as follows:
+The ``inclusions of boundaries into cells'' are defined as follows:
 
 \begin{definition}
 The \emph{universal type (resp.\ term) extensions} are the inclusion maps
@@ -664,15 +663,22 @@ $$ i^\ty_n \colon \T_\stuff [\Gamma_{(n)}] \mono \T_\stuff[\Gamma_{(n)} \types A
 $$ i^\tm_n \colon \T_\stuff [\Gamma_{(n)} \types A] \mono \T_\stuff[\Gamma_{(n)} \types a : A].$$
 
 A \emph{basic term/type extension} is a pushout of one of the universal extensions.  A \emph{term/type/term-and-type extension} is any composite (possibly transfinite) of basic extensions.
+
+We indicate such extensions in diagrams by tailed arrows: $\T \mono \S$.  \todo{[Maybe use some other tail, since in other categories I'm using this for just monos?]} 
 \end{definition}
 
-So in syntactic terms, a basic term extension is just any extension of a theory $\T$ by a new constructor $\x: A_1 \ldots A_{n-1}(\x^{< n-1})\ \types\ a(\x) : A_n(\x)$, where the $A_i$ are existing types of the theory.  Similarly, a basic type extension is an extension by a single algebraic term-forming axiom.  An arbitrary extension is any extension of theories formed by iteratively adding (possibly sets of) axioms of these forms.
+So in syntactic terms, a basic term extension is just any extension of a theory $\T$ by a new constructor $x_1: A_1,\ \ldots,\ A_{n-1}(\x^{< n})\ \types\ a(\x) : A_n(\x)$, where the $A_i$ are existing types of the theory.  Similarly, a basic type extension is an extension by a single algebraic term-forming axiom.  An arbitrary extension is any extension of theories formed by iteratively adding (possibly sets of) axioms of these forms.
 
-The classes of term, type, and term-and-type extensions are all closed under composition, identities, and pushouts, so form classes of left maps in the sense of Section \ref{sec:endo-operads} above.  \comment{(They are not, however under retracts\ldots or at least, not obviously; are they actually?  Weak form of ``any sub-theory of a free theory is free\ldots''.)}
+The classes of term, type, and term-and-type extensions are all closed under composition, identities, and pushouts, so form classes of left maps in the sense of Section \ref{sec:endo-operads} above.  \todo{(Point out that they are not, however, closed under retracts? (or at least, not obviously; are they actually?)  This depends on how I set things up in homotopical background, I guess.)}
 
 \begin{definition}A \emph{term-contraction} (resp.\ \emph{type-contraction}, \emph{contraction}) on a map $F \colon \T \to \S$ is an operation assigning a diagonal filler to every square
 $$\xymatrix{ \T_\stuff[\Gamma_{(n)} \types A\ \type] \ar@{ >->}[d]_{i^\tm_n} \ar[r] & \T \ar@{->>}[d]^F \\ \T_\stuff[\Gamma_{(n)} \types a: A] \ar[r] \ar@{.>}[ur] & \S }$$
-with left-hand-side a universal type (term, term or type) extension.  Assuming the axiom of choice, a map admits such fillers if and only if it is weakly orthogonal to all universal term (type, term and type) extensions, in which case it is called \emph{term-contractible} (\emph{type-contractible}, \emph{contractible}).  We will write $\R_\tm$, $\R_\ty$, $R_{\tm\ty}$ for the classes of contractible maps.
+with left-hand-side a universal type (term, term or type) extension.  Assuming the axiom of choice, a map admits such fillers if and only if it is weakly orthogonal to all universal term (type, term and type) extensions, in which case it is called \emph{term-contractible} (\emph{type-contractible}, \emph{contractible}).
+
+We will write $\R_\tm$, $\R_\ty$, $R_{\tm\ty}$ for the classes of contractible maps, and indicate them in diagrams by double-headed arrows: $\T \epi \S$.  \todo{[Maybe use eg $\to/-|>/ \ $ instead, to disambiguate from epis?]} 
+
+
+
 \end{definition}
 
 The class of maps to which some given map is right orthogonal is always closed under pushouts and transfinite compositions \cite{hovey:closure}; so a type-contractible (term-contractible, contractible) map is in fact right orthogonal to all type (term, term-and-type) extensions.
@@ -682,9 +688,11 @@ The class of maps to which some given map is right orthogonal is always closed u
 This syntactic formulation of type-contractibility has been considered previously by Hofmann as a conservativity principle: see the discussion of logical frameworks in \cite[\SEC 4]{hofmann:syntax-and-semantics}.
 \end{para}
 
-\begin{para} Note that while neither form of contractibility directly provides any kind of lifting for definitional equality judgements, in the presence of identity types one can obtain weakforms of such liftings just from term-contractibility.  If for instance $\Gamma\ \types_\T\ a,a': A$ and $F(\Gamma)\ \types_\S\ F(a) = F(a'):F(A)$, then term-contractibility lets us lift $r(a)$ to some term $\Gamma\ \types_\T\ \overline{r(a)} : \Id_A(a,a')$.  Essentially, definitional equality for terms implies propositional equality, and for types, isomorphism-up-to-prop.-eq.; and since these are matters of term-judgements, they can be lifted along a term-contractible map. 
+\begin{para} Note that while neither form of contractibility directly provides any kind of lifting for definitional equality judgements, in the presence of identity types one can obtain weakforms of such liftings just from term-contractibility.  If for instance $\Gamma\ \types_\T\ a,a': A$ and $F(\Gamma)\ \types_\S\ F(a) = F(a'):F(A)$, then term-contractibility lets us lift $r(a)$ to some term $\Gamma\ \types_\T\ \overline{r(a)} : \Id_A(a,a')$.  
 
-Often, term-contractibility implies type-contractibility.  In particular, in many important theories, the type-forming axioms do not mention any of the specific term-constructors.  From this it follows that any type judgment factors uniquely as a type judgement derivable without any term-formers (the ``shape'' of the type), followed by substitution along some context morphism.  Now if $F \colon \T \to \S$ is a morphism between two theories with this property, and $\S$ has the same type-forming rules as $\T$, then if $F$ is term-contractible, it is also type-contractible.  [Give this in more detail??  We never actually need it later, but it's an interesting fact.]
+Essentially, definitional equality for terms implies propositional equality, and for types, isomorphism-up-to-propositional-equality (``homotopy-equivalence''); and since these are matters of term-judgements, they can be lifted along a term-contractible map. 
+
+Often, term-contractibility implies type-contractibility.  In particular, in many important theories, the type-forming axioms do not mention any of the specific term-constructors.  From this it follows that any type judgment factors uniquely as a type judgement derivable without any term-formers (the ``shape'' of the type), followed by substitution along some context morphism.  Now if $F \colon \T \to \S$ is a morphism between two theories with this property, and $\S$ has the same type-forming rules as $\T$, then if $F$ is term-contractible, it is also type-contractible.  \todo{[Explain this in more detail??  We never actually need it later, but it's an interesting fact.]}
 \end{para}
 
 \begin{para} Since the classes of contractible maps are defined by an orthogonality condition, they are easily seen to be closed under retracts, by the standard argument (see eg \cite[where?]{hovey}).  This can be seen by a brief diagram-chase:  
@@ -695,13 +703,18 @@ Similarly, any transfinite composition of (term-, type-) contractible maps is ag
 \end{para}
 
 \begin{example} \label{ex:elim-gives-contraction}
-For any context morphism $f : \Delta \to \Theta$, the induced map of slices $f^*\colon \T \slice \Theta \to \T \slice \Delta$ is orthogonal to $i^\tm_0$ just if $f$ is orthogonal to all dependent projections---that is, if $f$ is a left map in the sense of Gambino--Garner \cite{gambino-garner}---or equivalently, if $f$ admits an ``elimination rule'':
+For any context morphism $f : \Delta \to \Theta$, the induced map of slices $f^*\colon \T \slice \Theta \to \T \slice \Delta$ is orthogonal to $i^\tm_0$ just if $f$ is orthogonal to all dependent projections---that is, if $f$ is a left map in the sense of Gambino--Garner \cite{gambino-garner}---or syntactically, if $f$ admits an ``elimination rule'' (and associated computation rule):
 $$\inferrule{\y : \Theta \types C(\y)\ \type \\ \z:\Delta \types d(\z): C(f(\z))}{\x : \Theta\ \types\ \mathsf{elim}_f(\y.C, \z.d; \x) : C(\x)}$$
-(and associated computation rule).
 
-$$\xymatrix{} $$
+$$\xymatrix{ 
+  \T_\stuff[\diamond \types A\ \type] \ar@{ >->}[d]_{i^\tm_0} \ar[r]^C 
+  & \T \slice \Theta \ar@{->>}[d]^{f^*} 
+\\ 
+  \T_\stuff[\diamond \types a: A] \ar[r]^d \ar@{.>}[ur]
+  & \T \slice \Delta
+}$$
 
-Moreover, $f^*$ is term-contractible exactly if every pullback of $f$ along a dependent projection is a Gambino--Garner left map, or equivalently if it supports the ``Frobenius'' form of this elimination rule, with extra dependent premises in the context, i.e.\ 
+It is fully term-contractible exactly if every pullback of $f$ along a dependent projection is a Gambino--Garner left map, or equivalently if it supports the ``Frobenius'' form of this elimination rule, with extra dependent premises in the context, i.e.\ 
 $$\y : \Theta, w: \Xi(\y) \types C(\y,\w)\ \type \ldots$$
 
 This is implied by $f$ alone being a left map as long as $\T$ has identity types (by \cite[5.2.1]{gambino-garner}), or $\Pi$-types (by standard arguments).
@@ -710,14 +723,14 @@ In particular, for every reflexivity map $\r \colon \Delta.B \to \Delta.B.B.\Id_
 \end{example}
 
 \begin{example}
-As remarked above, if $\T$ is any theory and $\T^\mathrm{LF}$ is its presentation in a logical framework, then according to \cite[\SEC 4]{hofmann:syntax-and-semantics}, the interpretation of $\T$ in $\T^\mathrm{LF}$ is type-contractible. 
+As remarked above, if $\T$ is any theory and $\T^\mathrm{LF}$ is its presentation in a logical framework, then according to \cite[\SEC 4]{hofmann:syntax-and-semantics}, the interpretation of $\T$ in $\T^\mathrm{LF}$ is type-contractible. \todo{[Give more details?]}
 \end{example}
 
 \begin{para} Since $\DTT$ is the category of models of an algebraic theory, and so is locally presentable, we can use the machinery of \cite{garner:understanding} (the ``algebraic small-object argument'') to construct an algebraic weak factorisation system\footnote{aka natural weak factorisation system} on $\DTT$, using the universal extensions (term, type, or both) as the generating left maps.  The algebraic right maps in the resulting system are then just maps equipped with (term-, type-) contractions; the algebraic left maps are maps presented as (term, type, term-and-type) extensions.
 
-We can think of the maps $i^\ty_n$, $i^\tm_n$ here as \emph{generating cofibrations} in a putative model structure on $\DTT$, and the contractible maps as the \emph{trivial fibrations}; this idea is taken a little further in Section \ref{sec:model-strux} below.
+We can think of the maps $i^\ty_n$, $i^\tm_n$ here as \emph{generating cofibrations} in a putative model structure on $\DTT$, and the contractible maps as the \emph{trivial fibrations}; this idea is discussed a little further in Section \ref{sec:model-strux} below.
 
-By example \ref{ex:elim-gives-contraction}, this factorisation system on $\DTT$ is in some sense dual to the Gambino--Garner systems on the classifying categories of individual theories.  We will make this idea more precise in Section \ref{sec:fam-strux-on-DTT}.
+Example \ref{ex:elim-gives-contraction} suggests that this factorisation system on $\DTT$ is in some sense dual to the Gambino--Garner systems on the classifying categories of individual theories.  We will make this idea more precise in Section \ref{sec:fam-strux-on-DTT}.
 \end{para}
 
 
@@ -727,7 +740,8 @@ By example \ref{ex:elim-gives-contraction}, this factorisation system on $\DTT$ 
 
 \subsection{Extensions by propositional copies: the conservativity principle $\Jbar$.}
 
-On of the fundamental lemmas for many logical systems is that \emph{extension by definitions} should be well behaved: that if we extend a theory $\T$ by adding a new term $a'$, and an axiom that $a'$ is equal to some pre-existing term $a$ of $\T$, then the resulting theory is in some sense equivalent to $\T$.
+\begin{para}
+One of the fundamental lemmas for many logical systems is that \emph{extension by definitions} should be well behaved: that if we extend a theory $\T$ by adding a new term $a'$, and an axiom that $a'$ is equal to some pre-existing term $a$ of $\T$, then the resulting theory is in some sense equivalent to $\T$.
 
 For dependent type theories, this is clear when the new constructor is posited to be \emph{definitionally} equal to an existing one: the resulting theory $\T[a := a']$ is isomorphic to $\T$ itself.
 
@@ -742,27 +756,43 @@ We will call (possibly transfinite) compositions of such pushouts \emph{extensio
 What can we now say about the inclusion $\T \mono \T[a'(\x) :\propeq a(\x)]$?  It is certainly not an isomorphism in general, nor indeed contractible, since $a'$ will rarely be in its image.  On the other hand, it is by definition a term-extension.  It is also certainly a monomorphism, since it has a retraction $\T[a'(\x) :\propeq a(\x)] \epi \T$, given by interpreting $a'$ as $a$ and $l$ as $r(a)$.
 
 Our principle $\Jbar$ describes one sense in which $\T[a'(\x) :\propeq a(\x)]$ may reasonably be equivalent to $\T$:
+\end{para}
 
 \begin{definition}Say that \emph{$\Jbar$ holds for $\stuff$} if for every extension by propositional copies, the retraction $\T[a'(\x) :\propeq a(\x)] \epi \T$ is term-contractible.
 
 In other words, the retractions of the universal such extensions
 $$\T_\stuff[\Gamma_{(n)} \types a: A] \mono \T_\stuff[\Gamma_{(n)} \types a: A][a'(\x) :\propeq a(\x)].$$
-right\end{definition}
+are absolutely term-contractible.  \todo{[Actually, ``absolutely term-contractible'' isn't quite right: that would imply $\overline{K}$!  Subtlety is in what kinds of pushouts we're considering.  Can this phrasing of $\Jbar$ be corrected?  Think on it, throw it out if not.]}
+\end{definition}
 
-(Actually, this is stronger than we will need: for present purposes, e.g.\ ``$\L_{\tm\ty}$-absolutely'' would be quite enough, i.e.\ that $\Jbar$ holds for extensions of cofibrant theories.)
+(Actually, we will not need the full strength of the principle as stated here: for our purposes, it would be enough to show that this holds when $\T$ can be axiomatised over $\stuff$ without any definitional equality axioms, i.e.\ when $\T_\stuff \mono \T$ is a term-extension, or in homotopy-theoretic language, when $\T$ is a \emph{cofibrant} theory.)
 
-If we consider adjoining only copies of \emph{closed} terms, i.e.\ in the case where $\Gamma = \diamond$, then note that the extension and its retraction are isomorphic to the maps of slices
-$$\xymatrix{ \T \ar@{ >->}@/^/[r] \ar@{=}[d] & \T[a' :\propeq a] \ar@{->>}@/^/[l] \ar@{<=>}[d]|\iso \\
-\T \slice \diamond \ar@{ >->}@/^/[r] & \T \slice (x:A, u:\Id(x,a)) \ar@{->>}@/^/[l] }
-$$
-induced by the retraction of contexts [TODO: yowch, fix horrible diagrams!]
-$$\xymatrix{ \diamond \ar@{ >->}@/_/[r]_{a,r(a)} & (x:A, u:\Id(x,a)) \ar@{->>}@/_/[l]^{!}}.$$
+Why is this a plausible principle?  If we restrict to the case of adjoining copies of \emph{closed} terms, i.e.\ in the case where $\Gamma = \diamond$, then it is just the $\Id$-$\elim$ rule\footnote{in its ``one-ended'' form, as discussed in \ref{sec:one-vs-two-ended}}.  Syntactically, this is the fact that working in an extension by closed terms is equivalent to working over an extended context, with the new variables.  Categorically, the extension and its retraction in this case are isomorphic to the maps of slices
+$$\bfig
+\node Ta'a(0,400)[{\T[a' :\propeq a]}]
+\node Tbyxu(1200,400)[\T \slice (x:A, u:\Id(x,a))]
+\node T(0,0)[\T]
+\node TbyD(1200,0)[\T \slice \diamond]
+\arrow|m|/<->/[T`TbyD;\iso]
+\arrow/@{ >->}@/^0.4em//[T`Ta'a;]
+\arrow/@{->>}@/^0.4em//[Ta'a`T;]
+\arrow/@{ >->}@/^0.4em//[TbyD`Tbyxu;]
+\arrow/@{->>}@/^0.4em//[Tbyxu`TbyD;]
+\arrow|m|/<->/[Ta'a`Tbyxu;\iso]
+\efig$$
+induced by the retraction of contexts
+$$\bfig
+\node diamond(0,400)[\diamond]
+\node xu(0,0)[(x:A, u:\Id(x,a))]
+\arrow|a|/@{ >->}@/^0.4em//[diamond`xu;a,r(a)]
+\arrow|b|/@{->>}@/^0.4em//[xu`diamond;!]
+\efig .$$
 
-But the map $(a,r(a)) \colon \diamond \mono x:A, i:\Id(x,a)$ is essentially an introduction map, so by Example \ref{ex:elim-gives-contraction}, the retraction  of slices $(a,r(a))^*$ is certainly term-contractible.
+Then the map $(a,r(a)) \colon \diamond \mono x:A, i:\Id(x,a)$ is (up to isomorphism) the introduction map for the one-ended form of $\Id$-$\elim$, so by Example \ref{ex:elim-gives-contraction}, the retraction  of slices $(a,r(a))^*$ is term-contractible.
 
-Thus $\Jbar$---like various other type-theoretic principles [TODO: which!?  I'm sure I had some good analogues in some point, but can't remember 'em now!]--- asserts that something which is holds easily for \emph{closed} terms holds also for \emph{open} terms.
+Thus $\Jbar$---like various other type-theoretic principles---asserts that something which is holds derivably for \emph{closed} terms also holds admissibly for \emph{open} terms: in particular, that open terms of identity types satisfy the same rules as closed ones do. \\
 
-One way to prove $\Jbar$ is therefore to reduce the general case to the closed case., via $\Pi$-types.  This is possible, as long as we assume $\Pi$-types, together with rules to make sure that their identity types are well-behaved:
+So one way to prove $\Jbar$ is therefore to reduce the general case to the closed case, via $\Pi$-types.  This is possible, as long as we assume enough $\ext$ rules to make sure that their identity types are well-behaved:
 
 \begin{proposition} \label{prop:jbar-holds-1}
 $\Jbar$ holds for $(\Id,\Pi,\ext)$ (where $\ext$ includes the strong computation rules of \ref{para:ext-rules}) and any set of constructors extending this.
@@ -770,24 +800,69 @@ $\Jbar$ holds for $(\Id,\Pi,\ext)$ (where $\ext$ includes the strong computation
 
 \begin{proof}
 The diagram
+%$$\bfig
+%\node Ta'(0,400)[{\T[a'(\x) :\propeq a(\x) : A(\x)]}]
+%\node Tf(0,400)[{\T[f :\propeq (\lambda \x.\ a(\x)) : \Pi_{\x} A(\x)]}]
+%\node T1(0,0)[\T]
+%\node T2(2000,0)[\T]
+%\arrow/@/^0.4em//[Ta'`Tf;]
+%\arrow/@/^0.4em//[Tf`Ta';]
+%\arrow/@{->>}/[Ta`T1;]
+%\arrow/@{->>}/[Tf`T2;]
+%\arrow/@{=}/[T1`T2;]
+%% \arrow|a|/@{ >->}@/^0.4em//[Ta'`Tf;]
+%% \arrow|b|/@{->>}@/^0.4em//[Tf`Ta';]
+%\efig$$
 $$\xymatrix{\T[k(\x):K(\x)] \ar[d] \ar@/_/[r] & \ar@/_/[l] \T[\hat{k}:\Pi_{\x} K(\x) \ar[d] \\ 
 \T[k_0(\x),k_1(\x):K(\x),\ l(\x):\Id(k_0(\x),k_1(\x))] \ar@/_/[r] & \ar@/_/[l] \T[\hat{k}_0,\hat{k}_1 : \Pi_{\x} K(\x),\ \hat{l}:\Id(\hat{k}_0,\hat{k}_1)]}$$
-exhibits its left-hand side (the map we wish to show contractible) as a retract of its right-hand side.  (The fact that the squares commutes and are a retraction requires the computation rules for $\ext$.)  But the right-hand side is just the closed case of $\Jbar$, which we've seen is contractible.
+exhibits its left-hand side (the map we wish to show contractible) as a retract of its right-hand side.  (The fact that the squares commutes and are a retraction require the computation rules for $\ext$.)  But the right-hand side is just the closed case of $\Jbar$, which we've seen is contractible.
+
+\comment{[The diagram above is incorrect and out-of-date; I'm trying to update it but am having strange LaTeX troubles with the new version, so leaving the old one for now.]}
 \end{proof}
 
-In fact, we may strengthen this a little:
-\begin{proposition} \label{prop:jbar-holds-2}
+\begin{para} In fact, the hypotheses here can be weakened.  Another way to see $\Jbar$ is as a close cousin of Garner's rule $\PiIdelim$.  This latter asserts that a version of the $\Id$-elim rule holds over products of identity type $\Pi_x\ \Id(f \tightcdot x, g \cdot x)$.  But terms of such types are very close to the open terms of $l(\x)$ of identity type that appear in $\Jbar$---and the connection may be made very clear by working in a second-order formulation, using a logical framework as metalanguage.  In these terms, a second-order version of $\Jbar$ can be seen as being a strong functional extensionality principle, similar to $\PiIdelim$, but stated without $\Pi$-types.   It is then not hard to show that this form of $\Jbar$ is derivable from $\PiIdelim$, and so:
+\end{para}
+
+\begin{proposition}\label{prop:jbar-holds-2}
 $\Jbar$ holds for $(\Id,\Pi,\PiIdelim)$, and any set of constructors extending this.
 \end{proposition}
 
-\begin{proof}
-With the rules $\PiIdelim$ and $\Jbar$ stated as above \todo{[currently below!]}, we can define the eliminator $\Jbar$ in terms of $L$ by:
-$$\Jbar(\underline{C},\underline{d},\underline{k},\underline{k}',\underline{l})\ :=\  L(\, [k,k',l]\,\underline{C}([x]k \tightcdot x,\,[x] k' \tightcdot x,\,[x] l \tightcdot x) ,\ d,\ \lambda \underline{k},\ \lambda \underline{k}',\ \lambda \underline{l} ).$$
+(This is strictly stronger than the preceding proposition, since as shown in \cite[5.11]{garner:on-the-strength}, $\PiIdelim$ is derivable from $\ext$ with slightly weaker computation rules than ours.)
 
+\begin{proof}
+Recall the statement of the rule $\PiIdelim$:
+
+$$ \inferrule*[right={$\PiIdelim$}]{
+\Gamma,\ u, v : \Pi_{x:A}B(x), w : \Pi_{x:A} \Id_{B(x)}(u \cdot x,v \cdot x)\ \types\ C(u,v,w)\ \type \\ 
+\Gamma,\ f : (x \tightcolon A) B(x)\ \types\ d(f) : C (\lambda f, \lambda f, \lambda (r \circ f)) \\
+\Gamma\ \types\ k, k' : \Pi_{x:A} B(x) \qquad \Gamma\ \types\ l : (x \tightcolon A) \Id_{B(x)}(k x, k' x) }
+{ \Gamma\ \types\ \Lterm(C,d,k,k',l) : C(k,k',l) } $$
+Its computation rule concludes from appropriate premises that
+$$ \Lterm(C,d, \lambda h, \lambda h, \lambda ( r \circ h)) = d(h) : C( \lambda h, \lambda h, \lambda (r \circ h)).$$
+
+(Here $(x \tightcolon A)B(x)$ and $[x \tightcolon A] b(x)$ denote abstraction in the metalanguage; $u \cdot x$ denotes application in the object language.)
+
+Correspondingly, a version of $\Jbar$ may be stated in second-order language as:
+$$ \inferrule*[right={$\Jbarrule$}]{
+  \Gamma,\ \underline{k}, \underline{k}' : (x \tightcolon A) B(x),\ \underline{l} : (x \tightcolon A) \Id_{B(x)}(\underline{k}x,\underline{k}'x)\ \types\ \underline{C}(\underline{k},\underline{k}',\underline{l})\ \type \\ 
+  \Gamma,\ \underline{f} : (x \tightcolon A) B(x)\ \types\ \underline{d}(\underline{f}) : \underline{C} ( \underline{f}, \underline{f}, r \circ \underline{f}) \\
+\Gamma\ \types\ \underline{k}, \underline{k}' : (x \tightcolon A) B(x) \qquad \Gamma\ \types\ \underline{l} : (x \tightcolon A) \Id_{B(x)}(\underline{k} x,\underline{k}' x) }
+{ \Gamma \types \Jbarterm(\underline{C},\underline{d},\underline{k},\underline{k}',\underline{l}) : \underline{C}(\underline{k},\underline{k}',\underline{l}) } $$
+and the corresponding computation rule concludes that
+$$ \Jbarterm(C,d,k,k,r \circ k) = d(k) : C(k,k',l) . $$
+
+(This is slightly stronger than the original, external formulation of $\Jbar$, since this rule implies stability in the ambient context $\Gamma$.) 
+
+We can now define the eliminator $\Jbarterm$ in terms of $\Lterm$ by:
+$$\Jbarterm(\underline{C},\underline{d},\underline{k},\underline{k}',\underline{l})\ :=\  \Lterm(\, [k,k',l]\,\underline{C}([x]k \tightcdot x,\,[x] k' \tightcdot x,\,[x] l \tightcdot x) ,\ \underline{d},\ \lambda \underline{k},\ \lambda \underline{k}',\ \lambda \underline{l} ).$$
 It is routine to verify that under the hypotheses of the $\Jbar$ rule, this typechecks, and satisfies the required computational behaviour.
 \end{proof}
 
-However, $\Jbar$ may certainly fail as we weaken our system:
+(It is tempting to wonder if the implication can be reversed; however, it is at least not obviously possible.  The obvious candidate for defining $\Lterm$ in terms of $\Jbarterm$,
+$$\Lterm(C,d,k,k',l)\ :=\ \Jbarterm(\, [\underline{k},\underline{k}',\underline{l}]\, C( \lambda\underline{k},\lambda \underline{k}',\lambda\underline{l}),\ d,\ [x]\,k \tightcdot x,\ [x]\,k' \tightcdot x,\ [x]\,l \tightcdot x),$$ 
+does indeed typecheck successfully; but the desired computation rule only holds up to propositional equality, not definitional.) \\
+
+Thus in theories with reasonably strong functional extensionality principles, $\Jbar$ holds, and holds robustly: it is derivable, so will continue to hold under strengthenings of the system.  However, it may certainly fail as we weaken the system:
 
 \begin{proposition} \label{prop:jbar-implies-ext}
 For any set of constructors $\stuff$ including $\Pi$-types, $\Jbar$ implies a weak form of functional extensionality: if $x:A \types k(x),k'(x) : B$ and $x : A \types l(x):\Id(k(x),k'(x))$, then there is some term $\hat{l}$ for which $\types \hat{l} : \Id ( \lambda x.\,k(x),\, \lambda x.\, k'(x))$.
@@ -805,45 +880,20 @@ $\Jbar$ fails for $(\Id,\Pi,\eta)$ and $(\Id,\Pi)$.
 The well-known  \todo{[Citation?]}  failures of $\ext$ in these systems are also failures of the conclusion of Proposition \ref{prop:jbar-implies-ext}.
 \end{proof}
 
-However, these failures involve essential use of $\Pi$-types.
+However, these failures involve essential use of $\Pi$-types.  
 
 \begin{conjecture}
 $\Jbar$ holds for $(\Id)$.
 \end{conjecture}
 
-Proposition \ref{prop:jbar-fails} shows that if the conjecture is true, then $\Jbar$ is not stable under extensions of the constructor sets, so can't hold for $(\Id)$ as robustly as it does for $(\Id,\Pi,\ext)$: it may be \emph{admissible} for the type theory with just $\Id$-types, but it cannot be \emph{derivable}.
+Proposition \ref{prop:jbar-fails} shows that if the conjecture is true, then $\Jbar$ is not stable under extensions of the constructor sets, so can't hold for $(\Id)$ as robustly as it does for $(\Id,\Pi,\ext)$: it may be \emph{admissible} for the type theory with just $\Id$-types, but it cannot be \emph{derivable}. \\
 
-Maybe mention the analogous ``$\overline{K}$'' principle, and how it fails when UIP does?
+\comment{[Perhaps also mention the analogous ``$\overline{K}$'' principle, and how it fails when UIP does?]}
 
-\begin{para} A close relative of $\Jbar$ is Garner's eliminator $L$, proposed in \cite[5.7]{garner:on-the-strength}.  This is a strong form of functional extensionality; it is an eliminator for the type $u,v : \Pi_{x:A}B(x) \types \Pi_{x:A} \Id_{B(x)}(ux, vx)$, asserting essentially that this type is inductively generated by canonical elements of the form $\lambda x \tightcolon A.\ r(f(x))$, for \emph{open} terms $x:A \types f(x) : B(x)$.  Since it mentions open terms, it is most naturally given in a second-order formulation, using a logical framework as metalanguage:
-$$ \inferrule*[right={$\PiIdelim$}]{
-\Gamma,\ u, v : \Pi_{x:A}B(x), w : \Pi_{x:A} \Id_{B(x)}(u \cdot x,v \cdot x)\ \types\ C(u,v,w)\ \type \\ 
-\Gamma,\ f : (x \tightcolon A) B(x)\ \types\ d(f) : C (\lambda f, \lambda f, \lambda (r \circ f)) \\
-\Gamma\ \types\ k, k' : \Pi_{x:A} B(x) \qquad \Gamma\ \types\ l : (x \tightcolon A) \Id_{B(x)}(k x, k' x) }
-{ \Gamma\ \types\ L(d,k,k',l) : C(k,k',l) } $$
-Its computation rule concludes from appropriate premises that
-$$ L(d, \lambda h, \lambda h, \lambda ( r \circ h)) = d(h) : C( \lambda h, \lambda h, \lambda (r \circ h)).$$
 
-Here $(x \tightcolon A)B(x)$ denotes abstraction in the metalanguage; $u \cdot x$ denotes application in the object language.
 
-In this second-order style, a version of $\Jbar$ may be stated as:
-$$ \inferrule*[right={$\Jbar$}]{
-\Gamma,\ k, k' : (x \tightcolon A) B(x),\ l : (x \tightcolon A) \Id_{B(x)}(kx,k'x)\ \types\ C(k,k',l)\ \type \\ 
-\Gamma,\ f : (x \tightcolon A) B(x)\ \types\ d(f) : C ( f, f, r \circ f) \\
-\Gamma\ \types\ k, k' : (x \tightcolon A) B(x) \qquad \Gamma\ \types\ l : (x \tightcolon A) \Id_{B(x)}(k x,k' x) }
-{ \Gamma \types \Jbar(d,k,k',l) : C(k,k',l) } $$
-and the corresponding computation rule concludes that
-$$ \Jbar(d,k,k,r \circ k) = d(k) : C(k,k',l) . $$
-
-(This is not exactly equivalent to the form of $\Jbar$ above, since this rule implies stability in the ambient context $\Gamma$.) 
-
-Compare the two rules a bit!  Discuss!
-
-(Notation!  Either explain Richard's notation, or change it to be more transparent.  Also, in choice of variable names: match Richard's paper for ease of comparison with that, or match what I'm using for $\Jbar$ the rest of the time?  Probably the latter: think about it.)
-\end{para}
-
-\begin{para} Waffle a bit more about how to look at $\Jbar$, why even \footnote{(non-homotopically-inclined)}type theorists should care, etc\ldots
-\end{para}
+% \begin{para} Waffle a bit more about how to look at $\Jbar$, why even \footnote{(non-homotopically-inclined)}type theorists should care, etc\ldots
+% \end{para}
 
 
 
@@ -871,15 +921,15 @@ Compare the two rules a bit!  Discuss!
 
 \section{Contractible operads; weak $\omega$-categories from $\DTT$} \label{sec:contractibility}
 
-\todo{Include:  General contractibility of operads.  Give in terms of pylon diagrams.  Prune/contract pasting diagrams.  Recall L09/GvdB ``if whole glob obj is nice, then co-points of pds are ctrble''.  Refine that!  Reduce to more 1-d filling problem.}
+\comment{Include:  General contractibility of operads.  Give in terms of pylon diagrams.  Prune/contract pasting diagrams.  Recall L09/GvdB ``if whole glob obj is nice, then co-points of pds are ctrble''.  Refine that!  Reduce to more 1-d filling problem.}
 
-\todo{In light of this, give various conditions for classifying weak $\omega$-category to exist: $\Jbar$ plus normalisation plus $(-)^\cxt$, etc.}
+\comment{In light of this, give various conditions for classifying weak $\omega$-category to exist: $\Jbar$ plus normalisation plus $(-)^\cxt$, etc.}
 
  In this section, we investigate various conditions under which we can map some contractible operad into $\End(\globes)$, and hence give a weak $\omega$-category structure.  In summary, we obtain a weak $\omega$-structure:
 \begin{enumerate}
 \item on $\cl_\omega$, conjecturally (depending on $\Jbar$), for all theories with $\Id$-types;
 \item on $\cl_\omega$, unconditionally, for theories with $\Id$- and $\Pi$-types and Garner's rule $\PiIdelim$; and
-\item on $\clpi_\omega$, for theories with $\Id$- and $\Pi$-types.  \todo{[See question above: we may need $\eta$ as well.]}
+\item on $\clpi_\omega$, for theories with $\Id$- and $\Pi$-types and rule $\Pi$-$\eta$-$\prop$.
 \end{enumerate}
 
 \begin{figure}[htbp]
@@ -952,7 +1002,7 @@ $$\bfig
 \subsection{Theories with $\Id$-types}
 
 \renewcommand{\stuff}{\Id}
-\begin{theorem}If $\Jbar$ holds for $\Id$, then $\End(\globes^\Id)$ is contractible.
+\begin{theorem} \label{thm:ctrble-operad-for-id} If $\Jbar$ holds for $\Id$, then $\End(\globes^\Id)$ is contractible.
 \end{theorem}
 
 \begin{proof}
@@ -1020,10 +1070,10 @@ $$\RefnGlob{1}{\E} \to \Spans[\E].$$
 Instantiating this construction with $\E = \DTT^\op$, the globes $\globes$ lift (using their reflexivity maps) to a globular object in $\RefnGlob{1}{\DTT^\op}$.  We this obtain a new endomorphism operad for them---a sub-operad of the old, since the functor inducing the map is faithful:
 $$\End_{\RefnGlob{1}{\DTT^\op}}(\globes) \mono \End(\globes)$$
 
-\begin{para}From here we need to restrict still a little further before we have a contractible operad: we need to look at just those operations which do the correct thing in dimensions $\leq 1$.  Specifically, the map $\psi \colon P_\Cat \to \tr^1\End(\globes)$ is easily seen to factor through $\End_{\RefnGlob{1}{\DTT^\op}}(\globes)$; so let $Q_{\globes}$ be the pullback
+\begin{para}From here we need to restrict still a little further before we have a contractible operad: we need to look at just those operations which do the correct thing in dimensions $\leq 1$.  Specifically, the map $\psi \colon P_\Cat \to \tr^1\End(\globes)$ is easily seen to factor through $\End_{\RefnGlob{1}{\DTT^\op}}(\globes)$; so let $Q_\PiIdelim$ be the pullback
 % $$\xymatrix{ P \ar[r] \ar[d] & \End_{ModSpans[\DTT^\op]}(\globes) \ar[d]^\eta \\ P_{\strwCat} = I P_\Cat \ar[r]^{I \psi} & I \tr^1 \End_{ModSpans[\DTT^\op]}(\globes)}$$
 $$\bfig 
-\node Q(0,400)[Q_{\globes}]
+\node Q(0,400)[Q_\PiIdelim]
 \node End(1400,400)[\End_{\RefnGlob{1}{\DTT^\op}}(\globes)]
 \node Pstr(0,0)[P_{\strwCat} = I P_\Cat]
 \node ItrEnd(1400,0)[I \tr^1 \End_{\RefnGlob{1}{\DTT^\op}}(\globes)]
@@ -1033,13 +1083,13 @@ $$\bfig
 \arrow/@{ >->}/[Pstr`ItrEnd;I \psi]
 \place(100,300)[\pb]
 \efig$$
-where $I \colon \nOpd[1] \to \nOpd[\omega]$ is the ``indiscrete'' functor, right adjoint to $\tr^1$; then $Q_{\globes}$ consists precisely of those operations of $\End_{\RefnGlob{1}{\DTT^\op}}(\globes)$ whose $\leq 1$-dimensional parts lie in the image of $\psi$.  We are now set up for:
+where $I \colon \nOpd[1] \to \nOpd[\omega]$ is the ``indiscrete'' functor, right adjoint to $\tr^1$; then $Q_\PiIdelim$ consists precisely of those operations of $\End_{\RefnGlob{1}{\DTT^\op}}(\globes)$ whose $\leq 1$-dimensional parts lie in the image of $\psi$.  We are now set up for:
 \end{para}
 
-\begin{proposition}The suboperad $Q_{\globes} \mono \End(\globes)$ is contractible.
+\begin{proposition}The suboperad $Q_\PiIdelim \mono \End(\globes)$ is contractible.
 \end{proposition}
 
-\begin{proof}Contractibility in dimensions $\leq 1$ holds by fiat: in these dimensions, $Q_{\globes}$ is isomorphic to the terminal operad.
+\begin{proof}Contractibility in dimensions $\leq 1$ holds by fiat: in these dimensions, $Q_\PiIdelim$ is isomorphic to the terminal operad.
 
 For higher dimensions, note that operations in this new operad are just as in the old, except that additionally the maps involved must commute with the reflexivity data.  So contractibility now demands that for $\pi \in \pd_n$, and suitable $(F_i,G_i)_{i < n}$, we must produce a map $H : \globes[n] \to \T_\stuff[\widehat{\pi}]$ making both squares in the following commute:
 $$\xymatrix{ 
@@ -1056,43 +1106,96 @@ $$\xymatrix{
 But the overall rectangle commutes, so the desired filler follows by $\Jbar$.
 \end{proof}
 
-
-
-
 \subsection{$\End(\piglobes)$}
 
-Give this version.
+\todo{[Bugger --- deleted due to fundamental error.  But this was an attempted simplification of an earlier version which worked; so TODO: restore that version!]}
 
 \subsection{Classifying weak $\omega$-categories}
 % TODO: should be \\\texorpdfstring here
 
-\begin{para} In each of the above cases, the resulting map $L \to \End(\globes)$ allows us to pull the $\End(\globes)$-action on $\cl_\omega$ back to an action of $L$.  We thus have a functor into $\wkwCat$, which in flagrant abuse of notation we continue to denote $\cl_\omega$:
-$$\bfig
-\node DTT(0,0)[\DTT_\Phi]
-\node EndGAlg(1000,500)[\Alg{\End(\globes)}]
-\node GSets(1400,0)[\GSets]
-\node wkwCat(1800,500)[\wkwCat]
-\arrow[DTT`GSets;\cl_{\omega}]
-\arrow[DTT`EndGAlg;\cl_{\omega}]
-\arrow[EndGAlg`wkwCat;]
-\arrow[EndGAlg`GSets;]
-\arrow[wkwCat`GSets;]
-\efig$$
+\begin{para} Theorems \ref{thm:ctrble-operad-for-id}, \ref{thm:ctrble-operad-for-piidelim}, and \ref{thm:ctrble-operad-for-pi} give  three situations in which there is a map from some contractible operad $Q$ into $\End(\globes)$ (or $\End(\piglobes)$).  In each case, this induces a map $L \to Q \to \End(\maybepiglobes)$, and hence a functor (``restriction of scalars'') $\Alg{\End(\maybepiglobes)} \to \Alg{L} = \wkwCat$.  We thus have:
 \end{para}
 
-We thus have:
+\begin{corollary}
+\begin{enumerate}
+\item There is a functor $\cl_\omega \colon \DTT_{\PiIdelim} \to \wkwCat$, as outlined in the introduction, giving the ``classifying weak $\omega$-category'' of any theory with at least $\Id$-types, $\Pi$-types, and the $\PiIdelim$ rule.
+\item If $\Jbar$ holds for $\Id$, then we moreover have $\cl_\omega \colon \DTT_{\Id} \to \wkwCat$, giving the classifying weak $\omega$-category for any theory with at least $\Id$-types.
+\item There is a functor $\cl^\Pi_\omega \colon \DTT_{\Id,\Pi} \to \wkwCat$ giving a variant of the classifying weak $\omega$-category, for any theory with at least $\Pi$-types and $\Id$-types.
+\end{enumerate}
+\end{corollary}
 
-\begin{theorem}If $\stuff$ is any set of rules for which $\Jbar$ and Corollary \ref{cor:normalisation} hold, then for any $\stuff$-theory $\T$, the globular set $\cl_\omega(\T)$ described in the introduction has a natural weak $\omega$-category structure; that is, we have a functor
-$$\cl_\omega \colon \DTT \to \wkwCat.$$
+\begin{para}This statement, while pleasing, has a few loose ends which deserve to be tied up.
 
-In particular, this construction works when $\stuff$ is the rules for $\Id$-types, $\Pi$-types, and functional extensionality.
-\end{theorem}
+Firstly, there is an obvious abuse of notation: if $\Jbar$ holds for $\Id$, then we are overloading $\cl_\omega$ not only with different codomains, a mild and common sin, but also with different domains, a potentially worse one.  Given a theory $\T$ with at least the $\PiIdelim$ rule, we could compute $\cl_\omega(\T)$ as such a theory, or we could treat it as a theory over $\Id$-, and compute $\cl_\omega(\T)$ from there.  Will these agree?  In other words, does $\cl_\omega$ commute with the forgetful functor $U \colon \DTT_\PiIdelim \to \DTT_\Id$, as in the following diagram?
+$$\bfig
+\node DTTPi(-200,400)[\DTT_\PiIdelim]
+\node DTTId(-200,0)[\DTT_\Id]
+\node GPiAlg(800,400)[\Alg{\End(\globes^\PiIdelim)}]
+\node QAlg(1900,400)[\Alg{Q_\PiIdelim}]
+\node GIdAlg(800,0)[\Alg{\End(\globes^\Id)}] % (1200,0) if curved map below included
+\node wkwCat(2400,0)[\wkwCat]
+\node GSets(1100,-400)[\GSets]
+\arrow|l|/@/^0.5em//[DTTId`DTTPi;F]
+\arrow|r|/@/^0.5em//[DTTPi`DTTId;U]
+\arrow[DTTPi`GPiAlg;]
+\arrow[DTTId`GIdAlg;]
+\arrow[GPiAlg`GIdAlg;]
+\arrow[GPiAlg`QAlg;]
+\arrow[QAlg`wkwCat;]
+\arrow[GIdAlg`wkwCat;]
+\arrow[DTTId`GSets;]
+% \arrow/@/_0.5em//[GPiAlg`GSets;]
+\arrow[GIdAlg`GSets;]
+\arrow[wkwCat`GSets;]
+\place(1400,200)[(?)]
+\place(-200,190)[\dashv]
+\efig$$
 
-\subsection{A variant for non-extensional $\Pi$-types}
+Most parts of this diagram are easily seen to commute up to natural isomorphism.  The essential point is that the globes $\globes^\PiIdelim$ are just the image of $\globes^\Id$ under the left adjoint $F \colon \DTT_\Id \to \DTT_\PiIdelim$, since their axiomatisations involve only $\Id$-types; and hence as functors into globular sets, or even into $\End(\globes^\Id)$-algebras, we have $\DTT_\PiIdelim(\globes^\PiIdelim, \T) \iso \DTT_\Id(\globes^\Id, U(\T))$.
 
-As noted above, $\Jbar$ (and hence this proof) fail in the category of theories with non-extensional $\Pi$-types.  Altering the globes a little lets us make things work there, so givs a little more generality for the classifying weak $\omega$-category.  On the other hand, this generality would come \emph{better} via our conjecture of $\Jbar$ for $(\Id)$\ldots
+This leaves, as the dubious part, the square marked by (?).  This comes down to the question of whether the corresponding square of operad maps commutes
+$$\bfig
+\node L(0,500)[L]
+\node EndGId(1200,350)[\End(\globes^\Id)]
+\node Q(400,0)[Q_\PiIdelim]
+\node EndGPi(1200,0)[\End(\globes^\PiIdelim)]
+\arrow[L`EndGId;]
+\arrow[EndGId`EndGPi;]
+\arrow[L`Q;]
+\arrow[Q`EndGPi;]
+\place(700,225)[(?)]
+\efig$$
+and now the subtlety emerges: the maps out of $L$ are defined in terms of the specific contractions used on $Q_\PiIdelim$, and these in turn depend on how precisely we have implemented $\Jbar$.
 
-\subsection{CwF structures on $\CwF_\diamond^\op$ etc.}
+What we can at least see is that constructing $Q_\Id$ analogously to $Q_\PiIdelim$, there is a square (indeed, a pullback):
+$$\bfig
+\node QId(400,350)[Q_\Id]
+\node EndGId(1200,350)[\End(\globes^\Id)]
+\node QPi(400,0)[Q_\PiIdelim]
+\node EndGPi(1200,0)[\End(\globes^\PiIdelim)]
+\arrow[QId`EndGId;]
+\arrow[EndGId`EndGPi;]
+\arrow[QId`QPi;]
+\arrow[QPi`EndGPi;]
+\efig$$
+
+Moreover, the map $Q_\Id \mono \End(\globes^\Id)$ will certainly be a map of operads-with-contraction; and it is fairly routine but rather notationally fiddly to show that if the forgetful functor $U \colon \DTT_\PiIdelim \to \DTT_\Id$ ``preserves the implementation of $\Jbar$'' in an appropriate sense, then so is the map $Q_\Id \to Q_\PiIdelim$.  If this is the case, then the maps from $L$ will factor through $Q_\Id$, and hence all the squares (?) above will commute.
+
+However, it seems unlikely to the present author \comment{[in fact, I think it's impossible; check this out if time allows!]} that the natural implementation of $\Jbar$ given above could be preserved but $U$.  This defect can (as often with problems of contrations) be finessed by some ad hoc modification of the contractions on the operads involved; but essentially, this is a problem that should be resolved not by strict-higher-categorical fiddling, but by a good theory of weak higher-categorical equivalence, under which the squares (?) would commute \emph{up to equivalence}.  In lieu of such a theory, then, we leave a full resolution of this problem aside for now.
+\end{para}
+
+\begin{para}Secondly, there is an abuse of terminology: what, if anything, does the classifying weak $\omega$-category classify?
+
+As given at present, in the form of the functors $\cl^{(\Pi)}_\omega \colon \DTT_\stuff \to \wkwCat$ above, it cannot classify anything: that is, it cannot have a right adjoint, since it does not preserve the initial object, nor a left, since it does not preserve the terminal object.  (The initial theory in $\DTT_\stuff$ is $\T_\stuff$, whose $\cl_\omega$ is certainly non-empty, containing at least one $0$-cell, the empty context $\diamond$.  The terminal theory in each $\DTT_\Phi$ has one context of every length $l \in \N$, and so its $\cl_\omega$ will have $\N$-many 0-cells.)
+
+However, this is not surprising: in the passage from type theories to weak $\omega$-categories, we have forgotten much structure (and also co-structure).  One of the next important steps in the current program should be the axiomatisation of higher-categorical structure corresponding to the structure on the type theories, in such a way that the classifying $\omega$-categories of theories carry such structure, and (hopefully) do indeed appropriately classify some kind of models in these structured higher categories.
+
+For the 2-truncated case, this is well-worked-out in \cite{garner:2-d-models}.  However, in higher dimensions, the understanding of appropriate ``weak logical structure'' is at a very early stage of development; so this is a story for another time.
+\end{para}
+
+\subsection{CwF structures on $\DTT$ etc.} \ref{sec:fam-strux-on-DTT}.
+
+\comment{This section is an inessential extra: if time allows and inspiration strikes (or if quantity demands) then I'll update + expand it, otherwise I'll delete it.}
 
 An alternate perspective on $\Jbar$, shows that it can be seen not just as analogous to the $\Id$-elim rule, but actually as instance of it for a certain families-structure:
 
@@ -1106,6 +1209,9 @@ Context extension is by adjoining \emph{open} terms.
 
 $\Jbar$ asserts that \emph{open} $\Id$-types in contexts are indeed $\Id$-types in this families structure.  (But danger, Will Robinson, danger: $\Jbar$ doesn't assert, and afaics doesn't imply, the stability/coherence conditions required for ``this families structure has $\Id$-types''.)
 
+\subsection{A model structure on $\DTT$?} \ref{sec:model-strux}
+
+Another optional bonus section.
 
 \clearpage
 
