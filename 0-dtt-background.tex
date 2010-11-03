@@ -72,10 +72,10 @@ Note on treatment of fibrations: all fibrations of categories are assumed cloven
 A word about the range of theories we will consider is, however, in order here.  All theories we consider will share the common basic syntax and structural core presented in \ref{para:basic-syntax} and \ref{para:structural-core}.  We will, however, vary the constructors we add on top of that, in two stages.  Firstly, by a \emph{type system} we will mean the extension of this structural core by some selection $\stuff$ of the constructors and rules of \ref{para:constructors} and \ref{para:rules}, and of other standard constructors and rules, within certain limitations---a precise statement will appear in \ref{para:types-systems-as-ess-alg}.  Secondly, over a given such system $\stuff$, we will consider arbitrary extensions by \emph{algebraic} axioms, organised into a category $\DTT_\stuff$ of \emph{theories over $\stuff$}.
 \end{para}
 
-\begin{para}[Structural core]
-Since we will eventually work in a presentation-agnostic category of type theories, the precise formalism we use for the raw syntax will not be of importance; but for the sake of definiteness, let us suppose a simply-typed metalanguage in which the syntax is formalised, as described in e.g.\ \cite[6.1]{pitts:categorial-logic}.
+\begin{para}[Basic syntax]
+Since we will eventually work in a presentation-agnostic category of type theories, the precise formalism we use for the raw syntax will not be of importance; but for the sake of definiteness, let us suppose a simply-typed metalanguage in which the syntax of our theory is formalised, as described in e.g.\ \cite[6.1]{pitts:categorial-logic}, and in which we have defined notions of free variables, capture-avoiding substitution, etc.
 
-The basic judgements of our theory are minimal---\emph{types}, \emph{terms}, and \emph{definitional equalities} between each of these:
+The basic judgements of our theory are now minimal---\emph{types}, \emph{terms}, and \emph{definitional equalities} between each of these:
 \end{para}
 \begin{center}\begin{tabular}{@{\ }c@{\hskip 0.75in}c@{\ }}
 $\Gamma \types A \ \type $ & $ \Gamma \types a:A $ \\ \rule{0pt}{3ex} 
@@ -83,10 +83,10 @@ $\Gamma \types A = A' \ \type $& $ \Gamma \types a = a' : A $ \\
 \end{tabular}
 \end{center}
 
-On top of these, we work with derived judgements of \emph{contexts} and \emph{context morphisms} (also known as \emph{subtitutions} or \emph{telescopes}) between them:
+On top of these, we work with derived judgements of \emph{contexts} and \emph{context morphisms}\footnote{also sometimes known as \emph{subtitutions} or \emph{telescopes}} between them:
 \begin{center}\begin{tabular}{@{\ }c@{\hskip 0.75in}c@{\ }}
-$\types \Gamma \ \cxt$ & $ \types {\vec f} : \Gamma \To \Gamma' $  \\ \rule{0pt}{3ex} 
-$\types \Gamma = \Gamma' \ \cxt$ &  $\types {\vec f} = {\vec f}' : \Gamma \To \Gamma'$ \\
+$\types \Gamma \ \cxt$ & $ \types  f : \Gamma \To \Gamma' $  \\ \rule{0pt}{3ex} 
+$\types \Gamma = \Gamma' \ \cxt$ &  $\types { f} = { f}' : \Gamma \To \Gamma'$ \\
 \end{tabular}
 \end{center}
 
@@ -94,19 +94,70 @@ $\types \Gamma = \Gamma' \ \cxt$ &  $\types {\vec f} = {\vec f}' : \Gamma \To \G
 
 In the sequel, we will sometimes also use dependent versions of these derived judgements, though they will not be needed in the presentation of the theory:
 \begin{center}\begin{tabular}{@{\ }c@{\hskip 0.75in}c@{\ }}
-$ \Gamma \types \Delta \ \cxt$ & $\Gamma \types {\vec f} : \Delta \To \Delta' $  \\ \rule{0pt}{3ex} 
-$ \Gamma \types \Delta = \Delta' \ \cxt$ & $\Gamma \types {\vec f} = {\vec f}' : \Delta \To \Delta'$ \\
+$ \Gamma \types \Delta \ \cxt$ & $\Gamma \types { f} : \Delta \To \Delta' $  \\ \rule{0pt}{3ex} 
+$ \Gamma \types \Delta = \Delta' \ \cxt$ & $\Gamma \types { f} = { f}' : \Delta \To \Delta'$ \\
 \end{tabular}
 \end{center}
 
-In slight abuse of notation, we will sometimes explicitly display (for emphasis or readability) free variables, writing e.g.\ $\x : \Gamma \types A(\x)\ \type$ interchangeable with $\Gamma \types A\ \type$.
+In slight abuse of notation, we will often explicitly display free variables for emphasis or readability, writing e.g.\ $\x : \Gamma \types A(\x)\ \type$ interchangeably with $\Gamma \types A\ \type$.
+
+\begin{para}[Structural core] Rules for contexts:
+$$\begin{array}{c}
+\inferrule*[right=$\cxt$-$\empt$]{ \ }{ \quad \types \diamond \ \cxt \quad } \qquad \inferrule*[right={$\cxt$=-$\empt$}]{\ }{ \quad \types \diamond = \diamond \ \cxt \quad }
+\\ \ \\
+\inferrule*[right=$\cxt$-$\cons$]{\types \Gamma\ \cxt \\\\ \Gamma \types A \ \type}{ \quad \types \Gamma, y:A\ \cxt \quad } \qquad
+\inferrule*[right={$\cxt$=-$\cons$}]{ \types \Gamma = \Gamma'\ \cxt \\\\ \Gamma \types A = A'[ \x / \x' ]\ \type}{ \quad \types \Gamma, y:A = \Gamma', y':A'\ \cxt \quad } 
+\end{array}
+$$
+
+Rules for types: 
+
+$$\begin{array}{c}
+\inferrule*[right={$\type$=-$\refl$}]{\Gamma \types A\ \type}{\quad \Gamma \types A = A\ \type \quad} \qquad
+\inferrule*[right={$\type$=-$\sym$}]{\Gamma \types A = B\ \type}{\quad \Gamma \types B = A\ \type \quad} \\ \ \\
+\inferrule*[right={$\type$=-$\trans$}]{\Gamma \types A = B\ \type \\\\ \Gamma \types B = C\ \type}{\quad \Gamma \types A = C\ \type \quad} \qquad 
+\inferrule*[right=$\type$-$\subst$]{\x : \Gamma \types A(\x)\ \type \\\\ \types f : \Gamma' \To \Gamma}{\quad \Gamma' \types A[f/\x] \type \quad} \\ \ \\
+\inferrule*[right={$\type$=-$\subst$}]{ \Gamma \types A = A'\ \type \\\\  \types f = f' : \Gamma' \To \Gamma}{\quad \Gamma' \types A[f/\x] = A'[f'/\x]\ \type\quad }
+\end{array}$$
+
+
+Rules for terms: 
+
+$$\begin{array}{c}
+\inferrule*[right={\sf var}]{\Gamma \types A\ \type \\ \Gamma, A \types \Delta\ \cxt}{\quad \Gamma, x:A, \Delta \types x : A \quad}
+\qquad \qquad
+\inferrule*[right={$\term$=-$\refl$}]{\Gamma \types a : A}{\quad \Gamma \types a = a : A\quad}
+\\ \ \\
+\inferrule*[right={$\term$=-$\sym$}]{\Gamma \types a = b : A}{\quad \Gamma \types b = a : A \quad}
+\qquad \qquad 
+\inferrule*[right={$\term$=-$\trans$}]{\Gamma \types a = b : A \\\\ \Gamma \types b = c : A}{\quad \Gamma \types a = c : A \quad} \qquad 
+\\ \ \\
+\inferrule*[right={\sf term-coerce}]{\Gamma \types a : A \\\\ \Gamma \types A = A'\ \type}{\quad \Gamma \types a : A' \quad} \qquad \quad
+\inferrule*[right={\sf term=-coerce}]{\Gamma \types a = a' : A \\\\ \Gamma \types A = A'\ \type}{\quad \Gamma \types a = a' : A' \quad}
+\\ \ \\
+\inferrule*[right=$\term$-$\subst$]{ \Gamma \types a : A \\\\  \types f : \Gamma' \To \Gamma}{\ \Gamma' \types a[f/\x] : A[f/\x]\ } \qquad
+\inferrule*[right={$\term$=-$\subst$}]{ \Gamma \types a = a' : A \\\\ \types f = f' : \Gamma' \To \Gamma}{\ \Gamma' \types a[f/\x] = a'[f'/\x] : A[f/\x]\ }
+\end{array}$$
+
+Rules for context maps: 
+
+$$\begin{array}{c}
+\inferrule*[right={$\cxtmap$-$\empt$}]{ \types \Gamma\ \cxt}{ \types \diamond : \Gamma \To \diamond} 
+\qquad \qquad
+\inferrule*[right={$\cxtmap$=-$\empt$}]{ \types \Gamma\ \cxt}{ \types \diamond = \diamond : \Gamma \To \diamond}
+\\ \ \\
+\inferrule*[right={$\cxtmap$-$\cons$}]{ \types f : \Gamma' \To \Gamma \\\\ \Gamma \types A\ \type \\\\ \Gamma' \types a : A[f/\x] }{\ \types f,a : \Gamma' \To \Gamma, y:A \ } \qquad
+\inferrule*[right={$\cxtmap$=-$\cons$}]{ \types f = f' : \Gamma' \To \Gamma \\\\ \Gamma \types A\ \type \\\\ \Gamma' \types a = a' : A[f/\x] }{\ \Gamma \types (f,a) = (f',a') : \Delta' \To (\Delta, A) \ }
+\end{array}$$
+
+\end{para}
 
 \begin{para}[Type constructors]
 Yarp.
 \end{para}
 
 \begin{para}[Other optional rules]
-Garp?
+Garp!
 \end{para}
 
 \begin{para}[Algebraic rules]
