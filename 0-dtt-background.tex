@@ -101,46 +101,49 @@ $ \Gamma \types \Delta = \Delta' \ \cxt$ & $\Gamma \types { f} = { f}' : \Delta 
 
 In slight abuse of notation, we will often explicitly display free variables for emphasis or readability, writing e.g.\ $\x : \Gamma \types A(\x)\ \type$ interchangeably with $\Gamma \types A\ \type$.
 
+Also, we will often abbreviate multiple judgements of the same form by writing e.g.\ $\Gamma \types a,a' : A$.
+
 \begin{para}[Structural core] Rules for contexts:
 $$\begin{array}{c}
-\inferrule*[right=$\cxt$-$\empt$]{ \ }{ \quad \types \diamond \ \cxt \quad } \qquad \inferrule*[right={$\cxt$=-$\empt$}]{\ }{ \quad \types \diamond = \diamond \ \cxt \quad }
+\inferrule*[right=$\cxt$-$\empt$]{ \ }{\ \types \diamond \ \cxt\ } \qquad \inferrule*[right={$\cxt$=-$\empt$}]{\ }{\ \types \diamond = \diamond \ \cxt\ }
 \\ \ \\
-\inferrule*[right=$\cxt$-$\cons$]{\types \Gamma\ \cxt \\\\ \Gamma \types A \ \type}{ \quad \types \Gamma, y:A\ \cxt \quad } \qquad
-\inferrule*[right={$\cxt$=-$\cons$}]{ \types \Gamma = \Gamma'\ \cxt \\\\ \Gamma \types A = A'[ \x / \x' ]\ \type}{ \quad \types \Gamma, y:A = \Gamma', y':A'\ \cxt \quad } 
+\inferrule*[right=$\cxt$-$\cons$]{\types \Gamma\ \cxt \\\\ \Gamma \types A \ \type}{\ \types \Gamma, y:A\ \cxt\ } \qquad
+\inferrule*[right={$\cxt$=-$\cons$}]{ \types \Gamma = \Gamma'\ \cxt \\\\ \Gamma \types A = A'[ \x / \x' ]\ \type}{\ \types \Gamma, y:A = \Gamma', y':A'\ \cxt\ } 
 \end{array}
 $$
 
 Rules for types: 
 
 $$\begin{array}{c}
-\inferrule*[right={$\type$=-$\refl$}]{\Gamma \types A\ \type}{\quad \Gamma \types A = A\ \type \quad} \qquad
-\inferrule*[right={$\type$=-$\sym$}]{\Gamma \types A = B\ \type}{\quad \Gamma \types B = A\ \type \quad} \\ \ \\
-\inferrule*[right={$\type$=-$\trans$}]{\Gamma \types A = B\ \type \\\\ \Gamma \types B = C\ \type}{\quad \Gamma \types A = C\ \type \quad} \qquad 
-\inferrule*[right=$\type$-$\subst$]{\x : \Gamma \types A(\x)\ \type \\\\ \types f : \Gamma' \To \Gamma}{\quad \Gamma' \types A[f/\x] \type \quad} \\ \ \\
-\inferrule*[right={$\type$=-$\subst$}]{ \Gamma \types A = A'\ \type \\\\  \types f = f' : \Gamma' \To \Gamma}{\quad \Gamma' \types A[f/\x] = A'[f'/\x]\ \type\quad }
+\inferrule*[right=$\type$-$\subst$]{\x : \Gamma \types A(\x)\ \type \\\\ \types f : \Gamma' \To \Gamma}{\  \Gamma' \types A[f/\x] \type \ } \qquad
+\inferrule*[right={$\type$=-$\subst$}]{ \Gamma \types A = A'\ \type \\\\  \types f = f' : \Gamma' \To \Gamma}{\  \Gamma' \types A[f/\x] = A'[f'/\x]\ \type\ }
+\\ \ \\
+\inferrule*[right={$\type$=-$\refl$}]{\Gamma \types A\ \type}{\ \Gamma \types A = A\ \type\ } \qquad
+\inferrule*[right={$\type$=-$\sym$}]{\Gamma \types A = B\ \type}{\ \Gamma \types B = A\ \type\ } 
+\\ \ \\
+\inferrule*[right={$\type$=-$\trans$}]{\Gamma \types A = B\ \type \\\\ \Gamma \types B = C\ \type}{\ \Gamma \types A = C\ \type\ }
 \end{array}$$
 
 
 Rules for terms: 
-
 $$\begin{array}{c}
-\inferrule*[right={\sf var}]{\Gamma \types A\ \type \\ \Gamma, A \types \Delta\ \cxt}{\quad \Gamma, x:A, \Delta \types x : A \quad}
+\inferrule*[right={\sf var}]{\Gamma \types A\ \type \\ \Gamma, A \types \Delta\ \cxt}{\ \Gamma, x:A, \Delta \types x : A\ }
 \qquad \qquad
-\inferrule*[right={$\term$=-$\refl$}]{\Gamma \types a : A}{\quad \Gamma \types a = a : A\quad}
 \\ \ \\
-\inferrule*[right={$\term$=-$\sym$}]{\Gamma \types a = b : A}{\quad \Gamma \types b = a : A \quad}
-\qquad \qquad 
-\inferrule*[right={$\term$=-$\trans$}]{\Gamma \types a = b : A \\\\ \Gamma \types b = c : A}{\quad \Gamma \types a = c : A \quad} \qquad 
-\\ \ \\
-\inferrule*[right={\sf term-coerce}]{\Gamma \types a : A \\\\ \Gamma \types A = A'\ \type}{\quad \Gamma \types a : A' \quad} \qquad \quad
-\inferrule*[right={\sf term=-coerce}]{\Gamma \types a = a' : A \\\\ \Gamma \types A = A'\ \type}{\quad \Gamma \types a = a' : A' \quad}
+\inferrule*[right={\sf term-coerce}]{\Gamma \types a : A \\\\ \Gamma \types A = A'\ \type}{\ \Gamma \types a : A'\ } \qquad \quad
+\inferrule*[right={\sf term=-coerce}]{\Gamma \types a = a' : A \\\\ \Gamma \types A = A'\ \type}{\ \Gamma \types a = a' : A'\ }
 \\ \ \\
 \inferrule*[right=$\term$-$\subst$]{ \Gamma \types a : A \\\\  \types f : \Gamma' \To \Gamma}{\ \Gamma' \types a[f/\x] : A[f/\x]\ } \qquad
 \inferrule*[right={$\term$=-$\subst$}]{ \Gamma \types a = a' : A \\\\ \types f = f' : \Gamma' \To \Gamma}{\ \Gamma' \types a[f/\x] = a'[f'/\x] : A[f/\x]\ }
+\\ \ \\
+\inferrule*[right={$\term$=-$\refl$}]{\Gamma \types a : A}{\ \Gamma \types a = a : A\ }
+\qquad \qquad 
+\inferrule*[right={$\term$=-$\sym$}]{\Gamma \types a = b : A}{\ \Gamma \types b = a : A\ }
+\\ \ \\
+\inferrule*[right={$\term$=-$\trans$}]{\Gamma \types a = b : A \\\\ \Gamma \types b = c : A}{\ \Gamma \types a = c : A\ } 
 \end{array}$$
 
 Rules for context maps: 
-
 $$\begin{array}{c}
 \inferrule*[right={$\cxtmap$-$\empt$}]{ \types \Gamma\ \cxt}{ \types \diamond : \Gamma \To \diamond} 
 \qquad \qquad
@@ -153,11 +156,51 @@ $$\begin{array}{c}
 \end{para}
 
 \begin{para}[Type constructors]
-Yarp.
+Core rules for $\Id$-types: 
+$$\begin{array}{c}
+\inferrule*[right=$\Id$-$\form$]{\Gamma \types A\ \type \\\\ \Gamma \types a, b : A}{\ \Gamma \types \Id_A(a,b)\ \type\ }$ \qquad $\inferrule*[right={$\Id$-$\intro$}]{\Gamma \types A\ \type \\\\ \Gamma \types a : A}{\ \Gamma \types r(a) : \Id_A(a,a)\ }
+\\ \ \\
+\inferrule*[right=$\Id$-$\elim$]{
+\Gamma,\, x,y : A,\, u : \Id_A(x,y),\, \w : \Delta(x,y,u)\ \types\ C(x,y,u,\w)\ \type \\
+\Gamma,\, z:A,\, \v : \Delta(z,z,r(z))\ \types\ d(z,\v) : C(z,z,r(z),\v) \\
+\Gamma \types a, b : A \qquad \Gamma \types p : \Id_A(a,b) \qquad \Gamma \types \c : \Delta(a,b,p)}
+{\Gamma\ \types\ J_{(A;\ x,y,u.\Delta(x,y,u);\ x,y,u,\w.C(x,y,u,\w))\,}(z,\v.\ d(z,\v);\ a,b,p,\c)\,: C(a,b,p,\c)}
+\end{array}$$
+Here all free variables are displayed, to emphasise the full formal binding that occurs in terms involving $J$; we will usually abbreviate the concluding term above to e.g.\ $J_C(d; a,b,p,\c)$, as for instance:
+$$\begin{array}{c}
+\inferrule*[right=$\Id$-$\comp$]{
+\Gamma,\, x,y : A,\, u : \Id_A(x,y),\, \w : \Delta(x,y,u)\ \types\ C(x,y,u,\w)\ \type \\
+\Gamma,\, z:A,\, \v : \Delta(z,z,r(z))\ \types\ d(z,\v) : C(z,z,r(z),\v) \qquad
+\Gamma \types a : A \qquad \Gamma \types \c : \Delta(a,a,r(a))}
+{\Gamma\ \types\ J_C(d;\ a,a,r(a),\c) = d(a) : C(a,a,r(a),\c)}
+\end{array}$$
+
+\todo{Discuss here or below the equivalence with the ``two-ended'' form.} \\
+
+Core rules for $\Pi$-types:
+
+$$\begin{array}{c}
+\inferrule*[right=$\Pi$-$\form$]{\Gamma \types A\ \type \quad \Gamma\, x:A \types B \ \type }{\ \Gamma\ \types\ \Pi_{x : A} B\ \type\ }
+\qquad
+\inferrule*[right=$\Pi$-$\intro$]{\Gamma\, x:A \types b: B }{\ \Gamma\ \types\ \lambda x \tightcolon A.\ b : \Pi_{x : A} B\ }
+\\ \ \\
+\inferrule*[right=$\Pi$-$\app$]{\Gamma \types t : \Pi_{x : A} B \quad \Gamma \types a : A}{\ \Gamma\ \types\ t \tightcdot a : B[a/x]\ \ }
+\inferrule*[right=$\Pi$-$\beta$]{\Gamma\, x:A \types b: B \quad \Gamma \types a : A}{\ \Gamma\ \types\ (\lambda x \tightcolon A.\ b) \tightcdot a = b[a/x] :  B[a/x]\ }
+\end{array}$$
+
 \end{para}
 
-\begin{para}[Other optional rules]
-Garp!
+\begin{para}[Further rules for $\Id$- and $\Pi$-types]
+
+\todo{To include: first, reflection, K, one-ended form of Id.  Then $\Pi$-$\eta$, $\Pi$-$\eta$-$\prop$, $\Pi$-$\ext$, $\Pi$-$\ext$-$\app$(-$\def$), and $\PiIdelim$.
+
+$$\begin{array}{c}
+\inferrule*[right={reflection}]{\Gamma \types e : \Id_A(a,b)}{\Gamma \types a = b : A}
+\\ \ \\
+\inferrule*[right=K]{\Gamma, x: A, p : \Id_A(x,x), \w : \Delta(x,p) \types C(x,p,\w)\ \type \\
+\Gamma, z:A, \v : \Delta(z,r(z)) \types d(z,\v) : C(z,r(z),\v)}
+{\Gamma, x:A, p:\Id_A(x,x), \w:\Delta(x,p) \types K_{A;\ x,p.\Delta;\ x,p,\w.C}(z,\v.\ d(z,\v);\ x,p,\w) : C(x,p,\w)}
+\end{array}$$
 \end{para}
 
 \begin{para}[Algebraic rules]
