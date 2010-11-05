@@ -330,7 +330,7 @@ In the case where $\stuff$ is exactly $(\Id, \Pi, \Pi\mbox{-}\eta)$, then both n
 
 The construction of the classifying weak $\omega$-category of a theory is closely analogous to that of the fundamental weak $\omega$-groupoid of a space: it is obtained by homming out of a complex of representing objects (``globes''), and so it is enough to show that these representing objects form a co-(weak $\omega$-category), just as the topological globes ($D^0 \two D^1 \two D^2 \two \cdots\quad$) do in $\Top$.
 
-To that end, we set up in this section various classes of left and right maps on $\CwF^{\stuff}_\diamond$, and
+To that end, we set up in this section various classes of left and right maps on $\CwA^{\stuff}_\diamond$, and
 then apply the machinery of Section \ref{sec:endo-operads} to show that the endomorphism operad of the globes is contractible.
 
 Among this, only one step (showing that certain maps are absolute right maps) seems to require the $\Pi$-types for its proof.  In particular, we isolate and conjecture a certain type-theoretical principle, $\Jbar$, which would suffice for the proof of this step, and which seems to be of independent interest.  In particular, we discuss equivalent natural statements of $\Jbar$ from several rather different points of view: as a conservativity statement for certain theory extensions; as a second-order form of the $\Id$-elim rule; and as a form of observational equality for $\Pi$-types. 
@@ -904,21 +904,21 @@ However, this is not surprising: in the passage from type theories to weak $\ome
 For the 2-truncated case, this is well-worked-out in \cite{garner:2-d-models}.  However, in higher dimensions, the understanding of appropriate ``weak logical structure'' is at a very early stage of development; so this is a story for another time.
 \end{para}
 
-\subsection{CwF structures on $\DTT$ etc.} \ref{sec:fam-strux-on-DTT}.
+\subsection{CwA structures on $\DTT$ etc.} \ref{sec:fam-strux-on-DTT}.
 
 \comment{This section is an inessential extra: if time allows and inspiration strikes (or if quantity demands) then I'll update + expand it, otherwise I'll delete it.}
 
-An alternate perspective on $\Jbar$, shows that it can be seen not just as analogous to the $\Id$-elim rule, but actually as instance of it for a certain families-structure:
+An alternate perspective on $\Jbar$, shows that it can be seen not just as analogous to the $\Id$-elim rule, but actually as instance of it for a certain attributes-structure:
 
-There are various important CwF-structures on categories of CwF's. In particular: there is a canonical CwF structure on $\CwF_\diamond^\op$, given by $\Ty^\mathrm{canon}_{\CwF_\diamond^\op}(\C) := \Ty_\C(\diamond)$, and $\C.A := \C/\!/A$.  The universal properties of slices (Proposition \ref{prop:slicing}), with general facts about free constructions, ensure that the requisite squares [diagram] are pullbacks.  (This is in some sense a universal CwF: certainly every small CwF may be obtained by pullback from it, a more precise statement can probably be formulated.)
+There are various important CwA-structures on categories of CwA's. In particular: there is a canonical CwA structure on $\CwA_\diamond^\op$, given by $\Ty^\mathrm{canon}_{\CwA_\diamond^\op}(\C) := \Ty_\C(\diamond)$, and $\C.A := \C/\!/A$.  The universal properties of slices (Proposition \ref{prop:slicing}), with general facts about free constructions, ensure that the requisite squares [diagram] are pullbacks.  (This is in some sense a universal CwA: certainly every small CwA may be obtained by pullback from it, a more precise statement can probably be formulated.)
 
-This extends to a canonical CwF-structure with $\Id$-types on $(\CwF^\Id_\diamond)^\op$, a CwF-structure with $\Id$- and $\Pi$-types with $\eta$-rule on $(\CwF^{\Id,\Pi,\eta}_\diamond)^\op$, and so on.
+This extends to a canonical CwA-structure with $\Id$-types on $(\CwA^\Id_\diamond)^\op$, a CwA-structure with $\Id$- and $\Pi$-types with $\eta$-rule on $(\CwA^{\Id,\Pi,\eta}_\diamond)^\op$, and so on.
 
-However, we can bump up these structures a little further, to include certain ``formal $\Pi$-types'' (independently of what $\Pi$-types may already be present in the theories).  That is, we define $\Ty^\mathrm{canon + Pi}(\C) := \sum_{\Gamma \in \C} \Ty_\C(\Gamma)$; so a type over $\C$, in this families structure, is a type $A$ in some context $\Gamma$ of $\C$, to be thought of as the formal dependent product $\prod_\Gamma A$.
+However, we can bump up these structures a little further, to include certain ``formal $\Pi$-types'' (independently of what $\Pi$-types may already be present in the theories).  That is, we define $\Ty^\mathrm{canon + Pi}(\C) := \sum_{\Gamma \in \C} \Ty_\C(\Gamma)$; so a type over $\C$, in this attributes structure, is a type $A$ in some context $\Gamma$ of $\C$, to be thought of as the formal dependent product $\prod_\Gamma A$.
 
 Context extension is by adjoining \emph{open} terms.
 
-$\Jbar$ asserts that \emph{open} $\Id$-types in contexts are indeed $\Id$-types in this families structure.  (But danger, Will Robinson, danger: $\Jbar$ doesn't assert, and afaics doesn't imply, the stability/coherence conditions required for ``this families structure has $\Id$-types''.)
+$\Jbar$ asserts that \emph{open} $\Id$-types in contexts are indeed $\Id$-types in this attributes structure.  (But danger, Will Robinson, danger: $\Jbar$ doesn't assert, and afaics doesn't imply, the stability/coherence conditions required for ``this attributes structure has $\Id$-types''.)
 
 \subsection{A model structure on $\DTT$?} \ref{sec:model-strux}
 
