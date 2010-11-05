@@ -60,6 +60,8 @@
 
 \comment{Give: the globes, and variants of globes; the Kan constructions; fact that pasting diagrams get realised by these; resulting functors $\DTT \to \Alg{\End(\globes)}$.]}
 
+\todo{[Add, here or later, the ``topological'' interpretation of $\Kterm$: declaring the inclusion of a basepoint into a loop to be a homotopy equivalence.]}
+
 \subsection{The type-theoretic globes}
 
 \begin{para} Once again, let $\stuff$ be some set of rules/constructors, including at least the $\Id$-rules.  The \emph{type-theoretic globes} over $\stuff$ are then a sequence of theories $\globe[n]^\stuff$ which play a similar r\^o{}le in $\DTT_\stuff$ to that which the discs $D^n$ play in $\Top$: they are an internal weak-$\omega$-cocategory, and as such will---almost---be representing objects for the classifying weak $\omega$-category functor.
@@ -350,7 +352,7 @@ $$\inferrule*[right={$i$-$\termrule$}]{\Gamma \types a_0:A_0\ \ldots\ \Gamma \ty
 
 An analogy can profitably be drawn here between type theories and higher categories.  Globular higher categories are made up of cells, which are \emph{represented} by the free $n$-categories on individual cells.  Similarly, type theories are made up of judgements---contexts, types, and terms---which are represented by the theories above.
 
-But now, many important apspects of higher category theory---in particular, their homotopical structure---can be described in terms of the inclusions of boundaries into those basic cells.  Much of this carries over substantially to type theories once we observe that \emph{judgements have boundaries too!}  ---indeed, this idea is already implicit in referring to e.g.\ $\Gamma \types a:A$ as a \emph{term judgement}: we are thinking of $a$ as the essential substance of the judement, and the function of $\Gamma$ and $A$ as just to situate $a$ within its surroundings.
+But now, many important apspects of higher category theory---in particular, their homotopical structure---can be described in terms of the inclusions of boundaries into those basic cells.  Much of this carries over substantially to type theories once we observe that \emph{judgements have boundaries too!}  ---indeed, this idea is already implicit in referring to e.g.\ $\Gamma \types a:A$ as a \emph{term judgement}: we are thinking of $a$ as the essential substance of the judement, and the function of $\Gamma$ and $A$ as just to situate $a$ within its surroundings, as seen in the form of the algebraic rules \ref{para:alg-rules}.
 \end{para}
 
 The ``inclusions of boundaries into cells'' are defined as follows:
@@ -381,9 +383,9 @@ We will write $\R_\tm$, $\R_\ty$, $R_{\tm\ty}$ for the classes of contractible m
 
 The class of maps to which some given map is right orthogonal is always closed under pushouts and transfinite compositions \cite{hovey:closure}; so a type-contractible (term-contractible, contractible) map is in fact right orthogonal to all type (term, term-and-type) extensions.
 
-\begin{para} Contractibility is familiar in type-theoretic terms as a form of conservativity.  Term-contractibility, for instance, states that whenever we have a type $\Gamma\ \types_\T\ A\ \type$ of $\T$ whose interpretation in $\S$ is inhabited by some term $F(\Gamma)\ \types_\S\ a:F(A)$, it is already inhabited in $\T$ by some term $\Gamma\ \types_\T\ \overline{a}:A$, which moreover is a \emph{lifting} of $a$, in that we can prove $F(\Gamma)\ \types_\S\ F(\overline{a}) = a : F(A)$ in $\S$.  Type-contractibility asserts the same sort of conservativity for types derivable in $\S$ over a context from $\T$.
+\begin{para} Contractibility is familiar in type-theoretic terms as a form of conservativity.  Term-contractibility, for instance, states that whenever we have a type $\Gamma\ \types_\T\ A\ \type$ of $\T$ whose interpretation in $\S$ is inhabited by some term $F(\Gamma)\ \types_\S\ a:F(A)$, it is already inhabited in $\T$ by some term $\Gamma\ \types_\T\ \overline{a}:A$, which moreover is a \emph{lifting} of $a$, in that we can prove $F(\Gamma)\ \types_\S\ F(\overline{a}) = a : F(A)$ in $\S$.  Type-contractibility asserts the same sort of lifting property for types derivable in $\S$ over a context from $\T$.
 
-This syntactic formulation of type-contractibility has been considered previously by Hofmann as a conservativity principle: see the discussion of logical frameworks in \cite[\SEC 4]{hofmann:syntax-and-semantics}.
+This syntactic formulation of type-contractibility has been considered previously by Hofmann as a conservativity principle: see the discussion of logical frameworks in \cite[\SEC 4]{hofmann:syntax-and-semantics}, and Example \ref{ex:hofmann-contractibility} below.
 \end{para}
 
 \begin{para} Note that while neither form of contractibility directly provides any kind of lifting for definitional equality judgements, in the presence of identity types one can obtain weakforms of such liftings just from term-contractibility.  If for instance $\Gamma\ \types_\T\ a,a': A$ and $F(\Gamma)\ \types_\S\ F(a) = F(a'):F(A)$, then term-contractibility lets us lift $r(a)$ to some term $\Gamma\ \types_\T\ \overline{r(a)} : \Id_A(a,a')$.  
@@ -422,8 +424,8 @@ In particular, for every reflexivity map $\r \colon \Delta.B \to \Delta.B.B.\Id_
 Analogously to the above, ``large elimination'' rules give type-contractibility; but this will not concern us here.
 \end{example}
 
-\begin{example}
-As remarked above, if $\T$ is any theory and $\T^\mathrm{LF}$ is its presentation in a logical framework, then according to \cite[\SEC 4]{hofmann:syntax-and-semantics}, the interpretation of $\T$ in $\T^\mathrm{LF}$ is type-contractible. \todo{[Give more details?]}
+\begin{example} \lalbe{ex:hofmann-contractibility}
+As remarked above, if $\T$ is any theory and $\T^\mathrm{LF}$ is its presentation in a logical framework, then according to \cite[\SEC 4]{hofmann:syntax-and-semantics}, the interpretation of $\T$ in $\T^\mathrm{LF}$ is type-contractible. \todo{[Give more details, in terms of forgetful functors and the component-wise contractible natural transformation, and emphasising functoriality of the logical framework.]}
 \end{example}
 
 \begin{para} Since $\DTT$ is the category of models of an algebraic theory, and so is locally presentable, we can use the machinery of \cite{garner:understanding} (the ``algebraic small-object argument'') to construct an algebraic weak factorisation system\footnote{aka natural weak factorisation system} on $\DTT$, using the universal extensions (term, type, or both) as the generating left maps.  The algebraic right maps in the resulting system are then just maps equipped with (term-, type-) contractions; the algebraic left maps are maps presented as (term, type, term-and-type) extensions.
@@ -467,7 +469,7 @@ are absolutely term-contractible.  \todo{[Actually, ``absolutely term-contractib
 
 (Actually, we will not need the full strength of the principle as stated here: for our purposes, it would be enough to show that this holds when $\T$ can be axiomatised over $\stuff$ without any definitional equality axioms, i.e.\ when $\T_\stuff \mono \T$ is a term-extension, or in homotopy-theoretic language, when $\T$ is a \emph{cofibrant} theory.)
 
-Why is this a plausible principle?  If we restrict to the case of adjoining copies of \emph{closed} terms, i.e.\ in the case where $\Gamma = \diamond$, then it is just the $\Id$-$\elim$ rule\footnote{in its ``one-ended'' form, as discussed in \ref{sec:one-vs-two-ended}}.  Syntactically, this is the fact that working in an extension by closed terms is equivalent to working over an extended context, with the new variables.  Categorically, the extension and its retraction in this case are isomorphic to the maps of slices
+Why is this a plausible principle?  If we restrict to the case of adjoining copies of \emph{closed} terms, i.e.\ in the case where $\Gamma = \diamond$, then it is just the $\Id$-$\elim$ rule\footnote{in its ``one-ended'' form, as discussed in \ref{sec:one-vs-two-ended}; analogously, one can also consider a ``two-ended'' form of $\Jbar$, in which $a(\x)$ as well as $a'(\x)$ is freely adjoined}.  Syntactically, this is the fact that working in an extension by closed terms is equivalent to working over an extended context, with the new variables.  Categorically, the extension and its retraction in this case are isomorphic to the maps of slices
 $$\bfig
 \node Ta'a(0,400)[{\T[a' :\propeq a]}]
 \node Tbyxu(1200,400)[\T \slice (x:A, u:\Id(x,a))]
@@ -495,7 +497,7 @@ Thus $\Jbar$---like various other type-theoretic principles---asserts that somet
 So one way to prove $\Jbar$ is therefore to reduce the general case to the closed case, via $\Pi$-types.  This is possible, as long as we assume enough $\ext$ rules to make sure that their identity types are well-behaved:
 
 \begin{proposition} \label{prop:jbar-holds-1}
-$\Jbar$ holds for $(\Id,\Pi,\ext)$ (where $\ext$ includes the strong computation rules of \ref{para:ext-rules}) and any set of constructors extending this.
+$\Jbar$ holds for $(\Id,\Pi,\Pi\mbox{-}\extrule,\Pi\mbox{-}\extrule\mbox{-}\apprule\mbox{-}\defrule)$ and any set of constructors extending this.
 \end{proposition}
 
 \begin{proof}
@@ -539,10 +541,10 @@ $$ \inferrule*[right={$\PiIdelim$}]{
 \Gamma,\ f : (x \tightcolon A) B(x)\ \types\ d(f) : C (\lambda f, \lambda f, \lambda (r \circ f)) \\
 \Gamma\ \types\ k, k' : \Pi_{x:A} B(x) \qquad \Gamma\ \types\ l : (x \tightcolon A) \Id_{B(x)}(k x, k' x) }
 { \Gamma\ \types\ \Lterm(C,d,k,k',l) : C(k,k',l) } $$
-Its computation rule concludes from appropriate premises that
+and with associated computation rule $\PiIdcomp$ concluding:
 $$ \Lterm(C,d, \lambda h, \lambda h, \lambda ( r \circ h)) = d(h) : C( \lambda h, \lambda h, \lambda (r \circ h)).$$
 
-(Here $(x \tightcolon A)B(x)$ and $[x \tightcolon A] b(x)$ denote abstraction in the metalanguage; $u \cdot x$ denotes application in the object language.)
+(Here $(x \tightcolon A)B(x)$ and $[x \tightcolon A] b(x)$ denote abstraction in the metalanguage; $u \cdot x$.)
 
 Correspondingly, a version of $\Jbar$ may be stated in second-order language as:
 $$ \inferrule*[right={$\Jbarrule$}]{
@@ -593,9 +595,8 @@ Proposition \ref{prop:jbar-fails} shows that if the conjecture is true, then $\J
 \comment{[Perhaps also mention the analogous ``$\overline{K}$'' principle, and how it fails when UIP does?]}
 
 
-
-% \begin{para} Waffle a bit more about how to look at $\Jbar$, why even \footnote{(non-homotopically-inclined)}type theorists should care, etc\ldots
-% \end{para}
+\begin{para} \todo{[Discuss the relationship of $\Jbar$ to \emph{equivalence vs.\ interderivability of axioms}, which is probably the best argument for why even non-homotopically-inclined type theorists should care about it?]}
+\end{para}
 
 
 

@@ -79,6 +79,8 @@
 \newcommand{\T}{\textbf{\textsf{T}}}      % A generic type theory
 \newcommand{\Tcal}{\mathcal{T}}      % A 2-monad
 \newcommand{\TT}{\mathbb{T}}    % A generic type theory, seen as a categorical structure
+\newcommand{\Tsf}{\mathsf{T}}
+\newcommand{\tsf}{\mathsf{t}}
 \renewcommand{\u}{\vec u}
 \newcommand{\V}{\mathcal{V}}
 \renewcommand{\v}{\vec v}
@@ -185,13 +187,13 @@
 \newcommand{\wkwGpd}{\mathbf{wk}\mbox{-}\omega\mbox{-}\mathbf{Gpd}}
 \newcommand{\wknCat}[1][n]{\mathbf{wk}\mbox{-}#1\mbox{-}\mathbf{Cat}}
 
-% \newcommand{\wkwCat}{\mathbf{wk}\mbox{-}\omega\mbox{-}\mathbf{Cat}}
 
 %%%%
 % Styled words: type theory syntax
 %%%%
 
 \newcommand{\app}{\textsc{app}}
+\newcommand{\apprule}{\textsc{app}}
 \newcommand{\Bool}{\mathsf{Bool}}
 \newcommand{\cellrule}{\mathsf{cell}}
 \newcommand{\comp}{\textsc{comp}}
@@ -201,22 +203,28 @@
 \newcommand{\cxt}{\mathsf{cxt}}
 \newcommand{\cxtmap}{\mathsf{cxtmap}}
 \newcommand{\cxtrule}{\cxt}
+\newcommand{\defrule}{\mathsf{def}}
 \newcommand{\elim}{\textsc{elim}}
 \newcommand{\empt}{\mathsf{empty}}
+\newcommand{\extrule}{\textsc{ext}}
+\newcommand{\extterm}{\mathsf{ext}}
 % \newcommand{\Exch}{\mathsf{Exch}}
 \newcommand{\form}{\textsc{form}}
 \newcommand{\Id}{\mathsf{Id}}
 % \newcommand{\varidelim}[5]{#4\mathsf{ for }#3\mathsf{ in }#1.#2\mathsf{ via }#5}
 % \newcommand{\idelim}[5]{J_{#1.#2}(#3,#4,#5)}
+\newcommand{\Jterm}{\mathsf{J}}
 \newcommand{\Jbar}{\overline{J}}
 \newcommand{\Jbarrule}{\overline{J}\mbox{-}2\mbox{-}\textsc{o}}
 \newcommand{\Jbarterm}{\overline{\mathsf{J}}}
+\newcommand{\Kterm}{\mathsf{K}}
 \newcommand{\Lterm}{\mathsf{L}}
 \newcommand{\intro}{\textsc{intro}}
 \newcommand{\PiIdelim}{{\Pi\mbox{-}\Id\mbox{-}\elim}}
+\newcommand{\PiIdcomp}{{\Pi\mbox{-}\Id\mbox{-}\comp}}
 \newcommand{\Nat}{\mathsf{Nat}}
 \newcommand{\One}{\mathsf{1}}
-\newcommand{\prop}{\mathsf{prop}}
+\newcommand{\prop}{\textsc{prop}}
 \newcommand{\refl}{\mathsf{refl}}
 \newcommand{\sourcerule}{\mathsf{src}}
 \newcommand{\subst}{\mathsf{subst}}
@@ -281,4 +289,5 @@
 
 
 \newcommand{\todo}[1]{\textcolor{red}{#1}}
+\newcommand{\padding}[1]{\textcolor{purple}{#1}}
 \newcommand{\comment}[1]{\textcolor{blue}{#1}}
