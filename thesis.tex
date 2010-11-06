@@ -1,0 +1,149 @@
+\documentclass{amsbook}
+
+\usepackage{color}
+\usepackage{ifpdf}
+\usepackage{mathpartir}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage[all]{xypic}
+\usepackage{wrapfig}
+
+\xyoption{2cell}
+\xyoption{rotate}
+%\xyoption{curve}
+\UseTwocells
+\input{diagxy}
+
+% \usepackage{makeindex}
+
+\include{thesis-style}
+\include{thesis-macros}
+
+\newcommand{\CompCat}{\mathbf{CompCat}}
+
+\newcommand{\arr}{\mathrm{arr}}
+\newcommand{\ext}{\mathrm{ext}}
+% \newcommand{\Jbar}{\overline{J}}
+\newcommand{\tree}{\mathrm{tree}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\stuff}{{\Phi}}
+% \makeindex
+
+
+%%
+%% PDFJUNK
+%% Can add /CreationDate, /Creator, /Subject, /Keywords
+%%
+\ifpdf
+\pdfinfo{
+  /Author (Peter LeFanu Lumsdaine) 
+  /Title (Higher Categories from Type Theories (PhD Thesis))
+}
+\fi
+%%
+%% BEGIN DOCUMENT:
+%\onehalfspacing
+\begin{document}
+
+
+\frontmatter
+
+%% TITLE INFORMATION
+
+
+\title{Higher Categories from Type Theories \\~\\ \normalsize (PhD thesis)}
+
+\author[P. LeF. Lumsdaine]{Peter LeFanu Lumsdaine}
+
+% \author[P. LeF. Lumsdaine]{{\large\bf Peter LeFanu Lumsdaine}\\~\\\normalsize \bf July 2010}
+
+\maketitle
+\newpage
+\thispagestyle{empty}
+\begin{center}
+  {\Large\textbf{Carnegie Mellon University}}\\
+  \vspace{1cm}
+  {\large\textbf{Higher Categories from Type Theories}}\\
+  \vspace{.5cm}
+  Peter LeFanu Lumsdaine\\
+  \vspace{.5cm}
+  July 2010\\
+  \vspace{3cm}
+  \textbf{Committee}\\~\\
+  Steven Awodey (advisor)\\
+  someone \\
+  someone else \\
+  some more \\
+  \todo{check how committee members prefer giving names} \\
+
+\end{center}
+ 
+\setcounter{page}{3}
+
+
+% \clearpage
+% \thispagestyle{empty}
+% \vspace*{13.5pc}
+% \begin{center}
+%   Dedication text (use \\[2pt] for line break if necessary)
+% \end{center}
+% \cleardoublepage 
+
+
+\tableofcontents
+
+
+% Unnumbered chapters
+
+
+%\include{ack}
+%\include{decl}
+
+
+% Main Matter
+
+\mainmatter
+
+\chapter{Type-theoretic background}
+
+\input{0-dtt-background}
+
+\chapter{The classifying weak $\omega$-category of a theory}
+\input{2-classifying-w-cat}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\backmatter
+
+%% Bibliography Info
+
+\bibliographystyle{amsalpha}
+\bibliography{pll-thesis-bib}
+
+
+
+\end{document}
+

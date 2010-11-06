@@ -1,60 +1,4 @@
-\documentclass{amsart}
 
-\usepackage{color}
-\usepackage{ifpdf}
-\usepackage{mathpartir}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage[all]{xypic}
-\usepackage{wrapfig}
-
-\xyoption{2cell}
-\xyoption{rotate}
-%\xyoption{curve}
-\UseTwocells
-\input{diagxy}
-
-% \usepackage{makeindex}
-
-\include{thesis-style}
-\include{thesis-macros}
-
-\newcommand{\CompCat}{\mathbf{CompCat}}
-
-\newcommand{\arr}{\mathrm{arr}}
-\newcommand{\ext}{\mathrm{ext}}
-% \newcommand{\Jbar}{\overline{J}}
-\newcommand{\tree}{\mathrm{tree}}
-\newcommand{\tr}{\mathrm{tr}}
-\newcommand{\stuff}{{\Phi}}
-% \makeindex
-
-%%
-%% PDFJUNK
-%% Can add /CreationDate, /Creator, /Subject, /Keywords
-%%
-\ifpdf
-\pdfinfo{
-  /Author (Peter LeFanu Lumsdaine) 
-  /Title (TODO: put thesis title here when decided!)
-}
-\fi
-%%
-%% BEGIN DOCUMENT:
-%\onehalfspacing
-\begin{document}
-
-
-
-%% TITLE INFORMATION
-
-\title{The classifying weak $\omega$-category of a type theory}
-
-\author[P. LeF. Lumsdaine]{Peter LeFanu Lumsdaine}
-
-\maketitle
-\tableofcontents
 
 \section{Type-theoretic background}
 
@@ -512,18 +456,3 @@ It is currently somewhat unclear to what extent one can retain strong normalisat
 
 
 
-
-
-
-
-
-\clearpage
-
-%% Bibliography Info
-
-\bibliographystyle{amsalpha}
-\bibliography{pll-thesis-bib}
-
-
-
-\end{document}

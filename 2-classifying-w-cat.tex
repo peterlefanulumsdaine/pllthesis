@@ -1,60 +1,3 @@
-\documentclass{amsart}
-
-\usepackage{color}
-\usepackage{ifpdf}
-\usepackage{mathpartir}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage[all]{xypic}
-\usepackage{wrapfig}
-
-\xyoption{2cell}
-\xyoption{rotate}
-%\xyoption{curve}
-\UseTwocells
-\input{diagxy}
-
-% \usepackage{makeindex}
-
-\include{thesis-style}
-\include{thesis-macros}
-
-\newcommand{\CompCat}{\mathbf{CompCat}}
-
-\newcommand{\arr}{\mathrm{arr}}
-\newcommand{\ext}{\mathrm{ext}}
-% \newcommand{\Jbar}{\overline{J}}
-\newcommand{\tree}{\mathrm{tree}}
-\newcommand{\tr}{\mathrm{tr}}
-\newcommand{\stuff}{{\Phi}}
-% \makeindex
-
-%%
-%% PDFJUNK
-%% Can add /CreationDate, /Creator, /Subject, /Keywords
-%%
-\ifpdf
-\pdfinfo{
-  /Author (Peter LeFanu Lumsdaine) 
-  /Title (TODO: put thesis title here when decided!)
-}
-\fi
-%%
-%% BEGIN DOCUMENT:
-%\onehalfspacing
-\begin{document}
-
-
-
-%% TITLE INFORMATION
-
-\title{The classifying weak $\omega$-category of a type theory}
-
-\author[P. LeF. Lumsdaine]{Peter LeFanu Lumsdaine}
-
-\maketitle
-\tableofcontents
 
 \section{Globular structures from $\DTT$}
 
@@ -424,7 +367,7 @@ In particular, for every reflexivity map $\r \colon \Delta.B \to \Delta.B.B.\Id_
 Analogously to the above, ``large elimination'' rules give type-contractibility; but this will not concern us here.
 \end{example}
 
-\begin{example} \lalbe{ex:hofmann-contractibility}
+\begin{example} \label{ex:hofmann-contractibility}
 As remarked above, if $\T$ is any theory and $\T^\mathrm{LF}$ is its presentation in a logical framework, then according to \cite[\SEC 4]{hofmann:syntax-and-semantics}, the interpretation of $\T$ in $\T^\mathrm{LF}$ is type-contractible. \todo{[Give more details, in terms of forgetful functors and the component-wise contractible natural transformation, and emphasising functoriality of the logical framework.]}
 \end{example}
 
@@ -835,6 +778,8 @@ The proof of Theorem \ref{thm:ctrble-operad-for-id} goes through almost verbatim
 \end{enumerate}
 \end{corollary}
 
+\todo{Add statement of what we get for non-contextual CwFs, via the inclusion/coreflection!}
+
 \begin{para}This statement, while pleasing, has a few loose ends which deserve to be tied up.
 
 Firstly, there is an obvious abuse of notation: if $\Jbar$ holds for $\Id$, then we are overloading $\cl_\omega$ not only with different codomains, a mild and common sin, but also with different domains, a potentially worse one.  Given a theory $\T$ with at least the $\PiIdelim$ rule, we could compute $\cl_\omega(\T)$ as such a theory, or we could treat it as a theory over $\Id$-, and compute $\cl_\omega(\T)$ from there.  Will these agree?  In other words, does $\cl_\omega$ commute with the forgetful functor $U \colon \DTT_\PiIdelim \to \DTT_\Id$, as in the following diagram?
@@ -923,55 +868,3 @@ $\Jbar$ asserts that \emph{open} $\Id$-types in contexts are indeed $\Id$-types 
 \subsection{A model structure on $\DTT$?} \ref{sec:model-strux}
 
 Another optional bonus section.
-
-\clearpage
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%% Bibliography Info
-
-\bibliographystyle{amsalpha}
-\bibliography{pll-thesis-bib}
-
-
-
-\end{document}
