@@ -25,7 +25,7 @@
 % \newenvironment{remark}{\begin{trivlist}\item{}\normalfont\textbf{Remark\ }}{\end{trivlist}}
 % 
 % 
-% \newcommand{\A}{A_\bullet}
+\newcommand{\A}{A_\bullet}
 % \newcommand{\uA}[1][]{\underline{A}_{#1}}
 % \newcommand{\B}{B_\bullet}
 % \newcommand{\ML}{\mathit{ML_I}}
@@ -549,9 +549,9 @@
 % \caption{Some labelled pasting diagrams, elements of a free strict $\omega$-category $T\A$. \label{figure:pastings} } 
 % \end{figure}
 % 
-% In particular, $T1$ (where $1$ denotes the terminal globular set, with just one cell of each dimension) consists informally of pastings of this sort, but without labels on the cells.  This is the crucial globular set of \emph{pasting diagrams}.  A peculiarity of $T1$ is that the source and target of any pasting diagram are equal; for this ambivalent operation we write $\d \pi := s(\pi) = t(\pi)$. 
+% In particular, $T1$ (where $1$ denotes the terminal globular set, with just one cell of each dimension) consists informally of pastings of this sort, but without labels on the cells.  This is the crucial globular set of \emph{pasting diagrams}.  A peculiarity of $T1$ is that the source and target of any pasting diagram are equal; for this ambivalent operation we write $d \pi := s(\pi) = t(\pi)$. 
 % 
-% Every pasting diagram $\pi \in T1_n$ has an associated globular set $\hat{\pi}$---intuitively, the set of cells appearing in $\pi$, as shown in our pictures of pasting diagrams throughout.  We then have maps of globular sets $\hat{s}^k, \hat{t}^k\colon  \widehat{\d^k \pi} \to \hat \pi$, embedding $\widehat{\d^k \pi}$ as the $(n-k)$-dimensional source or target of  $\hat \pi$.
+% Every pasting diagram $\pi \in T1_n$ has an associated globular set $\hat{\pi}$---intuitively, the set of cells appearing in $\pi$, as shown in our pictures of pasting diagrams throughout.  We then have maps of globular sets $\hat{s}^k, \hat{t}^k\colon  \widehat{d^k \pi} \to \hat \pi$, embedding $\widehat{d^k \pi}$ as the $(n-k)$-dimensional source or target of  $\hat \pi$.
 % 
 % Taking categories of elements then gives categories $\int \pi := \int_\G \hat{\pi}$, with objects the cells of $\hat{\pi}$ and arrows into each cell $c$ from its sources and targets $s^k(c)$, $t^k(c)$, and with a functor $\dim \colon  \int \pi \to \G$ giving the dimension of each cell; $\int \pi$ may be seen as the shape of the canonical diagram of basic cells whose colimit in $\GSets$ gives $\hat{\pi}$.
 % 
@@ -705,7 +705,7 @@
 % \begin{defi} \label{def:a-pi}
 % For a globular object $\A$ in a category $\C$, and a pasting diagram $\pi \in T1_n$, we define
 % $$ A_\pi := \textstyle \lim_{c \in \int \pi} A_{\dim c}, $$
-% ``the object of diagrams of shape $\pi$ in $\A$'', whenever this limit exists in $\C$.  The maps $\hat{s}^k, \hat{t}^k\colon  \widehat{\d^k pi} \to \hat{\pi}$ induce evident projections $s^k, t^k\colon  A_\pi \to A_{\d^k \pi}$.
+% ``the object of diagrams of shape $\pi$ in $\A$'', whenever this limit exists in $\C$.  The maps $\hat{s}^k, \hat{t}^k\colon  \widehat{d^k pi} \to \hat{\pi}$ induce evident projections $s^k, t^k\colon  A_\pi \to A_{d^k \pi}$.
 % \end{defi}
 % 
 % An illustration may be useful here: the definition of $A_\pi$ says, for instance, that if $\pi = (\xymatrix{ \bullet \rtwocell & \bullet \rtwocell & \bullet})$, then
@@ -744,7 +744,7 @@
 % 
 % \begin{prop}\label{prop:endo-operad}
 % If $\A$ is a globular object in a category $\C$, and the objects $A_\pi$ exist, then there is an operad $\End_\C(\A)$, the \emph{endomorphism globular operad of $\A$}, in which (for $\pi \in T1_n$) an element of $\End_\C(\A)(\pi)$ is a sequence of maps $(\sigma_0, \tau_0;\sigma_1,\tau_1;\ldots ,\tau_{n-1}; \rho)$,
-% $$\rho\colon A_\pi \to A_n, \qquad \sigma_i, \tau_i\colon  A_{\d^{n-i}\pi} \to A_i,$$
+% $$\rho\colon A_\pi \to A_n, \qquad \sigma_i, \tau_i\colon  A_{d^{n-i}\pi} \to A_i,$$
 % commuting appropriately with the source and target maps, in the sense that
 % $$s \cdot \sigma_i = s \cdot \tau_i = \sigma_{i-1} \cdot s, \qquad s \cdot \rho = \sigma_{n-1} \cdot s,$$
 % $$t \cdot \sigma_i = t \cdot \tau_i = \tau_{i-1} \cdot t, \qquad t \cdot \rho = \tau_{n-1} \cdot t.$$
@@ -846,57 +846,59 @@
 
 
 
+\section{Overview}
 
+In this chapter, we will construct the fundamental weak $\omega$-groupoid of a type theory, as sketched in the Introduction \ref{para:fundamental-sketch}.
 
-% 
-% 
-\section{The contractible globular operad \texorpdfstring{$\P$}{P\_ML\_Id}} \label{sec:the-operad}
+As explained there, the goal is to put a weak $\omega$-groupoid structure on the sets of closed terms of type $A$, $\Id_A$, \ldots, for any type $A$ in any theory $\T$.  This is a categorically familiar scenario: these are sets of \emph{global elements}, so to endow them with some algebraic structure, one need only put an internal such structure on the objects themselves.  So, we proceed accordingly, putting an internal weak $\omega$-groupoid structure on $A$, $\Id_A$, \ldots\ themselves in (the classifying category of) $\T$.
 
-In this section, we construct the promised operad $\P$ of all definable composition laws; we then show that it is contractible, and describe (in the main theorem) how it acts to give the desired weak-$\omega$-category structures on types.
-% 
-% \subsection{Construction of \texorpdfstring{$\P$}{P\_ML\_Id}}
-% 
-% We saw above that for a type $A$ in a type theory $\T$ extending $\MLfrag$, the contexts
-% $$x_0,y_0:A,\ x_1,y_1:\uA[1](x_0,y_0)\ldots,\ z:\uA[n](x_0,y_0\ldots, x_{n-1},y_{n-1}),$$
-% and the dependent projections between them form a globular context $\A \colon  \G^\op \to \C(\T)$.  In particular, the generic type $X$ gives a globular context $\X$ in $\C(\MLfrag[X])$.  Using the machinery of the previous section, it is now easy to describe $\P$: it will be $\End_{\C(\MLfrag[X])}(\X)$.  However, since $\C(\T)$ does not have all finite limits in general, to use the description of $\End_{\C(\T)}(\A)$ provided by Proposition \ref{prop:endo-operad} we must construct contexts $\Gamma_\pi$ exhibiting the objects $A_\pi$.
-% 
-% Accordingly, suppose we are given $\pi \in T1_n$, with associated globular set $\hat{\pi}$.  There are various ways of putting a total order on the $i$-cells of $\hat{\pi}$ for each $i \leq n$; pick any such.
-% 
-% (There is in fact a canonical choice of such orderings, using the representation of pasting diagrams as Batanin trees (\cite{batanin:natural-environment}, \cite[8.1]{leinster:book}).  This choice has some good compatibility between the orderings on different pasting diagrams, which will later spare us some use of $\Exch$ rules, so for simplicity we will assume it is the ordering chosen; however, since this is purely cosmetic, we will not go into the details here.)
-% 
-% Then take $\Gamma_\pi$ to be the context
-% $$\bigwedge_{c \in \hat{\pi}_0} x_c\! :\! A,\ \bigwedge_{c \in \hat{\pi}_1} x_c\! :\! \uA[1](x_{s(c)},x_{t(c)}),\ \ldots\ \bigwedge_{c \in \hat{\pi}_n} x_c\! :\! \uA[n](x_{s^n(c)},x_{t^n(c)}; \ldots;x_{s(c)},x_{t(c)}).$$
-% 
-% For instance, $\Gamma_{(\bullet \to \bullet \to \bullet)}$ is the context
-% $$x,y,z:A,\ p:\Id_A(x,y),\ q:\Id_A(y,z)$$
-% which we met back in the introduction.
-% 
-% Note that we also have projections $\src,\tgt \colon \Gamma_\pi \to \Gamma_{\d \pi}$.
-% 
-% \begin{lem}The context $\x: \Gamma_\pi$, together with the obvious dependent projections, is the object $(\A)_\pi$ of Definition \ref{def:a-pi}; that is, $\Gamma_\pi = \lim_{c \in \int \pi} A_{\dim c}$.  Moreover, if $F \colon \T \to \S$ is a translation of type theories, then $\C(F) \colon \C(\T) \to \C(\S)$ preserves this limit.
-% \end{lem}
-% \begin{proof}
-% Immediate by Proposition \ref{prop:dependent-projections-give-limits} 
-% \end{proof}
-% 
-% Thus, by Proposition~\ref{prop:endo-operad}, we have:
-% \begin{thm}The globular object $\A$ in $\C(\T)$ has an endomorphism operad $\End_{\C(\T)}(\A)$, as described in Proposition \ref{prop:endo-operad}, and if $F \colon \T \to \S$ is a translation of type theories, there is an induced map of operads $\End_{\C(\T)}(\A) \to \End_{\C(\S)}(F\A)$. \qed
-% \end{thm}
-% 
-% Let us unfold what this operad $P := \End_{\C(\T)}(\A)$ actually looks like.  For $\pi \in T1_n$, an element of $P(\pi)$ consists of a map $\rho \colon \Gamma_\pi\to A_n$ in $\C(\T)$, and for $0 \leq k < n$, maps $\sigma_k \colon \Gamma_{\d^{n-k}(\pi)} \to A_k$ and $\tau_k \colon \Gamma_{\d^{n-k}(\pi)} \to A_n$, commuting with the dependent projections.
+To do this, of course, we need to find some contractible operad of composition laws which acts on these.  In order to achieve this uniformly over all types in all theories, we consider the syntactic operad of \emph{generically definable} composition operations, i.e.\ operations which can be derived over a type without any further rules or constructors assumed.  Formally, we construct this as the endomorphism operad $\End_{\T_\Id [X]}(\X)$, where $\T_\Id [X]$ is the theory given just by the $\Id$-type rules together with a single closed type $X$.
+
+We then show directly that this operad is indeed contractible, using a little specific analysis of the theory $\T_\Id[X]$, and discuss extensions to larger operads.
+
+\subsection{Construction of \texorpdfstring{$\P$}{P\_ML\_Id}}
+
+We saw above that for a type $A$ in a type theory $\T$ extending $\MLfrag$, the contexts
+$$x_0,y_0:A,\ x_1,y_1:\Id(x_0,y_0)\ldots,\ z:\Id(x_{n-1},y_{n-1}),$$
+and the dependent projections between them form a globular context $\A \colon  \G^\op \to \C(\T)$.  In particular, the generic type $X$ gives a globular context $\X$ in $\C(\MLfrag[X])$.  Using the machinery of the previous section, it is now easy to describe $\P$: it will be $\End_{\C(\MLfrag[X])}(\X)$.  However, since $\C(\T)$ does not have all finite limits in general, to use the description of $\End_{\C(\T)}(\A)$ provided by Proposition \ref{prop:endo-operad} we must construct contexts $\Gamma_\pi$ exhibiting the objects $A_\pi$.
+
+Accordingly, suppose we are given $\pi \in T1_n$, with associated globular set $\hat{\pi}$.  There are various ways of putting a total order on the $i$-cells of $\hat{\pi}$ for each $i \leq n$; pick any such.
+
+(There is in fact a canonical choice of such orderings, using the representation of pasting diagrams as Batanin trees (\cite{batanin:natural-environment}, \cite[8.1]{leinster:book}).  This choice has some good compatibility between the orderings on different pasting diagrams, which will later spare us some use of $\Exch$ rules, so for simplicity we will assume it is the ordering chosen; however, since this is purely cosmetic, we will not go into the details here.)
+
+Then take $\Gamma_\pi$ to be the context
+$$\bigwedge_{c \in \hat{\pi}_0} x_c\! :\! A,\ \bigwedge_{c \in \hat{\pi}_1} x_c\! :\! \Id(x_{s(c)},x_{t(c)}),\ \ldots\ \bigwedge_{c \in \hat{\pi}_n} x_c\! :\! \Id(x_{s(c)},x_{t(c)}).$$
+
+For instance, $\Gamma_{(\bullet \rightarrow \bullet \rightarrow \bullet)}$ is the context
+$$x,y,z:A,\ p:\Id_A(x,y),\ q:\Id_A(y,z)$$
+which we met back in \ref{para:fundamental-sketch}.
+
+Note that we also have projections $\src,\tgt \colon \Gamma_\pi \to \Gamma_{d \pi}$.
+
+\begin{lem}The context $\x: \Gamma_\pi$, together with the obvious dependent projections, is the object $(\A)_\pi$ of Definition \ref{def:a-pi}; that is, $\Gamma_\pi = \lim_{c \in \int \pi} A_{\dim c}$.  Moreover, if $F \colon \T \to \S$ is a translation of type theories, then $\C(F) \colon \C(\T) \to \C(\S)$ preserves this limit.
+\end{lem}
+\begin{proof}
+Immediate by Proposition \ref{prop:dependent-projections-give-limits} 
+\end{proof}
+
+Thus, by Proposition~\ref{prop:endo-operad}, we have:
+\begin{thm}The globular object $\A$ in $\C(\T)$ has an endomorphism operad $\End_{\C(\T)}(\A)$, as described in Proposition \ref{prop:endo-operad}, and if $F \colon \T \to \S$ is a translation of type theories, there is an induced map of operads $\End_{\C(\T)}(\A) \to \End_{\C(\S)}(F\A)$. \qed
+\end{thm}
+
+% Let us unfold what this operad $P := \End_{\C(\T)}(\A)$ actually looks like.  For $\pi \in T1_n$, an element of $P(\pi)$ consists of a map $\rho \colon \Gamma_\pi\to A_n$ in $\C(\T)$, and for $0 \leq k < n$, maps $\sigma_k \colon \Gamma_{d^{n-k}(\pi)} \to A_k$ and $\tau_k \colon \Gamma_{d^{n-k}(\pi)} \to A_n$, commuting with the dependent projections.
 % 
 % So, concretely, an element of $P(\pi)$ (a \emph{composition law for $\pi$}) is a sequence of terms $\vec \rho = ((\sigma_i, \tau_i)_{0 \leq i < n}; \rho)$, such that
 % \begin{eqnarray*}
-% \x : \Gamma_{\d^n(\pi)} & \types & \sigma_0(\x) : A \\
-% \x : \Gamma_{\d^n(\pi)} & \types & \tau_0(\x) : A \\
+% \x : \Gamma_{d^n(\pi)} & \types & \sigma_0(\x) : A \\
+% \x : \Gamma_{d^n(\pi)} & \types & \tau_0(\x) : A \\
 % & \vdots & \\
-% \x : \Gamma_{\d^{n-k}(\pi)} & \types & \sigma_k(\x): \Id (\sigma_{k-1}(\src\ \x),\tau_{k-1}(\tgt\ \x)),\\
-% \x : \Gamma_{\d^{n-k}(\pi)} & \types & \tau_k(\x): \Id (\sigma_{k-1}(\src\ \x)),\tau_{k-1}(\tgt\ \x)),\\
+% \x : \Gamma_{d^{n-k}(\pi)} & \types & \sigma_k(\x): \Id (\sigma_{k-1}(\src\ \x),\tau_{k-1}(\tgt\ \x)),\\
+% \x : \Gamma_{d^{n-k}(\pi)} & \types & \tau_k(\x): \Id (\sigma_{k-1}(\src\ \x)),\tau_{k-1}(\tgt\ \x)),\\
 % & \vdots & \\
 % \x : \Gamma_\pi & \types & \rho(\x) : \Id(\sigma_{n-1}(\src\ \x),\tau_{n-1}(\tgt\ \x)).
 % \end{eqnarray*} 
 % 
-% The source of this is then the composition law $(\sigma_0,\tau_0,\ldots, \sigma_{n-1},\tau_{n-1};\sigma_n) \in P(\d(\pi))$, and its target is $(\sigma_0,\tau_0,\ldots, \sigma_{n-1},\tau_{n-1};\tau_n) \in P(\d(\pi))$.
+% The source of this is then the composition law $(\sigma_0,\tau_0,\ldots, \sigma_{n-1},\tau_{n-1};\sigma_n) \in P(d(\pi))$, and its target is $(\sigma_0,\tau_0,\ldots, \sigma_{n-1},\tau_{n-1};\tau_n) \in P(d(\pi))$.
 % 
 % We make no attempt to give a formal syntactic description of composition within this operad, but in specific cases it is ``exactly what you would expect'', and is essentially just substitution.  %%  (With a little help from the other structural rules, of course...)
 % 
@@ -906,7 +908,7 @@ In this section, we construct the promised operad $\P$ of all definable composit
 % 
 % For general $\T,A$, we cannot expect $\End_{\C(\T)}(\A)$ to be contractible: contractibility implies (at least) that any two elements of $\End_{\C(\T)}(\A)(\bullet)$ are connected by an element of $\End_{\C(\T)}(\A)(\bullet \to \bullet)$, or in other words that any two terms $x:A \types \tau(x), \tau'(x) : A$ are propositionally equal, which clearly may fail.  However, in the specific case of $\P$, we do wish to show contractibility, since this is the operad which naturally acts on any type.
 % 
-% What precisely does contractibility mean, here?  For every pasting diagram $\pi$ and every parallel pair of composition laws $\vec \sigma, \vec \tau  \in \P(\d(\pi))$, we need to find some filler $\vec \rho \in \P(\pi)$, with $s(\vec \rho) = \vec \sigma$, $t(\vec \rho) = \vec \tau$.
+% What precisely does contractibility mean, here?  For every pasting diagram $\pi$ and every parallel pair of composition laws $\vec \sigma, \vec \tau  \in \P(d(\pi))$, we need to find some filler $\vec \rho \in \P(\pi)$, with $s(\vec \rho) = \vec \sigma$, $t(\vec \rho) = \vec \tau$.
 % 
 % Given $\pi$, such a parallel pair amounts to terms $(\sigma_i,\tau_i)_{0 \leq i < n}$ as in the definition of a composition law for $\pi$, and a filler is a term $\rho$ completing the definition; that is, we seek to derive a judgment
 % $$\x : \Gamma_\pi \types \rho (\x) : \Id ( \sigma_{n-1}(\src\ \x), \tau_{n-1} (\tgt\ \x) ).$$
@@ -1061,8 +1063,8 @@ In this section, we construct the promised operad $\P$ of all definable composit
 % \end{thm}
 % 
 % \begin{proof}As described above, this amounts to the statement: for every $n \in \N$ and pasting diagram $\pi \in T1_n$, and every sequence $(\sigma_i,\tau_i)_{i<n}$ of terms such that
-% $$\x : \Gamma_{\d^{n-i}(\pi)} \types \sigma_i(\x) : \uX (\sigma_0(\src^i\ \x),\ldots,\tau_{i-1}(\tgt\ \x))$$
-% $$\x : \Gamma_{\d^{n-i}(\pi)} \types \tau_i(\x) : \uX (\sigma_0(\src^i\ \x),\ldots,\tau_{i-1}(\tgt\ \x))$$
+% $$\x : \Gamma_{d^{n-i}(\pi)} \types \sigma_i(\x) : \uX (\sigma_0(\src^i\ \x),\ldots,\tau_{i-1}(\tgt\ \x))$$
+% $$\x : \Gamma_{d^{n-i}(\pi)} \types \tau_i(\x) : \uX (\sigma_0(\src^i\ \x),\ldots,\tau_{i-1}(\tgt\ \x))$$
 % ($i < n$) are derivable in $\MLfrag[X]$, we can find a ``filler'', i.e.\ a term $\rho$ with
 % $$\x : \Gamma_\pi \types \rho(\x) : \uX (\sigma_0(\src^n\ \x),\ldots,\tau_{n-1}(\tgt\ \x))$$
 % We show this by induction on the number of cells in $\pi$.
@@ -1075,15 +1077,15 @@ In this section, we construct the promised operad $\P$ of all definable composit
 % $$\x:\Gamma_{\pi^{-c}} \types \rho^{-c}(\x) : \uX (\sigma_0(\src^n\ h(\x)),\ldots,\tau_{n-1}(\tgt\ h(\x))).$$
 % 
 % But now note that
-% $$\d^{n-i}(\pi^{-c}) = \left\{ \begin{array}{ll} \d^{n-i}(\pi) & \textrm{for $n-i < k$} \\ (\d^{n-i}(\pi))^{-c} & \textrm{for $n-i \geq k$} \end{array} \right. ;$$% } 
+% $$d^{n-i}(\pi^{-c}) = \left\{ \begin{array}{ll} d^{n-i}(\pi) & \textrm{for $n-i < k$} \\ (d^{n-i}(\pi))^{-c} & \textrm{for $n-i \geq k$} \end{array} \right. ;$$% } 
 % moreover, we can construct context maps
-% $$h^s_i, h^t_i \colon \Gamma_{\d^{n-i}(\pi^{-c})} \to \Gamma_{\d^{n-i}(\pi)}$$
+% $$h^s_i, h^t_i \colon \Gamma_{d^{n-i}(\pi^{-c})} \to \Gamma_{d^{n-i}(\pi)}$$
 % (analogous to $h$ if $i \geq k$, and just the identity otherwise), and these commute with the maps $\src$ and $\tgt$.  So for each $i < n$, we have
-% $$\x : \Gamma_{\d^{n-i}(\pi^{-c})} \types \sigma_i(h(\x)) : \uX (\sigma_0(h(\src^i\ \x)),\ldots,\tau_{i-1}(h(\tgt\ \x))),$$
-% $$\x : \Gamma_{\d^{n-i}(\pi^{-c})} \types \tau_i(h(\x)) : \uX (\sigma_0(h(\src^i\ \x)),\ldots,\tau_{i-1}(h(\tgt\ \x))),$$
+% $$\x : \Gamma_{d^{n-i}(\pi^{-c})} \types \sigma_i(h(\x)) : \uX (\sigma_0(h(\src^i\ \x)),\ldots,\tau_{i-1}(h(\tgt\ \x))),$$
+% $$\x : \Gamma_{d^{n-i}(\pi^{-c})} \types \tau_i(h(\x)) : \uX (\sigma_0(h(\src^i\ \x)),\ldots,\tau_{i-1}(h(\tgt\ \x))),$$
 % i.e.\ the sequence of terms $(h^*(\sigma_i),h^*(\tau_i))_{i<n}$ are a parallel pair for $\pi^{-c}$.  So by induction (since $\pi^{-c}$ has fewer cells than $\pi$), these terms have a filler; but this filler is exactly the desired term $\rho^{-c}$.
 % 
-% Thus it is enough to show the existence of fillers in the case where $\pi$ has just one cell, i.e.\ where $\pi = ( \bullet )$.  But in this case, $\Gamma_\pi = \Gamma_{\d^i(\pi)} = \Gamma_{\d^i(\pi)} = (x:X)$ for each $i < n$, and so by the initiality of $(x:X)$ we must have $\sigma_i(x) = \tau_i(x) = r^i(x)$ for each $i$; so now $\rho := r^n(x)$ gives the filler, and we are done.
+% Thus it is enough to show the existence of fillers in the case where $\pi$ has just one cell, i.e.\ where $\pi = ( \bullet )$.  But in this case, $\Gamma_\pi = \Gamma_{d^i(\pi)} = \Gamma_{d^i(\pi)} = (x:X)$ for each $i < n$, and so by the initiality of $(x:X)$ we must have $\sigma_i(x) = \tau_i(x) = r^i(x)$ for each $i$; so now $\rho := r^n(x)$ gives the filler, and we are done.
 % \end{proof}
 % 
 % Unwinding this induction, we can see that it exactly formalises the process described at the start of Subsection \ref{subsec:initiality}, of repeatedly plugging in higher reflexivity terms for all variables, knowing that the given composites will themselves eventually compute down to higher reflexivity terms.
