@@ -33,14 +33,18 @@ $\types \Gamma = \Gamma' \ \cxt$ &  $\types { f} = { f}' : \Gamma \To \Gamma'$ \
 
 In the sequel, we will sometimes also use dependent versions of these derived judgements, though they will not be needed in the presentation of the theory:
 \begin{center}\begin{tabular}{@{\ }c@{\hskip 0.75in}c@{\ }}
-$ \Gamma \types \Delta \ \cxt$ & $\Gamma \types { f} : \Delta \To \Delta' $  \\ \rule{0pt}{3ex} 
-$ \Gamma \types \Delta = \Delta' \ \cxt$ & $\Gamma \types { f} = { f}' : \Delta \To \Delta'$ \\
+$ \Gamma \types \Delta \ \cxt$ & $\Gamma \types \d : \Delta $  \\ \rule{0pt}{3ex} 
+$ \Gamma \types \Delta = \Delta' \ \cxt$ & $\Gamma \types \d = \d' : \Delta$ \\
 \end{tabular}
 \end{center}
 
-In slight abuse of notation, we will often explicitly display free variables for emphasis or readability, writing e.g.\ $\x : \Gamma \types A(\x)\ \type$ interchangeably with $\Gamma \types A\ \type$.
+Note that for the second of these, we use notation closer to that of terms than of context morphisms; one could introduce a judgement $\Gamma \types f : \Delta \To \Delta'$, but it would of course be redundant with $\Gamma, \Delta \types f : \Delta'$.
+
+In all the judgements above, in slight abuse of notation, we will often explicitly display free variables for emphasis or readability, writing e.g.\ $\x : \Gamma \types A(\x)\ \type$ interchangeably with $\Gamma \types A\ \type$.
 
 Also, we will often abbreviate multiple judgements of the same form by writing e.g.\ $\Gamma \types a,a' : A$.
+
+Finally, beyond the initial presentation of the theory, context morphisms will be written not $\types f : \Gamma \To \Gamma'$ as above, but $f \colon \Gamma \to \Gamma'$, reflecting the view of them as maps of the syntactic category of a theory.
 
 \begin{para}[Structural core] Rules for contexts:
 $$\begin{array}{c}
@@ -79,7 +83,7 @@ $$\begin{array}{c}
 \qquad \qquad 
 \inferrule*[right={$\term$=-$\sym$}]{\Gamma \types a = b : A}{\ \Gamma \types b = a : A\ }
 \\ \ \\
-\inferrule*[right={$\term$=-$\trans$}]{\Gamma \types a = b : A \\\\ \Gamma \types b = c : A}{\ \Gamma \types a = c : A\ } 
+\inferrule*[right={$\term$=-$\trans$}]{\Gamma \types a = b : A \\ \Gamma \types b = c : A}{\ \Gamma \types a = c : A\ } 
 \end{array}$$
 
 Rules for context maps: 
@@ -93,6 +97,8 @@ $$\begin{array}{c}
 \end{array}$$
 
 \end{para}
+
+\todo{[Mention derived structural rules: $\exch$, $\wkg$!]}
 
 \begin{para}[Type constructors]
 
@@ -110,8 +116,8 @@ Here all free variables are displayed, to emphasise the full formal binding that
 $$\begin{array}{c}
 \inferrule*[right=$\Id$-$\comp$]{
 \Gamma,\, x,y : A,\, u : \Id_A(x,y),\, \w : \Delta(x,y,u)\ \types\ C(x,y,u,\w)\ \type \\
-\Gamma,\, z:A,\, \v : \Delta(z,z,r(z))\ \types\ d(z,\v) : C(z,z,r(z),\v) \qquad
-\Gamma \types a : A \qquad \Gamma \types \c : \Delta(a,a,r(a))}
+\Gamma,\, z:A,\, \v : \Delta(z,z,r(z))\ \types\ d(z,\v) : C(z,z,r(z),\v) \\
+\Gamma \types a : A \\ \Gamma \types \c : \Delta(a,a,r(a))}
 {\Gamma\ \types\ \Jterm_C(d;\ a,a,r(a),\c) = d(a) : C(a,a,r(a),\c)}
 \end{array}$$
 
@@ -144,9 +150,9 @@ $$\begin{array}{c}
 {\Gamma \types \Kterm_{A;\ x,u.\Delta;\ x,u,\w.C}(z,\v.\ d(z,\v);\ a,r(a),\c) = d(a) : C(a,r(a),\c)}
 \end{array}$$
 
-These eliminators both essentially trivialise the higher-categorical structure in which we are interested, so we will mainly consider theories without them; however, they will provide interesting comparisons at times.  In the case of the reflection rule, this trivialisation is immediate.  In the case of $\Kterm$, it is slightly less obvious; but it turns out that from $\Kterm$ we can derive the ``(propositional) uniqueness of identity proofs'' principle, asserting that all elements of any identity type are equal (\cite{streicher:habilitationsschrift}, \cite{warren:thesis}).  See \ref{para:j-and-k-homotopically} for an alternative point of view on $\Kterm$.
+These eliminators both essentially trivialise the higher-categorical structure with which we are principally concerned, so we will mainly consider theories without them; however, they will provide interesting comparisons at times.  In the case of the reflection rule, this trivialisation is immediate.  In the case of $\Kterm$, it is slightly less obvious; but it turns out that from $\Kterm$ we can derive the ``(propositional) uniqueness of identity proofs'' principle, asserting that all elements of any identity type are equal (\cite{streicher:habilitationsschrift}, \cite{warren:thesis}).  See \ref{para:j-and-k-homotopically} for an alternative point of view on $\Kterm$.
 
-Two less desctructive variations on the $\Id$-elimination rule are worth mentioning; we will not use these as rules per se, but in Section \ref{sec:Jbar} and elsewhere we will discuss some analogous principles.
+Two less destructive variations on the $\Id$-elimination rule are worth mentioning; we will not use these as rules per se, but in Section \ref{sec:Jbar} and elsewhere we will discuss some analogous variations on other principles.
 
 Firstly, the dependent context $\Delta(x,y,u)$ which we have included in the premises is often omitted.  (Its inclusion is, in categorical terms, a Frobenius condition.) In the presence of $\Pi$-types, this is interderivable with our version ($\Delta$ can simply be curried over to the right-hand side).  In the absence of $\Pi$-types, the non-Frobenius version of the rule is simply not strong enough to be much use: one cannot even derive, for instance, the transitivity of propositional equality.
 
@@ -185,8 +191,12 @@ $$
  $$ \inferrule*[right={$\Pi$-$\extrule$-$\apprule$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \Gamma \types k : \Pi_{x : A} \Id_B(f \tightcdot x, g \tightcdot x) \\ \Gamma \types a : A}{\ \Gamma \types \mu(f,g,k,a) : \Id(\extterm(f,g,k) \star a , k \cdot a)\ }
 $$ 
 
- $$ \inferrule*[right={$\Pi$-$\extrule$-$\apprule$-$\comp$}]{\Gamma,\,x:A \types b(x) : B(x) \\ \Gamma \types a : A}{\ \Gamma \types \mu(\lambda x. b(x), \lambda x. b(x), \lambda x. rb(x), a) = rrb(a) : \Id_{B(a)} (b(a), b(a))\ } 
+ $$ \inferrule*[right={$\Pi$-$\extrule$-$\apprule$-$\comp$}]{\Gamma,\,x:A \types b(x) : B(x) \\ \Gamma \types a : A}{\ \Gamma \types \mu(\lambda x. b(x), \lambda x. b(x), \lambda x. rb(x), a) = r(r(b(a))) : \Id_{B(a)} (b(a), b(a))\ } 
 $$
+
+ $$ \inferrule*[right={$\Pi$-$\extrule$-$\apprule$-$\defrule$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \Gamma \types k : \Pi_{x : A} \Id_B(f \tightcdot x, g \tightcdot x) \\ \Gamma \types a : A}{\ \Gamma \types \extterm(f,g,k) \star a = k \cdot a : \Id_{B}(f \tightcdot a, g \tightcdot a) }
+$$ 
+
 \end{para}
 
 
@@ -219,7 +229,7 @@ $$ \inferrule*[right={$\PiIdelim$}]{
 { \Gamma\ \types\ \Lterm(C,d,k,k',l) : C(k,k',l) } $$
 
 Its computation rule concludes from appropriate premises that
-$$ \Lterm(C,d, \lambda h, \lambda h, \lambda ( r \circ h)) = d(h) : C( \lambda h, \lambda h, \lambda (r \circ h)).$$
+$$ \Lterm(C,d, \lambda h, \lambda h, \lambda ( r \circ h)) = d(h) : C( \lambda h, \lambda h, \lambda (r \circ h)). \quad \PiIdelim\mbox{-\comp}$$
 
 (Here $(x \tightcolon A)B(x)$ and $[x \tightcolon A] b(x)$ denote abstraction in the metalanguage.)
 
@@ -274,7 +284,7 @@ $$ \Lterm(C,d, \lambda h, \lambda h, \lambda ( r \circ h)) = d(h) : C( \lambda h
 
 \subsection{Categorical representation}
 
-The syntax is an excellent tool for intuitive and computationally tractable presentations of theories; however, for semantic/categorical purposes its formal complexity can be a hindrance.  To this end, various categorical structures have been introduced which correspond, more or less closely, to dependent type theories as presented above\footnote{Most relevantly for our purposes, \emph{comprehension categories} (\cite{jacobs:comprehension-categories}), \emph{categories with attributes} (\cite{cartmell-thesis}, \cite{moggi:program-modules}, \cite{pitts:categorial-logic}), \emph{categories with attributes} (\cite{dybjer:internal-type-theory}), \cite{hofmann:syntax-and-semantics}, \emph{contextual categories} (\cite{cartmell:gats}, \cite{streicher:semantics}); see \cite{jacobs:comprehension-categories}, \cite{hofmann:syntax-and-semantics} for useful overviews.}.
+The syntax is an excellent tool for intuitive and computationally tractable presentations of theories; however, for semantic/categorical purposes its formal complexity can be a hindrance.  To this end, various categorical structures have been introduced which correspond, more or less closely, to dependent type theories as presented above\footnote{Most relevantly for our purposes, \emph{comprehension categories} (\cite{jacobs:comprehension-categories}), \emph{categories with attributes} (\cite{cartmell-thesis}, \cite{moggi:program-modules}, \cite{pitts:categorial-logic}), \emph{categories with families} (\cite{dybjer:internal-type-theory}), \cite{hofmann:syntax-and-semantics}, \emph{contextual categories} (\cite{cartmell:gats}, \cite{streicher:semantics}); see \cite{jacobs:comprehension-categories}, \cite{hofmann:syntax-and-semantics} for useful overviews.}.
 
 Of these, the most categorically flexible are probably Jacobs' \emph{comprehension categories}, which admit many useful variations; since in the present work we will stick closely to the type theory, however, we will use Cartmell's \emph{categories with attributes} as our main model, as these are very elementarily presented.  The relationships between various models are summed up below in Fig.~\ref{fig:big-picture}.
 
@@ -338,10 +348,12 @@ taking a syntactically presented type theory $\T$ to its \emph{classifying categ
 
 The major power of the $\CwA_\cxl$ presentation, however, is that it displays $\DTT$ as the category of models of a (small) \emph{essentially algebraic theory}\todo{[Ref!  Elephant?]}; this implies many useful categorical properties, including in particular that it is complete, cocomplete, and moreover locally presentable---in fact, finitely presentable, since contextual CwA's are a finitary theory.
 
+(It is clear that CwA's admit an essentially algebraic presentation; to give such a presentation of contextual categories, we beak down the ``objects'' sort into $\N$-many sorts, one for objects of each length $l$, and split up the other sorts and operations similarly.)
+
 The construction of the equivalence also gives us a useful universal property for theories presented syntactically: a map out of such a theory is just an interpretation, and hence is determined precisely by the interpretations of the axioms.
 \end{para}
 
-\begin{para}Of course, we want categories not just of \emph{algebraic} dependent type theories, but of type theories with \emph{constructors}; in particular, $\Id$- and $\Pi$-types.  These too can be succinctly and profitably defined in terms of CwA's.  In particular:
+\begin{para}Of course, we want categories not just of purely algebraic dependent type theories, but of type theories with constructors; in particular, $\Id$- and $\Pi$-types.  These too can be succinctly and profitably defined in terms of CwA's.
 \end{para}
 
 \begin{definition} An \emph{elim-structure} $J$ on a map $i : \Gamma \to \Theta$ is a function assigning, to every type $C \in \Ty(\Theta)$ and every term $d : \Gamma \to \Gamma.i^*C$ of type $i^*C$ (equivalently, every map $\hat{d} : \Gamma \to \Theta.C$ over $\Theta$) a term $J_{C,d} : \Theta \to \Theta.C$ of type $C$
@@ -370,7 +382,7 @@ In particular, if $\stuff$ is any appropriate collection of the above rules, the
 
 In the case of all the rules above, theories over $\stuff$ are again models of an essentially algebraic theory extending the base theory of contextual CwA's.  This motivates the level of generality we work at: when we speak informally of a \emph{collection of rules/constructors} $\stuff$, what we mean formally is an algebraic theory extending the theory of contextual CwA's, with the same sorts.
 
-(This is not a terribly natural definition.  It allows type-theoretically unnatural constructions, such as rules which hold only over contexts of length 17, and the like; and, worse, important constructions such as the logical framework embedding cannot defined in this generality.  However, as a crude demarcation, it will suffice for the scope of the present work.) \todo{[make sure this is really true! I know nothing substantial depends on the issue, but some phrasings may have to be restricted]}
+(This is not a terribly natural definition.  It allows type-theoretically unnatural constructions, e.g.\ rules which hold only over contexts of length 17, and the like; and, worse, important constructions such as the logical framework embedding cannot defined in this generality.  However, as a crude demarcation, it will suffice for the scope of the present work.) \todo{[make sure this is really true! I know nothing substantial depends on the issue, but some phrasings may have to be restricted]}
 
 This immediately gives us comparison functors between different categories of theories.  If $\stuff'$ is any collection of rules/constructors extending $\stuff$, then we have a map of algebraic theories, and hence an adjunction:
 $$\bfig 
@@ -402,34 +414,34 @@ The right maps are just (maps isomorphic to) (compositions of basic) dependent p
 
 There are several interesting and important ways to construct new type theories from old:
 
-\begin{para} First, the \emph{dependent contexts monad} on $\CwA$ over $\Cat$, sending $\C = (\C,\Ty)$ to $\C^\Cxt := (\C,\Cxt)$.  So types of the new theory are just dependent contexts in the old theory; the base category is unchanged, and context extension is just by concatenation.  This can be seen as the monad for ``very strong, strictly associative $\Sigma$-types''.)  
+\begin{para} First, the \emph{dependent contexts monad} on $\CwA$ over $\Cat$, sending $\C = (\C,\Ty)$ to $\C^\Cxt := (\C,\Cxt)$.  So types of the new theory are just dependent contexts in the old theory; the base category is unchanged, and context extension is just by concatenation.  This can also be seen as a monad for ``very strong, strictly associative $\Sigma$-types''.)  
 
 Moreover, given $\Id$-types structure on $\C$, we can extend this to an $\Id$-types structure on $\C^\Cxt$: this is the ``identity contexts'' of \cite{streicher:habilitationsthesis} or \cite{gambino-garner}.  \todo{[Give more specific citations, and/or present details?]}  So we have an endofunctor $(-)^\Cxt$ on $\CwA^\Id$. However, the monad structure does \emph{not} lift to $\CwA^\Id$: the multiplication turns out not to preserve $\Id$-contexts strictly.  (This could presumably be accommodated by developing a theory of pseudo-maps of $\CwA^\Id$'s.)
 
-Similar considerations let us lift it to act as an endofunctor on CwA's with any of $\Sigma$-types, $\Pi$-types, the functional extensionality rules, and most other standard constructors.
+Similar considerations let us lift it to act as an endofunctor on CwA's with any of $\Sigma$-types, $\Pi$-types, the functional extensionality rules, and most other standard constructors.  \todo{[Give more detail!]}
 
-Varying our CwA's along the other axis, ``contextuality'', for each set of constructors $(-)^\Cxt$ lifts to an endofunctor on $\CwA_\diamond$, but not on $\CwA_\cxl$: its result is almost never contextual, since adjoining two types $A$ and $B$ to a context in succesion has the same result as adjoining $(A,B)$ in one step, so (as long as the original theory had any types at all) there can be no well-defined notion of length.
+Varying our CwA's along the other axis, ``contextuality'', for each set of constructors $(-)^\Cxt$ lifts to an endofunctor on $\CwA$, but not on $\CwA_\cxl$: its result is almost never contextual, since adjoining two types $A$ and $B$ to a context in succesion has the same result as adjoining $(A,B)$ in one step, so (as long as the original theory had any types at all) there can be no well-defined notion of length.
 \end{para}
 
 \begin{para} The \emph{slice} construction is one of the fundamental tools of the category--type~theory correspondence; however, in terms of CwA's, it is not exactly the ordinary categorical slice.
 
 For $\C$ any CwA, and $\Gamma$ any object of $\C$, the \emph{(type-theoretic) slice} $\C \slice \Gamma$ has as objects dependent contexts over $\Gamma$, and morphisms and attributes structure induced by pullback along the map $\ob (\C \slice \Gamma) \to \ob \C$ sending $\Delta \in \Cxt_\C(\Gamma)$ to $\Gamma,\Delta$.
 
-Slices are always contextual; in particular, by slicing each $\C \in \CwA_\diamond$ over $\diamond$, we obtain a right adjoint $- \slice \diamond \CwA_\diamond \to \CwA_\cxl$ to the inclusion $\CwA_\cxl \mono \CwA$.
+Slices are always contextual; in particular, by slicing each $\C \in \CwA$ over $\diamond$, we obtain a right adjoint $- \slice \diamond \colon \CwA \to \CwA_\cxl$ to the inclusion $\CwA_\cxl \mono \CwA$.
 
 In syntactic terms, slicing corresponds to taking variables into the context: judgements $\Delta \types \J$ in $\T \slice \Gamma$ correspond exactly to judgements $\Gamma, \Delta \types \J$ in $\T$.
 
-(There is also a natural CwA structure on the \emph{categorical slice} $\C/\Gamma$, but this will not be of importance to us.) 
+(There is also a natural CwA structure on the \emph{categorical slice} $\C/\Gamma$, but this will not be of importance to us; it is rarely accessible.) 
 \end{para}
 
-\begin{para} \label{par:types-to-cxts}Combining this with the dependent contexts construction gives us an endofunctor of $\CwA_\cxl$:
-$$ \CwA_\cxl \mono<300> \CwA_\diamond \to^{(-)^\Cxt} \CwA_\diamond \to^{- \slice \diamond} \CwA_\cxl$$
+\begin{para} \label{par:cxts-to-types}Combining this with the dependent contexts construction gives us an endofunctor of $\CwA_\cxl$, the ``contexts to types'' construction:
+$$ \CwA_\cxl \mono<300> \CwA \to^{(-)^\Cxt} \CwA \to^{- \slice \diamond} \CwA_\cxl$$
 
 An object of the resulting $\C^\Cxt \slice \diamond$ can be seen as an object $A_1,\ldots,A_k$ of $\C$ together with a partition $k = \sum_{i \leq l} k_i$, thought of as dividing the context into chunks: 
 $$(A_1,\ldots,A_{k_1});\ (A_{k_1 + 1}, \ldots , A_{k_1 + k_2});\ \ldots ;\  (A_{\sum_{i < l}k_i + 1}, \ldots, A_k).$$
-A ``type'' over such an object is then a dependent context over the full (un-chunked) context in $\C$; context extension adjoins the dependend context as a single additional chunk.  There is a natural inclusion $\C \mono \C^\Cxt \slice \diamond$, chunking each context into individual types.
+A ``type'' over such an object in $\C^\Cxt \slice \diamond$ is then a dependent context over the full (un-chunked) context in $\C$; context extension adjoins the dependend context as a single additional chunk.  There is a natural inclusion $\C \mono \C^\Cxt \slice \diamond$, chunking each context into individual types.
 
-This construction will be briefly but crucially useful to us, in Corollary \ref{cor:types-to-cxts}.
+This construction will be briefly but crucially useful to us, in \ref{cor:fund-cxts-to-types} and \ref{para:class-cxts-to-types} below.  \todo{[Hang on: below, do I show that this extends to all the constructors and rules we consider?  Need to do so!]}
 \end{para}
 
 \begin{para} With some of our constructors, we can also construct \emph{co-slice theories}.  In a co-slice $\Theta \coslice \C$, an object is a map $g \colon \Theta \to \Gamma$ of $\C$ (a \emph{$\Theta$-pointed object of $\C$}); a map $(g,\Gamma) \to (d,\Delta)$ is a map $f \colon \Gamma \to \Delta$ of $\C$ with $fg = d$ (i.e.\ preserving the ``point''); and a type over $(g,\Gamma)$ is a type $A \in \Ty(\Gamma)$ together with a term $a$ of $g^*A$, or equivalently a point $(g,a) \colon \Theta \to \Gamma, A$ for which $\pi_{\Gamma;A} (g,a) = g$.  

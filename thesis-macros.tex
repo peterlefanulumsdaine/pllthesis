@@ -12,7 +12,8 @@
 % Binary relations, operators
 %%%%
 
-\newcommand{\coslice}{\!\!\; \backslash \!\!\!\; \backslash}
+% \newcommand{\coslice}{\!\!\; \backslash \!\!\!\; \backslash}
+\newcommand{\coslice}{\!\!\; \backslash}
 \newcommand{\cotensor}{\pitchfork}
 \renewcommand{\equiv}{\simeq}
 \newcommand{\Iff}{\Leftrightarrow}
@@ -42,8 +43,9 @@
 \renewcommand{\c}{\vec c}
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\CC}{\mathbb{C}}
+\newcommand{\Cbf}{\mathcal{C}}
+\newcommand{\Cbu}{C_\bullet}
 \newcommand{\D}{\mathcal{D}}
-% \newcommand{\bigC}{\mathcal{C}}
 % \newcommand{\bC}{\mathbf{C}}
 % \newcommand{\Chat}{\widehat{\mathbb{C}}}
 % \newcommand{\D}{\mathbb{D}}
@@ -157,7 +159,7 @@
 \newcommand{\nOpd}[1][n]{#1\mbox{-}\mathbf{Opd}}
 % \newcommand{\Operads}{\mathbf{Operads}}
 \newcommand{\pd}{\mathbf{pd}}
-\newcommand{\path}{\mathit{path}}
+\newcommand{\pathpd}{\mathit{path}}
 \newcommand{\PsAlg}[2][]{\mathbf{Ps}_{#1}\mbox{-}{#2}\mbox{-}\mathbf{Alg}}
 \newcommand{\QCat}{\mathbf{QCat}}
 \newcommand{\qcat}{\mathit{qcat}}
@@ -198,12 +200,13 @@
 \newcommand{\cellrule}{\mathsf{cell}}
 \newcommand{\comp}{\textsc{comp}}
 \newcommand{\CONG}{\textsc{cong}}
-% \newcommand{\Contr}{\mathsf{Contr}}
+\newcommand{\contr}{\textsc{contr}}
 \newcommand{\cons}{\mathsf{cons}}
 \newcommand{\cxt}{\mathsf{cxt}}
 \newcommand{\cxtmap}{\mathsf{cxtmap}}
 \newcommand{\cxtrule}{\cxt}
 \newcommand{\defrule}{\mathsf{def}}
+\newcommand{\exch}{\textsc{exch}}
 \newcommand{\elim}{\textsc{elim}}
 \newcommand{\empt}{\mathsf{empty}}
 \newcommand{\extrule}{\textsc{ext}}
@@ -229,17 +232,18 @@
 \newcommand{\refl}{\mathsf{refl}}
 \newcommand{\sourcerule}{\mathsf{src}}
 \newcommand{\subst}{\mathsf{subst}}
-% \newcommand{\src}{\mathsf{src}}
+\newcommand{\src}{\mathsf{src}}
 % \newcommand{\scterm}{\textsc{term}}
 \newcommand{\sym}{\mathsf{sym}}
 \newcommand{\targetrule}{\mathsf{tgt}}
-\newcommand{\termrule}{\term}
+\newcommand{\termrule}{\textsc{term}}
 \newcommand{\term}{\mathsf{term}}
+\newcommand{\tgt}{\mathsf{tgt}}
 \newcommand{\trans}{\mathsf{trans}}
 \newcommand{\type}{\mathsf{type}}
-\newcommand{\typerule}{\type}
+\newcommand{\typerule}{\textsc{type}}
 % \newcommand{\sctype}{\textsc{type}}
-% \newcommand{\Weak}{\mathsf{wkg}}
+\newcommand{\wkg}{\mathsf{wkg}}
 \newcommand{\var}{\mathsf{var}}
 \newcommand{\Zero}{\mathsf{0}}
 

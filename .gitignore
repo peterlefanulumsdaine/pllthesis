@@ -4,4 +4,5 @@
 *.bbl
 *.blg
 *.pdf
+*.out
 .DS_Store

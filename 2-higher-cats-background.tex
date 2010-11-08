@@ -1,12 +1,237 @@
+\section{Weak factorisation system background}
+
 
 
 \section{Higher-categorical background}
 
 \comment{To do: TeX this all up from notes!}
 
+\subsection{Strict higher categories}
 
+There are various approaches to higher category theory, and in particular many definitions of weak higher categories \cite{leinster:ten-definitions}, \cite{cheng-lauda:guidebook}.  We will use the \emph{globular operadic} approach, as set out originally by Michael Batanin in \cite{batanin:natural-environment} and slightly modified by Tom Leinster, \cite{leinster:book}.
 
+\begin{figure}
+$$
+\begin{array}{c}
+\begin{array}{cccc}
+\ \xy
+(0,0)*{\bullet};
+(0,80)*{a};
+\endxy \quad
+&
+\ \xy
+(0,0)*{\bullet}="a";
+(0,80)*{\scriptstyle a};
+(400,0)*{\bullet}="b";
+(400,80)*{\scriptstyle b};
+{\ar "a";"b"};
+(200,80)*{f};
+\endxy \ 
+&
+\ \xy
+(0,0)*+{\bullet}="a";
+(0,80)*{\scriptstyle a};
+(450,0)*+{\bullet}="b";
+(450,80)*{\scriptstyle b};
+{\ar@/^1pc/^{f} "a";"b"};
+{\ar@/_1pc/_{g} "a";"b"};
+{\ar@{=>} (210,85)*{};(210,-85)*{}};
+(280,0)*{\alpha};
+\endxy \ 
+&
+\ \xy
+(0,0)*+{\bullet}="a";
+(600,0)*+{\bullet}="b";
+{\ar@/^1.75pc/^{f} "a";"b"};
+{\ar@/_1.75pc/_{g} "a";"b"};
+{\ar@2{->}@/_0.5pc/|{\alpha} (220,140);(220,-140)} ;
+{\ar@2{->}@/^0.5pc/|{\beta} (380,140);(380,-140)} ;
+{\ar@3{->} (225,-20);(375,-20)};
+(300,60)*{\Theta};
+\endxy \ 
+\end{array} \\
+\begin{array}{ccc}
+\ \xy(0,0)*{\bullet}="a";
+(0,80)*{\scriptstyle a};
+(300,0)*{\bullet}="b";
+(300,80)*{\scriptstyle b};
+(600,0)*{\bullet}="c";
+(600,80)*{\scriptstyle c};
+{\ar^f "a";"b"};
+{\ar^g "b";"c"};
+\endxy \ 
+&
+\ \xy
+(0,0)*+{\bullet}="a";
+(0,80)*{\scriptstyle a};
+(500,0)*+{\bullet}="b";
+(500,80)*{\scriptstyle b};
+{\ar@/^1.75pc/|f "a";"b"};
+{\ar|{f'} "a";"b"};
+{\ar@/_1.75pc/|{f''} "a";"b"};
+{\ar@{=>}^{\alpha} (250,160)*{};(250,50)*{}} ;
+{\ar@{=>}^{\gamma} (250,-50)*{};(250,-160)*{}} ;
+(0,-250)*{\ };
+\endxy \ 
+&
+\ \xy
+(0,0)*+{\bullet}="a";
+(0,80)*{\scriptstyle a};
+(400,0)*+{\bullet}="b";
+(400,80)*{\scriptstyle b};
+(800,0)*+{\bullet}="c";
+(800,80)*{\scriptstyle c};
+{\ar@/^1.1pc/|f "a";"b"};
+{\ar@/_1.1pc/|{f'} "a";"b"};
+{\ar@/^1.1pc/|g "b";"c"};
+{\ar@/_1.1pc/|{g'} "b";"c"};
+{\ar@{=>}^{\alpha} (200,80)*{};(200,-80)*{}} ;
+{\ar@{=>}^{\beta} (600,80)*{};(600,-80)*{}} ;
+\endxy \ \\
+g \circ_0 f &
+\gamma \circ_1 \alpha &
+\beta \circ_0 \alpha
+\end{array}
+\\
+\begin{array}{cc}
+\ \xy(0,0)*{\bullet}="a";
+%(0,80)*{\scriptstyle a};
+(300,0)*{\bullet}="b";
+%(300,80)*{\scriptstyle b};
+(600,0)*{\bullet}="c";
+%(600,80)*{\scriptstyle c};
+(900,0)*{\bullet}="d";
+%(900,80)*{\scriptstyle d};
+{\ar^f "a";"b"};
+{\ar^g "b";"c"};
+{\ar^h "c";"d"};
+\endxy \ &
+\ \xy
+(0,0)*+{\bullet}="a";
+(400,0)*+{\bullet}="b";
+{\ar@/^1.5pc/ "a";"b"};
+{\ar "a";"b"};
+{\ar@/_1.5pc/ "a";"b"};
+{\ar@{=>}^{\alpha} (200,150)*{};(200,25)*{}} ;
+{\ar@{=>}^{\gamma} (200,-25)*{};(200,-150)*{}} ;
+(800,0)*+{\bullet}="c";
+{\ar@/^1.5pc/ "b";"c"};
+{\ar "b";"c"};
+{\ar@/_1.5pc/ "b";"c"};
+{\ar@{=>}^{\beta} (600,150)*{};(600,25)*{}} ;
+{\ar@{=>}^{\delta} (600,-25)*{};(600,-150)*{}};
+(0,250)*{\ };
+(0,-220)*{\ };
+\endxy \ \\
+\begin{array}{c} h \circ_0 (g \circ_0 f) =  \\ (h \circ_0 g) \circ_0 f \end{array} &
+\begin{array}{c}(\delta \circ_0 \gamma) \circ_1 (\beta \circ_0 \alpha) = \\
+(\gamma \circ_1 \alpha) \circ_0 (\delta \circ_1 \beta)\end{array}
+\end{array}
+\end{array}
+$$
+\caption{Some cells, composites, and associativities in a strict higher category \label{figure:assoc-laws}} 
+\end{figure}
 
+In the globular approach, the underlying substance of an $\omega$-category $\Cbf$ consists of a set $C_n$ of ``$n$-cells'' for each $n > 0$.  The $0$- and $1$-cells correspond to the objects and arrows of an ordinary category: each arrow $f$ has source and target objects $a = s(f)$, $b = t(f)$.  Similarly, the source and target of a 2-cell $\alpha$ are a parallel pair of 1-cells $f,g: a \two b$, and generally the source and target of an $(n+1)$-cell are a parallel pair of $n$-cells.  Summing this up we arrive at:
 
+\begin{definition}
+A \emph{globular set} $\A$ is a diagram of sets and functions
+$$ A_0 \two/<-`<-/^{s_0}_{t_0} A_1 \two/<-`<-/^{s_1}_{t_1} A_2 \two/<-`<-/^{s_2}_{t_2} A_3 \two/<-`<-/ \ldots $$
+such that $s_i \circ t_{i+1} = s_i \circ s_{i+1}$ and $t_i \circ t_{i+1} = t_i \circ s_{i+1}$---the \emph{globularity} conditions, asserting that the source and target of any cell are parallel.
+\end{definition}
+
+Some notation we will use throughout the sequel: we will often drop the subscripts on arrows as far as possible, writing just $s$ and $t$; $s^i$, $t^i$ will denote compositions of these arrows, as usual; and for $c \in A_n$ and $k \leq n$, we take $s_k(c) := s^{n-k}(c)$, $t_k(c) := t^{n-k}(c)$, the $k$-dimensional source and target of $c$.  (Of course when $n = k+1$, this agrees with the original usage of $s_k,t_k$.)
+
+A map of globular objects $f_\bullet \colon \A \to \B$ is a sequence of functions $f_n \colon A_n \to B_n$, preserving the globular structure, in that $s_i \circ f_{i+1} = f_i \circ s_i$ and $t_i \circ f_{i+1} = f_i \circ t_i$, or more compactly, $sf = fs$, $tf = ft$.
+
+More generally, let $\G$ be the category with objects $\N$ and arrows generated by
+$$ 0 \two^{s_0}_{t_0} 1 \two^{s_1}_{t_1} 2 \two^{s_2}_{t_2} 3 \two \ldots $$
+subject to the equations $ts = ss$, $st = tt$.  Then a \emph{globular object} in a category $\E$ is a functor $\A \colon \G \to \E$, and a map of these is a natural transformation between the functors.
+
+Thus the category of globular sets is just the category $\GSets$ of presheaves on $\G$.
+
+(For the finite-dimensional versions of all that follows, $\G$ is replaced by the category $\G_n$, just as $\G$ except with no objects or arrows above $n$; and $n$-globular set is a presheaf $\A \colon \G_n \to \Sets$, and so on.) \\
+
+To complete the definition of strict $\omega$-categories, we simply add the structure of composition on top of this basic data.  As illustrated in Figure \ref{fig:assoc-laws}, we want to be able to compose cells whenever the target of one is the source of another in some lower dimension.  Specifically, for any $k < n$, the set of $k$-composable $n$-cells is the pullback
+$$\bfig
+\node AnxAn(0,400)[A_n \times_k A_n]
+\node Ant(500,400)[A_n]
+\node Ans(0,0)[A_n]
+\node Ak(500,0)[A_k]
+\arrow[AnxAn`Ans;]
+\arrow[AnxAn`Ant;]
+\arrow[Ans`Ak;s_k]
+\arrow[Ant`Ak;t_k]
+\place(100,300)[\pb]
+\efig .$$
+
+\begin{definition}
+A \emph{strict $\omega$-category} $\Cbf$ is a globular set $\Cbu$ together with comoposition operations
+$$\circ_k \colon C_n \times_k C_n \to C_n$$
+and unit maps
+$$r \colon C_n \to C_{n+1}$$
+(for which we use index conventions analogous to those for $s$, $t$),
+ such that firstly
+\begin{itemize}
+\item for each $k < n$, $(C_k,C_n, \circ_k, r_n)$ forms a category, i.e.\ the source and target of composites and units are ``what one would expect'', and the associativity and unit laws
+$$ c \circ_k (b \circ_k a) = (c \circ_k b) \circ_k a$$
+$$ a \circ_k (r_n s_k a) = a = (r_n t_k a) \circ_k a$$
+hold (for appropriately composable $a, b, c \in C_n$); and additionally,
+\item the \emph{interchange law} holds: for $j < k < n$, and suitable $a,b,c,d \in C_n$,
+$$ (d \circ_j c) \circ_k (b \circ_j a) = (d \circ_k b) \circ_j (c \circ_k a)$$
+(also as illustrated in Figure \ref{fig:assoc-laws}). 
+\end{itemize}
+\end{definition}
+
+\begin{para}This presentation exhibits strict $\omega$-categories explicitly as models of an essentially algebraic theory, monadic over $\G$:
+$$\bfig 
+\node GSets(0,0)[\GSets]
+\node strwCat(800,0)[\strwCat]
+\arrow|a|/@/^0.6em//[GSets`strwCat;F]
+\arrow|b|/@/^0.6em//[strwCat`GSets;U]
+\place(400,0)[\bot]
+\efig$$
+and it is shown in \cite{street:petit-topos}, \cite{leinster:book} that the resulting monad $T = FU$ in $\GSets$ is familially representable, and hence cartesian---both its functor part, and its monad structure $\eta$, $\mu$.
+
+(Recall that a functor is cartesian if it preserves pullbacks, and a natural transformation is cartesian if all its naturality squares are pullbacks.)
+
+The cells of $TX$ may thus be seen as \emph{formal composites}, or \emph{labelled pasting diagrams}, of cells of $X$.  In particular, taking $1$ to be the terminal globular set with a single cell of each dimension, we define:
+
+\begin{definition}
+A \emph{pasting diagram} is a cell of $\pd := T1$, the free strict $\omega$-category on the terminal globular set.
+\end{definition}
+
+Associated to each pasting diagram $\pi \in T1_n$ is an $n$-globular set $\widehat{pi}$; we will return to the formal definition of these later, in the framework of Batanin's monoidal globular categories.
+
+The familial representability of $T$ now states that $TX$ may fruitfully be decomposed into the fibers of the map $T! \colon TX \to T1$:
+$$TX_n = \sum_{\pi \in T1} \GSets(\widehat{\pi},X).$$
+
+Here and in the next few constructions, it is highly instructive to compare this to the analogous presentation of the ``free monoid'' monad on $\Sets$: $$T_\mathrm{mon}X = \sum_{n \in \N} \Sets([n],X).$$
+\end{para}
+
+A weak higher category, as outlined in the introduction, should again consist of a globular set together with some composition operations, similar to those in a strict higher category; but now there may be multiple composition operations for each shape of pasting diagram.  To present appropriate algebraic theories of such structures, we introduce the definition:
+
+\begin{definition}[Globular operads, 1]
+A \emph{globular operad} $P$ is a cartesian monad $T_P$ on $\GSets$, together with a cartesian monad map $\rho \colon T_P \to T$.
+\end{definition}
+
+Thus a globular operad yields again an algebraic theory over globular sets, via its monad part $T_P$; the natural transformation $\rho \colon T_P \A \to T \A$ ensures that all the operations of $T_P$ can be viewed as 
+
+\begin{para}
+\todo{[Actually, take this out and put it in the intro!  For here, keep it snappy.]}
+Thus in a strict higher-category, the associativity, unitality and interchange laws hold literally as equations.  These, along with the existence of the composition operations in the first place, may be summed up by the \emph{generalised associativty} principle: each \emph{labelled pasting diagram} has a \emph{unique} composite---where for now, a pasting diagram means something like the pictures appearing in Figure \ref{fig:assoc-laws}; we make this precise in \ref{para:pasting-diagrams} below.
+
+In a weak higher category, we do not expect these laws to hold in such a strict form: prototypical examples are monoidal categories, where associativity and unitality only hold up to coherent natural isomorphisms $A \tensor (B \tensor C) \iso (A \tensor B) \tensor C$, and the higher fundamental groupoids of spaces, where composition of paths is associative only up to homotopy, and these homotopies themselves are invertible only up to higher homotopies, and so on.
+\end{para}
+
+\subsection{Globular operads, à la Leinster}
+
+\subsection{Monoidal globular categories}
+To define wek higher categories, unfortunately, 
+\subsection{Pasting diagrams}
+
+\subsection{Globular operads, à la Batanin}
+
+\subsection{Pruning trees, and collapsing pasting diagrams}
 
 

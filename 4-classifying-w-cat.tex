@@ -137,7 +137,7 @@ $$\bfig
 Moreover, since $U$ reflects and the original $\cl^-_\omega$ preserves all limits, so does the lifted $\cl^-_\omega$, and it is easily seen to be finitary; so by the adjoint functor theorem for locally presentable categories \cite[1.66]{adamek-rosicky}, $\cl^-_\omega$ has a left adjoint, realising any $\End{\globes}$-algebra as a theory.  (Its cells are realised as types and terms as under $\T_\stuff[-]$, and the $\End(\globes)$-action specifies various definitional-equality axioms between them.)
 \end{para}
 
-\begin{para} As mentioned before, this is not quite what we want; $\cl^-_\omega(\T)$ only has types as objects, where we would like contexts.  To remedy the situation, we can compose with the ``dependent contexts'' endofunctor $(-)^\cxt \slice \diamond$ on $\DTT_\stuff$, and define $\cl(\T) := \cl^-_\omega(\T^\cxt \slice \diamond)$.
+\begin{para} \label{para:class-cxts-to-types} As mentioned before, this is not quite what we want; $\cl^-_\omega(\T)$ only has types as objects, where we would like contexts.  To remedy the situation, we can compose with the ``dependent contexts'' endofunctor $(-)^\cxt \slice \diamond$ on $\DTT_\stuff$, and define $\cl(\T) := \cl^-_\omega(\T^\cxt \slice \diamond)$.
 
 Now the objects of $\cl(\T)$ are closed types of $\T^\cxt \slice \diamond$, i.e.\ closed contexts of $\T$, just as we wanted; and the fullness of the functor $\T^\cxt \slice \diamond \to \T$ ensures that higher cells also are as we intended.
 \end{para}
@@ -172,7 +172,7 @@ This points us towards an easy abstract construction of the map $\psi$.  We know
 
 \begin{para} \label{para:map-from-cat} However, constructing $\psi$ concretely gives us an excuse to analyse low dimensions of $\End(\globes)$.  A 0-dimensional operation in $\End(\globes)$ is perforce just a unary map $\globe[0] \to \globe[0]$ (there is only one 0-dimensional pasting diagram); so the single 0-dimensional operation in $\Cat$ (the identity on 0-cells) we send to the identity map $1_{\globe[0]}$.  (There is no freedom here: $\psi$ must preserve the operad structure, and $1_{\globe[0]}$ is the $0$-dimensional operad unit of $\End(\globes)$.)
 
-A 1-dimensional pasting diagram is just a path $\path_l = (\cdot \to<200> \cdot \to<200> \ldots \to<200> \cdot)$ of some length $l \geq 0$.  \todo{[Dangit, need a better notation than $\path_l$!]} An operation of shape $\path_l$ in $\End(\globes)$ with source and target $1_{\globe[0]}$ is a map of cospans
+A 1-dimensional pasting diagram is just a path $\pathpd_l = (\cdot \to<200> \cdot \to<200> \ldots \to<200> \cdot)$ of some length $l \geq 0$.  \todo{[Dangit, need a better notation than $\pathpd_l$!]} An operation of shape $\pathpd_l$ in $\End(\globes)$ with source and target $1_{\globe[0]}$ is a map of cospans
 $$\bfig
 %%%%%%%%%%%%%%%%%%%
 % left hand pylon %
@@ -185,7 +185,7 @@ $$\bfig
 %%%%%%%%%%%%%%%%%%%%
 % right hand pylon %
 %%%%%%%%%%%%%%%%%%%%
-\node Tpi(1750,0)[{\T_\stuff[\widehat{\path_l}]}]
+\node Tpi(1750,0)[{\T_\stuff[\widehat{\pathpd_l}]}]
 \node Tspi(1500,-250)[{\globefig{0}}]
 \node Ttpi(2000,-400)[{\globe[0]}]
 \arrow[Tspi`Tpi;s]
@@ -198,7 +198,7 @@ $$\bfig
 \arrow/@{=}/[gn1r`Ttpi;]
 \efig$$
 
-But $\T_\stuff(\path_l)$ admits a very simple axiomatisation
+But $\T_\stuff(\pathpd_l)$ admits a very simple axiomatisation
 $$
 \inferrule{\ }{\diamond\ \types\ A_i\ \type} \quad (0 \leq i \leq l) \qquad 
 \inferrule{\Gamma\ \types\ a:A_{j-1}}{\Gamma\ \types\ f_j(a) : A_j } \quad (1 \leq j \leq l) 
@@ -206,18 +206,18 @@ $$
 simply adjoining basic types and type formers
 $$ \xymatrix{ A_0 \ar[r]^{f_1} & A_1 \ar[r]^{f_2} & \ \ar@{}[r]|{\ldots} & \ \ar[r]^{f_l} & A_l} .$$
 
-The source and target maps of the right-hand cospan interpret the type of $\globe[0]$ as $A_0$ and $A_l$ respectively; so suitable maps $H : \globe[1] \to \T_\stuff[\widehat{\path_l}]$ correspond to interpretations of the type-constructor of $\globe[1]$ as some term
+The source and target maps of the right-hand cospan interpret the type of $\globe[0]$ as $A_0$ and $A_l$ respectively; so suitable maps $H : \globe[1] \to \T_\stuff[\widehat{\pathpd_l}]$ correspond to interpretations of the type-constructor of $\globe[1]$ as some term
 $$ x : A_0 \ \types\ t(x) : A_l $$
 For the unique $l$-ary operation of $P_\Cat$, we thus use the obvious composite term $f_l(f_{l-1}(\ldots (f_1(x))\ldots))$.  It is routine to check that this indeed gives an operad map.
 \end{para}
 
 \begin{para} \label{para:canonicity-in-Tpath} When $\stuff$ gives a particularly well-behaved type system, we can say a little more.
 
-In the case when $\stuff$ consists of just the $\Id$-rules, then firstly $\globe[0]$ has no other closed types besides the basic $C$, so $1_{\globe[0]}$ is its only endomorphism, and the only element of $\End(\globes)$ in dimension $0$; and secondly,  (\todo{\cite{canonicity-reference?}}) $\T_\stuff[\widehat{\path_l}]$ enjoys both normalisation and \emph{canonicity}\footnote{canonicity: the property that every closed normal form is an intro (aka canonical) form; there are no stuck (aka neutral) normal forms}, so the ``obvious term'' we used was in fact the only possible such term: there is only one $l$-ary operation in $\End(\globes)$ with source and target $1_{\globe{0}}$.
+In the case when $\stuff$ consists of just the $\Id$-rules, then firstly $\globe[0]$ has no other closed types besides the basic $C$, so $1_{\globe[0]}$ is its only endomorphism, and the only element of $\End(\globes)$ in dimension $0$; and secondly,  (\todo{\cite{canonicity-reference?}}) $\T_\stuff[\widehat{\pathpd_l}]$ enjoys both normalisation and \emph{canonicity}\footnote{canonicity: the property that every closed normal form is an intro (aka canonical) form; there are no stuck (aka neutral) normal forms}, so the ``obvious term'' we used was in fact the only possible such term: there is only one $l$-ary operation in $\End(\globes)$ with source and target $1_{\globe{0}}$.
 
 So in this case, the map $P_\Cat \to \tr^1\End(\globes)$ (always injective, since $P_\Cat$ is terminal) is moreover surjective, and gives an isomorphism $\tr^1\End(\globes) \iso P_\Cat$.
 
-In richer type systems, $\globe[0]$ will typically have more closed types (e.g.\ $C \rightarrow C$), and hence $\End(\globe[0])$ will have more $0$-dimensional operations.  But in important cases, such as when $\stuff$ consists of just the $\Id$- and $\Pi$-rules, we retain normalisation and canonicity for $\T_\stuff[\widehat{\path_l}]$, so by the argument above our map is at least an isomorphism from $P_\Cat$ to the \emph{normalised core} of $\End(\globes)$. \comment{[Make sure to define the normalised core in the globular background!]}
+In richer type systems, $\globe[0]$ will typically have more closed types (e.g.\ $C \rightarrow C$), and hence $\End(\globe[0])$ will have more $0$-dimensional operations.  But in important cases, such as when $\stuff$ consists of just the $\Id$- and $\Pi$-rules, we retain normalisation and canonicity for $\T_\stuff[\widehat{\pathpd_l}]$, so by the argument above our map is at least an isomorphism from $P_\Cat$ to the \emph{normalised core} of $\End(\globes)$. \comment{[Make sure to define the normalised core in the globular background!]}
 \end{para}
 
 
@@ -666,13 +666,13 @@ $$\xymatrix{ \del \globe[n] \ar[r]^{[F_i,G_i]} \ar@{ >->}[d] & \T_\stuff[\hat{\p
 i.e.\ to complete a triangle of the form
 $$\xymatrix{ \del \globe[n] \ar[dr] \ar@{ >->}[d] & \\ \globe[n] \ar@{.>}[r] & \T_\stuff[\widehat{s_1\pi}]}.$$
 
-But now $s_1\pi$ is just some $\path_l$, so as in \ref{para:map-from-cat}, \ref{para:canonicity-of-Tpath} we have an explicit axiomatisation of $\T_\Id(\widehat{s_1 \pi})$, and we know that this theory enjoys canonicity.  So in trying to extend $[F_i,G_i]$ along $ \del \globe[n] \mono \globe[n]$, we have interpreted $i$-$\sourcerule$ and $i$-$\targetrule$ in $\T_\stuff[\widehat{s_1\pi}]$, for $i < n$, and wish to interpret $n$-$\cellrule$; i.e.\ we wish to prove a propositional equality between the interpretations of $s_{n-1}(x)$ and $t_{n-1}(x)$.   But by canonicity, and the simplicity of our set of constructors, any two terms of the same type in $\T_\stuff[\widehat{s_1\pi}]$ are \emph{definitionally} equal; so interpreting $c_n$ as a reflexivity term, we are done.  (Specifically, $s_1$, $t_1$ must both be interpreted as the obvious composite of basic constructors described in \ref{para:map-from-cat}, and for $i > 1$, $s_i$ and $t_i$ must be interpreted as the reflexivity term over $s_{i-1}$, $t_{i-1}$.)
+But now $s_1\pi$ is just some $\pathpd_l$, so as in \ref{para:map-from-cat}, \ref{para:canonicity-of-Tpath} we have an explicit axiomatisation of $\T_\Id(\widehat{s_1 \pi})$, and we know that this theory enjoys canonicity.  So in trying to extend $[F_i,G_i]$ along $ \del \globe[n] \mono \globe[n]$, we have interpreted $i$-$\sourcerule$ and $i$-$\targetrule$ in $\T_\stuff[\widehat{s_1\pi}]$, for $i < n$, and wish to interpret $n$-$\cellrule$; i.e.\ we wish to prove a propositional equality between the interpretations of $s_{n-1}(x)$ and $t_{n-1}(x)$.   But by canonicity, and the simplicity of our set of constructors, any two terms of the same type in $\T_\stuff[\widehat{s_1\pi}]$ are \emph{definitionally} equal; so interpreting $c_n$ as a reflexivity term, we are done.  (Specifically, $s_1$, $t_1$ must both be interpreted as the obvious composite of basic constructors described in \ref{para:map-from-cat}, and for $i > 1$, $s_i$ and $t_i$ must be interpreted as the reflexivity term over $s_{i-1}$, $t_{i-1}$.)
 \end{proof}
 
 \subsection{$\End(\globes)$, in theories with $\PiIdelim$}
 
 \renewcommand{\stuff}{\PiIdelim}
-\begin{para} By turning our attention to theories with not only $\Id$-types but also $\Pi$-types and the $\PiIdelim$ rule, we ensure that $\Jbar$ holds unconditionally.  However, this comes at the possible cost of normalisation and canonicity.  \todo{[Is ``possible'' necessary here?]}  Thus, in trying to repeat the argument above to show that $\End(\globes)$ is contractible, we fall at the last hurdle: we do not know that $[F_i,G_i]$ gives the ``correct'' map $\del \globe[n] \to \T_\stuff[\widehat{\path_l}]$.
+\begin{para} By turning our attention to theories with not only $\Id$-types but also $\Pi$-types and the $\PiIdelim$ rule, we ensure that $\Jbar$ holds unconditionally.  However, this comes at the possible cost of normalisation and canonicity.  \todo{[Is ``possible'' necessary here?]}  Thus, in trying to repeat the argument above to show that $\End(\globes)$ is contractible, we fall at the last hurdle: we do not know that $[F_i,G_i]$ gives the ``correct'' map $\del \globe[n] \to \T_\stuff[\widehat{\pathpd_l}]$.
 
 To remedy this, we simply restrict to the sub-operad of operations for which this holds.  This is essentially just a slightly more complicated analogue of the tactic used in \cite{garner-van-den-berg}, of restricting to the operad of point-preserving operatons, as discussed in Section \ref{sec:lumsdaine-versus-gvdb}. 
 \end{para}
