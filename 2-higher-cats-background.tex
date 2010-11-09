@@ -148,9 +148,9 @@ More generally, let $\G$ be the category with objects $\N$ and arrows generated 
 $$ 0 \two^{s_0}_{t_0} 1 \two^{s_1}_{t_1} 2 \two^{s_2}_{t_2} 3 \two \ldots $$
 subject to the equations $ts = ss$, $st = tt$.  Then a \emph{globular object} in a category $\E$ is a functor $\A \colon \G \to \E$, and a map of these is a natural transformation between the functors.
 
-Thus the category of globular sets is just the category $\GSets$ of presheaves on $\G$.
+Thus the category of globular sets is just the category $\GSets$ of presheaves on $\G$.  The Yoneda embedding $y \cdot \G \to \GSets$ yields some globular sets which will be of particular use and importance to us: the basic $n$-cells $y(n)$, and their boundaries $\del (n) \subseteq y(n)$, the maximal proper subobject of $y(n)$, consisting of all \emph{non-identity} maps into $n$.  Note that for $n < 0$, we have $\del(n) \iso y(n-1) +_{\del(n-1)} y(n-1)$, a \emph{parallel pair} of $n-1$-cells.
 
-(For the finite-dimensional versions of all that follows, $\G$ is replaced by the category $\G_n$, just as $\G$ except with no objects or arrows above $n$; and $n$-globular set is a presheaf $\A \colon \G_n \to \Sets$, and so on.) \\
+(For the finite-dimensional versions of all the bove, and all that follows, $\G$ is replaced by the category $\G_n$, defined just as $\G$ except with no objects or arrows above $n$; and $n$-globular set is a presheaf $\A \colon \G_n \to \Sets$, and so on.) \\
 
 To complete the definition of strict $\omega$-categories, we simply add the structure of composition on top of this basic data.  As illustrated in Figure \ref{fig:assoc-laws}, we want to be able to compose cells whenever the target of one is the source of another in some lower dimension.  Specifically, for any $k < n$, the set of $k$-composable $n$-cells is the pullback
 $$\bfig
@@ -165,11 +165,11 @@ $$\bfig
 \place(100,300)[\pb]
 \efig .$$
 
-\begin{definition}
-A \emph{strict $\omega$-category} $\Cbf$ is a globular set $\Cbu$ together with comoposition operations
+\begin{definition} \footnote{This is a somewhat old-fashioned presentation of the definition; cf.\ eg.\ \cite{street:algebra-of-oriented-simplices}.  It is, however, completely equivalent to the now more usual presentation via iterated enrichment.} 
+A \emph{strict $\omega$-category} $\Cbf$ is a globular set $\Cbu$ together with composition operations for each $k < n$
 $$\circ_k \colon C_n \times_k C_n \to C_n$$
 and unit maps
-$$r \colon C_n \to C_{n+1}$$
+$$r_n \colon C_{n-1} \to C_n$$
 (for which we use index conventions analogous to those for $s$, $t$),
  such that firstly
 \begin{itemize}
@@ -197,37 +197,211 @@ and it is shown in \cite{street:petit-topos}, \cite{leinster:book} that the resu
 
 The cells of $TX$ may thus be seen as \emph{formal composites}, or \emph{labelled pasting diagrams}, of cells of $X$.  In particular, taking $1$ to be the terminal globular set with a single cell of each dimension, we define:
 
+
+% \begin{para}
+% \todo{[Actually, take this out and put it in the intro!  For here, keep it snappy.]}
+% Thus in a strict higher-category, the associativity, unitality and interchange laws hold literally as equations.  These, along with the existence of the composition operations in the first place, may be summed up by the \emph{generalised associativty} principle: each \emph{labelled pasting diagram} has a \emph{unique} composite---where for now, a pasting diagram means something like the pictures appearing in Figure \ref{fig:assoc-laws}; we make this precise in \ref{para:pasting-diagrams} below.
+% 
+% In a weak higher category, we do not expect these laws to hold in such a strict form: prototypical examples are monoidal categories, where associativity and unitality only hold up to coherent natural isomorphisms $A \tensor (B \tensor C) \iso (A \tensor B) \tensor C$, and the higher fundamental groupoids of spaces, where composition of paths is associative only up to homotopy, and these homotopies themselves are invertible only up to higher homotopies, and so on.
+% \end{para}
+
 \begin{definition}
-A \emph{pasting diagram} is a cell of $\pd := T1$, the free strict $\omega$-category on the terminal globular set.
+A \emph{pasting diagram} is a cell of $T1$, the free strict $\omega$-category on the terminal globular set.  We will often write $\pd$ for $T1$.
 \end{definition}
 
-Associated to each pasting diagram $\pi \in T1_n$ is an $n$-globular set $\widehat{pi}$; we will return to the formal definition of these later, in the framework of Batanin's monoidal globular categories.
+There are several useful combinatorial representations for pasting diagrams.  \cite[8.1]{leinster:book} provides an inductive description in terms of free monoids:
+$$\pd_0 := \{ \star \}$$
+$$\pd_{n+1} := T_{\Mon}( \pd_m) = \{ (\pi_1,\ldots,\pi_l)\ |\ l \geq 0,\ \pi_i \in \pd_n \}$$
 
-The familial representability of $T$ now states that $TX$ may fruitfully be decomposed into the fibers of the map $T! \colon TX \to T1$:
+Here, for instance, the element $((\star,\star,\star),(),(\star)) \in \pd_2$ represents the 2-cell $(c_2 \circ_1 c_2 \circ_1 c_2) \circ_0 (r_2 c_1) \circ_0 (c_2)$ of $T1$ (where $c_i$ is the unique $i$-cell of $1$):
+$$\xy
+(0,0)*+{\bullet}="a";
+(400,0)*+{\bullet}="b";
+{\ar@/^0.8pc/ "a";"b"};
+{\ar@/_0.8pc/ "a";"b"};
+{\ar@{=>} (200,70)*{};(200,-70)*{}} ;
+(800,0)*+{\bullet}="c";
+{\ar "b";"c"};
+% (0,250)*{\ };
+% (0,-220)*{\ };
+(1200,0)*+{\bullet}="d";
+{\ar@/^1.65pc/ "c";"d"};
+{\ar@/^0.55pc/ "c";"d"};
+{\ar@/_0.55pc/ "c";"d"};
+{\ar@/_1.65pc/ "c";"d"};
+{\ar@{=>} (1000,185)*{};(1000,85)*{}} ;
+{\ar@{=>} (1000,50)*{};(1000,-50)*{}};
+{\ar@{=>} (1000,-85)*{};(1000,-185)*{}};
+\endxy$$
+This representation may be seen syntactically as a normal form theorem: every formal expression in the operations $r_n$, $\circ_k$ may be put into normal form by eliminating identities wherever possible and moving lowest-dimensional composition outermost.
+
+With this representation, we can construct for each $n$-dimensional pasting diagram $\pi$ an $n$-dimensional globular set $\widehat{\pi}$ (formalising our depictions of pasting diagrams):
+\begin{eqnarray*}\widehat{\star} & = & y(0) \\
+\widehat{(\pi_1,\ldots,\pi_l)}_i & = & \left\{ \begin{array}{ll} \{0,\ldots,l\} & i = 0 \\ \sum_{1 \leq j \leq l} (\widehat{\pi_j})_{i-1} & i > 1 \end{array}\right.
+\end{eqnarray*}
+
+Thes now provide the promised familial representation of $T$, decomposing $TX$ into the fibers of the map $T! \colon TX \to T1$:
 $$TX_n = \sum_{\pi \in T1} \GSets(\widehat{\pi},X).$$
 
-Here and in the next few constructions, it is highly instructive to compare this to the analogous presentation of the ``free monoid'' monad on $\Sets$: $$T_\mathrm{mon}X = \sum_{n \in \N} \Sets([n],X).$$
-\end{para}
-
-A weak higher category, as outlined in the introduction, should again consist of a globular set together with some composition operations, similar to those in a strict higher category; but now there may be multiple composition operations for each shape of pasting diagram.  To present appropriate algebraic theories of such structures, we introduce the definition:
-
-\begin{definition}[Globular operads, 1]
-A \emph{globular operad} $P$ is a cartesian monad $T_P$ on $\GSets$, together with a cartesian monad map $\rho \colon T_P \to T$.
-\end{definition}
-
-Thus a globular operad yields again an algebraic theory over globular sets, via its monad part $T_P$; the natural transformation $\rho \colon T_P \A \to T \A$ ensures that all the operations of $T_P$ can be viewed as 
-
-\begin{para}
-\todo{[Actually, take this out and put it in the intro!  For here, keep it snappy.]}
-Thus in a strict higher-category, the associativity, unitality and interchange laws hold literally as equations.  These, along with the existence of the composition operations in the first place, may be summed up by the \emph{generalised associativty} principle: each \emph{labelled pasting diagram} has a \emph{unique} composite---where for now, a pasting diagram means something like the pictures appearing in Figure \ref{fig:assoc-laws}; we make this precise in \ref{para:pasting-diagrams} below.
-
-In a weak higher category, we do not expect these laws to hold in such a strict form: prototypical examples are monoidal categories, where associativity and unitality only hold up to coherent natural isomorphisms $A \tensor (B \tensor C) \iso (A \tensor B) \tensor C$, and the higher fundamental groupoids of spaces, where composition of paths is associative only up to homotopy, and these homotopies themselves are invertible only up to higher homotopies, and so on.
+Here and in the next few constructions, it is highly instructive to compare this to the analogous presentation of the ``free monoid'' monad on $\Sets$: $$T_\Mon X = \sum_{n \in \N} \Sets([n],X).$$
 \end{para}
 
 \subsection{Globular operads, à la Leinster}
 
-\subsection{Monoidal globular categories}
-To define wek higher categories, unfortunately, 
+A weak higher category, as outlined in the introduction, should again consist of a globular set together with some composition operations, similar to those in a strict higher category; but now there may be multiple composition operations for each shape of pasting diagram.  To present appropriate algebraic theories of such structures, we introduce the definition:
+
+\begin{definition}[Globular operads, definition 1]
+A \emph{globular operad} $P$ is a cartesian monad $T_P$ on $\GSets$, together with a cartesian monad map $\alpha \colon T_P \to T$.
+\end{definition}
+
+Thus a globular operad yields again an algebraic theory over globular sets, via its monad part $T_P$; the natural transformation $\alpha \colon T_P \A \to T \A$ ensures that all the operations of $T_P$ can be viewed as composition operations for pasting diagrams, while the cartesianness of $\alpha$ ensures that the set of such operations for any pasting diagram is uniform in $X$.  Precisely,
+
+\begin{definition}[Globular operads, definition 2]
+A \emph{globular operad} may equivalently be specified by a globular set $P$ with maps $a\colon P \to T1$ (``arity''), $e\colon  1 \to P$ (``units''), $m \colon  P \times_{T1} TP \to P$ (``composition''), such that
+$$\bfig
+\node 1(-250,-150)[1]
+\node P(250,-150)[P]
+\node T1(0,-650)[T1]
+\arrow[1`P;e]
+\arrow|l|[1`T1;\eta]
+\arrow|r|[P`T1;a]
+\node PxTP(1000,0)[\ \,P \times_{T1} TP]
+\node P'(1750,0)[P]
+\node TP(1250,-250)[TP]
+\node P''(750,-250)[P]
+\node T1'(1000,-500)[T1]
+\node TT1(1400,-525)[T^2 1]
+\node T1''(1500,-800)[T1]
+\arrow[PxTP`P';m]
+\arrow[PxTP`TP;]
+\arrow[PxTP`P'';]
+\arrow|a|[TP`T1';T!]
+\arrow|a|[P''`T1';a]
+\arrow|r|/{@{>}@/^2pt/}/[TP`TT1;Ta]
+\arrow|l|/{@{>}@/^1pt/}/[TT1`T1'';\mu]
+\arrow|r|[P'`T1'';a]
+\place(1000,-100)[\upb]
+\efig$$
+commute (i.e.\ $e$ and $m$ are maps over $T1$), satisfying the axioms \todo{[correct the orientation of $m$!]}
+$$m \cdot ( \eta \cdot e \times 1_P) = 1_P = m \cdot (\eta \times e) \colon  P \to P,$$
+$$m \cdot (\mu \times m) = m \cdot (Tm \times 1_P) : T^2 P \times_{T^2 1} TP \times_{T1} P \to P.$$
+\end{definition}
+
+Given an operad in the original form $T_P,\alpha$, we take $P := T_P 1$, $a = \alpha_1$, $m = \mu_1$, $e = \eta_1$.
+
+Conversely given $P, a, e, m$, we recover the full monad as $T_P X := TX \times_T1 P$, and $\eta$, $\mu$, $\alpha$ as approriate pullbacks of $e$, $m$, $a$.  In particular, $T_P$ must again be familially representable:
+$$(T_P X)_n = \sum_{\pi \in T1} P(\pi) \times \GSets(\widehat{\pi},X).$$
+where $P(\pi)$ denotes the fiber of $a$ over $\pi \in T1_n$, the set of ``$\pi$-ary operations'' of $P$.  The map $e$ then gives us a unary $n$-cell ``identity'' operation for each $n$, while the map $m$ allows us to compose these operations appropriately. \\
+
+As groups have actions, rings have modules, theories have models, so operads have algebras: 
+\begin{definition}An \emph{algebra} for an operad $P$ is an algebra for the monad $T_P$; or equivalently, a globular set $A$ together with a map $c \colon P \times_{T1} TA \to A$, such that
+$$c \circ (e \times \eta) = 1_A \colon A \to A,$$
+$$c \circ (m \times \mu) = c \circ (1_P \times Tc) \colon P \times_{T1} TP \times_{T^2 1} T^2 P \to A.$$
+
+This structure is also called an \emph{action} of $P$ on $A$.
+\end{definition}
+
+Actions may also be reformulated in terms of endomorphism operads:
+\begin{definition}
+The \emph{endomorphism operad} $\End_{\GSets}(A)$ of a globular set $A$ has underlying set $[TA,A]$ (using the internal hom of $\GSets$), and structure maps constructed using the universal property of the internal hom, together with the monad structure of $T$.
+\end{definition}
+
+Actions of an operad $P$ on $A$ then correspond to operad maps $P \to \End_{\GSets}(A)$.  Via either definition, there is an evident category of $P$-algebras $\Alg{P}$.
+
+\begin{example}The object $T1$ itself carries a natural operad structure, making it the terminal operad; its associated monad is just $T$, and its algebras are strict $\omega$-categories. 
+\end{example}
+
+We would like to define weak $\omega$-categories as algebras for some operad.  However, to give a reasonable theory of some sort of $\omega$-categories, an operad needs to have enough operations to implement the usual compositions and identities; and given any two parallel operations of the same arity in $P$, they should be an operation of the next dimension connecting them, witnessing that they are ``equal up to homotopy''.  In Leinster's definition, these two conditions are imposed by a single piece of structure:\footnote{This is the sole point where Batanin's original definition differs in more than just presentation.}
+
+\begin{definition}
+A \emph{contraction} on a map of globular sets $f \colon Y \to X$ is a diagonal filler for every square
+$$\bfig
+\node dn(0,400)[\del(n)]
+\node yn(0,0)[y(n)]
+\node X(500,400)[X]
+\node Y(500,0)[Y]
+\arrow[dn`X;]
+\arrow/@{ >->}/[dn`yn;]
+\arrow[X`Y;f]
+\arrow[yn`Y;]
+\arrow/@{.>}/[yn`X;]
+\efig$$
+A map is \emph{contractible} if it admits a contraction.  Contractible maps are distinguished diagrammatically as $f \colon Y \to/{-|>}/ X$.
+\end{definition}
+
+It is immediate from \para{para:general-contractions} that maps-with-contraction are closed under identities and composition, and under pullback along arbitrary maps.
+
+\begin{definition}
+A \emph{contraction} on an operad $P$ is a contraction on its arity map $a \colon P \to/{-|>}/ T1$, or equivalently, a natural contraction on each component of the natural transformation $\alpha$.
+\end{definition}
+
+Roughly, this asserts that $P$ is homotopically equivalent to $T$ (see \cite{garner:homotopy-theoretic-universal-property} for a precise exploration of this idea).  Any contractible operad may be taken as giving a reasonable theory of $\omega$-categories.  In particular, for maximal weakness, let $L$ be the \emph{initial} operad-with-contraction:
+
+\begin{definition}[\cite{leinster:book}]
+A \emph{weak $\omega$-category} is an $L$-algebra.  $\wkwCat := \Alg{L}$.
+\end{definition}
+
+\subsection{Globular operads, à la Batanin}
+
+The preceding elegant presentation of globular operads in terms of cartesian monads is due to Leinster.  However, for most of our purposes below it will be easier to construct our desired operads using the original machinery of \cite{batanin:natural-environment}.  We thus take a brief detour to set up the machinery of \emph{monoidal globular categories}, and to investigate pasting diagrams further, before returning to operads in this setting.
+
+\begin{definition}
+(See \cite[2.3]{batanin:natural-environment} for all the details here elided.)  A \emph{monoidal globular category} $\E$ is a globular category 
+$$ \E_0 \two/<-`<-/^S_T \E_1 \two/<-`<-/^S_T \E_2 \two/<-`<-/^S_T \E_3 \two/<-`<-/ \ldots $$
+equipped with composition functors
+$$\tensor_k \colon \E_n \times_k \E_n \to \E_n$$
+and unit maps
+$$Z \colon \E_n \to \E_{n+1}$$
+satisfying the same source and target conditions as units and composition in a category, and also with natural transformations
+$$ \alpha \colon C \tensor_k (B \tensor_k A) \iso (C \tensor_k B) \tensor_k A$$
+$$ \rho \colon A \tensor_k (Z_n S_k A) \iso A \qquad  \lambda \colon (Z_n T_k A) \tensor_k A \iso A$$
+$$ \chi \colon (D \tensor_j C) \tensor_k (B \tensor_j A) \iso (D \tensor_k B) \tensor_j (C \tensor_k A)$$
+satisfying various coherence axioms.
+
+A \emph{monoidal globular functor} between monoidal globular categories $\E, \F$  is a globular functor $F_\bullet \cdot \E_\bullet \to \F_\bullet$, commuting with the composition and units up to coherent isomorphism.  Together with \emph{monoidal globular transformations}, these form a 2-category $\MonGlobCat$.   
+\end{definition}
+
+So monoidal globular categories bear essentially the same relationship to strict $\omega$-categories as a monoidal categories do to monoids: sets are replaced by categories, and axioms hold just up to coherent isomorphism.\footnote{This is made precise by Mark Weber in \cite{weber:monoidal-pseudo-algebras}: $\MonGlobCat$ as defined here is (2-equivalent to) the 2-category of normalised pseudo-algebras for the ``internal strict $\omega$-category'' 2-monad on $[\G,\Cat]$.}
+
+\begin{example}
+The monoidal globular category $\Spansplain$ of \emph{higher spans} has
+$$\Spansplain_n = [(\G/n)^\op, \Sets]$$
+\end{example}
+
+\begin{wrapfigure}[15]{r}{0.15\textwidth}
+$\bfig
+\node Cn(300,-100)[C]
+\node An1l(0,-400)[A_{n-1}]
+\node Bn1r(600,-400)[B_{n-1}]
+\node An2l(0,-800)[A_{n-2}]
+\node Bn2r(600,-800)[B_{n-2}]
+\node A1l(0,-1200)[A_1]
+\node B1r(600,-1200)[B_1]
+\node A0l(0,-1600)[A_0]
+\node B0r(600,-1600)[B_0]
+\arrow[Cn`An1l;s]
+\arrow|r|[Cn`Bn1r;t]
+\arrow[An1l`An2l;s]
+\arrow||/@{->}^(0.35){t}/[An1l`Bn2r;]
+\arrow||/@{->}_(0.35){s}/[Bn1r`An2l;]
+\arrow|r|[Bn1r`Bn2r;t]
+\arrow/@{}|<>(0.58)\vdots/[An2l`A1l;]
+\arrow/@{}|<>(0.58)\vdots/[Bn2r`B1r;]
+\arrow[A1l`A0l;s]
+\arrow||/@{->}^(0.35){t}/[A1l`B0r;]
+\arrow||/@{->}_(0.35){s}/[B1r`A0l;]
+\arrow|r|[B1r`B0r;t]
+\efig$
+\end{wrapfigure}
+
+So an object of $\Spansplain_n$, an \emph{$n$-span}, is a diagram $(A_i,B_i\:(i < n);\,C)$ of sets and functions as at right, satisfying the equations $ss = st$, $ts = tt$ wherever appropriate; and a map of $n$-spans $(f_i,g_i;h) \colon (A_i,B_i;C) \to (A'_i,B'_i;C')$ is a diagram of functions between them, commuting with all the source and target maps.
+
+The source of $(A_i,B_i\:(i < n);\,C)$ is then
+
+Their crucial function of monoidal globular categories is as the environment in which one can define globular operads and their algebras.
+
+
+
 \subsection{Pasting diagrams}
 
 \subsection{Globular operads, à la Batanin}

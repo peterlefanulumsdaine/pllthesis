@@ -54,6 +54,7 @@
 \newcommand{\diag}{\delta}
 % \renewcommand{\d}{\partial}
 \newcommand{\E}{\mathcal{E}}
+\newcommand{\Ebu}{\E_\bullet}
 \newcommand{\f}{\vec f}
 \newcommand{\fbf}{\mathbf{f}}
 \newcommand{\F}{\mathcal{F}}
@@ -151,6 +152,7 @@
 % \renewcommand{\lim}{\varprojlim}
 \newcommand{\Lan}{\mathrm{Lan}}
 \newcommand{\lax}{\mathrm{lax}}
+\newcommand{\Mon}{\mathrm{Mon}}
 \newcommand{\MonGlobCat}{\mathbf{MonGlobCat}}
 \newcommand{\ML}{\textsf{\textbf{ML}}}
 \newcommand{\MLId}{\textsf{\textbf{ML}}^{\Id}}
@@ -169,6 +171,7 @@
 \newcommand{\RefnGlob}[2]{\mathbf{Ref}_{#1}\mathbf{Glob}(#2)}
 \newcommand{\Sets}{\mathbf{Sets}}
 \newcommand{\Spans}[1][]{\mathbf{Spans}(#1)}
+\newcommand{\Spansplain}{\mathbf{Spans}}
 \newcommand{\str}{\mathrm{str}}
 \newcommand{\strat}{\textrm{strat}}
 \renewcommand{\th}{\mathbf{th}}
@@ -278,6 +281,9 @@
 \newbox\urpbbox
 \setbox\urpbbox=\hbox{\xy \POS(0,0)\ar@{-} (75,0) \ar@{-} (0,75)\endxy}
 \def\urpb{\copy\urpbbox}
+\newbox\upbbox
+\setbox\upbbox=\hbox{\xy \POS(0,0)\ar@{-} (-40,40) \ar@{-} (40,40)\endxy}
+\def\upb{\copy\upbbox}
 \newbox\pobox
 \setbox\pobox=\hbox{\xy \POS(0,75)\ar@{-} (0,0) \ar@{-} (75,75) \endxy}
 \def\po{\copy\pobox}

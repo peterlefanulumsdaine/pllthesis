@@ -1,17 +1,21 @@
 \documentclass{amsart}
 
-\usepackage{wasysym}
-%\usepackage{ifpdf}
-%\usepackage{mathpartir}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{ifpdf}
+\usepackage{mathpartir}
 \usepackage{amssymb}
-%\usepackage[all]{xypic}
-%\xyoption{2cell}
-%\xyoption{curve}
-%\UseTwocells
-% \input{diagxy}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage[all]{xypic}
 \usepackage{wrapfig}
+\usepackage{hyperref}
 
-% \usepackage{makeindex}
+\xyoption{2cell}
+\xyoption{rotate}
+%\xyoption{curve}
+\UseTwocells
+\input{diagxy}
 
 \include{thesis-macros}
 \include{thesis-style}
@@ -56,6 +60,8 @@ Running page headers and references: if numbering paras (etc.) within sections, 
 
 At least, identifying a theory transparently with its classifying (strat) CwA lets us avoid using $\cl$ except for as $\cl_\omega$.  
 
+Decision, after discussion with Michael: $\C$ or $\Cbf$ probably least worst solution, or possibly $\mathbf{Cl}$?
+
 \para Pasting diagrams: $\pd$, or $T1$, or $\mathbf{trees}$?  Probably $\pd$---now that I'm using B not L, $T1$ doesn't make sense, and trees are really imo just useful representations of them, not the fundamental objects themselves.  \todo{So go thru and do this!}
 
 \para The boundary of a pasting diagram??  Batanin and others use $\delta \pi$ to mean the source/target of $\pi$ (since they're equal).  I DON'T LIKE THIS: several reasons!  Firstly, it's misleading: it's not the boundary in the usual well-established sense of $\delta$ for discs; that's the pushout of the source and target along their common boundary.  Secondly, it thus leaves us \emph{without} a natural notation for that boundary, even though it's something we use all the time!  Thirdly (this is minor and debatable) it's often helpful to distinguish $s\pi$ and $t\pi$ when working with them, since they have different natural embeddings into $\pi$, etc.
@@ -64,32 +70,27 @@ I certainly want to avoid supporting this usage: I'll perhaps just write $s\pi$ 
 
 In any case, make sure to explain all this usage in the background introducing pasting diagrams.
 
-\para In ``fundamental $\omega$-groupoid of a type'', what to call $\MLId[X]$?  $\MLId[X]$ is (I think) the best option in isolation (usefully evocative of polynomial rings), but $\globe{0}$ or $\\T[\yon(0)]$ fit better into bigger picture$\ldots$
+Decision:  Michael supports using $\del \pi$ for boundary.  
 
-\para Give the type-theoretic operads catchy names, or just use the definitions (descriptive but unwieldy), or use slightly abbreviated forms of their definitions, i.e.\ $\End(\globes)$ etc.?  Probably this last.
+\para Consistency: $y(n)$ vs.\ $\yon(n)$ for cells!
 
 \para Adjunctions? ---remind myself how to place the adjunction symbol them, in each of the various diagram styles I've used!  OK: done, now I know how to place them within an \verb|\efig|\ldots\verb|\bfig|; so, to do: \todo{do that throughout}.
 
-\para Rules and terms: clearest current convention seems to be, use $\mathsf{sans serif}$ for constructors, including where they appear in rules (regrettably, thanks to inferrule's fetish for small caps, this seems to make it essential to use $\mathsf{\backslash mathsf}$ rather than \textsf{\backslash textsf}), and small caps for other phrases appearing in rules?  \todo{Currently insonsistent; clean up!}
+\para Rules and terms: clearest current convention seems to be, use $\mathsf{sans serif}$ for constructors, including where they appear in rules (regrettably, thanks to inferrule's fetish for small caps, this seems to make it essential to use $\mathsf{\backslash mathsf}$ rather than \textsf{$\backslash$ textsf}), and small caps for other phrases appearing in rules?  \todo{Currently insonsistent; clean up!  In particular, check use of $\\Jrule$.}
 
 \section{Terminologies}
 
-\para Set up and explain in the first section: there are many equivalent presentations of a theory.  Main ones for us: syntactic; comprehension cat; cat with attributes.  For categorical models, have plain, based, and stratified.  Show: stratified.  Stratified: full, co-reflective subcategory of based, but not equivalent.  (Mention: Pitts' accessible = 2-equivalent to stratified, but still not equivalent.)  Having got equivalence, explain: \emph{agnostic} about representation; use $\ThId$ for any of the $\strat$ categories (strategories?? $\smiley$)
+\para Make sure to eradicate old $\CwA_\diamond$.
 
-\begin{wrapfigure}{r}{0.4\textwidth}
-A simple wrapfig example.
-\caption{A simple wrapfig example!?}
-\end{wrapfigure}
+\para ``pylon diagrams'': fun but probably unnecessary; we already have ``higher spans'', which does the job fine. (Not to mention both ``telescopes'' and ``ladders'', which I abhor; going by which, others might well dislike ``pylon'' just as much!)  Michael agrees, no need for ``pylon''.
 
-\para ``pylon diagrams'': fun but probably unnecessary; we already have ``higher spans'', which does the job fine. (Not to mention both ``telescopes'' and ``ladders'', which I abhor; going by which, others might well dislike ``pylon'' just as much!)
+\para What term should we use for what $\globes$ form?  A co-weak $\omega$-category, a co-weak-$\omega$-category, a weak co-$\omega$-category, a weak $\omega$-cocategory?  A co-$P$-algebra, or a $P$-co-algebra?  Decision: weak $\omega$-cocategory, and $P$-coalgebra
 
-\para What term should we use for what $\globes$ form?  A co-weak $\omega$-category, a co-weak-$\omega$-category, a weak co-$\omega$-category, a weak $\omega$-cocategory?  A co-$P$-algebra, or a $P$-co-algebra?
-
-\para Should I conscientiously talk about ``co-operations'' in ``co-endomorphism operads'', or is it clearer to drop the co-?
+\para Should I conscientiously talk about ``co-operations'' in ``co-endomorphism operads'', or is it clearer to drop the co-?  Michael agrees: yes!
 
 \para $\omega$-groupoids, $\omega$-categories, $(\infty,1)$-categories?
 
-\section{Checklist}  Notations etc.\ I should check for consistencty during proofing:
+\section{Checklist}  Notations etc.\ I should check for consistency during proofing:
 \begin{itemize}
 \item Any of the notations/terminologies above that I've debated!
 \item ``pylon'' $\longrightarrow$ ``(higher) span''
