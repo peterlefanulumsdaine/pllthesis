@@ -1,14 +1,56 @@
 \section{Weak factorisation system background}
 
+The study of \emph{weak factorisation systems} originated in homotopy theory, and has since become important in higher category theory, especially with recent devlopments in \emph{algebraic\footnote{aka \emph{natural}} weak factorisation systems}.  We will not require any of the more sophisticated results of this theory; but there are a couple of basic constructions from it which we will meet repeatedly, so which we now recall here.  See \emph[Ch.~1]{hovey:book} for further background on the classical theory, and \emph{garner:understanding} for the algebraic case.
 
+\begin{definition}For maps $f, g$ in a category $\C$, we say \emph{$f$ is (weakly)\footnote{We will never require the strong counterparts of these properties, so will assume weak by deafult.} (left) orthogonal to $g$}, written \emph{$f \pitchfork g$}, if every commutative square from $f$ to $g$ has a filler:
+$$\xymatrix{D \ar[r] \ar[d]_f & Y \ar[d]^g \\ C \ar[r] \ar@{..>}[ur]^\exists & X}$$
+
+There are several synonyms: ``$f$ has the (weak) \emph{left lifting property} against $g$'', and corresponding right-handed versions phrasing it as a property of of $g$. 
+
+If $\L$, $\R$ are classes of maps in $\C$, we say $\L \pitchfork \R$ if $f \pitchfork g$ for every $f \in \L$, $g \in \R$.
+\end{definition}
+
+Simple examples of such classes are given in $\Sets$ by $\L =$ all maps, $\R =$ split surjections (so all surjections, if we assume choice); or $\L =$ split injections (equivalently, injections $S \mono X$ where if $S$ is empty then so is $X$), $\R = $ all maps.
+
+\begin{para} \label{para:cofib-generated-wfs} A more powerful example, in $\Top$, is: $\L =$ retracts of relative cell complexes, $\R =$ trivial fibrations in the Quillen model structure, aka weakly contractible maps.  The definitions of these are an example of a very general construction: if $\J$ is any class of maps, we define $\J^\pitchfork$ to be the class of maps weakly right orthogonal to all maps in $\J$; and dually we define ${}^\pitchfork \J$.
+
+It is easy to check that a class $\J^\pitchfork$ must contain all identities, and be closed under composition, retracts, and pullback along arbitrary maps.  Dually, ${}^\pitchfork \J$ is closed under identities, composition, retracts, and pushouts.  A little more thought shows that the classes are closed under (co-)transfinite composition (i.e.\ under taking colimits of colimit-preserving diagrams indexed by ordinals (or their opposites)).
+
+Most typically we start with a \emph{set} of maps $\J$ in a category $\C$, then form $\R = \J^\pitchfork$ (``$\J$-fibrations''), $\L = {}^\pitchfork (\J^\pitchfork)$ (``$\J$-cofibrations'').
+
+For the case of Serre trivial cofibrations, we start with the inclusions of spheres into discs (\emph{cells}), as their boundaries:
+$$\J = \{\,S^i \mono D^i\ |\ i \in \N\,\}.$$
+
+Then a map $p \colon Y \to X$ is in $\J^\pitchfork$ just if whenever we are given a cell in $X$ and a lift of its boundary to $Y$, we can lift the whole cell to $Y$, with the given boundary.  So any loop in $Y$ that is null-homotopic in $X$ must be null-homotopic in $Y$, and so on: $p$ is forced in particular to be a weak homotopy equivalence.
+
+But now by the closure properties of ${}^\pitchfork (\J^\pitchfork)$, the generating boundary inclusions are not the only maps we can lift against trivial fibrations.  We can lift any \emph{relative cell complex}, i.e.\ any transfinite composite of pushouts of the boundary inclusions, essentially by lifting it one cell at a time; and indeed we can also lift retracts of these.
+
+This exemplifies one of the two main flavours of classes of orthogonal maps: the left maps are \emph{cofibrations} of some sort, the right maps are \emph{trivial fibrations}.  The other flavour is dual: \emph{trivial cofibrations} vs.\ \emph{fibrations}.
+
+Things work similarly from any basic set $\J$ in a co-complete category $\C$; \emph{$\J$-cell complexes} (transfinite compositions of pushouts of maps in $\J$) will always be $\J$-cofibrations.  Under good circumstances (co-completeness and smallness conditions), all $\J$-cofibrations will be retracts of these, and every map of $\C$ will have a factorisation into a $J$-cell complex followed by a $\J$-fibration, giving a \emph{weak factorisation system}; but this is beyond what we will require.
+\end{para}
+
+\begin{para}
+The above theory can be improved and refined by changing the objects of study from mere \emph{properties} of maps to \emph{structures} on maps.  This both strengthens the resulting theory---constructions become more natural, functorial, etc.---and more naturally describes mathematical practice: demonstrating ``fibrationhood'' of a map typically involves giving some kind of structure on it.  This is also a more naturally constructive approach---an existence property should always be given by exhibiting witnesses---and as such, turns out to develop much better in a constructive setting than the classical theory does.
+
+We recall only the barest rudiments of this theory.  Given a set $\J$ of maps in a category $\C$, a \emph{$\J^\oslash$}-structure on a map $p$ is a function \emph{choosing} a diagonal filler for each commutative square from a $\J$-map to $p$.  Assuming choice, the maps admitting a $\J^\oslash$-structure are exactly the $\J$-fibrations. $\J^\oslash$-structured maps, together with commutative squares between them preserving the structure (in a suitable sense), form a category, with a forgetful functor to $\Arr(\C)$.
+
+Structured versions of the closure properties above can be formulated: any identity carries a natural $\J^\oslash$-structure, as does any composite of maps with $\J^\oslash$-structures; any pullback of a map with $\J^\oslash$-structure again carries a natural such structure, as does any retract of such a map.  When we speak of some category of structured maps being \emph{closed under composition}, and similar, we will mean statements of this form.
+
+Again analogously to the classical theory, any map exhibited as (a retract of) a \emph{formal $\J$-cell complex} lifts against any map with $\J^\oslash$-structure; these liftings are now moreover \emph{natural} in the appropriate structure preserving maps.  Again, under good circumstances, we have factorisations of every map into (the realisation of) a formal $\J$-cell complex, followed by a $\J^\oslash$-structured map, and this is now moreover functorial \cite{garner:understanding}.
+
+The construction of $\J^\oslash$ and $\J$-cell complexes is the one which recurs several times in the present work: see \todo{[give refs!]}.
+\end{para}
+
+\begin{para}
+The above is all that will be needed in the sequel; but a curious observation is perhaps worth making before moving on.  As we algebraised the theory, we passed from considering (as our right maps) classes of maps closed under identities, composition, and pullback, to considering isofibrations over $\Arr(\C)$\footnote{Indeed the exapmles typically studied in algebraic wfs's are monadic over $\Arr(\C)$.}, ``closed'' in the structured sense under composition and pullback.  But continuing just a hop, skip and jump further in this direction brings one to the notion of a CwA with units and $\Sigma$-types---and one could motivate this step never having thought of type theory, considering just examples from classical mathematics, e.g.\ replacing Grothendieck fibrations (which fit into the awfs framework) with pseudo-functors into $\Cat$ (which do not).
+\end{para}
 
 \section{Higher-categorical background}
 
-\comment{Note to self: woke up last night (Mon 8 Nov) having realised there was a serious typo somewhere, in a displayed forula defining something I think; now can't remember where it was!  To do: look carefully for it!}
-
 \subsection{Strict higher categories}
 
-There are various approaches to higher category theory, and in particular many definitions of weak higher categories \cite{leinster:ten-definitions}, \cite{cheng-lauda:guidebook}.  We will use the \emph{globular operadic} approach, as set out originally by Michael Batanin in \cite{batanin:natural-environment} and slightly modified by Tom Leinster, \cite{leinster:book}.
+There are various approaches to higher category theory, and in particular many definitions of weak higher categories \cite{leinster:ten-definitions}, \cite{cheng-lauda:guidebook}.  We will use the \emph{globular operadic} approach, as set out originally by Michael Batanin in \cite{batanin:natural-environment}, and later re-presented and slightly modified by Tom Leinster, \cite{leinster:book}.  These two sources are the authoritative references for most of this material; \cite{leinster:survey} also provides an excellent, and more streamlined, introduction.
 
 \begin{figure}
 $$
@@ -205,7 +247,7 @@ The cells of $TX$ may thus be seen as \emph{formal composites}, or \emph{labelle
 % In a weak higher category, we do not expect these laws to hold in such a strict form: prototypical examples are monoidal categories, where associativity and unitality only hold up to coherent natural isomorphisms $A \tensor (B \tensor C) \iso (A \tensor B) \tensor C$, and the higher fundamental groupoids of spaces, where composition of paths is associative only up to homotopy, and these homotopies themselves are invertible only up to higher homotopies, and so on.
 % \end{para}
 
-\begin{definition}
+\begin{definition} \label{def:pasting-diagrams}
 A \emph{pasting diagram} is a cell of $T1$, the free strict $\omega$-category on the terminal globular set.  We will often write $\pd$ for $T1$.
 \end{definition}
 
@@ -365,9 +407,10 @@ A \emph{monoidal globular functor} between monoidal globular categories $\E, \F$
 
 So monoidal globular categories bear essentially the same relationship to strict $\omega$-categories as a monoidal categories do to monoids: sets are replaced by categories, and axioms hold just up to coherent isomorphism.
 
-This is made precise by Mark Weber in \cite{weber:monoidal-pseudo-algebras}: $\MonGlobCat$ as defined here is (2-equivalent to) the 2-category of normalised pseudo-algebras for the ``internal strict $\omega$-category'' 2-monad $\Tcal$ on $[\G,\Cat]$.
+This is made precise by Mark Weber in \cite{weber:monoidal-pseudo-algebras}: $\MonGlobCat$ is (2-equivalent to) the 2-category of normalised pseudo-algebras for the ``internal strict $\omega$-category'' 2-monad $\Tcal$ on $[\G,\Cat]$.
 
-\begin{figure}$\begin{array}{ccc}
+\begin{figure}[hbtp]
+$$
 \bfig
 \node Cn(300,-100)[A_n]
 \node An1l(0,-400)[A^s_{n-1}]
@@ -391,7 +434,7 @@ This is made precise by Mark Weber in \cite{weber:monoidal-pseudo-algebras}: $\M
 \arrow||/@{->}_(0.35){s}/[B1r`A0l;]
 \arrow|r|[B1r`B0r;t]
 \efig
-& \qquad &
+\qquad \qquad \qquad
 \bfig
 \node Cn(300,-100)[A_n]
 \node An1l(0,-400)[A_n]
@@ -414,8 +457,8 @@ This is made precise by Mark Weber in \cite{weber:monoidal-pseudo-algebras}: $\M
 \arrow||/@{->}^(0.35){t}/[A1l`B0r;]
 \arrow||/@{->}_(0.35){s}/[B1r`A0l;]
 \arrow|r|[B1r`B0r;t]
-\efig
-\end{array}$\caption{\label{fig:some-spans} A higher span; an identity span.}
+\efig$$
+\caption{\label{fig:some-spans} A higher span; an identity span.}
 \end{figure}
 
 \begin{example}
@@ -426,14 +469,94 @@ So an object of $\Spans[\C]_n$, an \emph{$n$-span} in $\C$, is a diagram $(A^s_i
 
 The source of $(A^s_i,A^t_i\:_{(i < n)};\,A_n)$ is then $(A^s_i,A^t_i\:_{(i < {n-1})};\,A^s_{n-1})$, and similarly its target is $(A^s_i,A^t_i\:_{(i < {n-1})};\,A^t_{n-1})$.
 
-Identity spans are defined as in Fig.~\ref{fig:some-spans}; composition $\tensor_k$ of spans is defined by pullback, as in Fig.~\ref{fig:composite-spans}.  \todo{[Do this big fun diag!]}
+Identity spans are defined as in Fig.~\ref{fig:some-spans}; composition $\tensor_k$ of spans is defined by pullback, as in Fig.~\ref{fig:composite-spans}.
 
 A functor $\C \to \C'$ preserving pullbacks induces a monoidal globular functor $\Spans[\C] \to \Spans[C']$. 
 \end{example}
 
-We will often apply this in the case where $\C = \D^\op$, for some familiar $\D$; so then we will work with \emph{cospans} in $\D$, whose composites are computed by pushouts, and so on.
+\begin{figure}[htbp]
+$$\bfig
+\node A4(-350,-100)[A_4]
+\node B4(350,-100)[B_4]
+\node As3(-600,-400)[A^s_3]
+\node At3(-100,-400)[A^t_3]
+\node Bs3(100,-400)[B^s_3]
+\node Bt3(600,-400)[B^t_3]
+\node As2(-600,-800)[A^s_2]
+\node At2(-100,-800)[\phantom{A^t_2}]
+\node AtBs(0,-800)[A^t_2\! =\! B^s_2]
+\node Bs2(100,-800)[\phantom{B^s_2}]
+\node Bt2(600,-800)[B^t_2]
+\node As1(-300,-1200)[A^s_1\!=\!B^s_1]
+\node At1(300,-1200)[A^t_1\!=\!B^t_1]
+\node As0(-300,-1600)[A^s_0\!=\!B^s_0]
+\node At0(300,-1600)[A^t_0\!=\!B^t_0]
+%
+\arrow[A4`As3;]
+\arrow[A4`At3;]
+%
+\arrow[B4`Bs3;]
+\arrow[B4`Bt3;]
+%
+\arrow[As3`As2;]
+\arrow[As3`At2;]
+\arrow[At3`As2;]
+\arrow[At3`At2;]
+%
+\arrow[Bs3`Bs2;]
+\arrow[Bs3`Bt2;]
+\arrow[Bt3`Bs2;]
+\arrow[Bt3`Bt2;]
+%
+\arrow[As2`As1;]
+\arrow[As2`At1;]
+\arrow[AtBs`As1;]
+\arrow[AtBs`At1;]
+\arrow[Bt2`As1;]
+\arrow[Bt2`At1;]
+%
+\arrow[As1`As0;]
+\arrow[As1`At0;]
+\arrow[At1`As0;]
+\arrow[At1`At0;]
+\efig
+\qquad \to/{|->}/ \qquad 
+\bfig
+\node AxB4(0,-100)[A_4 \times_{A^s_2} B_4]
+\node AxBs3(-300,-400)[A^s_3 \times_{A^s_2} B^s_3]
+\node AxBt3(300,-400)[A^t_3 \times_{A^s_2} B^s_3]
+\node As2(-300,-800)[A^s_2]
+\node Bt2(300,-800)[B^t_2]
+\node As1(-300,-1200)[A^s_1\!=\!B^s_1]
+\node At1(300,-1200)[A^t_1\!=\!B^t_1]
+\node As0(-300,-1600)[A^s_0\!=\!B^s_0]
+\node At0(300,-1600)[A^t_0\!=\!B^t_0]
+%
+\arrow[AxB4`AxBs3;]
+\arrow[AxB4`AxBt3;]
+%
+\arrow[AxBs3`As2;]
+\arrow[AxBs3`Bt2;]
+\arrow[AxBt3`As2;]
+\arrow[AxBt3`Bt2;]
+%
+\arrow[As2`As1;]
+\arrow[As2`At1;]
+\arrow[Bt2`As1;]
+\arrow[Bt2`At1;]
+%
+\arrow[As1`As0;]
+\arrow[As1`At0;]
+\arrow[At1`As0;]
+\arrow[At1`At0;]
+\efig
+$$
+\caption{\label{fig:composite-spans} A 2-composition of 4-spans $B \tensor_2 A$}
+\end{figure}
 
-Although of course technically identical, there is an important difference in intuition between the two orientations.  When working in $\Spans[\C]$, we think of the objects of a span as objects \emph{containing} cells, such as the sets of $n$-cells of a higher category.  When working $\Spans[\D^\op]$, we think of the objects of a span as objects \emph{representing} cells, such as the topological globes $D^n$ or the universal globes $\yon(n) \in \GSets$, with ``co-source'' and ``co-target'' maps $s,t \colon A^{s,t}_i \to A_{i+1}$ embedding the lower-dimensional globes as the sources or targets of higher ones. \\
+We will often apply this in the case where $\C = \D^\op$, for some familiar $\D$; so then we will work with \emph{co-spans} in $\D$, whose composites are computed by pushouts, and so on.  
+
+Although of course technically identical, there is an important difference in intuition between the two orientations.  When working in $\Spans[\C]$, the objects of a span are typically objects \emph{containing} cells, such as the sets of $n$-cells of a higher category.  When working $\Spans[\D^\op]$, we think of the objects of a span as objects \emph{representing} cells, such as the topological globes $D^n$ or the universal globes $\yon(n)$ in $\GSets$, with ``co-source'' and ``co-target'' maps $s,t \colon A^{s,t}_i \to A_{i+1}$ embedding the lower-dimensional globes as the sources or targets of higher ones. \\
 
 The crucial function of monoidal globular categories is as the setting within which one can define globular operads and their algebras.  We will not need the former, only the latter.
 
@@ -452,7 +575,7 @@ In particular, $\yon \colon \G \to \GSets$ gives a globular object in $\Spans[\G
 
 Now if $\C$ is co-complete, and $\Cbu : \G \to \C$ is a co-globular object, we may form the left Kan extension of $\Cbu$ along the Yoneda embedding $\yon \colon \G \to/{ >->}/ \GSets$, analogous to the ``geometric realisation'' of globular or simplicial objects in $\Top$.  $\Lan_\yon \Cbu$ realises any globular set as a colimit in $\C$, using the objects $C_n$ as templates for the cells.
 
-Since $\Lan_\yon \Cbu$ preserves colimits, it lifts to give a monoidal globular functor $\Spans[\Lan_\yon \Cbu] \colon \Spans[\GSets^\op] \to \Spans[\C^\op]$, and since it sends the basic globes $\yon$ to $\Cbu$, we have moreover a commutative diagram:
+Since $\Lan_\yon \Cbu$ preserves colimits, it lifts to give a monoidal globular functor $\Spans[\Lan_\yon \Cbu] \colon \Spans[\GSets^\op] \to \Spans[\C^\op]$, and since it sends the basic globes $\yon$ to $\Cbu$, we have moreover a commutative (up to natural isomorphism) diagram:
 $$\bfig
 \node pd(0,0)[\pd]
 \node GSets(600,300)[{\Spans[\GSets^\op]}]
@@ -538,13 +661,13 @@ In the case $\E = \Spans[\Sets]$, this agrees with our earlier description of th
 For a globular operad $P$, a $P$-algebra structure on a globular object $\A$ of $\E$ is an operad map $P \to \End_\E(\A)$.
 \end{definition}
 
-We then call $\A$ an \emph{internal $P$-algebra} in $\E$, or when $\E = \Spans[\C]$, an internal $P$-algebra in $\C$.
+We then call $\A$ an \emph{(internal) $P$-algebra} in $\E$; or when $\E = \Spans[\C]$, a $P$-algebra in $\C$, or when $\E = \Spans[\D^\op]$, a $P$-coalgebra in $\D$.
 
 As usual with algebraic structures, homming into internal operad algebras yields external ones.  If $X$ is any object of a category $\C$, then there is an obvious functor
 $$ \Hom(X,-) \colon \Spans[\C] \to \Spans[\Sets],$$
 which is moreover monoidal globular; so if $\A$ is an internal $P$-algebra in $\C$, we have operad maps
 $$P \to \End_{\Spans[\C]}(\A) \to \End_{\Spans(\Sets)}(\Hom(X,\A))$$
-and hence a $P$-algebra structure on the globular set $\Hom(X,\A)$. 
+and hence a $P$-algebra structure on the globular set $\Hom(X,\A)$.   Similarly, homming out of a coalgebra gives an algebra.
 
 \subsection{Contracting pasting diagrams}
 
@@ -576,7 +699,11 @@ $$\xy
 {\ar@{=>} (1000,185)*{};(1000,85)*{}} ;
 {\ar@{=>} (1000,50)*{};(1000,-50)*{}};
 {\ar@{=>} (1000,-85)*{};(1000,-185)*{}};
-\endxy \to{|->} \xy
+(600,-250)*+{\pi};
+
+\endxy
+  \qquad \to/{|->}/ \qquad 
+\xy
 (0,0)*+{\bullet}="a";
 (400,0)*+{\bullet}="b";
 {\ar@/^0.8pc/ "a";"b"};
@@ -594,14 +721,68 @@ $$\xy
 {\ar@{=>} (1000,185)*{};(1000,85)*{}} ;
 {\ar@{=>} (1000,50)*{};(1000,-50)*{}};
 % {\ar@{=>} (1000,-85)*{};(1000,-185)*{}};
+(600,-250)*+{\pi^-};
 \endxy$$
 \end{para}
 
-We wil need to know a little about the realisations of these; in fact, an apparently very crude statement will suffice:
-\begin{proposition}
-For any non-reduced pasting diagram $\pi$, there 
-\end{proposition}
+\begin{para} \label{para:pruning-realisation} We wil need to know a little about the realisations of these; in fact, some apparently very crude statements will be enough.
 
+For any non-trivial pasting diagram $\pi$, there is an inclusion
+$$\widehat{\pi^-} \to/{ >->}/ \widehat{\pi}$$
+whose image consists of all of $\pi$ except for two cells, one the target of the other.  When $\pi$ is just a path, this condition determines what the inclusion must be; otherwise it is constructed by recursion on $\pi^-$, using the definition of $\pi^-$ together with the explicit description of $\widehat{\pi}$ in \ref{def:pasting-diagrams}. 
+
+It follows from this description of the image that we have a pushout square:
+$$\bfig
+\node yk1(0,400)[\yon(k-1)]
+\node yk(0,0)[\yon(k)]
+\node pim(500,400)[\widehat{\pi^-}]
+\node pi(500,0)[\widehat{\pi}]
+\arrow[yk1`yk;s]
+\arrow[yk`pi;]
+\arrow[yk1`pim;]
+\arrow[pim`pi;]
+\place(400,100)[\po]
+\efig$$
+
+Hence if $\A$ (resp.\ $C_\bullet$) is a globular (co-globular) object in any (co-)complete category, we obtain by applying the appropriate Kan extension a pullback (pushout) square:
+$$\bfig
+\node Ak1(500,0)[A_{k-1}]
+\node Ak(500,400)[A_{k}]
+\node Apim(0,0)[A^{\pi^-}]
+\node Api(0,400)[A^{\pi}]
+\arrow[Ak`Ak1;s]
+\arrow[Api`Ak;]
+\arrow[Apim`Ak1;]
+\arrow[Api`Apim;]
+\place(100,300)[\pb]
+\efig 
+  \qquad 
+\bfig
+\node Ck1(0,400)[C_{k-1}]
+\node Ck(0,0)[C_{k}]
+\node Cpim(500,400)[C^{\pi^-}]
+\node Cpi(500,0)[C^{\pi}]
+\arrow[Ck1`Ck;s]
+\arrow[Ck`Cpi;]
+\arrow[Ck1`Cpim;]
+\arrow[Cpim`Cpi;]
+\place(400,100)[\po]
+\efig$$
+(again, a slightly more careful calculation avoids the need for (co-)completeness, but we will only need the (co-)complete case).
+
+Finally, for any non-trivial $\pi$, we either have $s(\pi^-) = (s\pi)^-$, or $s(\pi^-) = s\pi$; the resulting square
+$$\bfig
+\node spim(0,400)[\widehat{s(\pi^-)}]
+\node spi(0,0)[\widehat{s(\pi)}]
+\node pim(500,400)[\widehat{\pi^-}]
+\node pi(500,0)[\widehat{\pi}]
+\arrow[spim`spi;]
+\arrow[spi`pi;s]
+\arrow[spim`pim;s]
+\arrow[pim`pi;]
+\efig$$
+commutes, as does its realisation over any (co-)globular object; and similarly with $t$ in place of $s$. 
+\end{para}
 
 \begin{para}As presented here, this construction is rather ad hoc.  A natural and flexible setting for this sort of step-by-step contraction is the Batanin tree representation of pasting diagrams: ways of contracting a pasting diagram in this sort of manner correspond precisely to ways of pruning leaves off its Batanin tree. 
 
