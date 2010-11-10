@@ -35,7 +35,7 @@ $$ \globe[0]\, \three/->`<-`->/<500>\ \globe[1]\, \three/->`<-`->/<500>\ \globe[
 
 Leaving aside the reflexivity for now, we can thus see the globes as a functor
 $$ \globes \colon \GSets \to \DTT_\stuff .$$
-Since $\DTT_\stuff$ is co-complete, this induces by general nonsense(\cite[VII.2]{mac-lane-moerdijk}\todo{(??)}) an adjoint pair of functors between $\GSets$ and $\DTT_\stuff$ (a ``Kan situation'').  Both these functors will be of central interest to us in the sequel:
+Since $\DTT_\stuff$ is co-complete, this induces by general nonsense (\cite[VII.2]{mac-lane-moerdijk}\todo{(??)}) an adjoint pair of functors between $\GSets$ and $\DTT_\stuff$ (a ``Kan situation'').  Both these functors will be of central interest to us in the sequel:
 $$\quad \xymatrix{ \GSets \ar@/_/[rrr]_{\T_\stuff [-]\, :=\, \Lan_\yon \globes \qquad \ \, } \ar@{}[rrr]|\top & & & \DTT_\stuff \ar@/_/[lll]_{\cl^-_\omega\ :=\ \DTT_\stuff(\globes,-)} \\ \G \ar@{ >->}[u]^\yon \ar@/_/[urrr]_{\globes} }
 $$
 
@@ -45,7 +45,7 @@ This is very nearly, but not quite, what we wanted for the underlying globular s
 
 Meanwhile, the left adjoint $\T_\stuff [-] \colon \GSets\ \to\ \DTT_\stuff$ is constructed as the left Kan extension of $\globes$ along $\yon$, and may be seen as freely adjoining a globular set to $\T_\stuff$, using the globes as templates.  Explicitly, for a globular set $\X$, the theory $\T[\X]$ has an axiom for each cell of $\X$, realising the 0-cells as closed types, the 1-cells as terms between these types, and the higher-cells as terms of appropriate identity types.\footnote{A related construction is considered in \cite{awodey-hofstra-warren} and \cite{hofstra-warren}\todo{[get Awodey--Hofstra--Warren citation]}, corresponding to a slightly different co-globular theory: they omit our $\globe[0]$, giving instead just a single closed base type, and realise $0$-cells as closed terms of this type, $1$-cells as terms of identity type between these, and so forth.  Their $T_\mathbf{ML}$ is then the monad induced by the Kan adjunction.}
 
- In particular, $\T_\stuff[\yon(n)] = \globe[n]$.  Also useful will be the boundary of the  $n$-globe, $\del \globe[n] := \T_\stuff[\del \yon(n)]$; up to isomorphism, this is the theory given by $i$-$\sourcerule$ and $i$-$\targetrule$, for $0 \leq i < n$, i.e.\ all the axioms of $\globe[n]$ except for $n$-$\cellrule$ itself.
+In particular, $\T_\stuff[\yon(n)] = \globe[n]$.  Also useful will be the boundary of the  $n$-globe, $\del \globe[n] := \T_\stuff[\del \yon(n)]$; up to isomorphism, this is the theory given by $i$-$\sourcerule$ and $i$-$\targetrule$, for $0 \leq i < n$, i.e.\ all the axioms of $\globe[n]$ except for $n$-$\cellrule$ itself.
 \end{para}
  
 \begin{para} Since $\DTT_\stuff$ is co-complete, we can consider (by Section \ref{sec:endo-operad}) the co-endomorphism operad of the globes, $\End_{\Spans[\DTT_\stuff^\op]}(\globes)$, or briefly just $\End(\globes)$.  We know that its operations of some shape $\pi$ are given by
