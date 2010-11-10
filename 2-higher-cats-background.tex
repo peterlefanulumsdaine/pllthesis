@@ -556,13 +556,54 @@ Using the free monoid representation, $()$ is the trivial pasting diagram $\bull
 $$(\underbrace{(),\ldots,()}_l )$$
 we take $\pi^-$ to be the path of length $l-1$.  For any other pasting diagram $\pi = (\pi_1,\ldots,\pi_l)$, with $l \geq 1$ and $\pi_i$ not all equal to $()$, we take $\pi^- := (\pi_1,\ldots,\pi_i^-,\ldots,\pi_k)$, where $i$ is minimal such that $\pi_i$ is not already contracted.
 
-Roughly, this operation removes the ``leftmost'' cell of dimension $> 1$ if there are any such, or of dimension $1$ if there are none higher.  It is clear by induction on e.g.\ dimension that under repeated application of $(-)^-$, any pasting diagram eventually reaches $()$.
+Roughly, this operation removes the leftmost cell (in algebraic order, or rightmost in diagrammatic order) of dimension $> 1$ if there are any such, or of dimension $1$ if there are none higher.  It is clear by induction on e.g.\ dimension that under repeated application of $(-)^-$, any pasting diagram eventually reaches $()$.
+
+$$\xy
+(0,0)*+{\bullet}="a";
+(400,0)*+{\bullet}="b";
+{\ar@/^0.8pc/ "a";"b"};
+{\ar@/_0.8pc/ "a";"b"};
+{\ar@{=>} (200,70)*{};(200,-70)*{}} ;
+(800,0)*+{\bullet}="c";
+{\ar "b";"c"};
+% (0,250)*{\ };
+% (0,-220)*{\ };
+(1200,0)*+{\bullet}="d";
+{\ar@/^1.65pc/ "c";"d"};
+{\ar@/^0.55pc/ "c";"d"};
+{\ar@/_0.55pc/ "c";"d"};
+{\ar@/_1.65pc/ "c";"d"};
+{\ar@{=>} (1000,185)*{};(1000,85)*{}} ;
+{\ar@{=>} (1000,50)*{};(1000,-50)*{}};
+{\ar@{=>} (1000,-85)*{};(1000,-185)*{}};
+\endxy \to{|->} \xy
+(0,0)*+{\bullet}="a";
+(400,0)*+{\bullet}="b";
+{\ar@/^0.8pc/ "a";"b"};
+{\ar@/_0.8pc/ "a";"b"};
+{\ar@{=>} (200,70)*{};(200,-70)*{}} ;
+(800,0)*+{\bullet}="c";
+{\ar "b";"c"};
+% (0,250)*{\ };
+% (0,-220)*{\ };
+(1200,0)*+{\bullet}="d";
+{\ar@/^1.65pc/ "c";"d"};
+{\ar@/^0.55pc/ "c";"d"};
+{\ar@/_0.55pc/ "c";"d"};
+% {\ar@/_1.65pc/ "c";"d"};
+{\ar@{=>} (1000,185)*{};(1000,85)*{}} ;
+{\ar@{=>} (1000,50)*{};(1000,-50)*{}};
+% {\ar@{=>} (1000,-85)*{};(1000,-185)*{}};
+\endxy$$
 \end{para}
 
-\begin{para}\todo{Give needed statements re the realisations of these.}
-\end{para}
+We wil need to know a little about the realisations of these; in fact, an apparently very crude statement will suffice:
+\begin{proposition}
+For any non-reduced pasting diagram $\pi$, there 
+\end{proposition}
+
 
 \begin{para}As presented here, this construction is rather ad hoc.  A natural and flexible setting for this sort of step-by-step contraction is the Batanin tree representation of pasting diagrams: ways of contracting a pasting diagram in this sort of manner correspond precisely to ways of pruning leaves off its Batanin tree. 
 
-However, since we do not require the Batanin tree representation for any other purpose, for brevity we simply give this single formulaic procedure, which suffices for the applications in the present work.
+However, since we do not require the Batanin tree representation for any other purpose, for brevity we give just this formulaic procedure, which suffices for the applications in the present work.
 \end{para}
