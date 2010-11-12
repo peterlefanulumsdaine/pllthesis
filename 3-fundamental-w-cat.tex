@@ -851,7 +851,7 @@ To do this, of course, we need to find some contractible operad of composition l
 
 We then show directly that this operad is indeed contractible, using a little specific analysis of the theory $\T_\Id[X]$, and discuss extensions of this result to larger operads.
 
-\subsection{Construction of \texorpdfstring{$P_\Id$}{P\_ML\_Id}}
+\subsection*{Construction of \texorpdfstring{$P_\Id$}{P\_ML\_Id}}
 
 We saw above that for a type $A$ in any type theory $\T \in \DTT_\Id$, the contexts
 $$x_0,y_0:A,\ x_1,y_1:\Id(x_0,y_0)\ldots,\ z:\Id(x_{n-1},y_{n-1}),$$
@@ -919,7 +919,7 @@ $$x:X \types r^n(x) : \Id(r^{n-1}(x),r^{n-1}(x)).$$
 
 Below, we formalise this argument.  The crucial lemma is that the context $x:X$ is an initial object in $\cl(\T_\Id[X])$: that is, since any context $\Gamma$ in $\T_\Id[X]$ is built up just from $X$ and its higher identity types, there is always a unique way to substitute $x$ and its reflexivity terms $r^i(x)$ for all variables of $\Gamma$, and when we subsitute these in to any context morphism $f \colon \Gamma \to \Gamma'$, the result must again reduce to terms of this form.
 
-\subsection{\texorpdfstring{$X$}{X} is initial in \texorpdfstring{$\T_\Id[X]$}{ML\_Id[X]}} \label{subsec:initiality}
+\subsection*{\texorpdfstring{$X$}{X} is initial in \texorpdfstring{$\T_\Id[X]$}{ML\_Id[X]}} \label{subsec:initiality}
 
 \begin{lemma} \label{lemma:initiality} The context $x:X$ is an initial object in $\cl(\T_\Id[X])$; that is, for any closed context $\Gamma$ there is a unique context map $\ r^\Gamma \colon (x:X) \to \Gamma$. 
 \end{lemma}
@@ -1080,7 +1080,7 @@ The cases for the other structural rules and $X$-\form\ are straightforward, sim
 
 
 
-\subsection{Contractibility of \texorpdfstring{$P_\Id$}{P\_Id}}
+\subsection*{Contractibility of \texorpdfstring{$P_\Id$}{P\_Id}}
 
 We are now ready to show that $P_\Id$ is contractible, arguing along the lines sketched above.
 
@@ -1124,7 +1124,7 @@ According to the categorical description of an endomorphism operad, we need to s
 
 Note that in each version, Lemma \ref{lemma:initiality} was applied only at the base case of the induction, and only to show that terms $x:X \types f: \Id(r^n(x),r^n(x))$ must be equal to $r^{n+1}(x)$.  Two alternative approaches could have been taken at this point.  Firstly, we could have applied a normalisation/canonicity result for the theory to deduce that $f_i(x) = g_i(x) = r^i(x)$, i.e.\ that the final square in the second proof commutes. This approach is taken in the proof of \label{thm:ctrble-operad-for-id}.  Secondly, in theories for which normalisation/canonicity and the co-slice construction fail, or alternatively working directly over an arbitrary type (rather than the generic one) the full endomorphism operad may no longer be contractible; but we may still find a contractible sub-operad, by restricting to precisely those operations for which the required commutativity condition holds.  This is the approach taken in \cite{garner-van-den-berg}; we use a variation of it for \label{thm:ctrble-operad-for-piidelim} below.
 
-\subsection{Types as weak \texorpdfstring{$\omega$}{omega}-categories} \label{subsec:payoff}
+\subsection*{Types as weak \texorpdfstring{$\omega$}{omega}-categories} \label{subsec:payoff}
 
 Putting the above results together, we obtain our main goal:
 

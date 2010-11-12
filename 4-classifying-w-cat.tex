@@ -5,7 +5,7 @@
 
 \todo{[Add, here or later, the ``topological'' interpretation of $\Kterm$: declaring the inclusion of a basepoint into a loop to be a homotopy equivalence.]}
 
-\subsection{The type-theoretic globes}
+\subsection*{The type-theoretic globes}
 
 \begin{para} Once again, let $\stuff$ be some set of rules/constructors, including at least the $\Id$-rules.  The \emph{type-theoretic globes} over $\stuff$ are then a sequence of theories $\globe[n]^\stuff$ which play a similar r\^o{}le in $\DTT_\stuff$ to that which the discs $D^n$ play in $\Top$: they are an internal weak-$\omega$-cocategory, and as such will---almost---be representing objects for the classifying weak $\omega$-category functor.
 \end{para}
@@ -223,7 +223,7 @@ In richer type systems, $\globe[0]$ will typically have more closed types (e.g.\
 
 
 
-\subsection{A variant for $\Pi$-types}  % A house for Mr. Biswas?  A penny for a song?
+\subsection*{A variant for $\Pi$-types}  % A house for Mr. Biswas?  A penny for a song?
 
 \begin{para} We can also consider a variant set of globes ${}^\Pi \globes^\stuff$, for any set of constructors $\stuff$ including $\Pi$-types.  The axioms for each $\globe^\Pi$ are selected from rules $i$-$\sourcerule$-$\Pi$, $i$-$\targetrule$-$\Pi$, $i$-$\cellrule$-$\Pi$, analogously to the axioms for $\globe$.  These axioms differ from before in dimensions $\geq 1$, by using closed rather than open terms:
 $$ 
@@ -267,7 +267,7 @@ In the case where $\stuff$ is exactly $(\Id, \Pi, \Pi\mbox{-}\eta)$, then both n
 
 \comment{Include: basic extensions; contractible maps; $\Jbar$ and discussion.}
 
-\subsection{Left and right maps in $\DTT$}
+\subsection*{Left and right maps in $\DTT$}
 
 \begin{para} In the next section, we'll construct classifying weak $\omega$-categories for theories with $\Id$-types and $\Pi$-types (with $\eta$-rules and functional extensionality), and discuss how it might be possible to extend this to require only the $\Id$-types.
 
@@ -314,7 +314,7 @@ So in syntactic terms, a basic term extension is just any extension of a theory 
 
 The classes of term, type, and term-and-type extensions are all closed under composition, identities, and pushouts, so form classes of left maps in the sense of Section \ref{sec:endo-operads} above.  \todo{(Point out that they are not, however, closed under retracts? (or at least, not obviously; are they actually?)  This depends on how I set things up in homotopical background, I guess.)}
 
-\begin{definition}A \emph{term-contraction} (resp.\ \emph{type-contraction}, \emph{contraction}) on a map $F \colon \T \to \S$ is an operation assigning a diagonal filler to every square
+\begin{definition} \label{def:dtt-contraction} A \emph{term-contraction} (resp.\ \emph{type-contraction}, \emph{contraction}) on a map $F \colon \T \to \S$ is an operation assigning a diagonal filler to every square
 $$\xymatrix{ \T_\stuff[\Gamma_{(n)} \types A\ \type] \ar@{ >->}[d]_{i^\tm_n} \ar[r] & \T \ar@{->>}[d]^F \\ \T_\stuff[\Gamma_{(n)} \types a: A] \ar[r] \ar@{.>}[ur] & \S }$$
 with left-hand-side a universal type (term, term or type) extension.  Assuming the axiom of choice, a map admits such fillers if and only if it is weakly orthogonal to all universal term (type, term and type) extensions, in which case it is called \emph{term-contractible} (\emph{type-contractible}, \emph{contractible}).
 
@@ -383,7 +383,7 @@ Example \ref{ex:elim-gives-contraction} suggests that this factorisation system 
 
 
 
-\subsection{Extensions by propositional copies: the conservativity principle $\Jbar$.}
+\subsection*{Extensions by propositional copies: the conservativity principle $\Jbar$.}
 
 \begin{para}
 One of the fundamental lemmas for many logical systems is that \emph{extension by definitions} should be well behaved: that if we extend a theory $\T$ by adding a new term $a'$, and an axiom that $a'$ is equal to some pre-existing term $a$ of $\T$, then the resulting theory is in some sense equivalent to $\T$.
@@ -645,7 +645,7 @@ $$\bfig
 \efig$$
 \end{figure}
 
-\subsection{Theories with $\Id$-types}
+\subsection*{Theories with $\Id$-types}
 
 \renewcommand{\stuff}{\Id}
 \begin{theorem} \label{thm:ctrble-operad-for-id} If $\Jbar$ holds for $\Id$, then $\End(\globes^\Id)$ is contractible.
@@ -669,7 +669,7 @@ $$\xymatrix{ \del \globe[n] \ar[dr] \ar@{ >->}[d] & \\ \globe[n] \ar@{.>}[r] & \
 But now $s_1\pi$ is just some $\pathpd_l$, so as in \ref{para:map-from-cat}, \ref{para:canonicity-of-Tpath} we have an explicit axiomatisation of $\T_\Id(\widehat{s_1 \pi})$, and we know that this theory enjoys canonicity.  So in trying to extend $[F_i,G_i]$ along $ \del \globe[n] \mono \globe[n]$, we have interpreted $i$-$\sourcerule$ and $i$-$\targetrule$ in $\T_\stuff[\widehat{s_1\pi}]$, for $i < n$, and wish to interpret $n$-$\cellrule$; i.e.\ we wish to prove a propositional equality between the interpretations of $s_{n-1}(x)$ and $t_{n-1}(x)$.   But by canonicity, and the simplicity of our set of constructors, any two terms of the same type in $\T_\stuff[\widehat{s_1\pi}]$ are \emph{definitionally} equal; so interpreting $c_n$ as a reflexivity term, we are done.  (Specifically, $s_1$, $t_1$ must both be interpreted as the obvious composite of basic constructors described in \ref{para:map-from-cat}, and for $i > 1$, $s_i$ and $t_i$ must be interpreted as the reflexivity term over $s_{i-1}$, $t_{i-1}$.)
 \end{proof}
 
-\subsection{$\End(\globes)$, in theories with $\PiIdelim$}
+\subsection*{$\End(\globes)$, in theories with $\PiIdelim$}
 
 \renewcommand{\stuff}{\PiIdelim}
 \begin{para} By turning our attention to theories with not only $\Id$-types but also $\Pi$-types and the $\PiIdelim$ rule, we ensure that $\Jbar$ holds unconditionally.  However, this comes at the possible cost of normalisation and canonicity.  \todo{[Is ``possible'' necessary here?]}  Thus, in trying to repeat the argument above to show that $\End(\globes)$ is contractible, we fall at the last hurdle: we do not know that $[F_i,G_i]$ gives the ``correct'' map $\del \globe[n] \to \T_\stuff[\widehat{\pathpd_l}]$.
@@ -752,7 +752,7 @@ $$\xymatrix{
 But the overall rectangle commutes, so the desired filler follows by $\Jbar$.
 \end{proof}
 
-\subsection{$\End(\piglobes)$}
+\subsection*{$\End(\piglobes)$}
 
 Turning our attention to $\piglobes$, and taking $\stuff = (\Id,\Pi,\Pi\mbox{-}\eta)$, and $\Id$, we are now well set up to construct a contractible sub-operad $Q_\Pi$ of $\End(\piglobes)$.  Specifically, take $Q_\Pi$ to be the normalised core of $\End(\piglobes)$---that is, all those operations whose $0$-dimensional source and target are the operad unit $1_{\piglobe[0]}$.  Since we have canonicity, we do not need to restrict further as we did in the construction of $Q_\PiIdelim$.
 
@@ -764,7 +764,7 @@ The operad $Q_\Pi$ is contractible.
 The proof of Theorem \ref{thm:ctrble-operad-for-id} goes through almost verbatim.  The only difference is that the type-contractibility of the maps into which we factor $\T_\stuff[\widehat{pi}]^\Pi \epi \T_\stuff[\widehat{s_1 \pi}]^\Pi$ does not depend on $\Jbar$, instead following just from Example \label{ex:elim-gives-contraction}. 
 \end{proof}
 
-\subsection{Classifying weak $\omega$-categories}
+\subsection*{Classifying weak $\omega$-categories}
 % TODO: should be \\\texorpdfstring here
 
 \begin{para} Theorems \ref{thm:ctrble-operad-for-id}, \ref{thm:ctrble-operad-for-piidelim}, and \ref{thm:ctrble-operad-for-pi} give  three situations in which there is a map from some contractible operad $Q$ into $\End(\globes)$ (or $\End(\piglobes)$).  In each case, this induces a map $L \to Q \to \End(\maybepiglobes)$, and hence a functor (``restriction of scalars'') $\Alg{\End(\maybepiglobes)} \to \Alg{L} = \wkwCat$.  We thus have:
@@ -849,7 +849,7 @@ However, this is not surprising: in the passage from type theories to weak $\ome
 For the 2-truncated case, this is well-worked-out in \cite{garner:2-d-models}.  However, in higher dimensions, the understanding of appropriate ``weak logical structure'' is at a very early stage of development; so this is a story for another time.
 \end{para}
 
-\subsection{CwA structures on $\DTT$ etc.} \ref{sec:fam-strux-on-DTT}.
+\subsection*{CwA structures on $\DTT$ etc.} \ref{sec:fam-strux-on-DTT}.
 
 \comment{This section is an inessential extra: if time allows and inspiration strikes (or if quantity demands) then I'll update + expand it, otherwise I'll delete it.}
 
@@ -865,6 +865,6 @@ Context extension is by adjoining \emph{open} terms.
 
 $\Jbar$ asserts that \emph{open} $\Id$-types in contexts are indeed $\Id$-types in this attributes structure.  (But danger, Will Robinson, danger: $\Jbar$ doesn't assert, and afaics doesn't imply, the stability/coherence conditions required for ``this attributes structure has $\Id$-types''.)
 
-\subsection{A model structure on $\DTT$?} \ref{sec:model-strux}
+\subsection*{A model structure on $\DTT$?} \ref{sec:model-strux}
 
 Another optional bonus section.
