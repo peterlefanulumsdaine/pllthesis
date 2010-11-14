@@ -33,7 +33,26 @@ Things work similarly from any basic set $\J$ in a co-complete category $\C$; \e
 \begin{para} \label{para:awfs}
 The above theory can be improved and refined by changing the objects of study from mere \emph{properties} of maps to \emph{structures} on maps.  This both strengthens the resulting theory---constructions become more natural, functorial, etc.---and more naturally describes mathematical practice: demonstrating ``fibrationhood'' of a map typically involves giving some kind of structure on it.  This is also a more naturally constructive approach---an existence property should always be given by exhibiting witnesses---and as such, turns out to develop much better in a constructive setting than the classical theory does.
 
-We recall only the barest rudiments of this theory.  Given a category $\J$ with a functor $U \colon \J \to \Arr(\C)$, a \emph{$\J^\boxslash$}-structure on a map $p$ is a function \emph{choosing}, for each $j \in \J$ and commutative square from $U(j)$ to $p$, a diagonal filler, such that these fillers commute with squares coming from the maps of $\J$.  \todo{[Diagram]} If $\J$ is just a discrete set, then assuming choice, the maps admitting a $\J^\boxslash$-structure are exactly the fibrations with respect to class of maps in the image of $\J$. $\J^\boxslash$-structured maps, together with commutative squares between them preserving the structure (in a suitable sense), form a category themselves, again with a forgetful functor to $\Arr(\C)$.
+We recall only the barest rudiments of this theory.  Given a category $\J$ with a functor $U \colon \J \to \Arr(\C)$, a \emph{$\J^\boxslash$}-structure on a map $p$ is a function \emph{choosing}, for each $j \in \J$ and commutative square from $U(j)$ to $p$, a diagonal filler, such that these fillers commute with squares coming from the maps of $\J$.
+$$\bfig
+\node d'(-500,400)[\bullet]
+\node c'(-500,0)[\bullet]
+\node d(0,400)[\bullet]
+\node c(0,0)[\bullet]
+\node X(500,400)[X]
+\node Y(500,0)[Y]
+\arrow|l|[d'`c';Uj']
+\arrow|r|[d`c;Uj]
+\arrow[d'`d;]
+\arrow[c'`c;]
+\arrow[d`X;]
+\arrow|r|[X`Y;p]
+\arrow[c`Y;]
+\arrow/@{.>}/[c'`X;]
+\arrow/@{.>}/[c`X;]
+% \place(-250,200)[U\alpha]
+\efig$$
+If $\J$ is just a discrete set, then assuming choice, the maps admitting a $\J^\boxslash$-structure are exactly the fibrations (in the sense \ref{para:cofib-generated-wfs}) with respect to the image of $U$. $\J^\boxslash$-structured maps, together with commutative squares between them preserving the structure (in a suitable sense), form a category themselves, again with a forgetful functor to $\Arr(\C)$.
 
 Structured versions of the closure properties above can be formulated: any identity carries a natural $\J^\boxslash$-structure, as does any composite of maps with $\J^\boxslash$-structures; any pullback of a map with $\J^\boxslash$-structure again carries a natural such structure, as does any retract of such a map.  When we speak of some category of structured maps being \emph{closed under composition}, and similar, we will mean statements of this form.
 
@@ -43,7 +62,7 @@ The constructions of $\J^\boxslash$ and $\J$-cell complexes are the ones which w
 \end{para}
 
 \begin{para}
-The above is all that will be needed in the sequel; but a curious observation is perhaps worth making before moving on.  As we algebraised the theory, we moved from considering (as our right maps) classes of maps closed under identities, composition, and pullback, to considering isofibrations\footnote{Indeed, the instances typically studied in algebraic wfs's are in fact monadic over $\Arr(\C)$.} over $\Arr(\C)$, ``closed'' in the structured sense under composition and pullback.  But continuing just a hop, skip and jump further in the same direction brings one to the notion of a comprehension category with units and $\Sigma$-types---and one could motivate this step never having thought of type theory, considering just examples from classical mathematics, e.g.\ replacing Grothendieck fibrations (which fit directly into the a.w.f.s.\ framework) with pseudo-functors into $\Cat$ (which do not).
+The above is all that will be needed in the sequel; but a curious observation is perhaps worth making before moving on.  As we algebraised the theory, we moved from considering (as our right maps) classes of maps closed under identities, composition, and pullback, to considering isofibrations\footnote{Indeed, the instances typically studied in algebraic wfs's are in fact monadic over $\Arr(\C)$.} over $\Arr(\C)$, ``closed'' in the structured sense under composition and pullback.  But just a hop, skip and jump further in the same direction brings one to the notion of a comprehension category with units and $\Sigma$-types---and one could motivate this step never having thought of type theory, considering just examples from classical mathematics, e.g.\ replacing Grothendieck fibrations (which fit directly into the a.w.f.s.\ framework) with pseudo-functors into $\Cat$ (which do not).
 \end{para}
 
 \section{Higher-categorical background}
@@ -397,7 +416,7 @@ The universal property $L$ ensures that if $P$ is any other contractible operad,
 \begin{para} \label{para:normalised-core}
 For any $0 \leq k \leq n \leq \omega$, there is a triple adjunction
 $$ \nOpd[m] \three/->`<-`->/^{D_n}|{\tr^k}_{I_n} \nOpd[n]$$
-where $D_n P$ is the \emph{discrete} $n$-operad on a $k$-operad $P$, with only unit cells (i.e.\ units of the operad structure) in higher dimensions; $\tr^k Q$ is the $k$-truncation of an $n$-operad $Q$, with $\tr^k(Q)_i = Q_i$ for $i \leq k$; and $I_n P$ is the indiscrete $n$-operad on $P$, with a unique operation of shape $\pi$ for each pasting diagram $\pi$ together with a choice of $\leq n$-dimensional source and target operations from $P$.  \todo{[Check Batanin's terminology for this: (co-)skeleton, (co-)truncation??]}
+where $D_n P$ is the \emph{discrete} $n$-operad on a $k$-operad $P$, with only unit cells (i.e.\ units of the operad structure) in higher dimensions; $\tr^k Q$ is the $k$-truncation of an $n$-operad $Q$, with $\tr^k(Q)_i = Q_i$ for $i \leq k$; and $I_n P$ is the indiscrete $n$-operad on $P$, with a unique operation of shape $\pi$ for each pasting diagram $\pi$ together with a choice of $\leq n$-dimensional source and target operations from $P$.  
 
 In particular, $\nOpd[0] \equiv \Mon$; so for any $n$ and $Q \in \nOpd[n]$ we have a unique map $1 \to \tr^0 Q$ (where $1$ is the trivial monoid, so is both initial and terminal), and hence can construct the \emph{normalised core} $Q^0$ of $Q$,
 $$\bfig

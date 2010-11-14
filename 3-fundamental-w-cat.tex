@@ -925,7 +925,7 @@ Given $\pi$, such a parallel pair amounts to terms $(f_i,g_i)_{0 \leq i < n}$ as
 $$\x : \Gamma_\pi \types h (\x) : \Id ( f_{n-1}(\src\,\x), g_{n-1} (\tgt\,\x) ).$$
 
 Playing with small examples (the reader is strongly encouraged to try this---to derive, for instance, the composition and associativity terms mentioned in \ref{intro-examples}) suggests that we should be able to do this by applying $\Id$-\elim\ (possibly repeatedly, working bottom-up as usual) to the variables of identity types in $\Gamma_\pi$.  $\Id$-\elim\ says that to obtain $h$, it's enough to obtain it in the case where one of the variables is of the form $r(-)$, and its source and target variables are equal; and by repeated application, it's enough to obtain $h$ in the case where multiple higher cells have had identities plugged in in this way.
-\todo{[look out a deduction-tree package for giving an example here, if poss.]}
+% \todo{[look out a deduction-tree package for giving an example here, if poss.]}
 
 Now, since the terms $f_i,g_i$ have themselves been built up from just the $\Id$-rules, as we plug $r(-)$ terms into them and identify the lower variables, they should sooner or later collapse by $\Id$-\comp\ to be of the form $r^i(x)$ themselves.  Eventually, after applying $\Id$-\elim\ as far as possible, plugging in reflexivity terms for the higher variables and contracting all variables of type $X$ to a single $x:X$, the $f_i, g_i$ should \emph{all} reduce to reflexivity terms, and in particular $f_{n-1} = g_{n-1} = r^{n-1}(x)$, so we can take the desired filler to be
 $$x:X \types r^n(x) : \Id(r^{n-1}(x),r^{n-1}(x)).$$

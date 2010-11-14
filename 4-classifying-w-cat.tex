@@ -335,7 +335,7 @@ This syntactic formulation of type-contractibility has been considered previousl
 
 Essentially, definitional equality for terms implies propositional equality, and for types, isomorphism-up-to-propositional-equality (``homotopy-equivalence''); and since these are matters of term-judgements, they can be lifted along a term-contractible map. 
 
-Often, term-contractibility implies type-contractibility.  In particular, in many important theories, the type-forming axioms do not mention any of the specific term-constructors.  From this it follows that any type judgment factors uniquely as a type judgement derivable without any term-formers (the ``shape'' of the type), followed by substitution along some context morphism.  Now if $F \colon \T \to \S$ is a morphism between two theories with this property, and $\S$ has the same type-forming rules as $\T$, then if $F$ is term-contractible, it is also type-contractible.  \todo{[Explain this in more detail??  We never actually need it later, but it's an interesting fact.]}
+Often, term-contractibility implies type-contractibility.  In particular, in many important theories, the type-forming axioms do not mention any of the specific term-constructors.  From this it follows that any type judgment factors uniquely as a type judgement derivable without any term-formers (the ``shape'' of the type), followed by substitution along some context morphism.  Now if $F \colon \T \to \S$ is a morphism between two theories with this property, and $\S$ has the same type-forming rules as $\T$, then if $F$ is term-contractible, it is also type-contractible. %  \todo{[Explain this in more detail??  We never actually need it later, but it's an interesting fact.]}
 \end{para}
 
 \begin{example} \label{ex:elim-gives-contraction}
@@ -418,8 +418,8 @@ Our principle $\Jbar$ describes one sense in which $\T[a'(\x) :\propeq a(\x)]$ m
 \end{definition}
 
 % In categorical terms, the retractions of the universal such extensions
-$$\T_\stuff[\Gamma_{(n)} \types a: A] \mono \T_\stuff[\Gamma_{(n)} \types a: A][a'(\x) :\propeq a(\x)].$$
-are absolutely term-contractible.  \todo{[Actually, ``absolutely term-contractible'' isn't quite right: that would imply $\overline{K}$!  Subtlety is in what kinds of pushouts we're considering.  Can this phrasing of $\Jbar$ be corrected?  Think on it, throw it out if not.]}
+% $$\T_\stuff[\Gamma_{(n)} \types a: A] \mono \T_\stuff[\Gamma_{(n)} \types a: A][a'(\x) :\propeq a(\x)].$$
+%are absolutely term-contractible.  \todo{[Actually, ``absolutely term-contractible'' isn't quite right: that would imply $\overline{K}$!  Subtlety is in what kinds of pushouts we're considering.  Can this phrasing of $\Jbar$ be corrected?  Think on it, throw it out if not.]}
 
 (Actually, we will not need the full strength of the principle as stated here: for our purposes, it would be enough to show that this holds when $\T$ can be axiomatised over $\stuff$ without any definitional equality axioms, i.e.\ when $\T_\stuff \mono \T$ is a term-extension, or in homotopy-theoretic language, when $\T$ is a \emph{cofibrant} theory.)
 
@@ -446,7 +446,7 @@ $$\bfig
 
 Then the map $(a,r(a)) \colon \diamond \mono x:A, i:\Id(x,a)$ is (up to isomorphism) the introduction map for the one-ended form of $\Id$-$\elim$, so by Example \ref{ex:elim-gives-contraction}, the retraction  of slices $(a,r(a))^*$ is term-contractible.
 
-Thus $\Jbar$ asserts that something which is holds derivably for \emph{closed} terms also holds admissibly for \emph{open} terms: in particular, that open terms of identity types satisfy the same rules as closed ones do. \comment{I had here: ``$\Jbar$ asserts---like various other type-theoretic principles---\ldots'', but I now can't remember what other examples I originally had in mind.}
+Thus $\Jbar$ asserts that something which is holds derivably for \emph{closed} terms also holds admissibly for \emph{open} terms: in particular, that open terms of identity types satisfy the same rules as closed ones do. % \comment{I had here: ``$\Jbar$ asserts---like various other type-theoretic principles---\ldots'', but I now can't remember what other examples I originally had in mind.}
 
 Unlike most type-theoretic principles, is important to note, however, that $\Jbar$ is \emph{not} a property of a theory in isolation, but of a \emph{category} of theories, of what I have here called a type system.\\
 
@@ -512,13 +512,13 @@ It is routine to verify that under the hypotheses of the $\Jbar$ rule, this type
 
 We are not quite done yet: since we used second-order reasoning, this gives us contractibility not between a theory $\T$ and an extension $\T[a'(\x) :\propeq a(\x)]$, but between $\T_\LF$ and its extension by terms $a' : [\x]A$, $l : [\x]\Id(a'(\x),a(\x))$ (briefly, $\T_\LF[a',l]$).  But given any type to lift from $\T$ to $\T[a'(\x) :\propeq a(\x)]$, consider the diagram
 $$\bfig
-\node Tty(-500,400)[\bullet]
-\node Ttm(-500,0)[\bullet]
+\node Tty(-700,400)[\bullet]
+\node Ttm(-700,0)[\bullet]
 \node Ta(0,400)[{\T[a'(\x) :\propeq a(\x)]}]
 \node T(0,0)[\T]
-\node TaLF(500,400)[{\T[a'(\x) :\propeq a(\x)]}_\LF]
-\node TLFa(1100,400)[{\T_\LF[a',l]}]
-\node TLF(1100,0)[\T_\LF]
+\node TaLF(1080,400)[{\T[a'(\x) :\propeq a(\x)]}_\LF]
+\node TLFa(2000,400)[{\T_\LF[a',l]}]
+\node TLF(2000,0)[\T_\LF]
 \arrow[Tty`Ta;]
 \arrow/@{-|>}/[Ta`TaLF;]
 \arrow|m|[TaLF`TLFa;\iso]
@@ -532,7 +532,7 @@ $$\bfig
 The contractibility of $\T[a'(\x) :\propeq a(\x)] \to {\T[a'(\x) :\propeq a(\x)]}_\LF$ and $\T_\LF[a',l] \to \T_\LF$ lets us lift to a term to $\T[a'(\x) :\propeq a(\x)]$ which commutes correctly down to $\T_\LF$; but now by faithfulness of $\T \to \T_\LF$, it must in fact commute correctly already into $\T$.
 \end{proof}
 
-(It is tempting to wonder if the implication can be reversed; however, it is at least not obviously possible.  The obvious candidate for defining $\Lterm$ in terms of $\Jbarterm$,
+(It is tempting to wonder if the implication can be reversed; however, this is at least not obviously possible.  The obvious candidate for defining $\Lterm$ in terms of $\Jbarterm$,
 $$\Lterm(C,d,k,k',l)\ :=\ \Jbarterm(\, [\underline{k},\underline{k}',\underline{l}]\, C( \lambda\underline{k},\lambda \underline{k}',\lambda\underline{l}),\ d,\ [x]\,k \tightcdot x,\ [x]\,k' \tightcdot x,\ [x]\,l \tightcdot x),$$ 
 does indeed typecheck successfully; but the desired computation rule only holds up to propositional equality, not definitional.) \\
 
@@ -569,7 +569,7 @@ Most straightforwardly, $\Jbar$ as given here is most akin to the one-ended form
 
 One could also consider a principle one might call $\Kbar$, along the lines of Streicher's $\Kterm$, giving contractibility between theories $\T[a(\x)]$ and $\T[a(\x);\,l(\x) \tightcolon \Id(a(\x),a(\x))]$.  Like $\Kterm$, this of course collapses (at least up to propositional equality) all the higher-dimensional structure.
 
-Even stronger (or at least possibly so\todo{is there a known result connecting $\Kterm$ and the prop.\ conseqs.\ of refl?  check Streicher Habth thoro'ly}, one could consider a similar analogue of the reflection rule, asserting that for any (pre-existing) terms $a(\x)$, $a'(\x)$, $l(\x)$ of a theory $\T$, the map $\T \to \T[a'(\x) = a(\x),\,l(\x) = r(a(\x))]$ is term-contractible; this simply adds, by fiat, all the propositional consequences of $\refl$.
+Even stronger (or at least possibly so)\todo{is there a known result connecting $\Kterm$ and the prop.\ conseqs.\ of refl?  check Streicher Habth thoro'ly}, one could consider a similar analogue of the reflection rule, asserting that for any (pre-existing) terms $a(\x)$, $a'(\x)$, $l(\x)$ of a theory $\T$, the map $\T \to \T[a'(\x) = a(\x),\,l(\x) = r(a(\x))]$ is term-contractible; this simply adds, by fiat, all the propositional consequences of $\refl$.
 \end{para}
 
 \begin{para}

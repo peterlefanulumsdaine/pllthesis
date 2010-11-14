@@ -2,7 +2,7 @@
 
 \section{Type-theoretic background}
 
-\comment{To include: give basic type theory syntactically---first the structural core, then constructors and various extensionality axioms.  Then give categorical equivalent; crucially, set $\DTT$ up as ess.\ alg.\ and show that extra rules/constructors are ess.\ alg.\ extensions.  Discuss the various constructions: dependent contexts, slicing, co-slicing.  Finally, discuss normalisation/canonicity!}
+% \comment{To include: give basic type theory syntactically---first the structural core, then constructors and various extensionality axioms.  Then give categorical equivalent; crucially, set $\DTT$ up as ess.\ alg.\ and show that extra rules/constructors are ess.\ alg.\ extensions.  Discuss the various constructions: dependent contexts, slicing, co-slicing.  Finally, discuss normalisation/canonicity!}
 
 \subsection*{Syntactic presentation}
 
@@ -156,7 +156,7 @@ Two less destructive variations on the $\Id$-elimination rule are also worth men
 
 Firstly, the dependent context $\Delta(x,y,u)$ which we have included in the premises is often omitted.  (Its inclusion is, in categorical terms, a Frobenius condition.) In the presence of $\Pi$-types, this is interderivable with our version ($\Delta$ can simply be curried over to the right-hand side).  In the absence of $\Pi$-types, the non-Frobenius version of the rule is simply not strong enough to be much use: one cannot even derive, for instance, the transitivity of propositional equality.
 
-Secondly, \todo{[ask Thorsten about reference for this!]} there is a ``one-ended'' form of $\Id$-$\elim$ (in contrast to which the version above may be seen as ``two-ended''):
+Secondly, \todo{[find reference for this!]} there is a ``one-ended'' form of $\Id$-$\elim$ (in contrast to which the version above may be seen as ``two-ended''):
 $$\inferrule*[right=$\Id$-$\elim^1$]{
 \Gamma \types a : A \\
 \Gamma,\, y : A,\, u : \Id_A(a,y),\, \w : \Delta(y,u)\ \types\ C(y,u,\w)\ \type \\
@@ -384,7 +384,7 @@ In particular, if $\stuff$ is any appropriate collection of the above rules, the
 
 In the case of all the rules above, theories over $\stuff$ are again models of an essentially algebraic theory extending the base theory of contextual CwA's.  This motivates the level of generality we work at: when we speak informally of a \emph{collection of rules/constructors} $\stuff$, what we mean formally is an algebraic theory extending the theory of contextual CwA's, with the same sorts.
 
-(This is not a terribly natural definition.  It allows type-theoretically unnatural constructions, e.g.\ rules which hold only over contexts of length 17, and the like; and, worse, important constructions such as the logical framework embedding cannot defined in this generality.  However, as a crude demarcation, it will suffice for the scope of the present work.) \todo{[Make sure this is really true! I know nothing substantial depends on the issue, but some phrasings may have to be restricted]}
+(This is not a terribly natural definition.  It allows type-theoretically unnatural constructions, e.g.\ rules which hold only over contexts of length 17, and the like; and, worse, important constructions such as the logical framework embedding cannot defined in this generality.  However, as a crude demarcation, it will suffice for the scope of the present work.) 
 
 This immediately gives us comparison functors between different categories of theories.  If $\stuff'$ is any collection of rules/constructors extending $\stuff$, then we have a map of algebraic theories, and hence an adjunction:
 $$\bfig 
@@ -472,7 +472,7 @@ This construction will be briefly but crucially useful to us, in \ref{cor:fund-c
 
 \begin{para} With some of our constructors, we can also construct \emph{co-slice theories}.  In a co-slice $\Theta \coslice \C$, an object is a map $g \colon \Theta \to \Gamma$ of $\C$ (a \emph{$\Theta$-pointed object of $\C$}); a map $(g,\Gamma) \to (d,\Delta)$ is a map $f \colon \Gamma \to \Delta$ of $\C$ with $fg = d$ (i.e.\ preserving the ``point''); and a type over $(g,\Gamma)$ is a type $A \in \Ty(\Gamma)$ together with a term $a$ of $g^*A$, or equivalently a point $(g,a) \colon \Theta \to \Gamma, A$ for which $\pi_{\Gamma;A} (g,a) = g$.  
 
-There is an obvious projection $\Theta \coslice \C \to \C$, forgetting points.
+There is an obvious functor $\Theta \coslice \C \to \C$, forgetting points.
 
 This construction preserves contextuality; it also extends to act on theories $\Id$-types, $\Sigma$-types, $\One$, and more generally inductive types with a single unary constructor; but it does \emph{not} extend to $\Pi$-types, nor to $\Bool$, $\Zero$, or most other type-formers.  This is familiar categorically: co-slices retain e.g.\ binary products and terminal objects, but not coproducts or exponentials.
 \end{para}
