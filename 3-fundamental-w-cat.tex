@@ -851,13 +851,18 @@ To do this, of course, we need to find some contractible operad of composition l
 
 We then show directly that this operad is indeed contractible, using a little specific analysis of the theory $\T_\Id[X]$, and discuss extensions of this result to larger operads.
 
-\subsection*{Construction of \texorpdfstring{$P_\Id$}{P\_ML\_Id}}
+\subsection*{Construction of \texorpdfstring{$P_\Id$}{P\_Id}}
 
-We saw above that for a type $A$ in any type theory $\T \in \DTT_\Id$, the contexts
+\begin{para} \label{para:dtt-endo-operad}We saw above that for a type $A$ in any type theory $\T \in \DTT_\Id$, the contexts
 $$x_0,y_0:A,\ x_1,y_1:\Id(x_0,y_0)\ldots,\ z:\Id(x_{n-1},y_{n-1}),$$
-and the dependent projections between them form a globular context $\A \colon  \G^\op \to \cl(\T)$.  We would like to describe the endomorphism operad of this object; however, $\cl(\T)$ does not have all finite limits in general, so we cannot immediately apply the $\Spans$ construction and the machinery of \ref{sec:endo-operads}.
+and the dependent projections between them form a globular context $\A \colon  \G^\op \to \T$.  (Following Michael Warren \cite{warren:thesis}, we will denote these contexts by $\uA_n$.)
 
-However, taking presheaves embeds $\cl(\T)$ into a category with the necessary limits, so we can certainly consider $\End_{\widehat{\cl(\T)}}( \yon \A)$.  Now, since the Yoneda embedding is full and faithful and preserves all existing limits, if we can show that all the limits $A_\pi$  exist in $\cl(\T)$, then we know that the description  to use the description of $\End_{\widehat{\cl(\T)}}(\A)$ given in \ref{para:endo-operads} may be applied directly in $\A$.  We thus use Proposition \ref{prop:dependent-projections-give-limits} to construct contexts $\Gamma_\pi$ exhibiting the limits $A_\pi$.
+We would like to describe the endomorphism operad of this object; unfortunately, $\T$ does not have all finite limits in general, so we cannot immediately apply the $\Spansplain$ construction and the machinery of \ref{def:endo-operads}.
+
+However, taking presheaves embeds $\T$ into a category with the necessary limits, so we can certainly consider $\End_{\widehat{\T}}( \yon \A)$.  Since the Yoneda embedding is full and faithful and preserves all existing limits, if we can show that all the limits $A_\pi$  exist in $\T$, then we know that the explicit description of $\End_{\widehat{\T}}(\yon \A)$  may be computed directly in $\A$:
+$$\End_{\widehat{\T}}(\yon \A)(\pi) \iso \Spans[\widehat{\T}]_n( (\yon \A)^\pi, \yon A_n) \iso \Spans[\T]_n(A^\pi,A_n)$$
+
+ We thus use Proposition \ref{prop:dependent-projections-give-limits} to construct contexts $\Gamma_\pi$ exhibiting the limits $A_\pi$.
 
 Accordingly, suppose we are given $\pi \in \pd_n$, with associated globular set $\hat{\pi}$.  There are various ways of putting a total order on the $i$-cells of $\hat{\pi}$ for each $i \leq n$; pick any such.  
 
@@ -870,17 +875,18 @@ For instance, $\Gamma_{(\bullet \rightarrow \bullet \rightarrow \bullet)}$ is th
 $$x,y,z:A,\ p:\Id_A(x,y),\ q:\Id_A(y,z)$$
 which we met back in \ref{para:fundamental-sketch}.
 
-Note that we also have projections $\src,\tgt \colon \Gamma_\pi \to \Gamma_{d \pi}$.
+Besides the contexts themselves, we of course also have source and target maps $\src,\tgt \colon \Gamma_\pi \to \Gamma_{d \pi}$, and so on.
+\end{para}
 
-\begin{lemma}The context $\x: \Gamma_\pi$, together with the obvious dependent projections, is the object $(\A)_\pi$ of Definition \ref{def:a-pi}; that is, $\Gamma_\pi = \lim_{c \in \int \pi} A_{\dim c}$.  Moreover, if $F \colon \T \to \S$ is a translation of type theories, then $\cl(F) \colon \cl(\T) \to \cl(\S)$ preserves this limit.
+\begin{lemma}The context $\x: \Gamma_\pi$, together with the obvious dependent projections, computes the limit $\Gamma_\pi = \lim_{c \in \int \pi} A_{\dim c}$.  Moreover, if $F \colon \T \to \S$ is a translation of type theories, then $\cl(F) \colon \T \to \cl(\S)$ preserves this limit.
 \end{lemma}
 \begin{proof}
 Immediate by Proposition~\ref{prop:dependent-projections-give-limits} 
 \end{proof}
 
-Thus the description of $\End_{\widehat{\cl(\T)}}( \yon \A)$ in terms of pylon diagrams in $\widehat{\cl(\T)}$ may be applied directly in $\cl(\T)$, using the contexts $\Gamma_\pi$; with this justification, we write it simply as $\End_\T(\A)$.
+Thus the description of $\End_{\widehat{\T}}( \yon \A)$ in terms of maps of spans in in $\widehat{\T}$ may be applied directly in $\T$, using the contexts $\Gamma_\pi$; with this justification, we write it simply as $\End_\T(\A)$.
 
-Let us unfold what this looks like in syntactic terms.  For $\pi \in \pd_n$, an element of $\End_\T(\A)(\pi)$ (a \emph{composition law for $\pi$}) consists of a map $h \colon \Gamma_\pi\to A_n$ in $\T$, and for $0 \leq k < n$, maps $f_k \colon \Gamma_{d^{n-k}(\pi)} \to A_k$ and $g_k \colon \Gamma_{d^{n-k}(\pi)} \to A_n$, commuting appropriately with the dependent projections.
+\begin{para}Let us unfold what this looks like in syntactic terms.  For $\pi \in \pd_n$, an element of $\End_\T(\A)(\pi)$ (a \emph{composition law for $\pi$}) consists of a map $h \colon \Gamma_\pi\to A_n$ in $\T$, and for $0 \leq k < n$, maps $f_k \colon \Gamma_{d^{n-k}(\pi)} \to A_k$ and $g_k \colon \Gamma_{d^{n-k}(\pi)} \to A_n$, commuting appropriately with the dependent projections.
 
 So, concretely, it is a sequence of terms $\vec h = ((f_i, g_i)_{0 \leq i < n}; h)$, such that
 \begin{eqnarray*}
@@ -896,30 +902,38 @@ So, concretely, it is a sequence of terms $\vec h = ((f_i, g_i)_{0 \leq i < n}; 
 The source of this is then the composition law $(f_0,g_0,\ldots, f_{n-1},g_{n-1};f_n) \in P(d(\pi))$, and its target is $(f_0,g_0,\ldots, f_{n-1},g_{n-1};g_n) \in P(d(\pi))$.
 
 We make no attempt here to formulate a syntactic description of the operad composition; to do so is straightforward, but notationally rather heavy-going.   In specific cases it is ``exactly what you would expect'': essentially just substitution, with modest assistance from the other structural rules.
+\end{para}
 
-\begin{definition} \label{defn:operad-p}As as special case of the above construction, we take 
+\begin{para}
+Following the approach outlined in the introduction, we wish to isolate the operad of composition operations which are derivable for \emph{all} types.  Consequently, we consider the theory $\T_\Id[X]$ of a generic type, given by the $\Id$-type rules together with just a single extra axiom:
+$$\inferrule{\ }{\diamond \types X\ \type}$$
+
+The genericity of $X$ becomes a universal mapping property of $\T_\Id[X]$: for any other theory $\S$ and closed type $A$ of $\S$, there is a unique translation $F_A \colon \T_Id[X] \to \S$ sending $X$ to $A$.
+\end{para}
+
+\begin{definition} \label{defn:operad-p}As as special case of construction of \ref{para:dtt-endo-operad}, we take 
 $$P_\Id := \End_{\T_\Id[X]}(\X),$$ the operad of all definable composition laws on the generic type. 
 \end{definition}
 
-For general $\T,A$, we cannot expect $\End_\T(\A)$ to be contractible: contractibility would imply for instance that any two elements of $\End_\T(\A)(\bullet)$ are connected by an element of $\End_\T(\A)(\bullet \to \bullet)$, or in other words that any two terms $x:A \types \tau(x), \tau'(x) : A$ are propositionally equal, which clearly may fail.
+\begin{para} \label{para:fundamental-contractibility-outline}For general $\T,A$, we should not expect $\End_\T(\A)$ to be contractible: contractibility implies for instance that any two elements of $\End_\T(\A)(\bullet)$ are connected by an element of $\End_\T(\A)(\bullet \to \bullet)$, or in other words that any two terms $x:A \types \tau(x), \tau'(x) : A$ are propositionally equal, which clearly wil usually fail.
 
-However, in the specific case of $P_\Id$, we do wish to show contractibility, since this is the operad which naturally acts on any type, and it seems plausible, since obvious counterexamples to contractibility such as the one above require assuming extra term-constructors for $A$ or its identity types.
+However, in the specific case of $P_\Id$, we do wish to show contractibility, since this is the operad which naturally acts on every type; and it seems plausible, since obvious counterexamples to contractibility such as the one above require assuming extra term-constructors for $A$ or its identity types.
 
 What precisely does contractibility mean, here?  For every pasting diagram $\pi$ and every parallel pair of composition laws $\vec f, \vec g  \in P_\Id(d(\pi))$, we need to find some filler $\vec h \in P_\Id(\pi)$, with $s(\vec h) = \vec f$, $t(\vec h) = \vec g$.
 
 Given $\pi$, such a parallel pair amounts to terms $(f_i,g_i)_{0 \leq i < n}$ as in the definition of a composition law for $\pi$, and a filler is a term $h$ completing the definition; that is, we seek to derive a judgment
 $$\x : \Gamma_\pi \types h (\x) : \Id ( f_{n-1}(\src\,\x), g_{n-1} (\tgt\,\x) ).$$
 
-Playing with small examples (the reader is strongly encouraged to try this---to derive, for instance, the composition and associativity terms mentioned in the introduction) suggests that we should be able to do this by applying $\Id$-\elim\ (possibly repeatedly, working bottom-up as usual) to the variables of identity types in $\Gamma_\pi$.  $\Id$-\elim\ says that to obtain $h$, it's enough to obtain it in the case where one of the variables is of the form $r(-)$, and its source and target variables are equal; and by repeated application, it's enough to obtain $h$ in the case where multiple higher cells have had identities plugged in in this way.
-
-\begin{center}\todo{[look out a deduction-tree package for giving an example here, if poss.]}\end{center}
+Playing with small examples (the reader is strongly encouraged to try this---to derive, for instance, the composition and associativity terms mentioned in \ref{intro-examples}) suggests that we should be able to do this by applying $\Id$-\elim\ (possibly repeatedly, working bottom-up as usual) to the variables of identity types in $\Gamma_\pi$.  $\Id$-\elim\ says that to obtain $h$, it's enough to obtain it in the case where one of the variables is of the form $r(-)$, and its source and target variables are equal; and by repeated application, it's enough to obtain $h$ in the case where multiple higher cells have had identities plugged in in this way.
+\todo{[look out a deduction-tree package for giving an example here, if poss.]}
 
 Now, since the terms $f_i,g_i$ have themselves been built up from just the $\Id$-rules, as we plug $r(-)$ terms into them and identify the lower variables, they should sooner or later collapse by $\Id$-\comp\ to be of the form $r^i(x)$ themselves.  Eventually, after applying $\Id$-\elim\ as far as possible, plugging in reflexivity terms for the higher variables and contracting all variables of type $X$ to a single $x:X$, the $f_i, g_i$ should \emph{all} reduce to reflexivity terms, and in particular $f_{n-1} = g_{n-1} = r^{n-1}(x)$, so we can take the desired filler to be
 $$x:X \types r^n(x) : \Id(r^{n-1}(x),r^{n-1}(x)).$$
 
 Below, we formalise this argument.  The crucial lemma is that the context $x:X$ is an initial object in $\cl(\T_\Id[X])$: that is, since any context $\Gamma$ in $\T_\Id[X]$ is built up just from $X$ and its higher identity types, there is always a unique way to substitute $x$ and its reflexivity terms $r^i(x)$ for all variables of $\Gamma$, and when we subsitute these in to any context morphism $f \colon \Gamma \to \Gamma'$, the result must again reduce to terms of this form.
+\end{para}
 
-\subsection*{\texorpdfstring{$X$}{X} is initial in \texorpdfstring{$\T_\Id[X]$}{ML\_Id[X]}} \label{subsec:initiality}
+\subsection*{A syntactic lemma: \texorpdfstring{$X$}{X} is initial in \texorpdfstring{$\T_\Id[X]$}{T\_Id[X]}} \label{subsec:initiality}
 
 \begin{lemma} \label{lemma:initiality} The context $x:X$ is an initial object in $\cl(\T_\Id[X])$; that is, for any closed context $\Gamma$ there is a unique context map $\ r^\Gamma \colon (x:X) \to \Gamma$. 
 \end{lemma}
@@ -942,7 +956,7 @@ $$\bfig
 \efig$$
 must commute.  In particular, when $\Delta = X$, this tells us (since $r^X = F_X(X) = 1_X$) that $f = r^\Gamma$ for any context morphism $f \colon X \to \Gamma$, so $X$ is initial as desired.
 
-(This is just an instance of the general categorical fact that given an object $X$ in a category $\C$ and natural maps $!_Y \colon X \to Y$ to every other object, such that $!_X = 1_X$, it follows that $X$ is initial.)
+(This last step is just an instance of the general categorical fact that given an object $X$ in a category $\C$ and natural maps $!_Y \colon X \to Y$ to every other object, such that $!_X = 1_X$, it follows that $X$ is initial.)
 \end{proof}
 
 \begin{proof}[Proof 2] For the syntactic proof, we work by structural induction---as, essentially, we must, since this is a property of the theory $\T_\Id[X]$ which can fail in extensions.
@@ -1084,7 +1098,7 @@ The cases for the other structural rules and $X$-\form\ are straightforward, sim
 
 We are now ready to show that $P_\Id$ is contractible, arguing along the lines sketched above.
 
-\begin{theorem}\label{theorem:p-is-contractible}The operad $P_\Id$ is contractible.
+\begin{theorem}\label{thm:p-is-contractible}The operad $P_\Id$ is contractible.
 \end{theorem}
 
 Once again, we offer both again an elementary syntactic argument and a categorical gloss of the same proof.
@@ -1119,19 +1133,70 @@ Thus it is enough to show the existence of fillers in the case where $\pi$ has j
 Unwinding this induction, we can see that it exactly formalises the process described at the start of Subsection \ref{subsec:initiality}, of repeatedly plugging in higher reflexivity terms for all variables, knowing that the given composites will themselves eventually compute down to higher reflexivity terms.
 
 \begin{proof}[Proof 2]
-According to the categorical description of an endomorphism operad, we need to show that \todo{[Complete this!]}
+According to the categorical description of an endomorphism operad, we need to show that for any pasting diagram $\pi$, given all components $(f_i,g_i {}_{i < n})$ of a map of spans as in \ref{pylon-diag} apart from the apex, we can find some apex map $h$ to complete it.
+
+For this it is enough to show that we can find a top edge for the square
+$$\bfig
+\node Gpi(0,400)[\Gamma_\pi]
+\node Gdpi(0,0)[\Gamma_{\delta \pi}]
+\node Xn(500,400)[\uX_n]
+\node Xn1(500,0)[\uX_{n-1}]
+\arrow/@{-|>}/[Gpi`Gdpi;]
+\arrow/@{.>}/[Gpi`Xn;]
+\arrow/@{-|>}/[Xn`Xn1;]
+\arrow[Gdpi`Xn1;{[f_i,g_i]}]
+\efig$$
+or, more generally, that we can complete any triangle of the form
+$$\bfig
+\node Gpi(-200,0)[\Gamma_\pi]
+\node Xn(500,400)[\uX_n]
+\node Xn1(500,0)[\uX_{n-1}]
+\arrow/@{.>}/[Gpi`Xn;]
+\arrow/@{-|>}/[Xn`Xn1;]
+\arrow[Gpi`Xn1;]
+\efig . $$
+
+This we show by induction on $\pi$.  In the case that $\pi$ is the trivial diagram, then, we are done by the initiality of $\Gamma_\pi = (x : X)$.
+
+Otherwise, consider $\Gamma_\pi \to/{-|>}/ \Gamma_{\pi^-}$.  By the descriptions of \ref{para:pruning-realisation}, this is a dependent projection, projecting away a term of identity type and its target, so by the one-ended form of $\Id$-$\elim$\footnote{A slightly more careful argument would of course show, as we saw in the syntactic version, that in fact the two-ended form also applies.}, it has a retraction $r$ with an elim-structure.  So now by induction, we can complete the triangle
+$$\bfig
+\node Gpim(-400,0)[\Gamma_{\pi^-}]
+\node Gpi(0,0)[\Gamma_\pi]
+\node Xn(500,400)[\uX_n]
+\node Xn1(500,0)[\uX_{n-1}]
+\arrow/@{|>->}/[Gpim`Gpi;r]
+\arrow/@{.>}/[Gpim`Xn;]
+\arrow/@{-|>}/[Xn`Xn1;]
+\arrow[Gpi`Xn1;]
+\efig$$
+then (seeing the result as a square) the elim-structure on $r$ gives us a filler for it, completing the triangle as desired.
 \end{proof}
 
-Note that in each version, Lemma \ref{lemma:initiality} was applied only at the base case of the induction, and only to show that terms $x:X \types f: \Id(r^n(x),r^n(x))$ must be equal to $r^{n+1}(x)$.  Two alternative approaches could have been taken at this point.  Firstly, we could have applied a normalisation/canonicity result for the theory to deduce that $f_i(x) = g_i(x) = r^i(x)$, i.e.\ that the final square in the second proof commutes. This approach is taken in the proof of \label{thm:ctrble-operad-for-id}.  Secondly, in theories for which normalisation/canonicity and the co-slice construction fail, or alternatively working directly over an arbitrary type (rather than the generic one) the full endomorphism operad may no longer be contractible; but we may still find a contractible sub-operad, by restricting to precisely those operations for which the required commutativity condition holds.  This is the approach taken in \cite{garner-van-den-berg}; we use a variation of it for \label{thm:ctrble-operad-for-piidelim} below.
+\begin{remarks} \label{remarks:fundamental}
+ In each version, Lemma \ref{lemma:initiality} was applied only at the base case of the induction, and only to show that terms $x:X \types f: \Id(r^n(x),r^n(x))$ must be equal to $r^{n+1}(x)$.  Two alternative approaches could have been taken at this point.  Firstly, we could have applied a normalisation/canonicity result for the theory to deduce that $f_i(x) = g_i(x) = r^i(x)$, i.e.\ that the final square in the second proof commutes. This approach is taken in the proof of \ref{thm:ctrble-operad-for-id}.  Secondly, in theories for which normalisation/canonicity and the co-slice construction fail, or alternatively working directly over an arbitrary type (rather than the generic one) the full endomorphism operad may no longer be contractible; but we may still find a contractible sub-operad, by restricting to precisely those operations for which the required commutativity condition holds.  This is the approach taken in \cite{garner-van-den-berg}; we use a variation of it for \ref{thm:ctrble-operad-for-piidelim} below.
+
+ Also, besides just pulling back $\Gamma_pi$ to $\Gamma_{\pi^-}$ in the categorical proof, we could have kept track of the boundaries as well
+$$\bfig
+\node Gpim(0,400)[\Gamma_{\pi^-}]
+\node Gdpim(0,0)[\Gamma_{\delta \pi^-}]
+\node Gpi(500,400)[\Gamma_\pi]
+\node Gdpi(500,0)[\Gamma_{\delta \pi}]
+\arrow/@{-|>}/[Gpim`Gpi;]
+\arrow[Gpim`Gdpim;]
+\arrow[Gpi`Gdpi;]
+\arrow[Gdpim`Gdpi;]
+\efig$$
+or even of the whole spans, as we did in the snytactic version.  While we have seen that these are not necessary here, this sort of thing can become useful in cases where we do not have enough left maps to continue until $\pi$ is fully contracted; again, cf.~the proof of \ref{thm:ctrble-operad-for-piidelim} below.
+\end{remarks}
 
 \subsection*{Types as weak \texorpdfstring{$\omega$}{omega}-categories} \label{subsec:payoff}
 
 Putting the above results together, we obtain our main goal:
 
-\begin{theorem}Let $\T \in \DTT_\Id$ be any type theory with identity types, $A$ a closed type of $\T$.  Then the globular context $\A$ carries the structure of a $P_\Id$-algebra in $\cl(\T)$.
+\begin{theorem}Let $\T \in \DTT_\Id$ be any type theory with identity types, $A$ a closed type of $\T$.  Then the globular context $\A$ carries the structure of an internal $P_\Id$-algebra in $\T$.
 \end{theorem}
 
-\begin{proof} By Proposition \ref{prop:universal-property}, there is a unique translation $F_A \colon  \T_\Id[X] \to \T$ taking $X$ to $A$, and hence taking $\X$ to $\A$.  By Proposition \ref{prop:endo-operad}, this induces an action of $P_\Id$ on $\A$, and so, since by Theorem \ref{theorem:p-is-contractible} $P_\Id$ admits a contraction, an action of $L$ (the initial operad-with-contraction) on $\A$, as desired. 
+\begin{proof} By Proposition \ref{prop:universal-property}, there is a unique translation $F_A \colon  \T_\Id[X] \to \T$ taking $X$ to $A$, and hence taking $\X$ to $\A$.  By the notes following \ref{def:endo-operad}, this induces an action of $P_\Id$ on $\A$, and so, since by Theorem \ref{thm:p-is-contractible} $P_\Id$ admits a contraction, an action of $L$ (the initial operad-with-contraction) on $\A$, as desired. 
 \end{proof}
 
 \begin{corollary}Let $\T$, $A$ be as above, $\Delta$ some (closed) context of $\T$.  Then the globular set of terms of types $A$, $\Id_A$, $\Id_{\Id_A}$, $\ldots$ in context $\Delta$ carries the structure of a $P_\Id$-algebra, and hence of a weak $\omega$-category.
@@ -1139,7 +1204,7 @@ Putting the above results together, we obtain our main goal:
 When $\Delta = \diamond$, this gives the \emph{fundamental weak $\omega$-category} of $A$ as advertised in the introduction.
 \end{corollary}
 
-\begin{proof} This is just the globular hom-set $\cl(\T)(\Delta,\A)$, so inherits a $P_\Id$-action, and hence an $L$-action, from the actions on $\A$.
+\begin{proof} This is just the globular hom-set $\T(\Delta,\A)$, so by \ref{para:homming-out}, it inherits a $P_\Id$-action, and hence an $L$-action, from the actions on $\A$.
 \end{proof}
 
 Using the ``contexts to types'' endofunctor $(-)^\Cxt \slice \diamond$ of \ref{para:cxts-to-types}, we can extend this:
@@ -1147,14 +1212,17 @@ Using the ``contexts to types'' endofunctor $(-)^\Cxt \slice \diamond$ of \ref{p
 \begin{corollary}Let $\Theta$, $\Delta$ be contexts of some theory $\T \in \DTT_\Id$.  Then the globular set of terms of context maps from $\Delta$ into $\Theta$ and its higher identity contexts carries a natural weak $\omega$-category structure.
 \end{corollary}
 
-\begin{proof} By applying the previous corollay to $\Gamma$, considered as a closed type of $\T^\Cxt \slice \diamond$.
+\begin{proof} By applying the previous corollary to $\Gamma$, considered as a closed type of $\T^\Cxt \slice \diamond$.
 \end{proof}
 
 Similarly, we may extend these to dependent types $A$ or contexts $\Theta$ over a base context $\Gamma$, by viewing them as closed types/contexts in the slice theory $\T \slice \Gamma$.
 
-\begin{remark}[Functoriality]  \todo{[Flesh out this remark better!]} The construction of the $P_\Id$-algebra $\cl(\T/\Gamma)(\Delta,\A)$ should be covariantly functorial in $\T$, and contravariantly in $\Gamma$ and $\Delta$.  That is, translations $\T \to \T'$ and context maps $\Gamma' \to \Gamma$, $\Delta' \to \Delta$ should induce \emph{strict} maps of $P_\Id$-algebras, composing appropriately.  A proof of this should be fairly straightforward, by an extension of the methods of the current paper; essentially, the missing ingredient is a treatment of maps of internal operad algebras.
+\begin{remark}[Functoriality]  The construction of the $P_\Id$-algebra $\T(\Delta,\A)$ is moreover covariantly functorial in $\T$, and contravariantly in $\Gamma$.  That is, translations $\T \to \T'$ and context maps $\Delta' \to \Delta$  induce \emph{strict} maps of $P_\Id$-algebras, composing appropriately.  However, both of these require somewhat more technical machinery to prove than we have developed here. The functoriality in $\T$ is perhaps most clearly seen by consudering the monoidal globular category $\FibSpans(\T)$ introduced in \cite{garner-van-den-berg}, of spans in $\T$ consisting entirely of dependent projections; then the algebras we have considered live within these monoidal categories, and a translation of theories induces a monoidal globular functor between them.  Both these functoriality results also require a treatment of maps of operad algebras in the endomorphism-operad presentation, and hence of some slightly more involved globular structures than the operads we have consdered so far.
 
-More subtly, it should be functorial in $A$, but only to \emph{weak} maps:  a map of types $A \to A'$ should induce \emph{weak} maps of $P_\Id$- or $L$-algebras---that is, weak $\omega$-functors.  This seems an altogether trickier question, due partly but not only to the lack, until fairly recently (\cite{garner:homomorphisms}), of a suitable definition of weak $\omega$-functor.
+More subtly, $\T(\Delta,\A)$ should be functorial in $A$, but only to \emph{weak} maps:  a map of types $A \to A'$ should induce \emph{weak} maps of $P_\Id$- or $L$-algebras---that is, weak $\omega$-functors.  This seems an altogether trickier question, due partly but not only to the lack, until fairly recently (\cite{garner:homomorphisms}), of a suitable definition of weak $\omega$-functor.  However, as this theory becomes better developed, the weak functoriality of $\T(\Delta,\A)$ in maps $f \colon A \to A'$ should become a corollary of the results of the next chapter: within the classifying $\omega$-category of the theory, this is just a whiskering operation between hom-$\omega$-categories
+$$\cl_\omega(\T)(\Delta,A) \to \cl_\omega(\T)(\Delta,A)$$
+and as such, should presumably be a weak functor.  Unfortunately, to the author's present knowledge, this whiskering statement (and similar results) do not yet appear in the literature; the theory of weak maps of operadic $\omega$-categories is as yet at a very early stage of development.
+
 \end{remark}
 
 \comment{Give groupoidality as well somewhere??}

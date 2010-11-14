@@ -152,7 +152,7 @@ $$\begin{array}{c}
 
 Both these eliminators essentially trivialise the higher-categorical structure with which we are principally concerned, so we will mainly consider theories without them; however, they will provide interesting comparisons at times.  In the case of the reflection rule, this trivialisation is immediate.  In the case of $\Kterm$, it is slightly less obvious; but it turns out that from $\Kterm$ we can derive the ``(propositional) uniqueness of identity proofs'' principle, asserting that all elements of any identity type are equal (\cite{streicher:habilitationsschrift}, \cite{warren:thesis}).  See \ref{para:j-and-k-homotopically} for an alternative point of view on $\Kterm$.
 
-Two less destructive variations on the $\Id$-elimination rule are worth mentioning; we will not use these as rules per se, but in Section \ref{sec:Jbar} and elsewhere we will discuss some analogous variations on other principles.
+Two less destructive variations on the $\Id$-elimination rule are also worth mentioning; we will not use these as rules per se, but in Section \ref{sec:Jbar} and elsewhere we will discuss some analogous variations on other principles.
 
 Firstly, the dependent context $\Delta(x,y,u)$ which we have included in the premises is often omitted.  (Its inclusion is, in categorical terms, a Frobenius condition.) In the presence of $\Pi$-types, this is interderivable with our version ($\Delta$ can simply be curried over to the right-hand side).  In the absence of $\Pi$-types, the non-Frobenius version of the rule is simply not strong enough to be much use: one cannot even derive, for instance, the transitivity of propositional equality.
 
@@ -187,13 +187,13 @@ $$
  $$ \inferrule*[right={$\Pi$-$\extrule$-$\comp$}]{\Gamma,\,x:A \types b : B }{\ \Gamma \types \extterm(\lambda x. b, \lambda x. b, \lambda x. r(b)) = r(\lambda x. b) : \Id (\lambda x. b, \lambda x. b)\ } 
 $$ 
 
- $$ \inferrule*[right={$\Pi$-$\extrule$-$\apprule$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \Gamma \types k : \Pi_{x : A} \Id_B(f \tightcdot x, g \tightcdot x) \\ \Gamma \types a : A}{\ \Gamma \types \mu(f,g,k,a) : \Id(\extterm(f,g,k) \star a , k \cdot a)\ }
+ $$ \inferrule*[right={$\Piextapp$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \Gamma \types k : \Pi_{x : A} \Id_B(f \tightcdot x, g \tightcdot x) \\ \Gamma \types a : A}{\ \Gamma \types \mu(f,g,k,a) : \Id(\extterm(f,g,k) \star a , k \cdot a)\ }
 $$ 
 
- $$ \inferrule*[right={$\Pi$-$\extrule$-$\apprule$-$\comp$}]{\Gamma,\,x:A \types b(x) : B(x) \\ \Gamma \types a : A}{\ \Gamma \types \mu(\lambda x. b(x), \lambda x. b(x), \lambda x. rb(x), a) = r(r(b(a))) : \Id_{B(a)} (b(a), b(a))\ } 
+ $$ \inferrule*[right={$\Piextapp$-$\comp$}]{\Gamma,\,x:A \types b(x) : B(x) \\ \Gamma \types a : A}{\ \Gamma \types \mu(\lambda x. b(x), \lambda x. b(x), \lambda x. rb(x), a) = r(r(b(a))) : \Id_{B(a)} (b(a), b(a))\ } 
 $$
 
- $$ \inferrule*[right={$\Pi$-$\extrule$-$\apprule$-$\defrule$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \Gamma \types k : \Pi_{x : A} \Id_B(f \tightcdot x, g \tightcdot x) \\ \Gamma \types a : A}{\ \Gamma \types \extterm(f,g,k) \star a = k \cdot a : \Id_{B}(f \tightcdot a, g \tightcdot a) }
+ $$ \inferrule*[right={$\Piextapp$-$\defrule$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \Gamma \types k : \Pi_{x : A} \Id_B(f \tightcdot x, g \tightcdot x) \\ \Gamma \types a : A}{\ \Gamma \types \extterm(f,g,k) \star a = k \cdot a : \Id_{B}(f \tightcdot a, g \tightcdot a) }
 $$ 
 
 When we consider theories with any of these propositional rules, the corresponding $\comp$ rule will always be included, even if not explicitly mentioned. 
@@ -233,7 +233,7 @@ $$ \Lterm(C,d, \lambda h, \lambda h, \lambda ( r \circ h)) = d(h) : C( \lambda h
 
 (Here $(x \tightcolon A)B(x)$ and $[x \tightcolon A] b(x)$ denote abstraction in the metalanguage.)
 
-\cite[5.11]{garner:on-the-strength} shows that (over the core $\Pi$-type rules) the rules $\PiIdelim$(-$\comp$) are inter-derivable with the conjunction of the first-order rules $\Pi$-$\extrule$(-$\comp$) and $\Pi$-$\extrule$-$\app$(-$\comp$).
+\cite[5.11]{garner:on-the-strength} shows that (over the core $\Pi$-type rules) the rules $\PiIdelim$(-$\comp$) are inter-derivable with the conjunction of the first-order rules $\Pi$-$\extrule$(-$\comp$) and $\Piextapp$(-$\comp$).
 \end{para}
 
 
@@ -443,7 +443,7 @@ Moreover, given $\Id$-types structure on $\C$, we can extend this to an $\Id$-ty
 
 Similar techniques let us lift $\Pi$-types from $\C$ to $\C^\Cxt$, and hence to lift $(-)^\Cxt$ to an endofunctor of $\CwA_\Pi$; likewise for $\Sigma$-types, the $\pi$-$\eta$ rules, and most other standard type-constructors.
 
-Matters are slightly subtler for the functional extensionality rules.  \todo{[Get a second opinion on this (RG has probably thought about it).]} $\Pi$-$\extrule$ alone does not seem to lift from $\C$ to $\C^\Cxt$; however, $\Pi$-$\extrule$ combined with either $\Pi$-$\extrule$-$\apprule$ or $\Pi$-$\extrule$-$\apprule$-$\defrule$ does lift.
+Matters are slightly subtler for the functional extensionality rules.  \todo{[Get a second opinion on this (RG has probably thought about it).]} $\Pi$-$\extrule$ alone does not seem to lift from $\C$ to $\C^\Cxt$; however, $\Pi$-$\extrule$ combined with either $\Piextapp$ or $\Piextapp$-$\defrule$ does lift.
 
 So for various sets of rules $\Phi$, we have an endofunctor $(-)^\Cxt$ on $\CwA^\Phi$.  However, this does not restrict to one on $\CwA_\cxl$: its result is almost never contextual, since adjoining two types $A$ and $B$ to a context in succesion has the same result as adjoining $(A,B)$ in one step, so (as long as the original theory had any types at all) there can be no well-defined notion of length.
 \end{para}
