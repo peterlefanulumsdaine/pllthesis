@@ -133,7 +133,7 @@
 % Cells of each dimension can be composed along a common boundary in any lower dimension, and in a \emph{strict} $\omega$-category, the composition satisfies various associativity, unit, and interchange laws, captured by the generalised associativity law: each labelled pasting diagram has a unique composite. (See illustrations in Fig.\ \ref{figure:assoc-laws}).
 % 
 % \begin{figure}
-% $$
+% \[
 % \begin{array}{c}
 % \begin{array}{cccc}
 % \ \xy
@@ -250,16 +250,16 @@
 % (\gamma \cdot_1 \alpha) \cdot_0 (\delta \cdot_1 \beta)\end{array}
 % \end{array}
 % \end{array}
-% $$
+% \]
 % \caption{Some cells, composites, and associativities in a strict $\omega$-category \label{figure:assoc-laws}} 
 % \end{figure}
 % 
 % In a weak $\omega$-category, we do not expect strict associativity, so may have multiple composites for a given pasting diagram, but we do demand that these composites agree up to cells of the next dimension (``up to homotopy''), and that these associativity cells satisfy certain coherence laws of their own, again up to cells of higher dimension, and so on.
 % 
 % This is exactly the situation we find in intensional type theory.  For instance, even in constructing a term witnessing the transitivity of identity---that is, a composition law for the pasting diagram $(\xymatrix{ \bullet \ar[r] & \bullet \ar[r] & \bullet })$, or explicitly a term $c$ such that 
-% $$x,y,z:X,\ p:\Id(x,y),\ q:\Id(y,z) \types c(q,p): \Id(x,z)$$
+% \[x,y,z:X,\ p:\Id(x,y),\ q:\Id(y,z) \types c(q,p): \Id(x,z)\]
 % ---one finds that there is no single canonical candidate: most obvious are the two equally natural terms $c_l$, $c_r$ obtained by applying ($\Id$-\elim) to $p$ or to $q$ respectively.  These are not definitionally equal, but are propositionally equal, i.e.\ equal up to a 2-cell: there is a term $e$ with
-% $$x,y,z:X,\ p:\Id(x,y),\ q:\Id(y,z) \types e(q,p): \Id(c_l(q,p),c_r(q,p)).$$
+% \[x,y,z:X,\ p:\Id(x,y),\ q:\Id(y,z) \types e(q,p): \Id(c_l(q,p),c_r(q,p)).\]
 % 
 % In Leinster's definition \cite{leinster:book}, a system of composition laws of this sort is wrapped up in the algebraic structure of a \emph{globular operad with contraction}, and a weak $\omega$-category is given by a globular set equipped with an \emph{action} of such an operad.  We generalise this slightly, to define an \emph{internal weak $\omega$-category} in any suitable category $\C$.
 % 
@@ -344,12 +344,12 @@
 % The only features perhaps needing comment are the explicit inclusion of exchange rules, and of the extra dependent context $\Delta$ in the $\Id$-rules; these are each natural rules, but often omitted since they are derivable in the presence of $\Pi$-types (as discussed on e.g.\ p.587 of \cite{jacobs:categorical-logic}).
 % 
 % Note that from $\exch$ and this $\Id$-\elim\ rule, we can derive a still slightly more general elimination rule $\Id$-$\elim^+$, as $\Id$-\elim\ but with context
-% $$\Gamma,\ x:A,\ \Delta,\ y:A,\ \Delta',\ p:\Id_A(x,y),\ \Delta''.$$
+% \[\Gamma,\ x:A,\ \Delta,\ y:A,\ \Delta',\ p:\Id_A(x,y),\ \Delta''.\]
 % 
 % To simplify notation when referring to iterated identity types, we introduce the notation (following Warren \cite{warren:thesis}) $\uA[n]$ for the $n$th iterated identity type of a type $A$; that is, if $\Gamma \types A\ \type$, then $\Gamma \types \uA[0] := A\ \type$, and inductively
 % \begin{samepage}
-% $$\Gamma,\ x_0,y_0:\uA[0],\ x_1,y_1:\uA[1](x_0,y_0),\ \ldots,\ x_n,y_n:\uA[n](x_0,y_0;\ldots ;x_{n-1},y_{n-1}) \qquad \quad$$
-% $$ \qquad \qquad \qquad \qquad \qquad \types \uA[n+1](x_0,y_0; \ldots ;x_n, y_n) := \Id_{\uA[n](x_0,\ldots)}(x_n,y_n)\ \type .$$
+% \[\Gamma,\ x_0,y_0:\uA[0],\ x_1,y_1:\uA[1](x_0,y_0),\ \ldots,\ x_n,y_n:\uA[n](x_0,y_0;\ldots ;x_{n-1},y_{n-1}) \qquad \quad\]
+% \[ \qquad \qquad \qquad \qquad \qquad \types \uA[n+1](x_0,y_0; \ldots ;x_n, y_n) := \Id_{\uA[n](x_0,\ldots)}(x_n,y_n)\ \type .\]
 % \end{samepage}
 % 
 % We will often omit the superscripts on these when unambiguous.  As usual, we will also be inconsistent in suppression of free variables, writing usually e.g.\ $\y : \Gamma \types A(\y)\ \type$ for clarity in simple cases, but sometimes $\Gamma \types A\ \type$ to avoid unmanageable proliferations of variables.
@@ -389,9 +389,9 @@
 % Suppose $\Gamma = \bigwedge_{i \in I} x_i:A_i$ is a context in $\T$, and $\F \subseteq \mathcal{P}(I)$ a set of subsets of $I$, closed under binary intersection and with $\bigcup \F = I$, such that for each $J \in \F$, $\Gamma_J = \bigwedge_{i \in J} x_i : A_i$ is also a well-formed context.
 % 
 %  Then the contexts $\Gamma_J\!$ and the dependent projections between them give a diagram 
-% $$\Gamma_{-} \colon (\F, \subseteq)^\op \to \cl(\T),$$
+% \[\Gamma_{-} \colon (\F, \subseteq)^\op \to \cl(\T),\]
 % and the dependent projections $\Gamma \to \Gamma_J$ express $\Gamma$ as its limit:
-% $$\Gamma = \lim \! {}_{J \in \F}\ \Gamma_J .$$
+% \[\Gamma = \lim \! {}_{J \in \F}\ \Gamma_J .\]
 % 
 % Moreover, for a translation $F\colon \T \to \T'$, the functor $\cl(F)$ preserves such limits. \qed
 % \end{proposition} 
@@ -399,7 +399,7 @@
 % Here \emph{dependent projections} are the obvious context morphisms from a context to any well-formed subcontext, constructed from the $\Vble$, $\wkg$ and $\exch$ rules.
 % 
 % A familiar special case asserts that if $\Gamma \types A\ \type$ and $\Gamma \types B\ \type$, then the following square of projections is a pullback:
-% $$ \xymatrix{ \Gamma, x:A, y:B \ar[r] \ar[d] & \Gamma ,y:B \ar[d] \\ \Gamma , x: A \ar[r] & \Gamma } $$
+% \[ \xymatrix{ \Gamma, x:A, y:B \ar[r] \ar[d] & \Gamma ,y:B \ar[d] \\ \Gamma , x: A \ar[r] & \Gamma } \]
 % The proof of the general proposition is essentially the same.
 % 
 % To relativise the constructions of this section to dependent types and contexts over a (closed) context $\Gamma = \bigwedge_{0 \leq i < n} x_i:A_i$ of $\T$, we can consider the \emph{slice type theory} $\T/\Gamma$, given by adjoining to $\T$ a ``generic term of type $\Gamma$'', i.e.\ $n$ new constant symbols $c_i$ and axioms $\types c_i : A_i(c_0,\ldots,c_{i-1})$.  Closed types (resp.\ terms, contexts) of $\T/\Gamma$ then correspond precisely to types (terms, contexts) of $\T$ in context $\Gamma$.
@@ -439,7 +439,7 @@
 % \subsection{Globular sets and operads}
 % 
 % A \emph{globular set} $\A$ is a presheaf on the category $\G$ generated by arrows
-% $$ 0 \two^{s_0}_{t_0} 1 \two^{s_1}_{t_1} 2 \two \ldots $$
+% \[ 0 \two^{s_0}_{t_0} 1 \two^{s_1}_{t_1} 2 \two \ldots \]
 % subject to the equations $ss = ts$, $st = tt$ (omitting subscripts on the arrows, as usual).  We thus have the category $\GSets := \longGSets$ of globular sets and natural transformations between them.  More generally, a \emph{globular object} in a category $\C$ is a functor $\A \colon  \G^\op \to \C$.  
 % 
 % Explicitly, a globular set $\A$ has a set $A_n$ of ``$n$-cells'' for each $n \in \N$, and each $(n+1)$-cell $x$ has parallel source and target $n$-cells $s(x)$, $t(x)$, as illustrated in the first line of Fig.~\ref{figure:assoc-laws}.  (Cells $x,y$ of dimension $>0$ are \emph{parallel} if $s(x) = s(y)$ and $t(x) = t(y)$; all $0$-cells are considered parallel.)  For parallel $x,y \in A_n$, we write $A(x,y) := \{ z \in A_{n+1}\ |\ s(z) = x, t(z) = y\}$, the set of $(n+1)$-cells from $x$ to $y$.
@@ -450,14 +450,14 @@
 % \end{exa}
 % 
 % \begin{exa}For any type $A$ in a type theory $\T$, the contexts 
-% $$x_0,y_0:A,\ x_1,y_1:\uA[1](x_0,y_0)\ldots,\ z:\uA[n](x_0,y_0\ldots, x_{n-1},y_{n-1}),$$
+% \[x_0,y_0:A,\ x_1,y_1:\uA[1](x_0,y_0)\ldots,\ z:\uA[n](x_0,y_0\ldots, x_{n-1},y_{n-1}),\]
 % along with their dependent projections, form a globular object $\A$ in $\cl(\T)$.
 % \end{exa}
 % 
 % Any strict $\omega$-category (as sketched in the introduction) has an evident underlying globular set, and in fact there is an adjunction (moreover monadic) $F: \GSets \two/->`<-/ \strwCat : U$, giving rise to the ``free strict $\omega$-category'' monad $(T,\mu,\eta)$ on $\GSets$.  Cells of $T\A$ are free (strictly associative) pastings-together of cells from $\A$, including degenerate pastings from the identity cells of $F(\A)$ (as shown in figure \ref{figure:pastings}).
 % 
 % \begin{figure}[htbp]
-% $$\begin{array}{c@{\ \ \ }c}
+% \[\begin{array}{c@{\ \ \ }c}
 % \begin{array}{c}
 % \ 
 % \xy
@@ -539,8 +539,8 @@
 % 1_f \cdot_0 \alpha \cdot_0 (\beta \cdot_1 \beta') \in TA_2
 % \end{array}
 % \end{array}
-% $$
-% $$(\mbox{for }a,b,\ldots \in A_0,\ f,g,\ldots \in A_1,\ \alpha,\beta,\ldots \in A_2)$$
+% \]
+% \[(\mbox{for }a,b,\ldots \in A_0,\ f,g,\ldots \in A_1,\ \alpha,\beta,\ldots \in A_2)\]
 % \caption{Some labelled pasting diagrams, elements of a free strict $\omega$-category $T\A$. \label{figure:pastings} } 
 % \end{figure}
 % 
@@ -632,7 +632,7 @@
 % % \end{figure}
 % 
 % A \emph{globular operad} is a globular set $P$ with maps $a\colon P \to \pd$ (``arity''), $e\colon  1 \to P$ (``units''), $m \colon  TP \times_{\pd} P \to P$ (``composition''), such that
-% $$\bfig
+% \[\bfig
 % \node 1(-250,-150)[1]
 % \node P(250,-150)[P]
 % \node \pd(0,-650)[\pd]
@@ -654,10 +654,10 @@
 % \arrow|l|/{@{>}@/_5pt/}/[TP`T\pd;Ta]
 % \arrow|l|/{@{>}@/_5pt/}/[T\pd`\pd'';\mu]
 % \arrow|r|[P'`\pd'';a]
-% \efig$$
+% \efig\]
 % commute (i.e.\ $e$ and $m$ are maps over $\pd$), satisfying the axioms 
-% $$m \cdot ( \eta \cdot e \times 1_P) = 1_P = m \cdot (\eta \times e) \colon  P \to P,$$
-% $$m \cdot (\mu \times m) = m \cdot (Tm \times 1_P) : T^2 P \times_{T^2 1} TP \times_{\pd} P \to P.$$
+% \[m \cdot ( \eta \cdot e \times 1_P) = 1_P = m \cdot (\eta \times e) \colon  P \to P,\]
+% \[m \cdot (\mu \times m) = m \cdot (Tm \times 1_P) : T^2 P \times_{T^2 1} TP \times_{\pd} P \to P.\]
 % 
 % Considering the fibers of $a$, we may view $P$ as a family of sets $P(\pi)$ of ``$\pi$-ary operations'' for each $\pi \in \pd$: an element $p$ of $P(\pi)$ is seen as a formal operation symbol, taking $\pi$-shaped labelled pasting diagrams as input and returning $n$-cells as output.  The map $e$ then gives us an $n$-cell ``identity'' operation for each $n$, while $m$ allows us to compose operations appropriately.
 % 
@@ -666,8 +666,8 @@
 % A map $f\colon P \to Q$ of globular operads is a map of underlying globular sets commuting with $a, e$ and $m$.
 % 
 % An \emph{action} of a globular operad $P$ on a globular set $A$ is a composition map $c\colon  TA \times_{\pd} P \to A$, satisfying 
-% $$ c \cdot (\eta \times e) = 1_A \colon  A \to A,$$
-% $$c \cdot (\mu \times m) = c \cdot (Tc \times 1_P) : T^2 A \times_{T^2 1} TP \times_{\pd} P \to A.$$
+% \[ c \cdot (\eta \times e) = 1_A \colon  A \to A,\]
+% \[c \cdot (\mu \times m) = c \cdot (Tc \times 1_P) : T^2 A \times_{T^2 1} TP \times_{\pd} P \to A.\]
 % 
 % Informally, this implements the ``formal operations'' in $P$ as actual composition operations on $A$.  An element of $TA \times_{\pd} P$ over some $\pi \in \pd_n$ is a $\pi$-shaped diagram $\vec x$ with labels from $A$, together with a $\pi$-ary operation $p$ of $P$; $c$ tells us how to apply $p$ to $\vec x$, yielding a single $n$-cell $c(\vec x, p)$ of $A$.
 % 
@@ -699,7 +699,7 @@
 % 
 % \begin{definition} \label{def:a-pi}
 % For a globular object $\A$ in a category $\C$, and a pasting diagram $\pi \in \pd_n$, we define
-% $$ A_\pi := \textstyle \lim_{c \in \int \pi} A_{\dim c}, $$
+% \[ A_\pi := \textstyle \lim_{c \in \int \pi} A_{\dim c}, \]
 % ``the object of diagrams of shape $\pi$ in $\A$'', whenever this limit exists in $\C$.  The maps $\hat{s}^k, \hat{t}^k\colon  \widehat{d^k pi} \to \hat{\pi}$ induce evident projections $s^k, t^k\colon  A_\pi \to A_{d^k \pi}$.
 % \end{definition}
 % 
@@ -739,10 +739,10 @@
 % 
 % \begin{proposition}\label{prop:endo-operad}
 % If $\A$ is a globular object in a category $\C$, and the objects $A_\pi$ exist, then there is an operad $\End_\cl(\A)$, the \emph{endomorphism globular operad of $\A$}, in which (for $\pi \in \pd_n$) an element of $\End_\cl(\A)(\pi)$ is a sequence of maps $(f_0, g_0;f_1,g_1;\ldots ,g_{n-1}; h)$,
-% $$h\colon A_\pi \to A_n, \qquad f_i, g_i\colon  A_{d^{n-i}\pi} \to A_i,$$
+% \[h\colon A_\pi \to A_n, \qquad f_i, g_i\colon  A_{d^{n-i}\pi} \to A_i,\]
 % commuting appropriately with the source and target maps, in the sense that
-% $$s \cdot f_i = s \cdot g_i = f_{i-1} \cdot s, \qquad s \cdot h = f_{n-1} \cdot s,$$
-% $$t \cdot f_i = t \cdot g_i = g_{i-1} \cdot t, \qquad t \cdot h = g_{n-1} \cdot t.$$
+% \[s \cdot f_i = s \cdot g_i = f_{i-1} \cdot s, \qquad s \cdot h = f_{n-1} \cdot s,\]
+% \[t \cdot f_i = t \cdot g_i = g_{i-1} \cdot t, \qquad t \cdot h = g_{n-1} \cdot t.\]
 % 
 % Moreover, if $F \colon  \C \to \D$ is a functor preserving the limits $A_\pi$, we can also construct $\End(FA)$, and there is a natural map of operads $\End(A) \to \End(FA)$.
 % \end{proposition}
@@ -755,10 +755,10 @@
 % This construction of the endomorphism operad is a straightforward generalisation of the topological case given in \cite[9.2.7]{leinster:book}.  The proof requires more technical background on globular operads from \cite{leinster:book} than can be recalled here; readers unfamiliar with this are encouraged to ``black-box'' this proof and skip to the last few paragraphs of the section.
 % 
 % Recall from \cite[6.4]{leinster:book} that if $S$ is a cartesian monad on a locally cartesian closed category $\E$, then any object $A$ of $\E$ has an \emph{endomorphism $S$-operad} $\End_S(A)$ given by the exponential in $\E/S1$ of the objects $SA \to S1$, $S1 \times A \to S1$; in the internal language of $\E$ this may be written as the dependent sum of exponentials:
-% $$ \End_S(A) = \textstyle \sum_{\pi : S1} [SA_\pi, A].$$
+% \[ \End_S(A) = \textstyle \sum_{\pi : S1} [SA_\pi, A].\]
 % 
 % Now, in the case of $(\GSets,T)$, this gives for any globular set $\A$ an endomorphism globular operad $\End_T(\A)$.  For $\pi \in \pd_n$, an operad element $p \in \End_T(\A)(\pi)$ then corresponds to a commutative triangle
-% $$\bfig
+% \[\bfig
 % \node yn(-300,0)[\yon(n)]
 % \node EndA(300,250)[\End_T(\A)]
 % \node \pd(300,-250)[T 1]
@@ -766,35 +766,25 @@
 % \arrow|l|[yn`\pd;\pi]
 % \arrow|r|[EndA`\pd;]
 % \efig
-% $$
+% \]
 % and hence, by the definition of $\End_T(\A)$ as a dependent sum of exponentials, to a map from the pullback
-% $$\bfig
-% \node TyApi(0,250)[\yon(n) \times_\pi T(\A)]
-% \node yn(-250,0)[\yon(n)]
-% \node TyA(250,0)[T(\A)]
-% \node \pd(0,-250)[\pd]
-% \arrow[TyApi`yn;]
-% \arrow[TyApi`TyA;]
-% \arrow[yn`\pd;\pi]
-% \arrow[TyA`\pd;]
-% \efig
-% $$ % Query: add pullback symbol?
+% \[\Delta: \E \two/->`<-/ \GSets : \Gamma,\] % Query: add pullback symbol?
 % into $\A$.  But this in turn corresponds to a map $\yon(n) \times_\pi T(\A) \to \yon(n) \times \A$ in $\GSets/\yon(n)$ and hence, via the equivalence $\GSets/\yon(n) \equiv [(\G/n)^\op,\Sets]$, to a map $\vec{h}\colon  A_{\leq \pi} \to A_{\leq n}$ as described above.
 % 
 % Now, given any category $\C$, consider the category $\E = [\C^\op, \GSets] \iso [(\C \times \G)^\op,\Sets] \iso [\G^\op, \widehat{\C}]$.   Composition with $T$ induces a cartesian monad $T^*$ on $\E$.  Since $\E$ is a presheaf category, it is locally cartesian closed; so any object $Y = Y(-)_\bullet$ of $\E$ has an endomorphism $T^*$-operad $\End_{T^*}(Y(-))$.
 % 
 % Moreover, there is an adjunction 
-% $$\Delta: \E \two/->`<-/ \GSets : \Gamma,$$
+% \[\Delta: \E \two/->`<-/ \GSets : \Gamma,\]
 % where $\Delta$ is the ``$\C$-constant functor'' functor given by $\Delta(\A)(C)_n = A_n$, and $\Gamma$ is ``$\G$-global sections'': $\Gamma(F)_n = \E(\Delta(\yon(n)),F)$.
 % 
 % Using the familial representability of $T$ and the fact that $\Gamma$ preserves limits, we have a cartesian lax map of cartesian monads $(\Gamma,\kappa)\colon  (\E,T^*) \to (\GSets,T)$, and hence an induced functor $\Gamma_* \colon  T^*$-$\Operads_\E \to T$-$\Operads_{\GSets}$.
 % 
 % \begin{definition}Now, any globular object $\A\colon  \G^\op \to \C$ gives an object $\yon(\A)$ of $\E$; we define
-% $$\End_\cl(\A) := \Gamma_* \End_{T^*}(\yon(\A)).$$
+% \[\End_\cl(\A) := \Gamma_* \End_{T^*}(\yon(\A)).\]
 % \end{definition}
 % 
 % As in the case $\E = \GSets$, we wish to show that this agrees with the explicit description of $\End_\cl(\A)$ given in Proposition \ref{prop:endo-operad}.  Again, an element $p \in \End_\cl(\A)(\pi)$ is by definition a triangle in $\GSets$:
-% $$\bfig
+% \[\bfig
 % \node yn(-300,0)[\yon(n)]
 % \node EndA(300,250)[\Gamma_* \End_{T^*}(\yon(\A))]
 % \node \pd(300,-250)[\Gamma_* T^* 1]
@@ -802,15 +792,15 @@
 % \arrow|l|[yn`\pd;\pi]
 % \arrow|r|[EndA`\pd;]
 % \efig
-% $$
+% \]
 % which corresponds, by the adjunction $\Delta \dashv \Gamma$ and the definition of $\End_{T^*}(C)$, to a map
 % $\Delta(\yon(n)) \times_{\Delta(\pi)} T^*(\yon(\A)) \to \Delta(\yon(n)) \times \yon(\A)$
 % 
-% Since all limits and colimits are pointwise, this corresponds to a family of maps $$\yon(n) \times_{\pi} T (\cl(C,\A)) \to \yon(n) \times T^*(\cl(C,\A))$$
+% Since all limits and colimits are pointwise, this corresponds to a family of maps \[\yon(n) \times_{\pi} T (\cl(C,\A)) \to \yon(n) \times T^*(\cl(C,\A))\]
 % natural in $C$, so (as before) to a natural family of maps
-% $$\vec h_C\colon  \cl(C,\A)_{\leq \pi} \to \cl(C,\A)_{\leq n},$$
+% \[\vec h_C\colon  \cl(C,\A)_{\leq \pi} \to \cl(C,\A)_{\leq n},\]
 % i.e.\ to a map
-% $$\vec h_{(-)}\colon  \yon(\A)_{\leq \pi} \to \yon(\A)_{\leq n}.$$
+% \[\vec h_{(-)}\colon  \yon(\A)_{\leq \pi} \to \yon(\A)_{\leq n}.\]
 % 
 % But since $\yon$ is full and faithful and preserves all existing limits, if the objects $A_\pi$ exist in $\C$ then this corresponds in turn to a map $\vec h\colon  A_{\leq \pi} \to A_{\leq n}$, as desired. \qed
 % 
@@ -854,13 +844,13 @@ We then show directly that this operad is indeed contractible, using a little sp
 \subsection*{Construction of \texorpdfstring{$P_\Id$}{P\_Id}}
 
 \begin{para} \label{para:dtt-endo-operad}We saw above that for a type $A$ in any type theory $\T \in \DTT_\Id$, the contexts
-$$x_0,y_0:A,\ x_1,y_1:\Id(x_0,y_0)\ldots,\ z:\Id(x_{n-1},y_{n-1}),$$
+\[x_0,y_0:A,\ x_1,y_1:\Id(x_0,y_0)\ldots,\ z:\Id(x_{n-1},y_{n-1}),\]
 and the dependent projections between them form a globular context $\A \colon  \G^\op \to \T$.  (Following Michael Warren \cite{warren:thesis}, we will denote these contexts by $\uA_n$.)
 
 We would like to describe the endomorphism operad of this object; unfortunately, $\T$ does not have all finite limits in general, so we cannot immediately apply the $\Spansplain$ construction and the machinery of \ref{def:endo-operads}.
 
 However, taking presheaves embeds $\T$ into a category with the necessary limits, so we can certainly consider $\End_{\widehat{\T}}( \yon \A)$.  Since the Yoneda embedding is full and faithful and preserves all existing limits, if we can show that all the limits $A_\pi$  exist in $\T$, then we know that the explicit description of $\End_{\widehat{\T}}(\yon \A)$  may be computed directly in $\A$:
-$$\End_{\widehat{\T}}(\yon \A)(\pi) \iso \Spans[\widehat{\T}]_n( (\yon \A)^\pi, \yon A_n) \iso \Spans[\T]_n(A^\pi,A_n)$$
+\[\End_{\widehat{\T}}(\yon \A)(\pi) \iso \Spans[\widehat{\T}]_n( (\yon \A)^\pi, \yon A_n) \iso \Spans[\T]_n(A^\pi,A_n)\]
 
  We thus use Proposition \ref{prop:dependent-projections-give-limits} to construct contexts $\Gamma_\pi$ exhibiting the limits $A_\pi$.
 
@@ -869,10 +859,10 @@ Accordingly, suppose we are given $\pi \in \pd_n$, with associated globular set 
 (Indeed, a canonical choice is given by the $\blacktriangleleft$ ordering of \cite{street:petit-topos}, induced by the description of $\widehat{\pi}$ via the Batanin tree of $\pi$ as described in \ref{para:batanin-trees} above.  This choice has some good compatibility between the orderings on different pasting diagrams, which will later spare us some use of $\exch$ rules, so for simplicity we will assume it is the ordering chosen; however, this is purely cosmetic, and any other choice of orderings could also be used.)
 
 Then take $\Gamma_\pi$ to be the context
-$$\bigwedge_{c \in \hat{\pi}_0} x_c\! :\! A,\ \bigwedge_{c \in \hat{\pi}_1} x_c\! :\! \Id(x_{s(c)},x_{t(c)}),\ \ldots\ \bigwedge_{c \in \hat{\pi}_n} x_c\! :\! \Id(x_{s(c)},x_{t(c)}).$$
+\[\bigwedge_{c \in \hat{\pi}_0} x_c\! :\! A,\ \bigwedge_{c \in \hat{\pi}_1} x_c\! :\! \Id(x_{s(c)},x_{t(c)}),\ \ldots\ \bigwedge_{c \in \hat{\pi}_n} x_c\! :\! \Id(x_{s(c)},x_{t(c)}).\]
 
 For instance, $\Gamma_{(\bullet \rightarrow \bullet \rightarrow \bullet)}$ is the context
-$$x,y,z:A,\ p:\Id_A(x,y),\ q:\Id_A(y,z)$$
+\[x,y,z:A,\ p:\Id_A(x,y),\ q:\Id_A(y,z)\]
 which we met back in \ref{para:fundamental-sketch}.
 
 Besides the contexts themselves, we of course also have source and target maps $\src,\tgt \colon \Gamma_\pi \to \Gamma_{d \pi}$, and so on.
@@ -906,13 +896,13 @@ We make no attempt here to formulate a syntactic description of the operad compo
 
 \begin{para}
 Following the approach outlined in the introduction, we wish to isolate the operad of composition operations which are derivable for \emph{all} types.  Consequently, we consider the theory $\T_\Id[X]$ of a generic type, given by the $\Id$-type rules together with just a single extra axiom:
-$$\inferrule{\ }{\diamond \types X\ \type}$$
+\[\inferrule{\ }{\diamond \types X\ \type}\]
 
 The genericity of $X$ becomes a universal mapping property of $\T_\Id[X]$: for any other theory $\S$ and closed type $A$ of $\S$, there is a unique translation $F_A \colon \T_Id[X] \to \S$ sending $X$ to $A$.
 \end{para}
 
 \begin{definition} \label{defn:operad-p}As as special case of construction of \ref{para:dtt-endo-operad}, we take 
-$$P_\Id := \End_{\T_\Id[X]}(\X),$$ the operad of all definable composition laws on the generic type. 
+\[P_\Id := \End_{\T_\Id[X]}(\X),\] the operad of all definable composition laws on the generic type. 
 \end{definition}
 
 \begin{para} \label{para:fundamental-contractibility-outline}For general $\T,A$, we should not expect $\End_\T(\A)$ to be contractible: contractibility implies for instance that any two elements of $\End_\T(\A)(\bullet)$ are connected by an element of $\End_\T(\A)(\bullet \to \bullet)$, or in other words that any two terms $x:A \types \tau(x), \tau'(x) : A$ are propositionally equal, which clearly wil usually fail.
@@ -922,13 +912,13 @@ However, in the specific case of $P_\Id$, we do wish to show contractibility, si
 What precisely does contractibility mean, here?  For every pasting diagram $\pi$ and every parallel pair of composition laws $\vec f, \vec g  \in P_\Id(d(\pi))$, we need to find some filler $\vec h \in P_\Id(\pi)$, with $s(\vec h) = \vec f$, $t(\vec h) = \vec g$.
 
 Given $\pi$, such a parallel pair amounts to terms $(f_i,g_i)_{0 \leq i < n}$ as in the definition of a composition law for $\pi$, and a filler is a term $h$ completing the definition; that is, we seek to derive a judgment
-$$\x : \Gamma_\pi \types h (\x) : \Id ( f_{n-1}(\src\,\x), g_{n-1} (\tgt\,\x) ).$$
+\[\x : \Gamma_\pi \types h (\x) : \Id ( f_{n-1}(\src\,\x), g_{n-1} (\tgt\,\x) ).\]
 
 Playing with small examples (the reader is strongly encouraged to try this---to derive, for instance, the composition and associativity terms mentioned in \ref{intro-examples}) suggests that we should be able to do this by applying $\Id$-\elim\ (possibly repeatedly, working bottom-up as usual) to the variables of identity types in $\Gamma_\pi$.  $\Id$-\elim\ says that to obtain $h$, it's enough to obtain it in the case where one of the variables is of the form $r(-)$, and its source and target variables are equal; and by repeated application, it's enough to obtain $h$ in the case where multiple higher cells have had identities plugged in in this way.
 % \todo{[look out a deduction-tree package for giving an example here, if poss.]}
 
 Now, since the terms $f_i,g_i$ have themselves been built up from just the $\Id$-rules, as we plug $r(-)$ terms into them and identify the lower variables, they should sooner or later collapse by $\Id$-\comp\ to be of the form $r^i(x)$ themselves.  Eventually, after applying $\Id$-\elim\ as far as possible, plugging in reflexivity terms for the higher variables and contracting all variables of type $X$ to a single $x:X$, the $f_i, g_i$ should \emph{all} reduce to reflexivity terms, and in particular $f_{n-1} = g_{n-1} = r^{n-1}(x)$, so we can take the desired filler to be
-$$x:X \types r^n(x) : \Id(r^{n-1}(x),r^{n-1}(x)).$$
+\[x:X \types r^n(x) : \Id(r^{n-1}(x),r^{n-1}(x)).\]
 
 Below, we formalise this argument.  The crucial lemma is that the context $x:X$ is an initial object in $\cl(\T_\Id[X])$: that is, since any context $\Gamma$ in $\T_\Id[X]$ is built up just from $X$ and its higher identity types, there is always a unique way to substitute $x$ and its reflexivity terms $r^i(x)$ for all variables of $\Gamma$, and when we subsitute these in to any context morphism $f \colon \Gamma \to \Gamma'$, the result must again reduce to terms of this form.
 \end{para}
@@ -946,14 +936,14 @@ We give here two proofs of this lemma; or rather, the same proof in two forms.  
 By the universal property of $\T_\Id[X]$, the object $1_X \colon X \to X$ of the coslice CwA $X \coslice \T_\Id[X]$ induces a translation $F_X \colon \T_\Id[X] \to X \coslice \T_\Id[X]$ sending $X$ to $1_X$.  The composition of this with the forgetful functor $U \colon X \coslice \T_\Id[X] \to \T_\Id[X]$ is an endofunctor of $\T_\Id[X]$ which fixes $X$, and hence (by the universal property again) is the identity.  
 
 Thus for any context $\Gamma$ of $\T_\Id$, $F_X(\Gamma)$ is some context map $r^\Gamma \colon X \to \Gamma$, and for any context map $f \colon \Delta \to \Gamma$, $F_X(f)$ must be just $f$ itself viewed as a map of $X \coslice \T_\Id[X]$, so every triangle
-$$\bfig
+\[\bfig
 \node X(0,200)[X]
 \node D(500,0)[\Delta]
 \node G(500,400)[\Gamma]
 \arrow|a|[X`G;r^\Gamma]
 \arrow|b|[X`D;r^\Delta]
 \arrow|r|[D`G;f]
-\efig$$
+\efig\]
 must commute.  In particular, when $\Delta = X$, this tells us (since $r^X = F_X(X) = 1_X$) that $f = r^\Gamma$ for any context morphism $f \colon X \to \Gamma$, so $X$ is initial as desired.
 
 (This last step is just an instance of the general categorical fact that given an object $X$ in a category $\C$ and natural maps $!_Y \colon X \to Y$ to every other object, such that $!_X = 1_X$, it follows that $X$ is initial.)
@@ -962,7 +952,7 @@ must commute.  In particular, when $\Delta = X$, this tells us (since $r^X = F_X
 \begin{proof}[Proof 2] For the syntactic proof, we work by structural induction---as, essentially, we must, since this is a property of the theory $\T_\Id[X]$ which can fail in extensions.
 
 So, given any derivation $\delta$ of a judgement $J$ in $\T_\Id[X]$, we recursively derive various terms and/or judgments, depending on the form of $J$, assuming that we have already done so for all sub-derivations of $\delta$.  The form of the terms and judgements we derive will depend on the form of J as follows:
-$$\begin{array}{|c|c|c|c}
+\[\begin{array}{|c|c|c|c}
 \cline{1-3} \rule[-1ex]{0ex}{3.1ex}
 J & \textrm{term} & \textrm{judgement} & \\ 
 
@@ -978,7 +968,7 @@ J & \textrm{term} & \textrm{judgement} & \\
 \cline{1-3}  \rule[-1ex]{0ex}{3.5ex} 
 \y:\Gamma \types \tau(\y) = \tau'(\y) : A(\y) & - & - & \\ 
 
-\cline{1-3} \end{array}$$
+\cline{1-3} \end{array}\]
 
 Here, for a context $\Gamma\ =\ y_0:A_0, \ldots, y_n : A_n(\y_{< n})$, we write $\r^\Gamma$ for the context map $(x:X) \to \Gamma$ consisting of the terms $r^{\types\,A_0}(x) : A_0$, $r^{A_0\, \types\, A_1}(x) : A_1(r^{\types\,A_0}(x))$, \ldots %, $r^{\Gamma_{<n}\, \types\, A_n(\y_{<n})}(x) : A_n(\r^{\Gamma_{<n}}(x))$.
 
@@ -994,24 +984,24 @@ As usual, the induction proceeds by cases on the last rule used in the derivatio
 
 Our definitions for the $\subst$-\typerule\ and $\wkg$-\typerule\ cases ensure, as usual, that the terms constructed do not depend on the derivation of the judgement used.  As warned earlier, we will vary for readability between showing dependent variables and leaving them implicit, and hence also between the notations $A(f(\x))$ and $f^*A$ for substitution.
 
-% $$\textrm{Given }\left\{ \begin{array}{l} \y:\Gamma \types A(\y)\ \type \\ \y:\Gamma \types A(\y) = A'(\y) \ \type \\ \y:\Gamma \types \tau(\y) : A(\y) \end{array} \right. \textrm{ we derive } \left\{ \begin{array}{l} 
+% \[\textrm{Given }\left\{ \begin{array}{l} \y:\Gamma \types A(\y)\ \type \\ \y:\Gamma \types A(\y) = A'(\y) \ \type \\ \y:\Gamma \types \tau(\y) : A(\y) \end{array} \right. \textrm{ we derive } \left\{ \begin{array}{l} 
 % x:X \types r^{\Gamma \,\types\, A} : A(r^\Gamma) \\
 % x:X \types r^{\Gamma \,\types\, A} = r^{\Gamma \,\types\, A'} : A(r^\Gamma) \\ 
-% x:X \types \tau(r^\Gamma) = r^{\Gamma \,\types\, A} : A(r^\Gamma) \end{array} \right. $$
+% x:X \types \tau(r^\Gamma) = r^{\Gamma \,\types\, A} : A(r^\Gamma) \end{array} \right. \]
 % %% }} (to match the ones matched by \right.)
 % 
 % The context morphism $r^\Gamma \colon (x:X) \to \Gamma$ is built up inductively, by
-% $$r^{\Gamma, y: A} = r^\Gamma, r^{\Gamma \,\types\, A}.$$
+% \[r^{\Gamma, y: A} = r^\Gamma, r^{\Gamma \,\types\, A}.\]
 % The above judgments then ensure that this is the unique context from $(x:X)$ to $\Gamma$, by induction on the length of $\Gamma$.
 % 
 % The induction is essentially routine.  As ever, given a judgment, we work by cases, depending on its last rule. We give here the cases for the $\wkg$-\typerule, $\Id$- and $\subst$-\typerule\ rules.\\ 
 
 ($X$-\form): in the easiest case, our derivation consists of just the axiom $X$-form
-$$\inferrule*[right=$X$-\form]{\ }{ \types X\ \type}$$
+\[\inferrule*[right=$X$-\form]{\ }{ \types X\ \type}\]
 and so defining $r^{\types\,X}(X) := x$, we have $x:X \types x: X\ \type$ as needed. \miniqed
 
 ($\wkg$-\typerule): Given a derivation ending
-$$\inferrule*[right=$\wkg$-\typerule]{\Gamma \types A\ \type \\ \Gamma \types B\ \type}{\Gamma,\ y:A \types B\ \type}$$
+\[\inferrule*[right=$\wkg$-\typerule]{\Gamma \types A\ \type \\ \Gamma \types B\ \type}{\Gamma,\ y:A \types B\ \type}\]
 we inductively already have 
 $x:X \types r^{\Gamma \,\types\, B} : (r^\Gamma)^*B $,
 and by the $\subst$ rules,
@@ -1019,29 +1009,29 @@ $ x:X \types (r^\Gamma)^*B = (r^{\Gamma, y:A})^*B\ \type$,
 so by equality rules we conclude
 $ x:X \types r^{\Gamma \,\types\, B} : (r^{\Gamma,y:A})^*B $
 and hence, by $\wkg$-\termrule{}, can set
-$$r^{\Gamma,y:A \,\types\, B} := r^{\Gamma \,\types\, B}.$$
+\[r^{\Gamma,y:A \,\types\, B} := r^{\Gamma \,\types\, B}.\]
 \miniqed 
 
 ($\Id$-\form): Given a derivation ending
-$$\inferrule*[right=$\Id$-\form]{\Gamma \types A\ \type}{\Gamma,\ y,y':A \types \Id_A(y,y')\ \type}$$
+\[\inferrule*[right=$\Id$-\form]{\Gamma \types A\ \type}{\Gamma,\ y,y':A \types \Id_A(y,y')\ \type}\]
 we need to find a term
-$$x:X \types r^{\Gamma,y,y':A \,\types\, \Id_A(y,y')} : \Id_{(r^\Gamma)^*A}(r^{\Gamma \,\types\, A},r^{\Gamma,y:A \,\types\, A})$$
+\[x:X \types r^{\Gamma,y,y':A \,\types\, \Id_A(y,y')} : \Id_{(r^\Gamma)^*A}(r^{\Gamma \,\types\, A},r^{\Gamma,y:A \,\types\, A})\]
 But $\Gamma, y:A \types A\ \type$ may be derived using weakening, and so by our construction for $\wkg$-\typerule\ above, $r^{\Gamma,y:A \,\types\, A} = r^{\Gamma \,\types\, A}$, so we have
-$$x:X \types r(r^{\Gamma \,\types\, A}) : \Id_{(r^\Gamma)^*A}(r^{\Gamma \,\types\, A},r^{\Gamma,y:A \,\types\, A})$$
+\[x:X \types r(r^{\Gamma \,\types\, A}) : \Id_{(r^\Gamma)^*A}(r^{\Gamma \,\types\, A},r^{\Gamma,y:A \,\types\, A})\]
 and so can set
-$$r^{\Gamma, y,y':A \,\types\, \Id_A(y,y')} := r(r^{\Gamma \,\types\, A}). $$
+\[r^{\Gamma, y,y':A \,\types\, \Id_A(y,y')} := r(r^{\Gamma \,\types\, A}). \]
 \miniqed
 
 ($\Id$-\intro): Now we are given a derivation with last step
-$$\inferrule*[right=$\Id$-\intro]{\Gamma \types A\ \type}{\Gamma,\ y:A \types r(y):\Id_A(y,y)}$$
+\[\inferrule*[right=$\Id$-\intro]{\Gamma \types A\ \type}{\Gamma,\ y:A \types r(y):\Id_A(y,y)}\]
 and wish to show
-$$x:X \types r(r^{\Gamma \,\types\, A}) = r^{\Gamma, y,y:A \,\types\, \Id_A(y,y)} : (r^\Gamma)^* A.$$
+\[x:X \types r(r^{\Gamma \,\types\, A}) = r^{\Gamma, y,y:A \,\types\, \Id_A(y,y)} : (r^\Gamma)^* A.\]
 But by our construction of $r^{\Gamma, y,y':A \,\types\, \Id_A(y,y')}$ above (our $\Id$-\form\ case), and of $r^{\Gamma, y:A \,\types\, \Id_A(y,y)}$ from it (our $\contr$-\typerule\ case), this is just the definition of $r^{\Gamma, y,y:A \,\types\, \Id_A(y,y)}$. \miniqed 
 
 % \ %phantom paragraph commented as there's a page break
 
 ($\Id$-\elim): Here, we are given a derivation ending
-$$\inferrule*[right=$\Id$-\elim]{\Gamma,\ y,y':A,\ p:\Id_A(y,y'),\ \Delta(y,y',p) \types C(y,y',p)\ \type \\ \Gamma,\ z:A,\ \Delta(z,z,r(z)) \types d(z):C(z,z,r(z))}{\Gamma,\ y,y':A,\ p:\Id_A(y,y'),\ \Delta(y,y',p) \types \idelim{z}{d}{y}{y'}{p} : C(y,y',p)};$$
+\[\inferrule*[right=$\Id$-\elim]{\Gamma,\ y,y':A,\ p:\Id_A(y,y'),\ \Delta(y,y',p) \types C(y,y',p)\ \type \\ \Gamma,\ z:A,\ \Delta(z,z,r(z)) \types d(z):C(z,z,r(z))}{\Gamma,\ y,y':A,\ p:\Id_A(y,y'),\ \Delta(y,y',p) \types \idelim{z}{d}{y}{y'}{p} : C(y,y',p)};\]
 for readability, we assume $\Delta$ is empty.  We want to derive the judgement
 \begin{eqnarray*} x:X \types (r^{\Gamma, y,y':A, p:\Id(y,y')})^* (\idelim{z}{d}{y}{y'}{p}) & = & r^{\Gamma, y,y':A, p:\Id(y,y') \,\types\, C(y,y',p)} \\
 & & \qquad : (r^{\Gamma, y,y':A, p:\Id(y,y')})^*C.
@@ -1068,9 +1058,9 @@ If $\Delta$ in the application of $\Id$-\elim\ is non-empty, we have a few more 
 ($\subst$-\typerule): For this case we will need one more piece of notation, generalising the context maps $\r^\Gamma$: for a dependent context $\Delta = \bigwedge_i A_i$ over $\Gamma$, we write $r^{\Gamma \,\types\, \Delta} \colon (x:X) \to (r^\Gamma)^* \Delta$ for the map built up from terms $r^{\Gamma, \Delta_{< i} \,\types\, A_{i}}$ in the obvious way.
 
 So, we are given a derivation ending with the rule
-$$\inferrule*[right=$\subst$-\typerule]{\Gamma,\ y:A,\ \Delta \types B\ \type \\ \Gamma \types f:A}{\Gamma,\ f^*\Delta \types f^*B\ \type}$$
+\[\inferrule*[right=$\subst$-\typerule]{\Gamma,\ y:A,\ \Delta \types B\ \type \\ \Gamma \types f:A}{\Gamma,\ f^*\Delta \types f^*B\ \type}\]
 and we wish to derive a judgement
-$$x:X \types r^{\Gamma,f^*\Delta \,\types\, f^*B} : (f^{\Gamma,f^*\Delta})^*(f^*B).$$
+\[x:X \types r^{\Gamma,f^*\Delta \,\types\, f^*B} : (f^{\Gamma,f^*\Delta})^*(f^*B).\]
 
 Unfolding the definition of the desired type, we have \\
 
@@ -1104,27 +1094,27 @@ We are now ready to show that $P_\Id$ is contractible, arguing along the lines s
 Once again, we offer both again an elementary syntactic argument and a categorical gloss of the same proof.
 
 \begin{proof}[Proof 1] As described above, this amounts to the statement: for every $n \in \N$ and pasting diagram $\pi \in \pd_n$, and every sequence $(f_i,g_i)_{i<n}$ of terms such that
-$$\x : \Gamma_{d^{n}(\pi)} \types f_0(\x),\,g_0(\x): X $$
-$$\x : \Gamma_{d^{n-i}(\pi)} \types f_i(\x),\,g_i(\x) : \Id (f_{i-1}(\src\, \x),g_{i-1}(\tgt\, \x))$$
+\[\x : \Gamma_{d^{n}(\pi)} \types f_0(\x),\,g_0(\x): X \]
+\[\x : \Gamma_{d^{n-i}(\pi)} \types f_i(\x),\,g_i(\x) : \Id (f_{i-1}(\src\, \x),g_{i-1}(\tgt\, \x))\]
 ($i < n$) are derivable in $\T_\Id[X]$, we can find a ``filler'', i.e.\ a term $h$ with
-$$\x : \Gamma_\pi \types h(\x) : \Id (f_{n-1}(\src\, \x),g_{n-1}(\tgt\, \x))$$
+\[\x : \Gamma_\pi \types h(\x) : \Id (f_{n-1}(\src\, \x),g_{n-1}(\tgt\, \x))\]
 We show this by induction on the number of cells in $\pi$, reducing cells by the ``pruning'' process of \ref{para:pruning}. 
 
 Suppose $\pi$ has more than one cell.  Then as in \ref{para:pruning}, consider the pasting diagram $\pi^-$, obtained (up to isomorphism) from that of $\pi$ by removing some cell $c$ and identifying $s(c)$ and $t(c)$.
 
 \newcommand{\rcxtmap}{{\vec r}}
 Then by our explicit description of the cells of $\pi^-$, the context $\Gamma_{\pi^-}$ is exactly (up to renaming of variables, and possibly re-ordering if we do not assume that we chose compatible orderings of the cells of pasting diagrams) the context obtained from $\Gamma_\pi$ by removing the variables $x^k_c$ and $x^{k-1}_{t(c)}$, and substituting $x^{k-1}_{s(c)}$ for any occurrences of the latter in subsequent types; and we have a natural context map $\rcxtmap \colon \Gamma_{\pi^-} \to \Gamma_\pi$ given by plugging in $x^{k-1}_{s(c)}$ for $x^{k-1}_{t(c)}$ and $r(x^{k-1}_{s(c)})$ for $x^k_c$; and these are exactly right for
-$$\inferrule*{\x:\Gamma_{\pi^-} \types h^-(\x) : \Id (f_{n-1}(\src\, \rcxtmap(\x)), g_{n-1}(\tgt\,\rcxtmap(\x)))}{\x : \Gamma_\pi \types \idelim{x^{k-1}_{s(c)}}{h^-}{x^{k-1}_{s(c)}}{x^{k-1}_{t(c)}}{x^k_c} : \Id (f_{n-1}(\src\,\x),g_{n-1}(\tgt\,\x))}$$
+\[\inferrule*{\x:\Gamma_{\pi^-} \types h^-(\x) : \Id (f_{n-1}(\src\, \rcxtmap(\x)), g_{n-1}(\tgt\,\rcxtmap(\x)))}{\x : \Gamma_\pi \types \idelim{x^{k-1}_{s(c)}}{h^-}{x^{k-1}_{s(c)}}{x^{k-1}_{t(c)}}{x^k_c} : \Id (f_{n-1}(\src\,\x),g_{n-1}(\tgt\,\x))}\]
 to be (the main hypothesis of) an instance of $\Id$-$\elim^+$.  So to derive the desired filler $h$, it is enough to derive $h^-$ with
-$$\x:\Gamma_{\pi^-} \types h^-(\x) : \Id (f_{n-1}(\src\, \rcxtmap(\x)),g_{n-1}(\tgt\,\rcxtmap(\x))).$$
+\[\x:\Gamma_{\pi^-} \types h^-(\x) : \Id (f_{n-1}(\src\, \rcxtmap(\x)),g_{n-1}(\tgt\,\rcxtmap(\x))).\]
 
 But now note that
-$$d^{n-i}(\pi^-) = \left\{ \begin{array}{ll} d^{n-i}(\pi) & \textrm{for $n-i < k$} \\ (d^{n-i}(\pi))^- & \textrm{for $n-i \geq k$} \end{array} \right. ;$$% } 
+\[d^{n-i}(\pi^-) = \left\{ \begin{array}{ll} d^{n-i}(\pi) & \textrm{for $n-i < k$} \\ (d^{n-i}(\pi))^- & \textrm{for $n-i \geq k$} \end{array} \right. ;\]% } 
 moreover, we can construct context maps
-$$\rcxtmap^s_i, \rcxtmap^t_i \colon \Gamma_{d^{n-i}(\pi^-)} \to \Gamma_{d^{n-i}(\pi)}$$
+\[\rcxtmap^s_i, \rcxtmap^t_i \colon \Gamma_{d^{n-i}(\pi^-)} \to \Gamma_{d^{n-i}(\pi)}\]
 (analogous to $\rcxtmap$ if $i \geq k$, and just the identity otherwise), and these commute with the maps $\src$ and $\tgt$.  So for each $i < n$, we have
-$$\x : \Gamma_{d^{n-i}(\pi^-)} \types f_i(\rcxtmap(\x)) : \Id (f_{n-1}(\rcxtmap(\src\,\x)),g_{i-1}(\rcxtmap(\tgt\,\x))),$$
-$$\x : \Gamma_{d^{n-i}(\pi^-)} \types g_i(\rcxtmap(\x)) : \Id (f_{n-1}(\rcxtmap(\src\,\x)),g_{i-1}(\rcxtmap(\tgt\,\x))),$$
+\[\x : \Gamma_{d^{n-i}(\pi^-)} \types f_i(\rcxtmap(\x)) : \Id (f_{n-1}(\rcxtmap(\src\,\x)),g_{i-1}(\rcxtmap(\tgt\,\x))),\]
+\[\x : \Gamma_{d^{n-i}(\pi^-)} \types g_i(\rcxtmap(\x)) : \Id (f_{n-1}(\rcxtmap(\src\,\x)),g_{i-1}(\rcxtmap(\tgt\,\x))),\]
 i.e.\ the sequence of terms $(\rcxtmap^*(f_i),\rcxtmap^*(g_i))_{i<n}$ are a parallel pair for $\pi^-$.  So by induction (since $\pi^-$ has fewer cells than $\pi$), these terms have a filler; but this filler is exactly the desired term $h^-$.
 
 Thus it is enough to show the existence of fillers in the case where $\pi$ has just one cell, i.e.\ where $\pi = ( \bullet )$.  But in this case, $\Gamma_\pi = \Gamma_{d^i(\pi)} = \Gamma_{d^i(\pi)} = (x:X)$ for each $i < n$, and so by the initiality of $(x:X)$ we must have $f_i(x) = g_i(x) = r^i(x)$ for each $i$; so now $h := r^n(x)$ gives the filler, and we are done.
@@ -1136,7 +1126,7 @@ Unwinding this induction, we can see that it exactly formalises the process desc
 According to the categorical description of an endomorphism operad, we need to show that for any pasting diagram $\pi$, given all components $(f_i,g_i {}_{i < n})$ of a map of spans as in \ref{pylon-diag} apart from the apex, we can find some apex map $h$ to complete it.
 
 For this it is enough to show that we can find a top edge for the square
-$$\bfig
+\[\bfig
 \node Gpi(0,400)[\Gamma_\pi]
 \node Gdpi(0,0)[\Gamma_{\delta \pi}]
 \node Xn(500,400)[\uX_n]
@@ -1145,21 +1135,21 @@ $$\bfig
 \arrow/@{.>}/[Gpi`Xn;]
 \arrow/@{-|>}/[Xn`Xn1;]
 \arrow[Gdpi`Xn1;{[f_i,g_i]}]
-\efig$$
+\efig\]
 or, more generally, that we can complete any triangle of the form
-$$\bfig
+\[\bfig
 \node Gpi(-200,0)[\Gamma_\pi]
 \node Xn(500,400)[\uX_n]
 \node Xn1(500,0)[\uX_{n-1}]
 \arrow/@{.>}/[Gpi`Xn;]
 \arrow/@{-|>}/[Xn`Xn1;]
 \arrow[Gpi`Xn1;]
-\efig . $$
+\efig . \]
 
 This we show by induction on $\pi$.  In the case that $\pi$ is the trivial diagram, then, we are done by the initiality of $\Gamma_\pi = (x : X)$.
 
 Otherwise, consider $\Gamma_\pi \to/{-|>}/ \Gamma_{\pi^-}$.  By the descriptions of \ref{para:pruning-realisation}, this is a dependent projection, projecting away a term of identity type and its target, so by the one-ended form of $\Id$-$\elim$\footnote{A slightly more careful argument would of course show, as we saw in the syntactic version, that in fact the two-ended form also applies.}, it has a retraction $r$ with an elim-structure.  So now by induction, we can complete the triangle
-$$\bfig
+\[\bfig
 \node Gpim(-400,0)[\Gamma_{\pi^-}]
 \node Gpi(0,0)[\Gamma_\pi]
 \node Xn(500,400)[\uX_n]
@@ -1168,7 +1158,7 @@ $$\bfig
 \arrow/@{.>}/[Gpim`Xn;]
 \arrow/@{-|>}/[Xn`Xn1;]
 \arrow[Gpi`Xn1;]
-\efig$$
+\efig\]
 then (seeing the result as a square) the elim-structure on $r$ gives us a filler for it, completing the triangle as desired.
 \end{proof}
 
@@ -1176,7 +1166,7 @@ then (seeing the result as a square) the elim-structure on $r$ gives us a filler
  In each version, Lemma \ref{lemma:initiality} was applied only at the base case of the induction, and only to show that terms $x:X \types f: \Id(r^n(x),r^n(x))$ must be equal to $r^{n+1}(x)$.  Two alternative approaches could have been taken at this point.  Firstly, we could have applied a normalisation/canonicity result for the theory to deduce that $f_i(x) = g_i(x) = r^i(x)$, i.e.\ that the final square in the second proof commutes. This approach is taken in the proof of \ref{thm:ctrble-operad-for-id}.  Secondly, in theories for which normalisation/canonicity and the co-slice construction fail, or alternatively working directly over an arbitrary type (rather than the generic one) the full endomorphism operad may no longer be contractible; but we may still find a contractible sub-operad, by restricting to precisely those operations for which the required commutativity condition holds.  This is the approach taken in \cite{garner-van-den-berg}; we use a variation of it for \ref{thm:ctrble-operad-for-piidelim} below.
 
  Also, besides just pulling back $\Gamma_pi$ to $\Gamma_{\pi^-}$ in the categorical proof, we could have kept track of the boundaries as well
-$$\bfig
+\[\bfig
 \node Gpim(0,400)[\Gamma_{\pi^-}]
 \node Gdpim(0,0)[\Gamma_{\delta \pi^-}]
 \node Gpi(500,400)[\Gamma_\pi]
@@ -1185,7 +1175,7 @@ $$\bfig
 \arrow[Gpim`Gdpim;]
 \arrow[Gpi`Gdpi;]
 \arrow[Gdpim`Gdpi;]
-\efig$$
+\efig\]
 or even of the whole spans, as we did in the snytactic version.  While we have seen that these are not necessary here, this sort of thing can become useful in cases where we do not have enough left maps to continue until $\pi$ is fully contracted; again, cf.~the proof of \ref{thm:ctrble-operad-for-piidelim} below.
 \end{remarks}
 
@@ -1220,7 +1210,7 @@ Similarly, we may extend these to dependent types $A$ or contexts $\Theta$ over 
 \begin{remark}[Functoriality]  The construction of the $P_\Id$-algebra $\T(\Delta,\A)$ is moreover covariantly functorial in $\T$, and contravariantly in $\Gamma$.  That is, translations $\T \to \T'$ and context maps $\Delta' \to \Delta$  induce \emph{strict} maps of $P_\Id$-algebras, composing appropriately.  However, both of these require somewhat more technical machinery to prove than we have developed here. The functoriality in $\T$ is perhaps most clearly seen by consudering the monoidal globular category $\FibSpans(\T)$ introduced in \cite{garner-van-den-berg}, of spans in $\T$ consisting entirely of dependent projections; then the algebras we have considered live within these monoidal categories, and a translation of theories induces a monoidal globular functor between them.  Both these functoriality results also require a treatment of maps of operad algebras in the endomorphism-operad presentation, and hence of some slightly more involved globular structures than the operads we have consdered so far.
 
 More subtly, $\T(\Delta,\A)$ should be functorial in $A$, but only to \emph{weak} maps:  a map of types $A \to A'$ should induce \emph{weak} maps of $P_\Id$- or $L$-algebras---that is, weak $\omega$-functors.  This seems an altogether trickier question, due partly but not only to the lack, until fairly recently (\cite{garner:homomorphisms}), of a suitable definition of weak $\omega$-functor.  However, as this theory becomes better developed, the weak functoriality of $\T(\Delta,\A)$ in maps $f \colon A \to A'$ should become a corollary of the results of the next chapter: within the classifying $\omega$-category of the theory, this is just a whiskering operation between hom-$\omega$-categories
-$$\cl_\omega(\T)(\Delta,A) \to \cl_\omega(\T)(\Delta,A)$$
+\[\vec h_{(-)}\colon  \yon(\A)_{\leq \pi} \to \yon(\A)_{\leq n}.\]
 and as such, should presumably be a weak functor.  Unfortunately, to the author's present knowledge, this whiskering statement (and similar results) do not yet appear in the literature; the theory of weak maps of operadic $\omega$-categories is as yet at a very early stage of development.
 
 \end{remark}

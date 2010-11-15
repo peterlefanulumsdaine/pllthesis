@@ -7,10 +7,11 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{amsmath}
-\usepackage[all]{xypic}
+\usepackage[all]{xy}
 \usepackage{wrapfig}
-\usepackage{hyperref}
+\usepackage[unicode]{hyperref}
 \usepackage{stmaryrd}
+\usepackage{mathtools}
 
 
 \xyoption{2cell}
@@ -107,7 +108,11 @@
 %\include{decl}
 
 
+\chapter{Introduction}
+\input{0-introduction}
+
 % Main Matter
+
 
 \mainmatter
 
@@ -119,11 +124,11 @@
 \input{2-higher-cats-background}
 
 
-\chapter{The fundamental weak $\omega$-groupoid of a type}
+\chapter{The fundamental weak \texorpdfstring{$\omega$}{ω}-groupoid of a type} \label{ch:fundamental}
 \input{3-fundamental-w-cat}
 
 
-\chapter{The classifying weak $\omega$-category of a theory}
+\chapter{The classifying weak \texorpdfstring{$\omega$}{ω}-category of a theory} \label{ch:classifying}
 \input{4-classifying-w-cat}
 
 
@@ -139,10 +144,6 @@
 
 
 
-
-
-
-\clearpage
 
 
 

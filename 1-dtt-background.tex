@@ -8,10 +8,10 @@
 
 \begin{para}Several different, mostly equivalent, syntactic presentations of Martin-Löf-style dependent type theory exist in the literature; the present one is essentially based (up to notation) on those of \cite{pitts:categorial-logic} and \cite{hofmann:syntax-and-semantics}.
 
-A word about the range of theories we will consider is, however, in order here.  All theories we consider will share the common basic syntax and structural core presented in \ref{para:basic-syntax} and \ref{para:structural-core}.  We will, however, vary the constructors we add on top of that, in two stages.  Firstly, by a \emph{type system} we will mean the extension of this structural core by some selection $\stuff$ of the constructors and rules of \ref{para:constructors} and \ref{para:rules}, and of other standard constructors and rules, within certain limitations---a precise statement will appear in \ref{para:types-systems-as-ess-alg}.  Secondly, over a given such system $\stuff$, we will consider arbitrary extensions by \emph{algebraic} axioms, organised into a category $\DTT_\stuff$ of \emph{theories over $\stuff$}.
+A word about the range of theories we will consider is, however, in order here.  All theories we consider will share the common basic syntax and structural core presented in \ref{para:basic-syntax} and \ref{para:structural-core}.  We will, however, vary the constructors we add on top of that, in two stages.  Firstly, by a \emph{type system} we will mean the extension of this structural core by some selection $\stuff$ of the constructors and rules of \ref{para:constructors}--\ref{para:ext-rules}, and of other standard constructors and rules, within certain limitations---a precise statement will appear in \ref{para:types-systems-as-ess-alg}.  Secondly, over a given such system $\stuff$, we will consider arbitrary extensions by \emph{algebraic} axioms (\ref{para:alg-rules}), organised into a category $\DTT_\stuff$ of \emph{theories over $\stuff$}.
 \end{para}
 
-\begin{para}[Basic syntax]
+\begin{para}[Basic syntax] \label{para:basic-syntax}
 Since we will eventually work in a presentation-agnostic category of type theories, the precise formalism we use for the raw syntax will not be of importance; but for the sake of definiteness, let us suppose a simply-typed metalanguage in which the syntax of our theory is formalised, as described in e.g.\ \cite[6.1]{pitts:categorial-logic}, and in which we have defined notions of free variables, capture-avoiding substitution, etc.
 
 The basic judgements of our theory are now minimal---\emph{types}, \emph{terms}, and \emph{definitional equalities} between each of these:
@@ -46,18 +46,18 @@ Also, we will often abbreviate multiple judgements of the same form by writing e
 
 Finally, beyond the initial presentation of the theory, context morphisms will be written not $\types f : \Gamma \To \Gamma'$ as above, but $f \colon \Gamma \to \Gamma'$, reflecting the view of them as maps of the syntactic category of a theory.
 
-\begin{para}[Structural core] Rules for contexts:
-$$\begin{array}{c}
+\begin{para}[Structural core] \label{para:structural-core} Rules for contexts:
+\[\begin{array}{c}
 \inferrule*[right=$\cxt$-$\empt$]{ \ }{\ \types \diamond \ \cxt\ } \qquad \inferrule*[right={$\cxt$=-$\empt$}]{\ }{\ \types \diamond = \diamond \ \cxt\ }
 \\ \ \\
 \inferrule*[right=$\cxt$-$\cons$]{\types \Gamma\ \cxt \\\\ \Gamma \types A \ \type}{\ \types \Gamma, y:A\ \cxt\ } \qquad
 \inferrule*[right={$\cxt$=-$\cons$}]{ \types \Gamma = \Gamma'\ \cxt \\\\ \Gamma \types A = A'[ \x / \x' ]\ \type}{\ \types \Gamma, y:A = \Gamma', y':A'\ \cxt\ } 
 \end{array}
-$$
+\]
 
 Rules for types: 
 
-$$\begin{array}{c}
+\[\begin{array}{c}
 \inferrule*[right=$\type$-$\subst$]{\x : \Gamma \types A(\x)\ \type \\\\ \types f : \Gamma' \To \Gamma}{\  \Gamma' \types A[f/\x] \type \ } \qquad
 \inferrule*[right={$\type$=-$\subst$}]{ \Gamma \types A = A'\ \type \\\\  \types f = f' : \Gamma' \To \Gamma}{\  \Gamma' \types A[f/\x] = A'[f'/\x]\ \type\ }
 \\ \ \\
@@ -65,11 +65,12 @@ $$\begin{array}{c}
 \inferrule*[right={$\type$=-$\sym$}]{\Gamma \types A = B\ \type}{\ \Gamma \types B = A\ \type\ } 
 \\ \ \\
 \inferrule*[right={$\type$=-$\trans$}]{\Gamma \types A = B\ \type \\\\ \Gamma \types B = C\ \type}{\ \Gamma \types A = C\ \type\ }
-\end{array}$$
+\end{array}\]
 
 
 Rules for terms: 
-$$\begin{array}{c}
+\[
+\begin{array}{c}
 \inferrule*[right={\sf var}]{\Gamma \types A\ \type \\ \Gamma, A \types \Delta\ \cxt}{\ \Gamma, x:A, \Delta \types x : A\ }
 \qquad \qquad
 \\ \ \\
@@ -84,26 +85,28 @@ $$\begin{array}{c}
 \inferrule*[right={$\term$=-$\sym$}]{\Gamma \types a = b : A}{\ \Gamma \types b = a : A\ }
 \\ \ \\
 \inferrule*[right={$\term$=-$\trans$}]{\Gamma \types a = b : A \\ \Gamma \types b = c : A}{\ \Gamma \types a = c : A\ } 
-\end{array}$$
+\end{array}
+\]
+
 
 Rules for context maps: 
-$$\begin{array}{c}
+\[\mathclap{\begin{array}{c}
 \inferrule*[right={$\cxtmap$-$\empt$}]{ \types \Gamma\ \cxt}{ \types \diamond : \Gamma \To \diamond} 
 \qquad \qquad
 \inferrule*[right={$\cxtmap$=-$\empt$}]{ \types \Gamma\ \cxt}{ \types \diamond = \diamond : \Gamma \To \diamond}
 \\ \ \\
 \inferrule*[right={$\cxtmap$-$\cons$}]{ \types f : \Gamma' \To \Gamma \\\\ \Gamma \types A\ \type \\\\ \Gamma' \types a : A[f/\x] }{\ \types f,a : \Gamma' \To \Gamma, y:A \ } \qquad
 \inferrule*[right={$\cxtmap$=-$\cons$}]{ \types f = f' : \Gamma' \To \Gamma \\\\ \Gamma \types A\ \type \\\\ \Gamma' \types a = a' : A[f/\x] }{\ \Gamma \types (f,a) = (f',a') : \Delta' \To (\Delta, A) \ }
-\end{array}$$
+\end{array}}\]
 
 \end{para}
 
 From these we can derive the other structural rules sometimes given as basic: exchange ($\exch$), weakening ($\wkg$), and so on.
 
-\begin{para}[Type constructors]
+\begin{para}[Type constructors] \label{para:constructors}
 
 Core rules for $\Id$-types: 
-$$\begin{array}{c}
+\[\begin{array}{c}
 \inferrule*[right=$\Id$-$\form$]{\Gamma \types A\ \type \\\\ \Gamma \types a, b : A}{\ \Gamma \types \Id_A(a,b)\ \type\ }$ \qquad $\inferrule*[right={$\Id$-$\intro$}]{\Gamma \types A\ \type \\\\ \Gamma \types a : A}{\ \Gamma \types r(a) : \Id_A(a,a)\ }
 \\ \ \\
 \inferrule*[right=$\Id$-$\elim$]{
@@ -111,32 +114,32 @@ $$\begin{array}{c}
 \Gamma,\, z:A,\, \v : \Delta(z,z,r(z))\ \types\ d(z,\v) : C(z,z,r(z),\v) \\
 \Gamma \types a, b : A \qquad \Gamma \types p : \Id_A(a,b) \qquad \Gamma \types \c : \Delta(a,b,p)}
 {\Gamma\ \types\ \Jterm_{(A;\ x,y,u.\Delta(x,y,u);\ x,y,u,\w.C(x,y,u,\w))\,}(z,\v.\ d(z,\v);\ a,b,p,\c)\,: C(a,b,p,\c)}
-\end{array}$$
+\end{array}\]
 Here all free variables are displayed, to emphasise the full formal binding that occurs in terms involving $\Jterm$; we will usually abbreviate the concluding term above to e.g.\ $\Jterm_C(d; a,b,p,\c)$, as for instance:
-$$\begin{array}{c}
+\[\begin{array}{c}
 \inferrule*[right=$\Id$-$\comp$]{
 \Gamma,\, x,y : A,\, u : \Id_A(x,y),\, \w : \Delta(x,y,u)\ \types\ C(x,y,u,\w)\ \type \\
 \Gamma,\, z:A,\, \v : \Delta(z,z,r(z))\ \types\ d(z,\v) : C(z,z,r(z),\v) \\
 \Gamma \types a : A \\ \Gamma \types \c : \Delta(a,a,r(a))}
 {\Gamma\ \types\ \Jterm_C(d;\ a,a,r(a),\c) = d(a) : C(a,a,r(a),\c)}
-\end{array}$$
+\end{array}\]
 
 Core rules for $\Pi$-types:
 
-$$\begin{array}{c}
+\[\begin{array}{c}
 \inferrule*[right=$\Pi$-$\form$]{\Gamma \types A\ \type \quad \Gamma\, x:A \types B \ \type }{\ \Gamma\ \types\ \Pi_{x : A} B\ \type\ }
 \qquad
 \inferrule*[right=$\Pi$-$\intro$]{\Gamma\, x:A \types b: B }{\ \Gamma\ \types\ \lambda x \tightcolon A.\ b : \Pi_{x : A} B\ }
 \\ \ \\
 \inferrule*[right=$\Pi$-$\app$]{\Gamma \types t : \Pi_{x : A} B \quad \Gamma \types a : A}{\ \Gamma\ \types\ t \tightcdot a : B[a/x]\ \ }
 \inferrule*[right=$\Pi$-$\beta$]{\Gamma\, x:A \types b: B \quad \Gamma \types a : A}{\ \Gamma\ \types\ (\lambda x \tightcolon A.\ b) \tightcdot a = b[a/x] :  B[a/x]\ }
-\end{array}$$
+\end{array}\]
 
 \end{para}
 
 \begin{para}[Variant rules for $\Id$-types] \label{para:id-variants}
-Two rules which will not be part of our core concern but which are worth mentioning here are the stronger eliminators for identity types: the \emph{reflection principle} of extensional type theory (which collapses propositional and definitional equality), and Thomas Streicher's eliminator $\Kterm$ (introduced in \cite{streicher:habilitationsschrift}):
-$$\begin{array}{c}
+Two rules which will not be part of our core concern but which are worth mentioning here are the stronger eliminators for identity types: the \emph{reflection principle} of extensional type theory (which collapses propositional and definitional equality), and Thomas Streicher's eliminator $\Kterm$ (introduced in \cite{streicher:hab}):
+\[\begin{array}{c}
 \inferrule*[right={reflection}]{\Gamma \types e : \Id_A(a,b)}{\Gamma \types a = b : A}
 \\ \ \\
 \inferrule*[right=$\Kterm$]{\Gamma, x: A, u : \Id_A(x,x), \w : \Delta(x,u) \types C(x,u,\w)\ \type \\
@@ -148,22 +151,22 @@ $$\begin{array}{c}
 \Gamma, z:A, \v : \Delta(z,r(z)) \types d(z,\v) : C(z,r(z),\v) \\
 \Gamma \types a : A \qquad \Gamma \types \c : \Delta(a,r(a))}
 {\Gamma \types \Kterm_{A;\ x,u.\Delta;\ x,u,\w.C}(z,\v.\ d(z,\v);\ a,r(a),\c) = d(a) : C(a,r(a),\c)}
-\end{array}$$
+\end{array}\]
 
-Both these eliminators essentially trivialise the higher-categorical structure with which we are principally concerned, so we will mainly consider theories without them; however, they will provide interesting comparisons at times.  In the case of the reflection rule, this trivialisation is immediate.  In the case of $\Kterm$, it is slightly less obvious; but it turns out that from $\Kterm$ we can derive the ``(propositional) uniqueness of identity proofs'' principle, asserting that all elements of any identity type are equal (\cite{streicher:habilitationsschrift}, \cite{warren:thesis}).  See \ref{para:j-and-k-homotopically} for an alternative point of view on $\Kterm$.
+Both these eliminators essentially trivialise the higher-categorical structure with which we are principally concerned, so we will mainly consider theories without them; however, they will provide interesting comparisons at times.  In the case of the reflection rule, this trivialisation is immediate.  In the case of $\Kterm$, it is slightly less obvious; but it turns out that from $\Kterm$ we can derive the ``(propositional) uniqueness of identity proofs'' principle, asserting that all elements of any identity type are equal (\cite{streicher:hab}, \cite{warren:thesis}).  See \ref{para:j-and-k-homotopically} for an alternative point of view on $\Kterm$.
 
 Two less destructive variations on the $\Id$-elimination rule are also worth mentioning; we will not use these as rules per se, but in Section \ref{sec:Jbar} and elsewhere we will discuss some analogous variations on other principles.
 
 Firstly, the dependent context $\Delta(x,y,u)$ which we have included in the premises is often omitted.  (Its inclusion is, in categorical terms, a Frobenius condition.) In the presence of $\Pi$-types, this is interderivable with our version ($\Delta$ can simply be curried over to the right-hand side).  In the absence of $\Pi$-types, the non-Frobenius version of the rule is simply not strong enough to be much use: one cannot even derive, for instance, the transitivity of propositional equality.
 
 Secondly, \todo{[find reference for this!]} there is a ``one-ended'' form of $\Id$-$\elim$ (in contrast to which the version above may be seen as ``two-ended''):
-$$\inferrule*[right=$\Id$-$\elim^1$]{
+\[\inferrule*[right=$\Id$-$\elim^1$]{
 \Gamma \types a : A \\
 \Gamma,\, y : A,\, u : \Id_A(a,y),\, \w : \Delta(y,u)\ \types\ C(y,u,\w)\ \type \\
 \Gamma,\, \v : \Delta(a,r(a))\ \types\ d(\v) : C(a,r(a),\v) \\
 \Gamma \types b : A \qquad \Gamma \types p : \Id_A(a,b) \qquad \Gamma \types \c : \Delta(b,p)}
 {\Gamma\ \types\ \Jterm^1_C( d;\, b,p,\c)\,: C(b,p,\c)}
-$$
+\]
 and with computation rule concluding $\Jterm^1_C( d;\, a,r(a),\c) = d(\c)$.
 
 This easily implies the original form; and in the presence of $\Sigma$-types, they are inter-derivable.
@@ -173,28 +176,28 @@ This easily implies the original form; and in the presence of $\Sigma$-types, th
 
 It turns out that with just the core rules of \ref{para:Pi-core}, propositional equality on $\Pi$-types is a rather more exclusive relation than one might desire.  Various different rules have been considered relaxing it, and in particular relating to the principle of ``functional extensionality'': that two functions are equal if they are equal on values.  A systematic comparison is given in \cite{garner:on-the-strength}, the terminology of which we mostly follow here.  Several rules asserting equalities may be given in both propositional and definitional flavours.
 
-$$
+\[
 \inferrule*[right={$\Pi$-$\eta$}]{\Gamma \types f : \Pi_{x : A} B}{\ \Gamma \types f = (\lambda x. f \cdot x) : \Pi_{x : A} B \ } 
 \qquad \inferrule*[right={$\Pi$-$\prop$-$\eta$}]{\Gamma \types f : \Pi_{x : A} B}{\ \Gamma \types \eta(f) : \Id_{\Pi_{x : A} B} (f, (\lambda x. f \cdot x))\ } 
-$$
+\]
 
- $$ \inferrule*[right={$\Pi$-$\prop$-$\eta$-$\comp$}]{\Gamma,\,x:A \types b(x) : B(x) }{\ \Gamma \types \eta(\lambda x. b(x)) = r(\lambda x. b(x)) : \Id_{\Pi_{x : A} B} (\lambda x. b(x), \lambda x. b(x))\ }
-$$
+ \[ \inferrule*[right={$\Pi$-$\prop$-$\eta$-$\comp$}]{\Gamma,\,x:A \types b(x) : B(x) }{\ \Gamma \types \eta(\lambda x. b(x)) = r(\lambda x. b(x)) : \Id_{\Pi_{x : A} B} (\lambda x. b(x), \lambda x. b(x))\ }
+\]
 
- $$ \inferrule*[right={$\Pi$-$\extrule$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \ \Gamma \types k : \Pi_{x : A} \Id_B(f \cdot x, g \cdot x)}{\ \Gamma \types \extterm(f,g,k) : \Id_{\Pi_A B}(f,g)\ }
-$$ 
+ \[ \inferrule*[right={$\Pi$-$\extrule$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \ \Gamma \types k : \Pi_{x : A} \Id_B(f \cdot x, g \cdot x)}{\ \Gamma \types \extterm(f,g,k) : \Id_{\Pi_A B}(f,g)\ }
+\] 
 
- $$ \inferrule*[right={$\Pi$-$\extrule$-$\comp$}]{\Gamma,\,x:A \types b : B }{\ \Gamma \types \extterm(\lambda x. b, \lambda x. b, \lambda x. r(b)) = r(\lambda x. b) : \Id (\lambda x. b, \lambda x. b)\ } 
-$$ 
+ \[ \inferrule*[right={$\Pi$-$\extrule$-$\comp$}]{\Gamma,\,x:A \types b : B }{\ \Gamma \types \extterm(\lambda x. b, \lambda x. b, \lambda x. r(b)) = r(\lambda x. b) : \Id (\lambda x. b, \lambda x. b)\ } 
+\] 
 
- $$ \inferrule*[right={$\Piextapp$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \Gamma \types k : \Pi_{x : A} \Id_B(f \tightcdot x, g \tightcdot x) \\ \Gamma \types a : A}{\ \Gamma \types \mu(f,g,k,a) : \Id(\extterm(f,g,k) \star a , k \cdot a)\ }
-$$ 
+ \[ \inferrule*[right={$\Piextapp$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \Gamma \types k : \Pi_{x : A} \Id_B(f \tightcdot x, g \tightcdot x) \\ \Gamma \types a : A}{\ \Gamma \types \mu(f,g,k,a) : \Id(\extterm(f,g,k) \star a , k \cdot a)\ }
+\] 
 
- $$ \inferrule*[right={$\Piextapp$-$\comp$}]{\Gamma,\,x:A \types b(x) : B(x) \\ \Gamma \types a : A}{\ \Gamma \types \mu(\lambda x. b(x), \lambda x. b(x), \lambda x. rb(x), a) = r(r(b(a))) : \Id_{B(a)} (b(a), b(a))\ } 
-$$
+ \[ \inferrule*[right={$\Piextapp$-$\comp$}]{\Gamma,\,x:A \types b(x) : B(x) \\ \Gamma \types a : A}{\ \Gamma \types \mu(\lambda x. b(x), \lambda x. b(x), \lambda x. rb(x), a) = r(r(b(a))) : \Id_{B(a)} (b(a), b(a))\ } 
+\]
 
- $$ \inferrule*[right={$\Piextapp$-$\defrule$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \Gamma \types k : \Pi_{x : A} \Id_B(f \tightcdot x, g \tightcdot x) \\ \Gamma \types a : A}{\ \Gamma \types \extterm(f,g,k) \star a = k \cdot a : \Id_{B}(f \tightcdot a, g \tightcdot a) }
-$$ 
+ \[ \inferrule*[right={$\Piextapp$-$\defrule$}]{\Gamma \types f, g : \Pi_{x : A} B \\ \Gamma \types k : \Pi_{x : A} \Id_B(f \tightcdot x, g \tightcdot x) \\ \Gamma \types a : A}{\ \Gamma \types \extterm(f,g,k) \star a = k \cdot a : \Id_{B}(f \tightcdot a, g \tightcdot a) }
+\] 
 
 When we consider theories with any of these propositional rules, the corresponding $\comp$ rule will always be included, even if not explicitly mentioned. 
 \end{para}
@@ -204,15 +207,15 @@ When we consider theories with any of these propositional rules, the correspondi
 Beyond these specific constructors, we also consider extensions by arbitrary rules of a simpler form: \emph{algebraic} axioms of each of the basic judgements.
 
 An \emph{algebraic type-forming axiom} is specified by a basic type-former $\Tsf$, unique to the axiom, together with a pre-context $\Gamma_\Tsf$; it then has introductory rule
-$$\inferrule{\types \Gamma_\Tsf\ \cxt}{\ \x : \Gamma_\Tsf \types \Tsf(\x)\ \type\ }.$$
+\[\inferrule{\types \Gamma_\Tsf\ \cxt}{\ \x : \Gamma_\Tsf \types \Tsf(\x)\ \type\ }.\]
 
 An \emph{algebraic term-forming axiom} is similarly given by a basic term-former $\tsf$, and pre-context $\Gamma_\tsf$ and pre-type $A_\tsf$; its rule is then
-$$\inferrule{ \x : \Gamma_\Tsf \types A_\tsf(\x) \ \type}{\ \x : \Gamma_\Tsf \types \tsf(\x) : A_\tsf(\x)\ }.$$
+\[\inferrule{ \x : \Gamma_\Tsf \types A_\tsf(\x) \ \type}{\ \x : \Gamma_\Tsf \types \tsf(\x) : A_\tsf(\x)\ }.\]
 
 And \emph{algebraic type-} and \emph{term-equality axioms}, similarly, are of the form:
-$$ \inferrule{ \Gamma \types A,\, A'\ \type}{\ \x : \Gamma \types A = A'\ \type\ } 
+\[ \inferrule{ \Gamma \types A,\, A'\ \type}{\ \x : \Gamma \types A = A'\ \type\ } 
   \qquad \qquad
-  \inferrule{ \Gamma \types a, a' : A }{\ \Gamma \types a = a' : A\ }$$
+  \inferrule{ \Gamma \types a, a' : A }{\ \Gamma \types a = a' : A\ }\]
 for some given $\Gamma,\,A,\,A'$ or $\Gamma,\,A,\,a,\,a'$.
 \end{para}
 
@@ -222,14 +225,14 @@ for some given $\Gamma,\,A,\,A'$ or $\Gamma,\,A,\,a,\,a'$.
 An alternate presentation of the syntax is via\todo{[What is best orig reference?  Nordstrom--Peterssen--Smith?]} a \emph{logical framework}: rather than starting with raw syntax and then defining the judgements of well-formedness on top of that, we define well-formed types, terms etc.\ directly from the start; the logistical cost of this is using a dependently-typed metalanguage, the \emph{logical framework}, assumed to have $\Pi$-types and their $\eta$-rule, plus one ``universe'' in which we encode our object language.  \cite{hofmann:syntax-and-semantics} gives a useful overview of the two presentations, together with a crucial comparison of their formal strengths, which we recall in Example \ref{ex:hofmann-contractibility}.
 
 We will briefly have cause to work in the logical framework presentation, and in particular to discuss Garner's rule $\PiIdelim$ (and its associated computation rule $\PiIdcomp$), from \ref{garner:on-the-strength}, which involves second-order quantification and so cannot be directly expressed in the earlier presentation.  This rule is a strong extensionality principle, asserting that the type $u, v : \Pi_{x:A}B(x), \types \Pi_{x:A} \Id_{B(x)}( u \tightcdot x,v \tightcdot x)$ is generated by canonical elements of the form $\lambda x. r(b(x))$: 
-$$ \inferrule*[right={$\PiIdelim$}]{
+\[ \inferrule*[right={$\PiIdelim$}]{
 \Gamma,\ u, v : \Pi_{x:A}B(x), w : \Pi_{x:A} \Id_{B(x)}(u \cdot x,v \cdot x)\ \types\ C(u,v,w)\ \type \\ 
 \Gamma,\ f : (x \tightcolon A) B(x)\ \types\ d(f) : C (\lambda f, \lambda f, \lambda (r \circ f)) \\
 \Gamma\ \types\ k, k' : \Pi_{x:A} B(x) \qquad \Gamma\ \types\ l : (x \tightcolon A) \Id_{B(x)}(k x, k' x) }
-{ \Gamma\ \types\ \Lterm(C,d,k,k',l) : C(k,k',l) } $$
+{ \Gamma\ \types\ \Lterm(C,d,k,k',l) : C(k,k',l) } \]
 
 Its computation rule concludes from appropriate premises that
-$$ \Lterm(C,d, \lambda h, \lambda h, \lambda ( r \circ h)) = d(h) : C( \lambda h, \lambda h, \lambda (r \circ h)). \quad \PiIdelim\mbox{-\comp}$$
+\[ \Lterm(C,d, \lambda h, \lambda h, \lambda ( r \circ h)) = d(h) : C( \lambda h, \lambda h, \lambda (r \circ h)). \quad \PiIdelim\mbox{-\comp}\]
 
 (Here $(x \tightcolon A)B(x)$ and $[x \tightcolon A] b(x)$ denote abstraction in the metalanguage.)
 
@@ -284,7 +287,7 @@ $$ \Lterm(C,d, \lambda h, \lambda h, \lambda ( r \circ h)) = d(h) : C( \lambda h
 
 \subsection*{Categorical representation}
 
-The syntax is an excellent tool for intuitive and computationally tractable presentations of theories; however, for semantic/categorical purposes its formal complexity can be a hindrance.  To this end, various categorical structures have been introduced which correspond, more or less closely, to dependent type theories as presented above\footnote{Most relevantly for our purposes, \emph{comprehension categories} (\cite{jacobs:comprehension-categories}), \emph{categories with attributes} (\cite{cartmell-thesis}, \cite{moggi:program-modules}, \cite{pitts:categorial-logic}), \emph{categories with families} (\cite{dybjer:internal-type-theory}), \cite{hofmann:syntax-and-semantics}, \emph{contextual categories} (\cite{cartmell:gats}, \cite{streicher:semantics}); see \cite{jacobs:comprehension-categories}, \cite{hofmann:syntax-and-semantics} for useful overviews.}.
+The syntax is an excellent tool for intuitive and computationally tractable presentations of theories; however, for semantic/categorical purposes its formal complexity can be a hindrance.  To this end, various categorical structures have been introduced which correspond, more or less closely, to dependent type theories as presented above\footnote{Most relevantly for our purposes, \emph{comprehension categories} (\cite{jacobs:comprehension-categories}), \emph{categories with attributes} (\cite{cartmell-thesis}, \cite{moggi:program-modules}, \cite{pitts:categorial-logic}), \emph{categories with families} (\cite{dybjer:internal-type-theory}), \cite{hofmann:syntax-and-semantics}, \emph{contextual categories} (\cite{cartmell:gats}, \cite{streicher:semantics-book}); see \cite{jacobs:comprehension-categories}, \cite{hofmann:syntax-and-semantics} for useful overviews.}.
 
 Of these, the most categorically flexible are probably Jacobs' \emph{comprehension categories}, which admit many useful variations; since in the present work we will stick closely to the type theory, however, we will use Cartmell's \emph{categories with attributes} as our main model, as these are very elementarily presented.  The relationships between various models are summed up below in Fig.~\ref{fig:big-picture}.
 
@@ -294,7 +297,7 @@ Of these, the most categorically flexible are probably Jacobs' \emph{comprehensi
 \item a functor $\Ty \colon \C^\op \to \Sets$; that is, for each object $\Gamma$, a set $\Ty(\Gamma)$, and for $f \colon \Delta \to \Gamma$, actions $f^* \colon \Ty(\Gamma) \to \Ty(\Delta)$, functorial in $\Gamma$;
 \item for each $A \in \Ty(\Gamma)$, an object $\Gamma . A$ and projection $\pi_{\Gamma;A} \colon \Gamma . A \to \Gamma$;
 \item for each $A \in \Ty(\Gamma)$ and $f \colon \Delta \to \Gamma$, a pullback square
-$$\bfig
+\[\bfig
 \node Delta(0,0)[\Delta]
 \node Gamma(600,0)[\Gamma]
 \node DeltaA(0,400)[\Delta.f^*A]
@@ -304,7 +307,7 @@ $$\bfig
 \arrow[GammaA`Gamma;\pi_{\Gamma;A}]
 \arrow[DeltaA`GammaA;q(f,A)]
 \place(100,400)[\pb]
-\efig$$
+\efig\]
 again functorial in $f$, in that $q(1_\Gamma,A) = 1_{\Gamma . A}$, $q(f \circ g, A) = q(f,A) \circ q(g, f^*A)$.
 \end{itemize}
 \end{definition}
@@ -326,19 +329,19 @@ Equivalently, $\C$ is contextual if there is a \emph{length} function $l \colon 
 \end{itemize}
 \end{definition}
 
-Contextual CwA's correspond precisely to the \emph{contextual categories} of Cartmell \cite{cartmell:gats} and Streicher \cite{streicher:semantics}, and hence, crucially, to dependent type theories without constructors:
+Contextual CwA's correspond precisely to the \emph{contextual categories} of Cartmell \cite{cartmell:gats} and Streicher \cite{streicher:semantics-book}, and hence, crucially, to dependent type theories without constructors:
 
 \begin{proposition}[John Cartmell \cite{cartmell:thesis},\cite{cartmell:gats}] \label{prop:CwA-equivalence}
 The category of small CwA's is \emph{equivalent} to the category of type theories presented syntactically by a small set of purely algebraic axioms (i.e.\ dependent terms and types, and equality axioms between them) and interpretations between such theories.
 
 Specifically, there is an adjoint equivalence
-$$\bfig 
+\[\bfig 
 \node CwA(800,0)[\CwA_\cxl]
 \node SynThy(0,0)[\SynThy]
 \arrow|b|/@/^0.5em//[CwA`SynThy;\Lang]
 \arrow|a|/@/^0.5em//[SynThy`CwA;\cl]
 \place(400,0)[\equiv]
-\efig$$
+\efig\]
 taking a syntactically presented type theory $\T$ to its \emph{classifying category} $\cl(\T)$, and a CwA $\C$ to its \emph{internal language} $\Lang(\C)$.
 \end{proposition}
 
@@ -375,7 +378,7 @@ A \emph{CwA with $\Id$-types} is a CwA $\C$, together with:
 
 Write $\CwA^\Id$, $\CwA_\cxl^\Id$, etc.\ for the various categories of CwA's with $\Id$-types.  
 
-\begin{proposition}[\cite{hofmann:syntax-and-semantics}, \cite{pitts:categorical-logic}]  \todo{[Original source of this result?]}This structure really does correspond precisely to the $\Id$-type rules: the equivalence of Proposition \ref{prop:CwA-equivalence} lifts to an equivalence between $\CwA^\Id_\cxl$ and a category $\SynThy^\Id$, of theories presented syntactically by the core $\Id$-type rules plus a set of algebraic axioms. 
+\begin{proposition}[\cite{hofmann:syntax-and-semantics}, \cite{pitts:categorial-logic}]  \todo{[Original source of this result?]}This structure really does correspond precisely to the $\Id$-type rules: the equivalence of Proposition \ref{prop:CwA-equivalence} lifts to an equivalence between $\CwA^\Id_\cxl$ and a category $\SynThy^\Id$, of theories presented syntactically by the core $\Id$-type rules plus a set of algebraic axioms. 
 \end{proposition}
 
 \begin{para}Similarly, we may define structure on the categorical side correponding to the core $\Pi$-type rules, or any of the other rules of \ref{para:id-variants}, \ref{para:ext-rules} above (with obvious dependencies: the structure for $\extrule$ rules refers to the $\Pi$- and $\Id$-types structure, and so on).
@@ -387,13 +390,13 @@ In the case of all the rules above, theories over $\stuff$ are again models of a
 (This is not a terribly natural definition.  It allows type-theoretically unnatural constructions, e.g.\ rules which hold only over contexts of length 17, and the like; and, worse, important constructions such as the logical framework embedding cannot defined in this generality.  However, as a crude demarcation, it will suffice for the scope of the present work.) 
 
 This immediately gives us comparison functors between different categories of theories.  If $\stuff'$ is any collection of rules/constructors extending $\stuff$, then we have a map of algebraic theories, and hence an adjunction:
-$$\bfig 
+\[\bfig 
 \node DTT1(0,0)[\DTT_\Phi]
 \node DTT2(800,0)[\DTT_{\Phi'}]
 \arrow|a|/@/^0.6em//[DTT1`DTT2;F]
 \arrow|b|/@/^0.6em//[DTT2`DTT1;U]
 \place(400,0)[\bot]
-\efig$$
+\efig\]
 where, in syntactic terms, $F$ adds to a theory the extra rules/constructors of $\stuff$, while $U$ forgets structure.  In particular, if $\T$ is a theory over $\Phi$ presented by some collection of axioms, then $F(\T)$ is the theory presented bythe same axioms over $\Phi'$. 
 
 This is the main reason why we consider second-order rules such as $\PiIdelim$ separately.  They do \emph{not} (at least a priori) correspond to extra essentially algebraic structure over contextual CwA's; in the present categorical setup, they can be discussed only within their logical framework embeddings.
@@ -405,7 +408,7 @@ The above presentation of $\Id$-types via elim-structures is based on ideas of G
 The right maps are just (maps isomorphic to) (compositions of basic) dependent projections.  The left maps are maps admitting an (or algebraically: with a chosen) elim-structure.
 
 Note that a categorically, an elim-structure on $i \colon \Gamma \to \Theta$ just provides fillers for all triangles from $i$ to a basic dependent projection; or equivalently, fillers for all squares from $i$ to basic dependent projections, commuting with the canonical pullback squares between dependent projections.  In other words, an elim-structure is exactly a $\J^\oslash$-structure as described in \ref{para:awfs}, where $\J^\oslash$ is the category of basic dependent projections and canonical pullback squares between them.
-$$\bfig
+\[\bfig
 \node G(0,400)[\Gamma]
 \node Th(300,0)[\Theta]
 \node ThC(600,400)[\Theta.C]
@@ -426,7 +429,7 @@ $$\bfig
 \arrow|a|[G`XiC;d]
 \arrow|m|/@{..>}/[Th`XiC;e_{f^*C,f^*d}]
 \efig
-$$
+\]
 
 (\cite{gambino-garner} moreover gives an alternative type-theoretic characterisation of each class of maps, and uses $\Id$-types to construct $\L,\R$ factorisations, but we will not need these.)
 
@@ -439,7 +442,7 @@ There are several interesting and important ways to construct new type theories 
 
 \begin{para} First, the \emph{dependent contexts monad} on $\CwA$ over $\Cat$, sending $\C = (\C,\Ty)$ to $\C^\Cxt := (\C,\Cxt)$ as defined in \ref{para:obvious-terminology}.  So types of the new theory are just dependent contexts of the old; the base category is unchanged, and context extension is just by concatenation.  This can also be seen as a monad for ``very strong, strictly associative $\Sigma$-types''.)  
 
-Moreover, given $\Id$-types structure on $\C$, we can extend this to an $\Id$-types structure on $\C^\Cxt$: this is the ``identity contexts'' of \cite{streicher:habilitationsthesis} or \cite{gambino-garner}. \todo{[Give more specific citations, and/or present details?]}  So we have an endofunctor $(-)^\Cxt$ on $\CwA^\Id$. However, the monad structure does \emph{not} lift to $\CwA^\Id$: the unit is fine, but the multiplication turns out not to preserve the $\Id$-structure strictly.  (One would hope that this could be accommodated by a theory of pseudo-maps of $\CwA^\Id$'s.)
+Moreover, given $\Id$-types structure on $\C$, we can extend this to an $\Id$-types structure on $\C^\Cxt$: this is the ``identity contexts'' of \cite{streicher:hab} or \cite{gambino-garner}. \todo{[Give more specific citations, and/or present details?]}  So we have an endofunctor $(-)^\Cxt$ on $\CwA^\Id$. However, the monad structure does \emph{not} lift to $\CwA^\Id$: the unit is fine, but the multiplication turns out not to preserve the $\Id$-structure strictly.  (One would hope that this could be accommodated by a theory of pseudo-maps of $\CwA^\Id$'s.)
 
 Similar techniques let us lift $\Pi$-types from $\C$ to $\C^\Cxt$, and hence to lift $(-)^\Cxt$ to an endofunctor of $\CwA_\Pi$; likewise for $\Sigma$-types, the $\pi$-$\eta$ rules, and most other standard type-constructors.
 
@@ -462,10 +465,10 @@ The slice construction also extends to \emph{all} rules and constructors we have
 \end{para}
 
 \begin{para} \label{par:cxts-to-types}Combining this with the dependent contexts construction gives us an endofunctor of $\CwA_\cxl$, the ``contexts to types'' construction:
-$$ \CwA_\cxl \mono<300> \CwA \to^{(-)^\Cxt} \CwA \to^{- \slice \diamond} \CwA_\cxl$$
+\[ \CwA_\cxl \mono<300> \CwA \to^{(-)^\Cxt} \CwA \to^{- \slice \diamond} \CwA_\cxl\]
 
 An object of the resulting $\C^\Cxt \slice \diamond$ can be seen as an object $A_1,\ldots,A_k$ of $\C$ together with a partition $k = \sum_{i \leq l} k_i$, thought of as dividing the context into chunks: 
-$$(A_1,\ldots,A_{k_1});\ (A_{k_1 + 1}, \ldots , A_{k_1 + k_2});\ \ldots ;\  (A_{\sum_{i < l}k_i + 1}, \ldots, A_k).$$
+\[(A_1,\ldots,A_{k_1});\ (A_{k_1 + 1}, \ldots , A_{k_1 + k_2});\ \ldots ;\  (A_{\sum_{i < l}k_i + 1}, \ldots, A_k).\]
 A ``type'' over such an object in $\C^\Cxt \slice \diamond$ is then a dependent context over the full (un-chunked) context in $\C$; context extension adjoins the dependend context as a single additional chunk.  There is a natural inclusion $\C \mono \C^\Cxt \slice \diamond$, chunking each context into individual types.
 
 This construction will be briefly but crucially useful to us, in \ref{cor:fund-cxts-to-types} and \ref{para:class-cxts-to-types} below.  \end{para}
@@ -477,7 +480,7 @@ There is an obvious functor $\Theta \coslice \C \to \C$, forgetting points.
 This construction preserves contextuality; it also extends to act on theories $\Id$-types, $\Sigma$-types, $\One$, and more generally inductive types with a single unary constructor; but it does \emph{not} extend to $\Pi$-types, nor to $\Bool$, $\Zero$, or most other type-formers.  This is familiar categorically: co-slices retain e.g.\ binary products and terminal objects, but not coproducts or exponentials.
 \end{para}
 
-\begin{para}[Normalisation results]  It is a fundamental fact, going back to \cite{martin-lof:predicative-part}, that the basic structural theory together with any subset of the standard constructors ($\Id$-, $\Sigma$-, $\Pi$-types, and also $\Nat$ and $\Bool$) is strongly normalising.
+\begin{para}[Normalisation results]  It is a fundamental fact, going back to \cite{martin-loef:predicative-part}, that the basic structural theory together with any subset of the standard constructors ($\Id$-, $\Sigma$-, $\Pi$-types, and also $\Nat$ and $\Bool$) is strongly normalising.
 
 Moreover, it is clear from most proofs that this result extends to theories including algebraic type- and term-forming axioms.  (It can fail, however, under the addition of algebraic definitional equality axioms.)
 
@@ -492,19 +495,16 @@ We will also need in Chapter~\ref{chapter:fundamental-w-cat} a small proposition
 Suppose $\Gamma = \bigwedge_{i \in I} x_i:A_i$ is a context in $\T$, and $\F \subseteq \mathcal{P}(I)$ a set of subsets of $I$, closed under binary intersection and with $\bigcup \F = I$, such that for each $J \in \F$, $\Gamma_J = \bigwedge_{i \in J} x_i : A_i$ is also a well-formed context.
 
  Then the contexts $\Gamma_J\!$ and the dependent projections between them give a diagram 
-$$\Gamma_{-} \colon (\F, \subseteq)^\op \to \cl(\T),$$
+\[\Gamma_{-} \colon (\F, \subseteq)^\op \to \cl(\T),\]
 and the dependent projections $\Gamma \to \Gamma_J$ express $\Gamma$ as its limit:
-$$\Gamma = \lim \! {}_{J \in \F}\ \Gamma_J .$$
+\[\Gamma = \lim \! {}_{J \in \F}\ \Gamma_J .\]
 
 Moreover, for a translation $F\colon \T \to \T'$, the functor $\cl(F)$ preserves such limits. \qed
 \end{proposition} 
 
 A familiar special case asserts that if $\Gamma \types A\ \type$ and $\Gamma \types B\ \type$, then the following square of projections is a pullback:
-$$ \xymatrix{ \Gamma, x:A, y:B \ar[r] \ar[d] & \Gamma ,y:B \ar[d] \\ \Gamma , x: A \ar[r] & \Gamma } $$
+\[ \xymatrix{ \Gamma, x:A, y:B \ar[r] \ar[d] & \Gamma ,y:B \ar[d] \\ \Gamma , x: A \ar[r] & \Gamma } \]
 The proof of the general proposition is essentially the same.
-
-
-
 
 
 
