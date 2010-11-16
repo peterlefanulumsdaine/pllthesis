@@ -1,12 +1,219 @@
 
-\section{Background of the field}
+\section{Background}
 
-Historical introduction
+\begin{para}
+A fundamental construction in all flavours of type theory is the \emph{classifying category} $\cl(\T)$ of a theory $\T$.  Objects of $\cl(\T)$ are types (or contexts) of $\T$; morphisms of $\T$ are open terms of one type  with free variables from another, up to syntactic equivalence of some sort.
 
-\section{Overview: Chapter \ref{ch:fundamental}}
+The uses of this construction are manifold.  First of all, it provides a tool for structural analysis of theories, allowing type-theoretic constructors and rules to be understood as presentations of categorical structure (products, sums, exponential objects, \ldots) familiar from elsewhere in mathematics.
 
-Overview of this!
+Next, this allows us to model the type theory in any suitably structured category, via a right adjoint to the functor $\cl$, the \emph{internal language} of a structured category.
 
-\section{Overview: Chapter \ref{ch:classifying}}
+Putting these together, it allows us to represent type theories as \emph{equivalent} to appropriately structured categories, giving us an alternate presentation with different strengths to the traditional syntax.
+\end{para}
 
+\begin{para}
+For some logical systems---simple type theory, for instance, and some versions of extensional Martin-Löf type theory this correspondence is very well understood and leaves little to be desired.  Unfortunately, the situation with the intensional variants of Martin-Löf type theory---ITT, henceforth---is not yet so satisfactory.
+
+Syntactic categories for theories in ITT still work essentially as described above: they are a powerful technical tool for providing models, and for representing theories.  The subtlety is that the structures corresponding to logical constructors in ITT are no longer so categorically familiar as before: they are not quite the products, exponentials, adjoints and so on that one might expect.  The problem\footnote{although, of course, ``it's not a bug, it's a feature''!} is the interaction of its two different kinds of equality.
+
+Firstly, there is \emph{definitional} (aka \emph{intensional}) equality:
+\[\Gamma\ \types\ a = a' : A\]
+a decidable, quite fine syntactic relation---this covers essentially $\alpha$-equivalence, $\beta$-equivalence, and sometimes $\eta$-, but no more.  Its strictness reflects the extremely well-controlled computational behaviour of the system.  This is the equality used in the classifying category.  Crucially, however, it is a separate judgement of the system, not represented by a type, so cannot be reasoned about by e.g.\ induction within the system.  One cannot prove in ITT, for instance, that 
+\[n : \N\ \types\ x+0 = x\ : \N. \]
+
+Secondly, since one does need some kind of equality which can be reasoned about internally, there is \emph{propositional} (sometimes aka \emph{extensional}) equality, which is represented by a dependent type, the \emph{identity type} over each type:
+\[ x, y : A\ \types\ \Id_A(x,y)\ \type\]
+An inhabitant of this type is seen as a \emph{proof of equality} between $A$ and $B$.  This is a coarser equality than the definitional; it is axiomatised by a pair of $\intro$/$\elim$ rules, given in the usual inductive form, but has remarkably subtle consequences.
+
+In the extensional theory, the two equalities coincide by fiat.  This makes reasoning about equality within the theory much simpler, but at the cost of desirable computational properties: for instance, type-checking becomes undecidable, since it depends (because of the dependency of types on terms) on definitional equality, which is now reduced to propositional, i.e.\ to inhabitation of types, which is undecidable in any sufficiently rich system.
+
+As mentioned above, however, categorical analysis of constructors in the intensional theory is much less clear than one might expect.  For instance, a unit type\footnote{as usually axiomatised in ITT, as an inductive type with one nullary constructor} does \emph{not} give a terminal object of the syntactic category.  It may have multiple morphisms from other objects, at least up to definitional equality.  Internally, these terms will be equal, but only up to \emph{propostional} equality---so we need to incorporate this somehow into the structure of the syntactic category.  
+
+(Of course, propositional equality is already present in the classifying category, but as terms of some other type; but we want an approach which makes clearer its rôle in the categorical analysis of the constructors.)
+
+A naïve approach might be to simply quotient by propositional equality; but this destroys too much of the structure of the theory. 
+\end{para}
+
+\begin{para}Instead, starting with the Hofmann-Streicher groupoid model \cite{hofmann-streicher}, higher categories and related homotopy-theoretic structures have emerged as a natural solution to this problem: we add the propositional equality, but as extra \emph{structure}, not just as a relation to quotient by.
+
+In the globular approach to higher categories, a higher category has objects (``0-cells'') and arrows (``1-cells'') between objects, as in a category, but also 2-cells between 1-cells, and so on, with various composition operations and laws depending on the kind of category in question (strict or weak, $n$- or $\omega$-, $\ldots$).
+
+Now we see propositional equalities between as \emph{2-cells} between morphisms; and also, since propositional equalities themselves are terms of a possibly non-trivial type, we treat further propositional equalities between them as higher cells, and so on \emph{ad infinitum}.  Binary composition of these higher cells corresponds now to the transitivity of equality; higher identitiy cells, to reflexivity; symmetry of equality, to having some sort of inverses for cells.
+
+There is a compelling analogy here with homotopy theory.  The higher fundamental groupoid of a space consists of points of the space, paths between points, homotopies between paths, \ldots\ Homotopies are composable, and have units, and inverses.
+
+A type, therefore, can be seen as something like a space: a category with cells of arbitrarily high dimension, in which all cells are invertible, i.e.\ an \emph{$\omega$-groupoid}.  An entire theory now looks something like a category of spaces: an $\omega$ category in which all cells of dimension $> 1$ are invertible, i.e.\ an \emph{($\omega,1)$-category} (also known as $(\infty,1)$).
+
+However, in the fundamental groupoid example, it is a familiar fact that associativty of composition, and other laws, hold only up to homotopy, i.e.\ only up to a cell of higher dimension.  We find the same situation in type theory: composition is generally associative, unital etc.\ only up to propositional equality.  (Of course, in the presence of extra axioms, or in certain models, it can sometimes be strict.)  For the fully intensional theory we thus have to work not with strict but with \emph{weak} higher categories.
+
+Various different definitions of weak $\omega$-categories exist; we use the \emph{globular operadic} definition of Batanin, as modified by Leinster. 
+\end{para}
+
+\begin{para}
+Since \cite{hofmann-streicher}, ideas along these lines have been explored by various authors in various directions.  For ``two-dimensional ITT'' and certain weak 2-categories, the full correspondence is worked out in detail in \cite{garner:2d-models}.  On the semantic side, models of ITT in various higher categorical/homotopical settings are investigated in \cite{awodey-warren}, \cite{warren:thesis}, and \cite{garner-van-den-berg:models}.  In the converse direction, the structures formed from the syntax of theories have been previously investigated in \cite{gambino-garner}, \cite{lumsdaine:lmcs}, \cite{garner-van-den-berg}, \cite{awodey-hofstra-warren}.  This dissertation continues the latter line of investigation: the main goal is to construct the \emph{classifying weak $\omega$-category} of a theory.
+\end{para}
+
+
+\section{Overview of results}
+
+\subsection*{Chapter \ref{ch:fundamental}: the fundamental weak $\omega$-category of a type}
+
+\begin{para}As a warm-up for the main result, in this chapter we construct the ``fundamental weak $\omega$-category''\footnote{named by analogy with the higher fundamental groupoids of a space; in our case the fundamental weak $\omega$-category is again groupoidal, as shown in \cite{garner-van-den-berg}, but we do not discuss this here.} of a single type within a theory.  
+
+Specifically, we show that for any type $A$ in a type theory $\T$ with at least the $\Id$-type rules, there is a weak $\omega$-category in which 0-cells are terms of type $A$, 1-cells are terms of identity types between these, 2-cells are terms of identity type between 1-cells, and so on.
+
+(Note that for this construction the dimensions of cells are always one lower than in the classfying category sketched above.  This comes from the general rule that if $X$, $A$ are objects of an $n$-category $\C$, then $\C(X,A)$ forms an $(n-1)$-category whose 0-cells are 1-cells of $C$, and so on.)
+\end{para}
+
+\begin{para}Before sketching the construction, we roughly recall the Batanin/Leinster definition of weak higher categories.  
+
+An $\omega$-category $\C$ has a set $C_n$ of ``$n$-cells'' for each $n > 0$.  The $0$- and $1$-cells correspond to the objects and arrows of an ordinary category: each arrow $f$ has source and target objects $a = s(f)$, $b = t(f)$.  Similarly, the source and target of a 2-cell $\alpha$ are a parallel pair of 1-cells $f,g: a \two b$, and generally the source and target of an $(n+1)$-cell are a parallel pair of $n$-cells.
+
+Cells of each dimension can be composed along a common boundary in any lower dimension, and in a \emph{strict} $\omega$-category, the composition satisfies various associativity, unit, and interchange laws, captured by the generalised associativity law: each labelled pasting diagram has a unique composite. (See illustrations in Fig.\ \ref{figure:assoc-laws}).
+
+\begin{figure}
+$$
+\begin{array}{c}
+\begin{array}{cccc}
+\ \xy
+(0,0)*{\bullet};
+(0,80)*{a};
+\endxy \quad
+&
+\ \xy
+(0,0)*{\bullet}="a";
+(0,80)*{\scriptstyle a};
+(400,0)*{\bullet}="b";
+(400,80)*{\scriptstyle b};
+{\ar "a";"b"};
+(200,80)*{f};
+\endxy \ 
+&
+\ \xy
+(0,0)*+{\bullet}="a";
+(0,80)*{\scriptstyle a};
+(450,0)*+{\bullet}="b";
+(450,80)*{\scriptstyle b};
+{\ar@/^1pc/^{f} "a";"b"};
+{\ar@/_1pc/_{g} "a";"b"};
+{\ar@{=>} (210,85)*{};(210,-85)*{}};
+(280,0)*{\alpha};
+\endxy \ 
+&
+\ \xy
+(0,0)*+{\bullet}="a";
+(600,0)*+{\bullet}="b";
+{\ar@/^1.75pc/^{f} "a";"b"};
+{\ar@/_1.75pc/_{g} "a";"b"};
+{\ar@2{->}@/_0.5pc/|{\alpha} (220,140);(220,-140)} ;
+{\ar@2{->}@/^0.5pc/|{\beta} (380,140);(380,-140)} ;
+{\ar@3{->} (225,-20);(375,-20)};
+(300,60)*{\Theta};
+\endxy \ 
+\end{array} \\
+\begin{array}{ccc}
+\ \xy(0,0)*{\bullet}="a";
+(0,80)*{\scriptstyle a};
+(300,0)*{\bullet}="b";
+(300,80)*{\scriptstyle b};
+(600,0)*{\bullet}="c";
+(600,80)*{\scriptstyle c};
+{\ar^f "a";"b"};
+{\ar^g "b";"c"};
+\endxy \ 
+&
+\ \xy
+(0,0)*+{\bullet}="a";
+(0,80)*{\scriptstyle a};
+(500,0)*+{\bullet}="b";
+(500,80)*{\scriptstyle b};
+{\ar@/^1.75pc/|f "a";"b"};
+{\ar|{f'} "a";"b"};
+{\ar@/_1.75pc/|{f''} "a";"b"};
+{\ar@{=>}^{\alpha} (250,160)*{};(250,50)*{}} ;
+{\ar@{=>}^{\gamma} (250,-50)*{};(250,-160)*{}} ;
+(0,-250)*{\ };
+\endxy \ 
+&
+\ \xy
+(0,0)*+{\bullet}="a";
+(0,80)*{\scriptstyle a};
+(400,0)*+{\bullet}="b";
+(400,80)*{\scriptstyle b};
+(800,0)*+{\bullet}="c";
+(800,80)*{\scriptstyle c};
+{\ar@/^1.1pc/|f "a";"b"};
+{\ar@/_1.1pc/|{f'} "a";"b"};
+{\ar@/^1.1pc/|g "b";"c"};
+{\ar@/_1.1pc/|{g'} "b";"c"};
+{\ar@{=>}^{\alpha} (200,80)*{};(200,-80)*{}} ;
+{\ar@{=>}^{\beta} (600,80)*{};(600,-80)*{}} ;
+\endxy \ \\
+g \cdot_0 f &
+\gamma \cdot_1 \alpha &
+\beta \cdot_0 \alpha
+\end{array}
+\\
+\begin{array}{cc}
+\ \xy(0,0)*{\bullet}="a";
+%(0,80)*{\scriptstyle a};
+(300,0)*{\bullet}="b";
+%(300,80)*{\scriptstyle b};
+(600,0)*{\bullet}="c";
+%(600,80)*{\scriptstyle c};
+(900,0)*{\bullet}="d";
+%(900,80)*{\scriptstyle d};
+{\ar^f "a";"b"};
+{\ar^g "b";"c"};
+{\ar^h "c";"d"};
+\endxy \ &
+\ \xy
+(0,0)*+{\bullet}="a";
+(400,0)*+{\bullet}="b";
+{\ar@/^1.5pc/ "a";"b"};
+{\ar "a";"b"};
+{\ar@/_1.5pc/ "a";"b"};
+{\ar@{=>}^{\alpha} (200,150)*{};(200,25)*{}} ;
+{\ar@{=>}^{\gamma} (200,-25)*{};(200,-150)*{}} ;
+(800,0)*+{\bullet}="c";
+{\ar@/^1.5pc/ "b";"c"};
+{\ar "b";"c"};
+{\ar@/_1.5pc/ "b";"c"};
+{\ar@{=>}^{\beta} (600,150)*{};(600,25)*{}} ;
+{\ar@{=>}^{\delta} (600,-25)*{};(600,-150)*{}};
+(0,250)*{\ };
+(0,-220)*{\ };
+\endxy \ \\
+\begin{array}{c} h \cdot_0 (g \cdot_0 f) =  \\ (h \cdot_0 g) \cdot_0 f \end{array} &
+\begin{array}{c}(\delta \cdot_0 \gamma) \cdot_1 (\beta \cdot_0 \alpha) = \\
+(\gamma \cdot_1 \alpha) \cdot_0 (\delta \cdot_1 \beta)\end{array}
+\end{array}
+\end{array}
+$$
+\caption{Some cells, composites, and associativities in a strict $\omega$-category \label{figure:assoc-laws}} 
+\end{figure}
+
+In a weak $\omega$-category, we do not expect strict associativity, so may have multiple composites for a given pasting diagram, but we do demand that these composites agree up to cells of the next dimension (``up to homotopy''), and that these associativity cells satisfy certain coherence laws of their own, again up to cells of higher dimension, and so on.
+This is exactly the situation we find in intensional type theory.  For instance, even in constructing a term witnessing the transitivity of identity---that is, a composition law for the pasting diagram $(\xymatrix{ \bullet \ar[r] & \bullet \ar[r] & \bullet })$, or explicitly a term $c$ such that 
+$$x,y,z:X,\ p:\Id(x,y),\ q:\Id(y,z) \types c(q,p): \Id(x,z)$$
+---one finds that there is no single canonical candidate: most obvious are the two equally natural terms $c_l$, $c_r$ obtained by applying ($\Id$-\elim) to $p$ or to $q$ respectively.  These are not definitionally equal, but are propositionally equal, i.e.\ equal up to a 2-cell: there is a term $e$ with
+$$x,y,z:X,\ p:\Id(x,y),\ q:\Id(y,z) \types e(q,p): \Id(c_l(q,p),c_r(q,p)).$$
+\end{para} 
+
+\begin{para}In Leinster's definition \cite{leinster:book}, a system of composition laws of this sort is wrapped up in the algebraic structure of a \emph{globular operad with contraction}, and a weak $\omega$-category is given by a globular set equipped with an \emph{action} of such an operad.  We generalise this slightly, to define an \emph{internal weak $\omega$-category} in any suitable category $\C$.
+
+Accordingly, we would like to find an operad-with-contraction $P_\Id$ of all such type-theoretically definable composition laws, acting on terms of any type and its identity types.  The heart of the paper is Sec.~\ref{sec:the-operad}, where we formalise this idea.  We consider $\T_\Id[X]$, the theory axiomatised just by the structural and $\Id$-rules plus a single generic base type $X$.  The operad $P_\Id$ of definable composition laws therein may then be formally constructed as an endomorphism operad in (presheaves on) its syntactic category $\cl(\T_\Id [X])$; and by some analysis of $\T_\Id[X]$, we show that $P_\Id$ is contractible.
+\end{para}
+
+Since $X$ is generic, composition laws defined on it can be implemented on all other types, giving our main theorem:
+
+\begin{thm}Let $\T$ be any type theory extending $\T_\Id$, and $A$ any type of $\T$.  Then the system of types $(A, Id_A, Id_{Id_A}, \ldots)$ is equipped naturally with a $P_\Id$-action, and hence with the structure of an internal weak $\omega$-category in $\C(\T)$.
+\end{thm}
+
+The material of this chapter is essentially based on my earlier paper \cite{lumsdaine:lmcs}.  A very similar construction (in parts the same)  was discovered independently by Benno van den Berg and Richard Garner, and is forthcoming in \cite{garner-van-den-berg}. \\
+
+
+
+\begin{para}{Overview: Chapter \ref{ch:classifying}}
 Another overview?
+\end{para}

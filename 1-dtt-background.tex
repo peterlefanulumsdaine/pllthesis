@@ -8,7 +8,7 @@
 
 \begin{para}Several different, mostly equivalent, syntactic presentations of Martin-Löf-style dependent type theory exist in the literature; the present one is essentially based (up to notation) on those of \cite{pitts:categorial-logic} and \cite{hofmann:syntax-and-semantics}.
 
-A word about the range of theories we will consider is, however, in order here.  All theories we consider will share the common basic syntax and structural core presented in \ref{para:basic-syntax} and \ref{para:structural-core}.  We will, however, vary the constructors we add on top of that, in two stages.  Firstly, by a \emph{type system} we will mean the extension of this structural core by some selection $\stuff$ of the constructors and rules of \ref{para:constructors}--\ref{para:ext-rules}, and of other standard constructors and rules, within certain limitations---a precise statement will appear in \ref{para:types-systems-as-ess-alg}.  Secondly, over a given such system $\stuff$, we will consider arbitrary extensions by \emph{algebraic} axioms (\ref{para:alg-rules}), organised into a category $\DTT_\stuff$ of \emph{theories over $\stuff$}.
+A word about the range of theories we will consider is, however, in order here.  All theories we consider will share the common basic syntax and structural core presented in \ref{para:basic-syntax} and \ref{para:structural-core}.  We will, however, vary the constructors we add on top of that, in two stages.  Firstly, by a \emph{type system} we will mean the extension of this structural core by some selection $\stuff$ of the constructors and rules of \ref{para:constructors}--\ref{para:ext-rules}, and of other standard constructors and rules, within certain limitations---a precise definition will appear in \ref{para:type-systems-as-ess-alg}.  Secondly, over a given such system $\stuff$, we will consider arbitrary extensions by \emph{algebraic} axioms (\ref{para:alg-rules}), organised into a category $\DTT_\stuff$ of \emph{theories over $\stuff$}.
 \end{para}
 
 \begin{para}[Basic syntax] \label{para:basic-syntax}
@@ -33,7 +33,7 @@ $\types \Gamma = \Gamma' \ \cxt$ &  $\types { f} = { f}' : \Gamma \To \Gamma'$ \
 
 In the sequel, we will sometimes also use dependent versions of these derived judgements, though they will not be needed in the presentation of the theory:
 \begin{center}\begin{tabular}{@{\ }c@{\hskip 0.75in}c@{\ }}
-$ \Gamma \types \Delta \ \cxt$ & $\Gamma \types \d : \Delta $  \\ \rule{0pt}{3ex} 
+$ \Gamma \types \Delta \ \cxt$ & $\Gamma \types \vec d : \Delta $  \\ \rule{0pt}{3ex} 
 $ \Gamma \types \Delta = \Delta' \ \cxt$ & $\Gamma \types \vec d = \vec d' : \Delta$ \\
 \end{tabular}
 \end{center}
@@ -153,9 +153,9 @@ Two rules which will not be part of our core concern but which are worth mention
 {\Gamma \types \Kterm_{A;\ x,u.\Delta;\ x,u,\w.C}(z,\v.\ d(z,\v);\ a,r(a),\c) = d(a) : C(a,r(a),\c)}
 \end{array}\]
 
-Both these eliminators essentially trivialise the higher-categorical structure with which we are principally concerned, so we will mainly consider theories without them; however, they will provide interesting comparisons at times.  In the case of the reflection rule, this trivialisation is immediate.  In the case of $\Kterm$, it is slightly less obvious; but it turns out that from $\Kterm$ we can derive the ``(propositional) uniqueness of identity proofs'' principle, asserting that all elements of any identity type are equal (\cite{streicher:hab}, \cite{warren:thesis}).  See \ref{para:j-and-k-homotopically} for an alternative point of view on $\Kterm$.
+Both these eliminators essentially trivialise the higher-categorical structure with which we are principally concerned, so we will mainly consider theories without them; however, they will provide interesting comparisons at times.  In the case of the reflection rule, this trivialisation is immediate.  In the case of $\Kterm$, it is slightly less obvious; but it turns out that from $\Kterm$ we can derive the ``(propositional) uniqueness of identity proofs'' principle, asserting that all elements of any identity type are equal (\cite{streicher:hab}, \cite{warren:thesis}).  See \ref{para:j-and-k-homotopically} for a ``topological'' point of view on the relationship between $\Jterm$ and $\Kterm$.
 
-Two less destructive variations on the $\Id$-elimination rule are also worth mentioning; we will not use these as rules per se, but in Section \ref{sec:Jbar} and elsewhere we will discuss some analogous variations on other principles.
+Two less destructive variations on the $\Id$-elimination rule are also worth mentioning; we will not use these as rules per se, but in Section \ref{sec:homot-strux-on-dtt} will discuss analogous variations on the principle $\Jbar$.
 
 Firstly, the dependent context $\Delta(x,y,u)$ which we have included in the premises is often omitted.  (Its inclusion is, in categorical terms, a Frobenius condition.) In the presence of $\Pi$-types, this is interderivable with our version ($\Delta$ can simply be curried over to the right-hand side).  In the absence of $\Pi$-types, the non-Frobenius version of the rule is simply not strong enough to be much use: one cannot even derive, for instance, the transitivity of propositional equality.
 
@@ -174,7 +174,7 @@ This easily implies the original form; and in the presence of $\Sigma$-types, th
 
 \begin{para}[Functional extensionalty and $\eta$-rules] \label{para:ext-rules}
 
-It turns out that with just the core rules of \ref{para:Pi-core}, propositional equality on $\Pi$-types is a rather more exclusive relation than one might desire.  Various different rules have been considered relaxing it, and in particular relating to the principle of ``functional extensionality'': that two functions are equal if they are equal on values.  A systematic comparison is given in \cite{garner:on-the-strength}, the terminology of which we mostly follow here.  Several rules asserting equalities may be given in both propositional and definitional flavours.
+It turns out that with just the core rules of \ref{para:constructors}, propositional equality on $\Pi$-types is a rather more exclusive relation than one might desire.  Various different rules have been considered relaxing it, and in particular relating to the principle of ``functional extensionality'': that two functions are equal if they are equal on values.  A systematic comparison is given in \cite{garner:on-the-strength}, the terminology of which we follow here.  Several rules asserting equalities may be given in both propositional and definitional flavours.
 
 \[
 \inferrule*[right={$\Pi$-$\eta$}]{\Gamma \types f : \Pi_{x : A} B}{\ \Gamma \types f = (\lambda x. f \cdot x) : \Pi_{x : A} B \ } 
@@ -224,7 +224,7 @@ for some given $\Gamma,\,A,\,A'$ or $\Gamma,\,A,\,a,\,a'$.
 \begin{para}[Logical frameworks]
 An alternate presentation of the syntax is via\todo{[What is best orig reference?  Nordstrom--Peterssen--Smith?]} a \emph{logical framework}: rather than starting with raw syntax and then defining the judgements of well-formedness on top of that, we define well-formed types, terms etc.\ directly from the start; the logistical cost of this is using a dependently-typed metalanguage, the \emph{logical framework}, assumed to have $\Pi$-types and their $\eta$-rule, plus one ``universe'' in which we encode our object language.  \cite{hofmann:syntax-and-semantics} gives a useful overview of the two presentations, together with a crucial comparison of their formal strengths, which we recall in Example \ref{ex:hofmann-contractibility}.
 
-We will briefly have cause to work in the logical framework presentation, and in particular to discuss Garner's rule $\PiIdelim$ (and its associated computation rule $\PiIdcomp$), from \ref{garner:on-the-strength}, which involves second-order quantification and so cannot be directly expressed in the earlier presentation.  This rule is a strong extensionality principle, asserting that the type $u, v : \Pi_{x:A}B(x), \types \Pi_{x:A} \Id_{B(x)}( u \tightcdot x,v \tightcdot x)$ is generated by canonical elements of the form $\lambda x. r(b(x))$: 
+We will briefly have cause to work in the logical framework presentation, and in particular to discuss Garner's rule $\PiIdelim$ (and its associated computation rule $\PiIdcomp$), from \cite{garner:on-the-strength}, which involves second-order quantification and so cannot be directly expressed in the earlier presentation.  This rule is a strong extensionality principle, asserting that the type $u, v : \Pi_{x:A}B(x), \types \Pi_{x:A} \Id_{B(x)}( u \tightcdot x,v \tightcdot x)$ is generated by canonical elements of the form $\lambda x. r(b(x))$: 
 \[ \inferrule*[right={$\PiIdelim$}]{
 \Gamma,\ u, v : \Pi_{x:A}B(x), w : \Pi_{x:A} \Id_{B(x)}(u \cdot x,v \cdot x)\ \types\ C(u,v,w)\ \type \\ 
 \Gamma,\ f : (x \tightcolon A) B(x)\ \types\ d(f) : C (\lambda f, \lambda f, \lambda (r \circ f)) \\
@@ -287,9 +287,9 @@ Its computation rule concludes from appropriate premises that
 
 \subsection*{Categorical representation}
 
-The syntax is an excellent tool for intuitive and computationally tractable presentations of theories; however, for semantic/categorical purposes its formal complexity can be a hindrance.  To this end, various categorical structures have been introduced which correspond, more or less closely, to dependent type theories as presented above\footnote{Most relevantly for our purposes, \emph{comprehension categories} (\cite{jacobs:comprehension-categories}), \emph{categories with attributes} (\cite{cartmell-thesis}, \cite{moggi:program-modules}, \cite{pitts:categorial-logic}), \emph{categories with families} (\cite{dybjer:internal-type-theory}), \cite{hofmann:syntax-and-semantics}, \emph{contextual categories} (\cite{cartmell:gats}, \cite{streicher:semantics-book}); see \cite{jacobs:comprehension-categories}, \cite{hofmann:syntax-and-semantics} for useful overviews.}.
+The syntax is an excellent tool for intuitive and computationally tractable presentations of theories; however, for semantic/categorical purposes its formal complexity can be a hindrance.  To this end, various categorical structures have been introduced which correspond, more or less closely, to dependent type theories as presented above\footnote{Most relevantly for our purposes, \emph{comprehension categories} (\cite{jacobs:comprehension-categories}), \emph{categories with attributes} (\cite{cartmell-thesis}, \cite{moggi:program-modules}, \cite{pitts:categorial-logic}), \emph{categories with families} (\cite{dybjer:internal-type-theory}), \cite{hofmann:syntax-and-semantics}, \emph{contextual categories} (\cite{cartmell:generalised-algebraic-theories}, \cite{streicher:semantics-book}); see \cite{jacobs:comprehension-categories}, \cite{hofmann:syntax-and-semantics} for useful overviews.}.
 
-Of these, the most categorically flexible are probably Jacobs' \emph{comprehension categories}, which admit many useful variations; since in the present work we will stick closely to the type theory, however, we will use Cartmell's \emph{categories with attributes} as our main model, as these are very elementarily presented.  The relationships between various models are summed up below in Fig.~\ref{fig:big-picture}.
+Of these, the most categorically flexible are probably Jacobs' \emph{comprehension categories}, which admit many useful variations; since in the present work we will stick closely to the type theory, however, we will use Cartmell's \emph{categories with attributes} as our main model, as these are very elementarily presented.  \oldtodo{Include diagram of theories?} % The relationships between various models are summed up below in Fig.~\ref{fig:big-picture}.
 
 \begin{definition}A \emph{category with attributes} consists of:
 \begin{itemize}
@@ -329,9 +329,9 @@ Equivalently, $\C$ is contextual if there is a \emph{length} function $l \colon 
 \end{itemize}
 \end{definition}
 
-Contextual CwA's correspond precisely to the \emph{contextual categories} of Cartmell \cite{cartmell:gats} and Streicher \cite{streicher:semantics-book}, and hence, crucially, to dependent type theories without constructors:
+Contextual CwA's correspond precisely to the \emph{contextual categories} of Cartmell \cite{cartmell:generalised-algebraic-theories} and Streicher \cite{streicher:semantics-book}, and hence, crucially, to dependent type theories without constructors:
 
-\begin{proposition}[John Cartmell \cite{cartmell:thesis},\cite{cartmell:gats}] \label{prop:CwA-equivalence}
+\begin{proposition}[John Cartmell \cite{cartmell:thesis},\cite{cartmell:generalised-algebraic-theories}] \label{prop:CwA-equivalence}
 The category of small CwA's is \emph{equivalent} to the category of type theories presented syntactically by a small set of purely algebraic axioms (i.e.\ dependent terms and types, and equality axioms between them) and interpretations between such theories.
 
 Specifically, there is an adjoint equivalence
@@ -347,7 +347,7 @@ taking a syntactically presented type theory $\T$ to its \emph{classifying categ
 
 (Note that this really is an honest (1-)equivalence, not just a 2-equivalence or anything similarly weak; $\CwA_\cxl$ and $\SynThy$ do carry natural 2-category structures, but for the present we study them purely 1-categorically.  This is our reason for working specifically with contextual CwA's, rather than just e.g.~admissible)
 
-\begin{para}This equivalence justifies working with a \emph{presentation-agnostic} category of type theories, which we denote $\DTT$, defined up to equivalence as either $\SynThy$ or $\CwA_\cxl$: we will construct and work with objects of $\DTT$ (\emph{theories}) sometimes as syntactic presentations, sometimes as categories with attributes.  By abuse of notation we will use $\cl$ when we wish to emphasise it as a forgetful functor $\DTT \to \Cat$.
+\begin{para} \label{para:dtt-equivalence} This equivalence justifies working with a \emph{presentation-agnostic} category of type theories, which we denote $\DTT$, defined up to equivalence as either $\SynThy$ or $\CwA_\cxl$: we will construct and work with objects of $\DTT$ (\emph{theories}) sometimes as syntactic presentations, sometimes as categories with attributes.  By abuse of notation we will use $\cl$ when we wish to emphasise it as a forgetful functor $\DTT \to \Cat$.
 
 Given any construction either on syntactically presented theories or on contextual CwA's, we'll transfer it without comment to $\DTT$, and so forth.  In subsequent chapters, we will work more often with syntactic presentations, but for the constructions of this section it will be convenient to work primarily via $\CwA_\cxl$, for the sake of its connections to other categories of CwA's.
 
@@ -381,9 +381,9 @@ Write $\CwA^\Id$, $\CwA_\cxl^\Id$, etc.\ for the various categories of CwA's wit
 \begin{proposition}[\cite{hofmann:syntax-and-semantics}, \cite{pitts:categorial-logic}]  \todo{[Original source of this result?]}This structure really does correspond precisely to the $\Id$-type rules: the equivalence of Proposition \ref{prop:CwA-equivalence} lifts to an equivalence between $\CwA^\Id_\cxl$ and a category $\SynThy^\Id$, of theories presented syntactically by the core $\Id$-type rules plus a set of algebraic axioms. 
 \end{proposition}
 
-\begin{para}Similarly, we may define structure on the categorical side correponding to the core $\Pi$-type rules, or any of the other rules of \ref{para:id-variants}, \ref{para:ext-rules} above (with obvious dependencies: the structure for $\extrule$ rules refers to the $\Pi$- and $\Id$-types structure, and so on).
+\begin{para} \label{para:type-systems-as-ess-alg}Similarly, we may define structure on the categorical side correponding to the core $\Pi$-type rules, or any of the other rules of \ref{para:id-variants}, \ref{para:ext-rules} above (with obvious dependencies: the structure for $\extrule$ rules refers to the $\Pi$- and $\Id$-types structure, and so on).
 
-In particular, if $\stuff$ is any appropriate collection of the above rules, then we can obtain a category $\CwA_\cxl^\stuff$ and an equivalence $\CwA_\cxl^\stuff \equiv \SynThy^\stuff$ as before, and justified by this we introduce a presentation-agnostic category $\DTT_\stuff$ of theories ove $\stuff$.
+In particular, if $\stuff$ is any appropriate collection of the above rules, then we can obtain a category $\CwA_\cxl^\stuff$ and an equivalence $\CwA_\cxl^\stuff \equiv \SynThy^\stuff$ as before, and justified by this we introduce a presentation-agnostic category $\DTT_\stuff$ of theories over $\stuff$.
 
 In the case of all the rules above, theories over $\stuff$ are again models of an essentially algebraic theory extending the base theory of contextual CwA's.  This motivates the level of generality we work at: when we speak informally of a \emph{collection of rules/constructors} $\stuff$, what we mean formally is an algebraic theory extending the theory of contextual CwA's, with the same sorts.
 
@@ -486,7 +486,7 @@ Moreover, it is clear from most proofs that this result extends to theories incl
 
 Normalisation is especially informative for theories also posessing the \emph{canonicity} property, that all normal forms are ``canonical'', i.e.\ are terms formed from the $\intro$-rule constructors.  Unfortunately, this will fail in many theories of interest to us---in particular, to theories with terms of identity types adjoined.  We will discuss canonicity of particular theories as and when we require it.
 
-It is currently somewhat unclear to what extent one can retain strong normalisation in conjunction with the functional extensionality rules.  The Observational Type Theory of Altenkirch and collaborators (\cite{altenkirch:ott}, \cite{altenkirch-mcbride-swierstra}) achieves this, but has \emph{defined} rather than axiomatic identity types (and therefore does automatically permit extension by further type axioms), and moreover forces these to be trivial: any two terms of an identity type are equal (the UIP axiom of \cite{hofmann:extensional??}).  However, the OTT system is an encouraging step towards the development of a fully intensional system with functional extensionality.  (The difficulty lies essentially in defining the computational behaviour of the extensionality combinator; this seems to be related to the admissibility of the principle $\Jbar$ of Section \ref{sec:jbar}.)
+It is currently somewhat unclear to what extent one can retain strong normalisation in conjunction with the functional extensionality rules.  The Observational Type Theory of Altenkirch and collaborators (\cite{altenkirch:ott}, \cite{altenkirch-mcbride-swierstra}) achieves this, but has \emph{defined} rather than axiomatic identity types (and therefore does automatically permit extension by further type axioms), and moreover forces these to be trivial: any two terms of an identity type are equal (the UIP axiom of \cite{hofmann:extensional??}).  However, the OTT system is an encouraging step towards the development of a fully intensional system with functional extensionality.  (The difficulty lies essentially in defining the computational behaviour of the extensionality combinator; this seems to be related to the admissibility of the principle $\Jbar$ of Section \ref{sec:homot-strux-on-dtt}.)
 \end{para}
 
 We will also need in Chapter~\ref{chapter:fundamental-w-cat} a small proposition on limits in syntactic categories:

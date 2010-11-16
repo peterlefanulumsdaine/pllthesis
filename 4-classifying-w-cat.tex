@@ -446,7 +446,7 @@ induced by the retraction of contexts
 
 Then the map $(a,r(a)) \colon \diamond \mono x:A, i:\Id(x,a)$ is (up to isomorphism) the introduction map for the one-ended form of $\Id$-$\elim$, so by Example \ref{ex:elim-gives-contraction}, the retraction  of slices $(a,r(a))^*$ is term-contractible.
 
-Thus $\Jbar$ asserts that something which is holds derivably for \emph{closed} terms also holds admissibly for \emph{open} terms: in particular, that open terms of identity types satisfy the same rules as closed ones do. % \comment{I had here: ``$\Jbar$ asserts---like various other type-theoretic principles---\ldots'', but I now can't remember what other examples I originally had in mind.}
+Thus $\Jbar$ asserts that something which is holds derivably for \emph{closed} terms also holds admissibly for \emph{open} terms: in particular, that open terms of identity types satisfy the same rules as closed ones do. \oldtodo{I had here: ``$\Jbar$ asserts---like various other type-theoretic principles---\ldots'', but I now can't remember what other examples I originally had in mind.}
 
 Unlike most type-theoretic principles, is important to note, however, that $\Jbar$ is \emph{not} a property of a theory in isolation, but of a \emph{category} of theories, of what I have here called a type system.\\
 
@@ -572,7 +572,7 @@ One could also consider a principle one might call $\Kbar$, along the lines of S
 Even stronger (or at least possibly so)\todo{is there a known result connecting $\Kterm$ and the prop.\ conseqs.\ of refl?  check Streicher Habth thoro'ly}, one could consider a similar analogue of the reflection rule, asserting that for any (pre-existing) terms $a(\x)$, $a'(\x)$, $l(\x)$ of a theory $\T$, the map $\T \to \T[a'(\x) = a(\x),\,l(\x) = r(a(\x))]$ is term-contractible; this simply adds, by fiat, all the propositional consequences of $\refl$.
 \end{para}
 
-\begin{para}
+\begin{para} \label{para:j-and-k-homotopically}
 This is perhaps the place to mention a homotopy-theoretic take on the difference between $\Jterm$ and $\Kterm$ (or between $\Jbar$ and $\Kbar$), and how $\Kterm$ trivialises the higher-categorical structure.  In terms of the homotopy theory given by the universal extensions, $\Jbar$ asserts roughly that the inclusion of one endpoint into a line segment is a weak equivalence (and moreover is preserved by certain pushouts along cofibrations).  This is a homotopically essential, and powerful.  $\Kbar$ forces the inclusion of the basepoint into a \emph{loop} to be a weak equivalence.  It is then clear that the structures represented by such loops must be homotopically trivial, and more usefully, the topological intuition which makes this clear can be pulled back through the dictionary to recover the usual type-theoretic arguments.
 \end{para}
 

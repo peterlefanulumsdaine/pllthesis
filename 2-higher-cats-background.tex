@@ -232,13 +232,13 @@ A \emph{strict $\omega$-category} $\Cbf$ is a globular set $\Cbu$ together with 
 and unit maps
 \[r_n \colon C_{n-1} \to C_n\]
 (for which we use index conventions analogous to those for $s$, $t$),
- such that firstly
+ such that for each $j < k < l$, $(C_j,C_k,C_l \circ_j, r_k, \circ_k, r_l)$ forms a strict 2-category.  Unwinding a bit further, this says that:
 \begin{itemize}
 \item for each $k < n$, $(C_k,C_n, \circ_k, r_n)$ forms a category, i.e.\ the source and target of composites and units are ``what one would expect'', and the associativity and unit laws
 \[ c \circ_k (b \circ_k a) = (c \circ_k b) \circ_k a\]
 \[ a \circ_k (r_n s_k a) = a = (r_n t_k a) \circ_k a\]
 hold (for appropriately composable $a, b, c \in C_n$); and additionally,
-\item the \emph{interchange law} holds: for $j < k < n$, and suitable $a,b,c,d \in C_n$,
+\item for each $j < k < n$, and suitable $a,b,c,d \in C_n$, we have $s_k(b \circ_j a) = s_k(b) \circ_j s_k(a)$, and similarly for $t_k$; and the \emph{interchange law} holds:
 \[ (d \circ_j c) \circ_k (b \circ_j a) = (d \circ_k b) \circ_j (c \circ_k a)\]
 (also as illustrated in Figure \ref{fig:assoc-laws}). 
 \end{itemize}
