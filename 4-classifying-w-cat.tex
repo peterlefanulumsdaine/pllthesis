@@ -246,7 +246,7 @@ Thus, while not exactly what we first thought of, this is a reasonable alternati
 \begin{para}
 There is an evident map of globular objects $\globes \to \piglobes$, interpreting the open term-constructors of $\globes$ by applications of the closed terms of $\Pi$-type in $\piglobes$.  This induces a natural map $\cl_\omega^\Pi(\T) \to \cl_\omega(\T)$.
 
-In theories with $\Pi$-$\extrule$, there is also a map $\piglobes \to \globes$ coming the other way.  In the presence of $\Piextapp$-$\defrule$, these maps exhibit $\piglobes$ as a retraction of $\globes$, and hence $\cl^\Pi_\omega$ as a retract of $\cl_\omega$.
+In theories with $\Pi$-$\extrule$, there is also a map $\piglobes \to \globes$ coming the other way.  In the presence of $\Piextapp$-$\defrule$, these maps exhibit $\piglobes$ as a retraction of $\globes$, and hence $\clpi_\omega$ as a retract of $\cl_\omega$.
 \end{para}
 
 \begin{para} \label{para:canonicity-for-piglobes}
@@ -682,7 +682,7 @@ This is perhaps the place to mention a homotopy-theoretic take on the difference
 \efig\]
 \end{figure}
 
-\subsection*{Theories with $\Id$-types}
+\subsection*{$\End(\globes)$, in theories with $\Id$-types}
 
 \renewcommand{\stuff}{\Id}
 \begin{theorem} \label{thm:ctrble-operad-for-id} If $\Jbar$ holds for $\Id$, then $\End(\globes^\Id)$ is contractible.
@@ -708,7 +708,7 @@ But now $s_1\pi$ is just some $\pathpd_l$, so as in \ref{para:map-from-cat}, \re
 
 \subsection*{$\End(\globes)$, in theories with $\Piextapp$}
 
-\renewcommand{\stuff}{\PiIdelim}
+\renewcommand{\stuff}{\Piextapp}  % augh! doing it this way was a terrible idea!
 \begin{para} By turning our attention to theories with not only $\Id$-types but also $\Pi$-types, $\Piext$, and $\Piextapp$, we ensure that $\Jbar$ holds unconditionally.  However, this comes at the possible cost of normalisation and canonicity.  Thus, in trying to repeat the argument above to show that $\End(\globes)$ is contractible, we fall at the last hurdle: we do not know that $[F_i,G_i]$ gives the ``correct'' map $\del \globe[n] \to \T_\stuff[\widehat{\pathpd_l}]$.
 
 To remedy this, we simply restrict to the sub-operad of operations for which this holds.  This is just an elaboration of the tactic used in \cite{garner-van-den-berg}, of restricting to the operad of point-preserving operations, as discussed in \ref{remarks:fundamental}. 
@@ -789,16 +789,18 @@ For higher dimensions, note that operations in this new operad are just as in th
 But the overall rectangle commutes, so the desired filler follows by $\Jbar$.
 \end{proof}
 
-\subsection*{$\End(\piglobes)$}
+\renewcommand{\stuff}{\Phi}  % augh! doing it this way was a terrible idea!
 
-Turning our attention to $\piglobes$, and taking $\stuff = (\Id,\Pi,\Pi\mbox{-}\eta)$, and $\Id$, we are now well set up to construct a contractible sub-operad $Q_\Pi$ of $\End(\piglobes)$.  Specifically, take $Q_\Pi$ to be the normalised core of $\End(\piglobes)$---that is, all those operations whose $0$-dimensional source and target are the operad unit $1_{\piglobe[0]}$.  Since we have canonicity, we do not need to restrict further as we did in the construction of $Q_\Piextapp$.
+\subsection*{$\End(\piglobes)$, in theories with $\Id$, $\Pi$, $\Pi$-$\eta$}
+
+Turning our attention to $\piglobes$, and taking considering theories with the rules $(\Id,\Pi,\Pi\mbox{-}\eta)$, we are now well set up to construct a contractible sub-operad $Q_\Pi$ of $\End(\piglobes)$.  Specifically, take $Q_\Pi$ to be the normalised core of $\End(\piglobes)$---that is, all those operations whose $0$-dimensional source and target are the operad unit $1_{\piglobe[0]}$.  Since we have canonicity, we do not need to restrict further as we did in the construction of $Q_\Piextapp$.
 
 \begin{theorem} \label{thm:ctrble-operad-for-pi}
 The operad $Q_\Pi$ is contractible.
 \end{theorem}
 
 \begin{proof}
-The proof of Theorem \ref{thm:ctrble-operad-for-id} goes through almost verbatim.  The only difference is that the type-contractibility of the maps into which we factor $\T_\stuff[\widehat{pi}]^\Pi \epi \T_\stuff[\widehat{s_1 \pi}]^\Pi$ does not depend on $\Jbar$, instead following just from Example \ref{ex:elim-gives-contraction}. 
+The proof of Theorem \ref{thm:ctrble-operad-for-id} goes through almost verbatim.  The only difference is that the type-contractibility of the maps into which we factor $\T_\stuff[\widehat{\pi}]^\Pi \epi \T_\stuff[\widehat{s_1 \pi}]^\Pi$ does not depend on $\Jbar$, instead following just from Example \ref{ex:elim-gives-contraction}. 
 \end{proof}
 
 \subsection*{Classifying weak $\omega$-categories}
@@ -807,11 +809,12 @@ The proof of Theorem \ref{thm:ctrble-operad-for-id} goes through almost verbatim
 \begin{para} Theorems \ref{thm:ctrble-operad-for-id}, \ref{thm:ctrble-operad-for-piidelim}, and \ref{thm:ctrble-operad-for-pi} give  three situations in which there is a map from some contractible operad $Q$ into $\End(\globes)$ (or $\End(\piglobes)$).  In each case, this induces a map $L \to Q \to \End(\maybepiglobes)$, and hence a functor (``restriction of scalars'') $\Alg{\End(\maybepiglobes)} \to \Alg{L} = \wkwCat$.  We thus have:
 \end{para}
 
-\begin{corollary}
+\begin{corollary} \label{cor:main-thm-classifying}
+
 \begin{enumerate}
-\item There is a functor $\cl_\omega \colon \DTT_{\PiIdelim} \to \wkwCat$, as outlined in the introduction, giving the ``classifying weak $\omega$-category'' of any theory with at least $\Id$-types, $\Pi$-types, and the $\PiIdelim$ rule.
+\item There is a functor $\cl_\omega \colon \DTT_{\Piextapp} \to \wkwCat$, as outlined in the introduction, giving the ``classifying weak $\omega$-category'' of any theory with at least $\Id$-types, $\Pi$-types, and the $\Piext$, $Piextapp$ rules.
 \item If $\Jbar$ holds for $\Id$, then we moreover have $\cl_\omega \colon \DTT_{\Id} \to \wkwCat$, giving the classifying weak $\omega$-category for any theory with at least $\Id$-types.
-\item There is a functor $\cl^\Pi_\omega \colon \DTT_{\Id,\Pi} \to \wkwCat$ giving a variant of the classifying weak $\omega$-category, for any theory with at least $\Pi$-types and $\Id$-types.
+\item There is a functor $\clpi_\omega \colon \DTT_{\Id,\Pi} \to \wkwCat$ giving a variant of the classifying weak $\omega$-category, for any theory with at least $\Pi$-types and $\Id$-types.
 \end{enumerate}
 \end{corollary}
 
@@ -884,15 +887,17 @@ But this will hold just if $\End(\globes^\Id) \to Q_\Piextapp$ is a map of opera
 
 % \todo{[in fact, I think it's impossible; check this out if time allows!]}
 However, it seems unlikely to the present author that the implementation of $\Jbar$ given above for theories with $\Piextapp$ could be preserved by $U$.  This defect can (as often in problems with contractions) be finessed by some ad hoc modification of the contractions on the operads involved; but essentially, this is a problem that should be resolved not by strict-higher-categorical fiddling, but by the theory of weak higher-categorical equivalence, under which the squares marked (?) would commute \emph{up to weak equivalence}.  In lieu of the development of this theory, then, we leave a resolution of this problem aside for now.
+
+Such tools should also allow one to address the question of when $\clpi_\omega$ may be equivalent to $\cl_\omega$.
 \end{para}
 
 \begin{para}Finally, there is an abuse of terminology: what, if anything, does the classifying weak $\omega$-category classify?
 
-As given at present, in the form of the functors $\cl^{(\Pi)}_\omega \colon \DTT_\stuff \to \wkwCat$ above, it cannot classify anything: that is, it cannot have a right adjoint, since it does not preserve the initial object, nor a left, since it does not preserve the terminal object.  (The initial theory in $\DTT_\stuff$ is $\T_\stuff$, whose $\cl_\omega$ is certainly non-empty, containing at least one $0$-cell, the empty context $\diamond$.  The terminal theory in each $\DTT_\stuff$ has one context of every length $l \in \N$, and so its $\cl_\omega$ will have $\N$-many 0-cells.)
+As given at present, in the form of the functors ${}^{(\Pi)} \cl_\omega \colon \DTT_\stuff \to \wkwCat$ above, it cannot classify anything: that is, it cannot have a right adjoint, since it does not preserve the initial object, nor a left, since it does not preserve the terminal object.  (The initial theory in $\DTT_\stuff$ is $\T_\stuff$, whose $\cl_\omega$ is certainly non-empty, containing at least one $0$-cell, the empty context $\diamond$.  The terminal theory in each $\DTT_\stuff$ has one context of every length $l \in \N$, and so its $\cl_\omega$ will have $\N$-many 0-cells.)
 
 However, this is not surprising: in the passage from type theories to weak $\omega$-categories, we have forgotten much structure (and co-structure).  One of the next important steps in the current program should be the axiomatisation of higher-categorical structure corresponding to the structure on the type theories, in such a way that the classifying $\omega$-categories of theories carry such structure, and (hopefully) do indeed appropriately classify some kind of models in these structured higher categories.
 
-For the 2-truncated case, this is well-worked-out in \cite{garner:2-d-models}.  However, in higher dimensions, the understanding of appropriate ``weak logical structure'' is at a very early stage of development; so this is a story for another time.
+For the 2-truncated case, this is well-worked-out in \cite{garner:2-d-models}.  However, in higher dimensions, the understanding of appropriate ``weak logical structure'' is at a very early stage of development; so this too is a story for another day.
 \end{para}
 % 
 % \subsection*{CwA structures on $\DTT$ etc.} \ref{sec:fam-strux-on-DTT}.
