@@ -2,7 +2,7 @@
 \section{Background}
 
 \begin{para}
-A fundamental construction in all flavours of type theory is the \emph{classifying category} $\cl(\T)$ of a theory $\T$.  Objects of $\cl(\T)$ are types (or contexts) of $\T$; morphisms of $\T$ are open terms of one type  with free variables from another, up to syntactic equivalence of some sort.
+\todo{cosmetic: look out lowercase mathcal for $\cl(\T)$}A fundamental construction in all flavours of type theory is the \emph{classifying category} $\cl(\T)$ of a theory $\T$.  Objects of $\cl(\T)$ are types (or contexts) of $\T$; morphisms of $\T$ are open terms of one type  with free variables from another, up to syntactic equivalence of some sort.
 
 The uses of this construction are manifold.  First of all, it provides a tool for structural analysis of theories, allowing type-theoretic constructors and rules to be understood as presentations of categorical structure (products, sums, exponential objects, \ldots) familiar from elsewhere in mathematics.
 
@@ -247,7 +247,7 @@ In particular, $\Jbar$ (and hence our construction of a contractibile operad) ho
 We conjecture that in fact $\Jbar$ holds in $\DTT_\Id$, and hence that $\Id$-types alone are sufficient to construct a contractible operad acting on $\cl_\omega$; but we are unable to prove this.
 \end{para}
 
-Our main eventual result is thus: \todo{``star'' these theorems, make them unnumbered!}
+Our main eventual result is thus: \todo{``star'' these theorems, make them unnumbered!  and fix the alignment, here and in main body!}
 \begin{theorem}[Corollary \ref{cor:main-thm-classifying}]
 \begin{enumerate}
 \item There is a functor $\cl_\omega \colon \DTT_{\PiIdelim} \to \wkwCat$, as outlined above, giving the ``classifying weak $\omega$-category'' of any theory with at least $\Id$-types, $\Pi$-types, and the $\Piext$, $Piextapp$ rules.
@@ -255,4 +255,20 @@ Our main eventual result is thus: \todo{``star'' these theorems, make them unnum
 \end{enumerate}
 \end{theorem}
 
-Additionally, we give a variant construction $\clpi_\omega$, with a slightly different underlying set (using closed terms of $\Pi$-types, rather than open terms), which works for theories with $\Id$-types, $\Pi$-types, and the $\eta$ rule for $\Pi$-types, giving an alternative candidate for the classifying $\omega$-categories of these theories in lieu of a proof of $\Jbar$ for $\DTT_\Id$.
+Additionally, we give a variant construction $\clpi_\omega$, with a slightly different underlying set (using closed terms of $\Pi$-types, rather than open terms), which works for theories with $\Id$-types, $\Pi$-types, and the $\eta$ rule for $\Pi$-types, giving an alternative candidate for the classifying $\omega$-categories of these theories in lieu of a proof of $\Jbar$ for $\DTT_\Id$. \clearpage
+
+\section*{Acknowledgements}
+This thesis would not have been possible without the support and encouragement of many people over the past few years.
+
+The Pure and Applied Logic Group at Carnegie Mellon, straddling three departments, provided a marvellously stimulating and diverse intellectual environment within which I was able to gradually find my way---enthusiastically but quite unpremeditatedly---to categorical logic and type theory.  The teaching, advice, and inspiration of James Cummings and Bob Harper were especially helpful.  The unflagging institutional support of the Mathematics department (even when I decided to take an advisor in Philosophy) is also greatly appreciated.
+
+I have also benefited enormously from innumerable discussions with, and support from, colleagues further afield---too many to list, but particularly Martin Hyland, Peter Johnstone, and the other Cambridge category theorists; Thorsten Altenkirch and the type theorists in Nottingham; Mike Shulman and others in Chicago; the Atlantic Category Theory Group at Dalhousie; and, elsewhere, Benno van den Berg and Pierre-Louis Curien.
+
+On a personal level, I would not have made it through a long summer of writing-up without the support of my parents Nicola and David, and a few wonderfully supportive friends---they know who they are!---not to mention UCPO, AUO, the ESO, and the KCO.  To all of them, I am deeply indebted.
+
+Particularly influential on the contents of this dissertation have been Richard Garner, Michael A.~Warren, and Chris Kapulkin, with whom I have greatly enjoyed working over the past few years. \todo{OK, this last line obviously isn't serious!  But the rhythm of the ending needs something like this to give a good cadence. Sleep on it!}
+
+I am grateful also to all the members of my thesis committee for their interest and support, and for bringing a wide range of interests and experience to bear on this project.  But above all, I would like to thank my advisor, Steve Awodey, for five years of his unstinting support, his guidance, his teaching, generosity, and patience.
+
+I hereby declare this dissertation \ldots\ open!  
+
