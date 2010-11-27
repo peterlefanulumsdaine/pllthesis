@@ -1,0 +1,624 @@
+peter-lefanu-lumsdaines-macbook:lumsdaine-thesis-2 pedro$ pdflatex thesis
+This is pdfTeXk, Version 3.1415926-1.40.9 (Web2C 7.5.7)
+ %&-line parsing enabled.
+entering extended mode
+(./thesis.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, german-x-2008-06-18, ngerman-x-2008-06-18, ancientgreek, ibycus, ar
+abic, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutc
+h, esperanto, estonian, farsi, finnish, french, galician, german, ngerman, mono
+greek, greek, hungarian, icelandic, indonesian, interlingua, irish, italian, la
+tin, lithuanian, mongolian, mongolian2a, bokmal, nynorsk, polish, portuguese, r
+omanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, turki
+sh, ukenglish, ukrainian, uppersorbian, welsh, loaded.
+(/usr/local/texlive/2008/texmf-dist/tex/latex/amscls/amsbook.cls
+Document Class: amsbook 2004/08/06 v2.20
+(/usr/local/texlive/2008/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2008/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2008/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2008/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2008/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2008/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2008/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2008/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/base/omsenc.dfu)))
+(/usr/local/texlive/2008/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2008/texmf/tex/latex/config/color.cfg)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/pdftex-def/pdftex.def))
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/ifpdf.sty)
+(./mathpartir.sty
+(/usr/local/texlive/2008/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2008/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xy.sty
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xy.tex Bootstrap'ing:
+catcodes, docmode,
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xyrecat.tex)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xyidioms.tex)
+
+ Xy-pic version 3.7 <1999/02/16>
+ Copyright (c) 1991-1998 by Kristoffer H. Rose <krisrose@ens-lyon.fr>
+ Xy-pic is free software: see the User's Guide for details.
+
+Loading kernel: messages; fonts; allocations: state, direction,
+utility macros; pictures: \xy, positions, objects, decorations;
+kernel objects: directionals, circles, text; options; algorithms: directions,
+edges, connections;  Xy-pic loaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xyall.tex
+ Xy-pic option: All features v.3.3
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xycurve.tex
+ Xy-pic option: Curve and Spline extension v.3.7 curve, circles, loaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xyframe.tex
+ Xy-pic option: Frame and Bracket extension v.3.7 loaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xycmtip.tex
+ Xy-pic option: Computer Modern tip extension v.3.3
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xytips.tex
+ Xy-pic option: More Tips extension v.3.3 loaded) loaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xyline.tex
+ Xy-pic option: Line styles extension v.3.6 loaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xyrotate.tex
+ Xy-pic option: Rotate and Scale extension v.3.3 loaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xycolor.tex
+ Xy-pic option: Colour extension v.3.3 loaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xymatrix.tex
+ Xy-pic option: Matrix feature v.3.4 loaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xyarrow.tex
+ Xy-pic option: Arrow and Path feature v.3.5 path, \ar, loaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xygraph.tex
+ Xy-pic option: Graph feature v.3.7 loaded) loaded))
+(/usr/local/texlive/2008/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/ifvtex.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/oberdiek/hycolor.sty
+(/usr/local/texlive/2008/texmf-dist/tex/latex/oberdiek/xcolor-patch.sty))
+(/usr/local/texlive/2008/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/infwarerr.sty))
+(/usr/local/texlive/2008/texmf/tex/latex/config/hyperref.cfg)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/hyperref/puenc.def)
+Implicit mode ON; LaTeX internals redefined
+(/usr/local/texlive/2008/texmf-dist/tex/latex/ltxmisc/url.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/bitset.sty
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/intcalc.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/bigintcalc.sty
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty)))
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/atbegshi.sty))
+*hyperref using default driver hpdftex*
+(/usr/local/texlive/2008/texmf-dist/tex/latex/hyperref/hpdftex.def)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/mh/mathtools.sty
+(/usr/local/texlive/2008/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/mh/mhsetup.sty))
+(/usr/local/texlive/2008/texmf-dist/tex/latex/doi/doi.sty)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xy2cell.tex
+ Xy-pic option: Two-cell feature v.3.3 two-cells, loaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xyrotate.tex
+ Xy-pic option: Rotate and Scale extension v.3.3 not reloaded) (./diagxy.tex
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xy.tex not reloaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xyarrow.tex
+ Xy-pic option: Arrow and Path feature v.3.5 not reloaded)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/xypic/xycurve.tex
+ Xy-pic option: Curve and Spline extension v.3.7 not reloaded)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/stmaryrd/Ustmry.fd))
+\@input{thesis-style.aux}
+(./thesis-style.tex)
+\@input{thesis-macros.aux}
+(./thesis-macros.tex) (./thesis.aux)
+(/usr/local/texlive/2008/texmf-dist/tex/context/base/supp-pdf.tex
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2008/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2008/texmf-dist/tex/latex/oberdiek/refcount.sty))
+(./thesis.out) (./thesis.out) [1{/usr/local/texlive/2008/texmf-var/fonts/map/pd
+ftex/updmap/pdftex.map}] [2] [3] [4]
+Contents
+(./thesis.toc
+Underfull \vbox (badness 10000) has occurred while \output is active [5])
+[6]
+Acknowledgements
+
+Package hyperref Warning: No destination for bookmark of \addcontentsline,
+(hyperref)                destination is added on input line 110.
+
+(./0-1-acknowledgements.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active [7]
+[0]
+Introduction
+(./0-introduction.texpdfTeX warning (ext4): destination with the same identifie
+r (name{page.i}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.18 
+      [1]
+Overfull \hbox (7.179pt too wide) in paragraph at lines 20--22
+\OT1/cmr/m/n/10.95 a de-cid-able, quite fine syn-tac-tic relation---this cov-er
+s es-sen-tially $\OML/cmm/m/it/10.95 
+                                     $\OT1/cmr/m/n/10.95 -equivalence,
+pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.31 
+      [2]pdfTeX warning (ext4): destination with the same identifier (name{page
+.iii}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.44 
+      [3]
+
+LaTeX Warning: Citation `lumsdaine:tlca' on page iv undefined on input line 55.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.iv}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.63 \begin{para} \label
+                        {para:fundamental-sketch} As a warm-up for the main ...
+[4]
+Overfull \hbox (7.11449pt too wide) in paragraph at lines 70--71
+[][]\OT1/cmr/bx/n/10.95 2.2. []\OT1/cmr/m/n/10.95 Be-fore sketch-ing the con-st
+ruc-tion, we roughly re-call the Batanin/Leinster
+
+Xy-pic Warning: start of break not found: bSTART=1.0, bEND=1 [thesis:110].
+
+
+Xy-pic Warning: start of break not found: bSTART=1.0, bEND=1 [thesis:111].
+
+<xymatrix 3x1 82>pdfTeX warning (ext4): destination with the same identifier (n
+ame{page.v}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.200 $$
+        x,y,z:X,\ p:\Id(x,y),\ q:\Id(y,z) \types c(q,p): \Id(x,z)$$ [5]pdfTeX w
+arning (ext4): destination with the same identifier (name{page.vi}) has been al
+ready used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.202 ... \types e(q,p): \Id(c_l(q,p),c_r(q,p)).$$
+                                                   [6]
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
+(Font)              using `OT1/cmss/bx/n' instead on input line 212.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.vii}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.219 \subsection
+                 *{Ch.~\ref{ch:classifying}: the classifying weak \pdfomega-...
+[7]
+Overfull \hbox (1.43498pt too wide) in paragraph at lines 231--232
+[]\OT1/cmr/m/n/10.95 To give this struc-ture, we once again con-sider an en-do-
+mor-phism operad---
+[8] [9]
+Overfull \hbox (86.97827pt too wide) in paragraph at lines 255--256
+[]\OT1/cmr/m/it/10.95 There is a func-tor $\OMS/cmsy/m/n/10.95 C \OML/cmm/m/it/
+10.95 `[] [] [] [][] [] [][]![][]$\OT1/cmr/m/it/10.95 ,
+
+Overfull \hbox (3.34819pt too wide) in paragraph at lines 256--257
+[]\OT1/cmr/m/it/10.95 If $[]$ holds for $[]$, then we more-over have $\OMS/cmsy
+/m/n/10.95 C \OML/cmm/m/it/10.95 `[] [] [] [][] [] [][]![][]$\OT1/cmr/m/it/10.9
+5 ,
+) [10]
+Chapter 1
+(./1-dtt-background.tex [1]
+Underfull \vbox (badness 5939) has occurred while \output is active [2]
+Overfull \hbox (8.5202pt too wide) detected at line 68
+[]
+
+Overfull \hbox (45.09567pt too wide) detected at line 89
+[]
+
+Underfull \vbox (badness 10000) has occurred while \output is active [3]
+Overfull \hbox (41.011pt too wide) detected at line 117
+[]
+[4]
+Overfull \hbox (8.71707pt too wide) detected at line 136
+[]
+[5]
+Underfull \vbox (badness 1264) has occurred while \output is active [6]
+Overfull \hbox (22.11827pt too wide) detected at line 182
+[] []
+[7]
+Overfull \hbox (46.42094pt too wide) detected at line 197
+[]
+[8] [9]
+Overfull \hbox (13.88864pt too wide) in paragraph at lines 239--240
+[]\OT1/cmr/m/n/10.95 [[], 5.11] shows that (over the core $^^E$-type rules) the
+ rules $[]$(-
+
+Underfull \vbox (badness 1509) has occurred while \output is active [10]
+[11]
+Overfull \hbox (3.7467pt too wide) in paragraph at lines 348--349
+[]\OT1/cmr/m/n/10.95 (Note that this re-ally is an hon-est (1-)equivalence, not
+ just a 2-equivalence
+
+Underfull \vbox (badness 3769) has occurred while \output is active [12]
+Overfull \hbox (2.64198pt too wide) in paragraph at lines 374--375
+[]\OT1/cmr/m/n/10.95 for each con-text $^^@ \OMS/cmsy/m/n/10.95 2 C$ \OT1/cmr/m
+/n/10.95 and type $\OML/cmm/m/it/10.95 A \OMS/cmsy/m/n/10.95 2 []\OT1/cmr/m/n/1
+0.95 (^^@)$, a type $[][] \OMS/cmsy/m/n/10.95 2 []\OT1/cmr/m/n/10.95 (^^@\OML/c
+mm/m/it/10.95 :A:A\OT1/cmr/m/n/10.95 )$,
+[13] [14]
+Underfull \vbox (badness 2809) has occurred while \output is active [15]
+[16]
+Overfull \hbox (32.17673pt too wide) in paragraph at lines 460--461
+\OMS/cmsy/m/n/10.95 ^^E$\OT1/cmr/m/n/10.95 , we ob-tain the \OT1/cmr/m/it/10.95
+ con-tex-tual core \OT1/cmr/m/n/10.95 of $\OMS/cmsy/m/n/10.95 C$\OT1/cmr/m/n/10
+.95 : this is a right ad-joint $\OMS/cmsy/m/n/10.95 ^^@   \OML/cmm/m/it/10.95 =
+    =\OMS/cmsy/m/n/10.95 ^^E [] [] [] [] [][]$
+[17]
+Overfull \hbox (1.9129pt too wide) in paragraph at lines 483--484
+[][]\OT1/cmr/bx/n/10.95 1.24 \OT1/cmr/m/n/10.95 (Nor-mal-i-sa-tion re-sults)\OT
+1/cmr/bx/n/10.95 . []\OT1/cmr/m/n/10.95 It is a fun-da-men-tal fact, go-ing bac
+k to [[]],
+
+Underfull \vbox (badness 2393) has occurred while \output is active [18]
+
+LaTeX Warning: Citation `altenkirch:ott' on page 19 undefined on input line 489
+.
+
+<xymatrix 2x2 154> [19]) [20]
+Chapter 2
+(./2-higher-cats-background.tex <xymatrix 2x2 209>
+Overfull \vbox (1.17688pt too high) has occurred while \output is active
+[21] [22] [23]
+Underfull \vbox (badness 2828) has occurred while \output is active [24]
+
+Xy-pic Warning: start of break not found: bSTART=1.0, bEND=1 [thesis:108].
+
+
+Xy-pic Warning: start of break not found: bSTART=1.0, bEND=1 [thesis:109].
+
+[25] [26]
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+
+[27] [28] [29]
+Overfull \hbox (1.72064pt too wide) in paragraph at lines 322--323
+\OT1/cmr/m/n/10.95 carte-sian monad $\OML/cmm/m/it/10.95 T[]$ \OT1/cmr/m/n/10.9
+5 on $[]$, to-gether with a carte-sian monad map $\OML/cmm/m/it/10.95 
+                                                                       [] [] T
+[] [] T$\OT1/cmr/m/n/10.95 . 
+
+Underfull \vbox (badness 3000) has occurred while \output is active [30]
+Underfull \hbox (badness 10000) in paragraph at lines 361--363
+
+[31]
+Overfull \hbox (22.02202pt too wide) in paragraph at lines 377--378
+[]\OT1/cmr/m/n/10.95 Actions of an op-erad $\OML/cmm/m/it/10.95 P$ \OT1/cmr/m/n
+/10.95 on $\OML/cmm/m/it/10.95 A$ \OT1/cmr/m/n/10.95 then cor-re-spond to op-er
+ad maps $\OML/cmm/m/it/10.95 P [] [][]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 A
+\OT1/cmr/m/n/10.95 )$.
+[32]
+Overfull \hbox (3.67233pt too wide) in paragraph at lines 411--412
+[][]\OT1/cmr/bx/n/10.95 Definition 2.12 \OT1/cmr/m/n/10.95 ([[]])\OT1/cmr/bx/n/
+10.95 . []\OT1/cmr/m/n/10.95 A \OT1/cmr/m/it/10.95 weak $\OML/cmm/m/it/10.95 !$
+\OT1/cmr/m/it/10.95 -category \OT1/cmr/m/n/10.95 is an $\OML/cmm/m/it/10.95 L$\
+OT1/cmr/m/n/10.95 -algebra; $[][]\OML/cmm/m/it/10.95 ![][] \OT1/cmr/m/n/10.95 :
+=
+[33] [34] [35]
+Underfull \hbox (badness 10000) in paragraph at lines 603--604
+
+[36] <xymatrix 2x2 134> [37] <xymatrix 3x2 141> <xymatrix 3x1 34>
+Overfull \hbox (7.69615pt too wide) in paragraph at lines 637--638
+[]\OT1/cmr/m/n/10.95 This for-mula is eas-i-est ex-plained by ex-am-ple: if $\O
+ML/cmm/m/it/10.95 ^^Y \OT1/cmr/m/n/10.95 = ([])$,
+
+Underfull \vbox (badness 4569) has occurred while \output is active [38]
+Overfull \hbox (88.24617pt too wide) in paragraph at lines 702--703
+[]\OT1/cmr/m/n/10.95 A monoidal glob-u-lar func-tor $\OML/cmm/m/it/10.95 F [] [
+] \OMS/cmsy/m/n/10.95 E [] F$ \OT1/cmr/m/n/10.95 in-duces an op-erad map $[][](
+\OML/cmm/m/it/10.95 A[]\OT1/cmr/m/n/10.95 ) [] [][](\OML/cmm/m/it/10.95 FA[]\OT
+1/cmr/m/n/10.95 )$. 
+[39]
+
+LaTeX Warning: Citation `lumsdaine:weak-wcats-from-itt-lmcs' on page 40 undefin
+ed on input line 722.
+
+[40] [41]
+Overfull \hbox (12.5742pt too wide) in paragraph at lines 818--820
+\OT1/cmr/m/n/10.95 (again, a slightly more care-ful cal-cu-la-tion avoids the n
+eed for (co-)completeness,
+) [42]
+Chapter 3
+(./3-fundamental-w-cat.tex
+Underfull \vbox (badness 7203) has occurred while \output is active [43]
+Overfull \hbox (35.90874pt too wide) in paragraph at lines 35--37
+\OT1/cmr/m/n/10.95 and the de-pen-dent pro-jec-tions be-tween them form a glob-
+u-lar con-text $\OML/cmm/m/it/10.95 A[] [] [] \U/msb/m/n/10.95 G[] [] []$\OT1/c
+mr/m/n/10.95 .
+[44]
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 59.
+
+
+Overfull \hbox (5.22647pt too wide) in paragraph at lines 80--81
+[]\OT1/cmr/m/n/10.95 The source of this is then the com-po-si-tion law $(\OML/c
+mm/m/it/10.95 f[]; g[]; [] ; f[]; g[]\OT1/cmr/m/n/10.95 ; \OML/cmm/m/it/10.95 f
+[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 2
+[45] [46]
+
+LaTeX Warning: Reference `intro-examples' on page 47 undefined on input line 10
+5.
+
+[47]
+
+LaTeX Warning: Reference `lumsdaine:weak-w-cats-from-itt-lmcs' on page 48 undef
+ined on input line 121.
+
+
+Overfull \hbox (51.98863pt too wide) in paragraph at lines 124--125
+\OT1/cmr/m/n/10.95 ing $\OML/cmm/m/it/10.95 X$ \OT1/cmr/m/n/10.95 to $1[]$. The
+ com-po-si-tion of this with the for-get-ful func-tor $\OML/cmm/m/it/10.95 U []
+ [] X   \OMS/cmsy/m/n/10.95 n[][]\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 X\OT1/
+cmr/m/n/10.95 ] [] [][][\OML/cmm/m/it/10.95 X\OT1/cmr/m/n/10.95 ]$
+[48]
+Overfull \hbox (51.33383pt too wide) detected at line 159
+[]
+
+Underfull \vbox (badness 5077) has occurred while \output is active [49]
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--241
+
+[51]
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
+
+
+Overfull \hbox (19.47058pt too wide) in paragraph at lines 255--266
+[] 
+
+Overfull \hbox (7.2581pt too wide) in paragraph at lines 255--266
+\OT1/cmr/m/n/10.95 so since by in-duc-tion $\OML/cmm/m/it/10.95 x \OT1/cmr/m/n/
+10.95 : \OML/cmm/m/it/10.95 X \OMS/cmsy/m/n/10.95 ` \OML/cmm/m/it/10.95 r[] \OT
+1/cmr/m/n/10.95 : (\OML/cmm/m/it/10.95 r[]\OT1/cmr/m/n/10.95 )[]\OML/cmm/m/it/1
+0.95 B$\OT1/cmr/m/n/10.95 , we take $\OML/cmm/m/it/10.95 r[] \OT1/cmr/m/n/10.95
+ :=
+
+Underfull \vbox (badness 5985) has occurred while \output is active [52]
+
+LaTeX Warning: Reference `para:pruning' on page 53 undefined on input line 289.
+
+
+
+LaTeX Warning: Reference `para:pruning' on page 53 undefined on input line 291.
+
+
+[53] [54]
+
+LaTeX Warning: Reference `pylon-diag' on page 55 undefined on input line 314.
+
+[55] [56]
+
+LaTeX Warning: Reference `prop:universal-property' on page 57 undefined on inpu
+t line 377.
+
+
+LaTeX Warning: Reference `def:endo-operad' on page 57 undefined on input line 3
+77.
+
+
+LaTeX Warning: Reference `para:types-to-cxts' on page 57 undefined on input lin
+e 388.
+
+[57]) [58]
+Chapter 4
+(./4-classifying-w-cat.tex [59]
+
+LaTeX Warning: Citation `mac-lane-moerdijk' on page 60 undefined on input line 
+42.
+
+<xymatrix 4x2 248> [60]
+
+LaTeX Warning: Citation `hofstra-warren' on page 61 undefined on input line 50.
+
+
+
+LaTeX Warning: Reference `sec:endo-operad' on page 61 undefined on input line 5
+6.
+
+
+LaTeX Warning: Reference `lemma:homming-out' on page 61 undefined on input line
+ 128.
+
+[61]
+
+LaTeX Warning: Citation `adamek-rosicky' on page 62 undefined on input line 142
+.
+
+[62] [63]
+Overfull \hbox (16.04929pt too wide) in paragraph at lines 179--180
+[]\OT1/cmr/m/n/10.95 A 1-dimensional past-ing di-a-gram is just a path $[][] = 
+(\OMS/cmsy/m/n/10.95 ^^A []  ^^A  []  []  [] ^^A\OT1/cmr/m/n/10.95 )$
+<xymatrix 5x1 186> [64]
+Overfull \hbox (17.4564pt too wide) in paragraph at lines 222--223
+\OML/cmm/m/it/10.95 P[]$ \OT1/cmr/m/n/10.95 is ter-mi-nal) is more-over sur-jec
+-tive, and gives an iso-mor-phism $[][][]([][]) []
+
+Overfull \hbox (4.15727pt too wide) detected at line 234
+[] [] []
+[65] [66]
+
+LaTeX Warning: Reference `subsec:constructors' on page 67 undefined on input li
+ne 279.
+
+
+Overfull \hbox (17.54295pt too wide) detected at line 282
+[] []
+[67] [68] <xymatrix 2x2 202>
+Overfull \hbox (19.2109pt too wide) in paragraph at lines 315--316
+[]\OT1/cmr/m/n/10.95 A map ad-mit-ting such struc-ture is called \OT1/cmr/m/it/
+10.95 term-contractible \OT1/cmr/m/n/10.95 (\OT1/cmr/m/it/10.95 type-contractib
+le\OT1/cmr/m/n/10.95 ;
+[69] (/usr/local/texlive/2008/texmf-dist/tex/latex/base/omscmr.fd)
+Overfull \hbox (1.4721pt too wide) in paragraph at lines 332--333
+\OT1/cmr/m/n/10.95 types one can ob-tain weak-forms of such lift-ings just from
+ term-contractibility.
+[70] <xymatrix 2x2 223>
+Overfull \hbox (15.54837pt too wide) in paragraph at lines 358--359
+[]\OT1/cmr/m/n/10.95 Analogously to the above, ``large elim-i-na-tion'' rules g
+ive type-contractibility;
+[71] [72]
+
+LaTeX Warning: Reference `sec:model-strux' on page 73 undefined on input line 3
+85.
+
+
+LaTeX Warning: Reference `sec:fam-strux-on-DTT' on page 73 undefined on input l
+ine 387.
+
+[73] [74]
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+
+[75] [76]
+Overfull \hbox (10.63158pt too wide) in paragraph at lines 511--512
+\OML/cmm/m/it/10.95 a\OT1/cmr/m/n/10.95 ([])]$, but be-tween $[][]$ and its ex-
+ten-sion by terms $\OML/cmm/m/it/10.95 a[] \OT1/cmr/m/n/10.95 : [[]]\OML/cmm/m/
+it/10.95 A$\OT1/cmr/m/n/10.95 , $\OML/cmm/m/it/10.95 l \OT1/cmr/m/n/10.95 : [[]
+][](\OML/cmm/m/it/10.95 a[]\OT1/cmr/m/n/10.95 ([])\OML/cmm/m/it/10.95 ; a\OT1/c
+mr/m/n/10.95 ([]))$
+
+Overfull \hbox (33.03143pt too wide) in paragraph at lines 529--531
+\OT1/cmr/m/n/10.95 The con-tractibil-ity of $[][\OML/cmm/m/it/10.95 a[]\OT1/cmr
+/m/n/10.95 ([]) :\OMS/cmsy/m/n/10.95 ^^Y \OML/cmm/m/it/10.95 a\OT1/cmr/m/n/10.9
+5 ([])] [] [][]$ and $[][][\OML/cmm/m/it/10.95 a[]; l\OT1/cmr/m/n/10.95 ] [] []
+[]$
+
+Underfull \hbox (badness 10000) in paragraph at lines 534--536
+
+[77]
+Underfull \hbox (badness 10000) in paragraph at lines 561--562
+
+
+Overfull \hbox (5.19308pt too wide) in paragraph at lines 568--569
+\OT1/cmr/m/n/10.95 Stre-icher's $\OT1/cmss/m/n/10.95 K$\OT1/cmr/m/n/10.95 , giv
+-ing con-tractibil-ity be-tween the-o-ries $[][\OML/cmm/m/it/10.95 a\OT1/cmr/m/
+n/10.95 ([])]$ and $[][\OML/cmm/m/it/10.95 a\OT1/cmr/m/n/10.95 ([]);  \OML/cmm/
+m/it/10.95 l\OT1/cmr/m/n/10.95 ([])    :
+[78] [79]
+
+LaTeX Warning: Reference `sec:endo-operads' on page 80 undefined on input line 
+690.
+
+<xymatrix 3x2 165>
+
+LaTeX Warning: Reference `para:pruning' on page 80 undefined on input line 695.
+
+
+[80] <xymatrix 2x2 161> <xymatrix 2x2 120>
+
+LaTeX Warning: Reference `para:canonicity-of-Tpath' on page 81 undefined on inp
+ut line 704.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
+(Font)              using `OT1/cmr/bx/n' instead on input line 710.
+
+[81]
+Underfull \hbox (badness 10000) in paragraph at lines 744--745
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 749--750
+
+[82] <xymatrix 2x3 278> [83]
+Overfull \hbox (18.79005pt too wide) in paragraph at lines 813--814
+[]\OT1/cmr/m/it/10.95 There is a func-tor $\OMS/cmsy/m/n/10.95 C \OML/cmm/m/it/
+10.95 `[] [] [] [][] [] [][]![][]$\OT1/cmr/m/it/10.95 ,
+
+Overfull \hbox (14.85635pt too wide) in paragraph at lines 813--814
+\OT1/cmr/m/it/10.95 as out-lined in the in-tro-duc-tion, giv-ing the ``clas-si-
+fy-ing weak $\OML/cmm/m/it/10.95 !$\OT1/cmr/m/it/10.95 -category''
+
+Overfull \hbox (8.59686pt too wide) in paragraph at lines 813--814
+\OT1/cmr/m/it/10.95 of any the-ory with at least $[]$-types, $\OT1/cmr/m/n/10.9
+5 ^^E$\OT1/cmr/m/it/10.95 -types, and the $[]$, $\OML/cmm/m/it/10.95 Piextapp$
+[84]
+Overfull \hbox (3.34819pt too wide) in paragraph at lines 814--815
+[]\OT1/cmr/m/it/10.95 If $[]$ holds for $[]$, then we more-over have $\OMS/cmsy
+/m/n/10.95 C \OML/cmm/m/it/10.95 `[] [] [] [][] [] [][]![][]$\OT1/cmr/m/it/10.9
+5 ,
+
+Underfull \vbox (badness 10000) has occurred while \output is active [85]
+Overfull \hbox (3.50304pt too wide) in paragraph at lines 857--858
+\OT1/cmr/m/n/10.95 sets, or even into $[]([][])$-algebras, we have $[][]([][]\O
+ML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/10.95 ) []
+[86]
+Overfull \hbox (19.27061pt too wide) in paragraph at lines 894--895
+[]\OT1/cmr/m/n/10.95 As given at present, in the form of the func-tors $[][]\OM
+S/cmsy/m/n/10.95 C \OML/cmm/m/it/10.95 `[] [] [] [][] [] [][]![][]$
+[87]) [88] (./thesis.bbl
+Bibliography
+
+Underfull \hbox (badness 2073) in paragraph at lines 69--74
+\OT1/cmr/m/n/9 put. Sci. \OT1/cmr/bx/n/9 19 \OT1/cmr/m/n/9 (2009), no. 4, 687--
+736, []$\OT1/cmtt/m/n/9 arXiv : 0808 . 2122$[]\OT1/cmr/m/n/9 , []$\OT1/cmtt/m/n
+/9 doi : 10 . 1017 /
+
+Underfull \vbox (badness 10000) has occurred while \output is active [89]
+Underfull \vbox (badness 10000) has occurred while \output is active [90]
+Underfull \hbox (badness 1442) in paragraph at lines 184--189
+\OT1/cmr/m/n/9 tures \OT1/cmr/bx/n/9 13 \OT1/cmr/m/n/9 (2005), no. 5-6, 389--42
+0, []$\OT1/cmtt/m/n/9 arXiv : math / 0410230$[]\OT1/cmr/m/n/9 , []$\OT1/cmtt/m/
+n/9 doi : 10 . 1007 /
+) [91] (./thesis.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{thm.4.3.8} has been referenced but does not exist, replaced by a fixed one
+
+</usr/local/texlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmbx10.pfb></usr/loc
+al/texlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmbx12.pfb></usr/local/texliv
+e/2008/texmf-dist/fonts/type1/bluesky/cm/cmbx6.pfb></usr/local/texlive/2008/tex
+mf-dist/fonts/type1/bluesky/cm/cmbx8.pfb></usr/local/texlive/2008/texmf-dist/fo
+nts/type1/bluesky/cm/cmbx9.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/
+bluesky/cm/cmcsc10.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/bluesky/
+cm/cmex10.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmmi10
+.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmmi12.pfb></us
+r/local/texlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmmi6.pfb></usr/local/te
+xlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmmi8.pfb></usr/local/texlive/2008
+/texmf-dist/fonts/type1/bluesky/cm/cmmi9.pfb></usr/local/texlive/2008/texmf-dis
+t/fonts/type1/bluesky/cm/cmr10.pfb></usr/local/texlive/2008/texmf-dist/fonts/ty
+pe1/bluesky/cm/cmr6.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/bluesky
+/cm/cmr7.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmr8.pf
+b></usr/local/texlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmr9.pfb></usr/loc
+al/texlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmss10.pfb></usr/local/texliv
+e/2008/texmf-dist/fonts/type1/bluesky/cm/cmss8.pfb></usr/local/texlive/2008/tex
+mf-dist/fonts/type1/bluesky/cm/cmssbx10.pfb></usr/local/texlive/2008/texmf-dist
+/fonts/type1/bluesky/cm/cmsy10.pfb></usr/local/texlive/2008/texmf-dist/fonts/ty
+pe1/bluesky/cm/cmsy6.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/bluesk
+y/cm/cmsy8.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmsy9
+.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmti10.pfb></us
+r/local/texlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmti8.pfb></usr/local/te
+xlive/2008/texmf-dist/fonts/type1/bluesky/cm/cmti9.pfb></usr/local/texlive/2008
+/texmf-dist/fonts/type1/bluesky/cm/cmtt9.pfb></usr/local/texlive/2008/texmf-dis
+t/fonts/type1/public/cmex/fmex8.pfb></usr/local/texlive/2008/texmf-dist/fonts/t
+ype1/bluesky/ams/msam10.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/blu
+esky/ams/msam7.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/bluesky/ams/
+msbm10.pfb></usr/local/texlive/2008/texmf-dist/fonts/type1/bluesky/ams/msbm7.pf
+b></usr/local/texlive/2008/texmf-dist/fonts/type1/hoekwater/stmaryrd/stmary8.pf
+b></usr/local/texlive/2008/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></u
+sr/local/texlive/2008/texmf-dist/fonts/type1/public/xypic/xybtip10.pfb></usr/lo
+cal/texlive/2008/texmf-dist/fonts/type1/public/xypic/xydash10.pfb>
+Output written on thesis.pdf (109 pages, 771982 bytes).
+Transcript written on thesis.log.
+peter-lefanu-lumsdaines-macbook:lumsdaine-thesis-2 pedro$ 
