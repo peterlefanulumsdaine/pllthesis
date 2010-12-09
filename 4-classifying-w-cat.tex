@@ -1,13 +1,13 @@
 
 % \comment{Give: the globes, and variants of globes; the Kan constructions; fact that pasting diagrams get realised by these; resulting functors $\DTT \to \Alg{\End(\globes)}$.]}
 
-In this chapter we'll construct classifying weak $\omega$-categories for theories with various extensionality rules, and discuss how it might be possible to extend this to require only the $\Id$-types; we also give a variant which works for theories with just $\Pi$-types.
+In this chapter we will construct classifying weak $\omega$-categories for theories with various extensionality rules, and discuss how it might be possible to extend this to require only the $\Id$-types; we also give a variant which works for theories with just $\Pi$-types.
 
 The construction of the classifying weak $\omega$-category is closely analogous to that of the fundamental weak $\omega$-groupoid of a space: it is obtained by homming out of a complex of representing objects (``globes''), and so it is enough to show that these representing objects form a co-(weak $\omega$-category), just as the topological globes $D^0 \two D^1 \two D^2 \two \cdots\quad$ do in $\Top$.
 
 To this end, in Section \ref{sec:glob-strux-from-dtt} we introduce our representing objests, the \emph{type-theoretic globes} $\globes$.  We then develop, in Section \ref{sec:homot-strux-on-dtt}, classes of left and right maps on $\DTT$, and isolate a property $\Jbar$ (in syntactic terms, a conservativity principle), ensuring that the maps $\T_\stuff[\widehat{\pi}] \to/{-|>}/ \T_\stuff[\widehat{\pi^-}]$ are right maps. (This thus fulfils a function dual to that of the elim-structure on $\Gamma_{\pi^-} \to/{|>->}/ \Gamma_{\pi}$ in the preceding section.)  Finally, in Section \ref{sec:contractibility}, we put the pieces together, with arguments extending those of \ref{thm:p-is-contractible} and its corollaries, to show that various operads are contractible, and deduce the desired weak $\omega$-category structures.
 
-\section{Globular structures from $\DTT$} \label{sec:glob-strux-from-dtt}
+\section{Globular structures from \pdfDTT} \label{sec:glob-strux-from-dtt}
 
 \subsection*{The type-theoretic globes}
 
@@ -142,7 +142,7 @@ and hence, unwinding this formula, consist of diagrams as in Fig.\ \ref{fig:endo
 Moreover, since $U$ reflects and the original $\cl^-_\omega$ preserves all limits, so does the lifted $\cl^-_\omega$, and it is easily seen to be finitary; so by the adjoint functor theorem for locally presentable categories \cite[1.66]{adamek-rosicky}, $\cl^-_\omega$ has a left adjoint, realising any $\End{\globes}$-algebra as a theory.  (Its cells are realised as types and terms as under $\T_\stuff[-]$, and the $\End(\globes)$-action specifies various definitional-equality axioms between them.)
 \end{para}
 
-\begin{para} \label{para:class-cxts-to-types} As mentioned before, this is not quite what we want; $\cl^-_\omega(\T)$ only has types as objects, where we would like contexts.  To remedy the situation, we can compose with the ``dependent contexts'' endofunctor $(-)^\cxt \slice \diamond$ on $\DTT_\stuff$, and define $\cl(\T) := \cl^-_\omega(\T^\cxt \slice \diamond)$.
+\begin{para} \label{para:class-types-to-cxts} As mentioned before, this is not quite what we want; $\cl^-_\omega(\T)$ only has types as objects, where we would like contexts.  To remedy the situation, we can compose with the ``types to contexts'' endofunctor $(-)^\cxt \slice \diamond$ on $\DTT_\stuff$, and define $\cl(\T) := \cl^-_\omega(\T^\cxt \slice \diamond)$.
 
 Now the objects of $\cl(\T)$ are closed types of $\T^\cxt \slice \diamond$, i.e.\ closed contexts of $\T$, just as we wanted; and the fullness of the functor $\T^\cxt \slice \diamond \to \T$ ensures that higher cells also are as we intended.
 \end{para}
@@ -225,7 +225,7 @@ In richer type systems, $\globe[0]$ will typically have more closed types (e.g.\
 \end{para}
 
 
-\subsection*{A variant for $\Pi$-types}  % A house for Mr. Biswas?  A penny for a song?
+\subsection*{A variant for \pdfPi-types}  % A house for Mr. Biswas?  A penny for a song?
 
 \begin{para} We can also consider a variant set of globes ${}^\Pi \globes^\stuff$, for any set of constructors $\stuff$ including $\Pi$-types.  The axioms for each $\piglobe$ are selected from rules $i$-$\sourcerule$-$\Pi$, $i$-$\targetrule$-$\Pi$, $i$-$\cellrule$-$\Pi$, analogously to the axioms for $\globe$.  These axioms differ from before in dimensions $\geq 1$, by using closed rather than open terms:
 \[ 
@@ -266,11 +266,9 @@ In the case where $\stuff$ is exactly $(\Id, \Pi, \Pi\mbox{-}\eta)$, then both n
 
 
 
-\section{Homotopical structures on $\DTT$} \label{sec:homot-strux-on-dtt}
+\section{Homotopical structures on \pdfDTT} \label{sec:homot-strux-on-dtt} \subsection*{Left and right maps in \pdfDTT}
 
-\subsection*{Left and right maps in $\DTT$}
-
-\begin{para}In this section, we will set up various classes of left and right maps on $\CwA^{\stuff}_\diamond$, with a view to applying the methods of \ref{thm:p-is-contractible} to find a contractible operad acting on the globes.
+\begin{para} In this section, we will set up various classes of left and right maps on $\CwA^{\stuff}_\diamond$, with a view to applying the methods of \ref{thm:p-is-contractible} to find a contractible operad acting on the globes.
 
 As remarked in the introduction to this chapter, we will succeed only for theories with $\Pi$-types and some extensionality rules.  However, only one step of the proof (showing that the reflexivity maps $\T_\stuff[\widehat{\pi}] \to \T_\stuff[\widehat{\pi^-}]$ are right maps) uses these extra rules; and it seems hopeful that a similar approach could also apply for theories with only $\Id$-types.
 
@@ -278,7 +276,7 @@ We therefore isolate and investigate a certain property of type systems, $\Jbar$
 \end{para}
 
 \begin{para}[Type and term extensions]
-For the remainder of this section, fix some collection $\stuff$ of the constructors and rules of Subsection \ref{subsec:construtors}, and work in $\DTT_\stuff$.  (The main cases of interest in the sequel are where $\stuff$ is either $(\Id)$, $(\Id,\Pi,\eta)$, or $(\Id,\Pi,\Piext,\Piextapp)$.)
+For the remainder of this section, fix some collection $\stuff$ of the constructors and rules of \ref{para:constructors}, and work in $\DTT_\stuff$.  (The main cases of interest in the sequel are where $\stuff$ is either $(\Id)$, $(\Id,\Pi,\eta)$, or $(\Id,\Pi,\Piext,\Piextapp)$.)
 
 For $n \geq 0$, we define theories $\T_\stuff[\Gamma_{(n)}]$, $\T_\stuff [\Gamma_{(n)} \types A]$, and $\T_\stuff [\Gamma_{(n)} \types a : A]$ to be the free theories on, respectively, a context of length $n$; a dependent type, in context of length $n$; and a term in such a type.  Axiomatically, each may be  specified by some subset of the rules below: $\T_\stuff[\Gamma_{(n)}]$ by the rules $i$-$\cxtrule$, for $0 \leq i < n$; $\T_\stuff [\Gamma_{(n)} \types A]$, by these rules together with $n$-$\typerule$; and $\T_\stuff [\Gamma_{(n)} \types a : A]$ by all of the above, together with $n$-$\termrule$:
 \[\inferrule*[right={$i$-$\cxtrule$}]{\Gamma \types a_0:A_0\ \ldots\ \Gamma \types a_{i-1}:A_{i-1}}{\Gamma \types A_i(a_0,\ldots,a_{i-1})\ \type} \qquad \inferrule*[right={$i$-$\typerule$}]{\Gamma \types a_0:A_0\ \ldots\ \Gamma \types a_{i-1}:A_{i-1}}{\Gamma \types A(a_0,\ldots,a_{i-1})\ \type}\]
@@ -394,7 +392,7 @@ Example \ref{ex:elim-gives-contraction} suggests that this factorisation system 
 
 
 
-\subsection*{Extensions by propositional copies: the conservativity principle $\Jbar$.}
+\subsection*{Extensions by propositional copies: the conservativity principle \texorpdfstring{$\Jbar$}{J-bar}.}
 
 \begin{para}
 One of the fundamental lemmas for many logical systems is that \emph{extension by definitions} should be well behaved: that if we extend a theory $\T$ by adding a new term $a'$, and an axiom that $a'$ is equal to some pre-existing term $a$ of $\T$, then the resulting theory is in some sense equivalent to $\T$.
@@ -485,11 +483,11 @@ $\Jbar$ holds for $(\Id,\Pi,\Piext,\Piextapp)$, and more generally for any set o
 \begin{proof}
 Recall the statement of the rule $\PiIdelim$:
 
-$$ \inferrule*[right={$\PiIdelim$}]{
+\[ \inferrule*[right={$\PiIdelim$}]{
 \Gamma,\ u, v : \Pi_{x:A}B(x), w : \Pi_{x:A} \Id_{B(x)}(u \cdot x,v \cdot x)\ \types\ C(u,v,w)\ \type \\ 
 \Gamma,\ f : (x \tightcolon A) B(x)\ \types\ d(f) : C (\lambda f, \lambda f, \lambda (r \circ f)) \\
 \Gamma\ \types\ k, k' : \Pi_{x:A} B(x) \qquad \Gamma\ \types\ l : (x \tightcolon A) \Id_{B(x)}(k x, k' x) }
-{ \Gamma\ \types\ \Lterm(C,d,k,k',l) : C(k,k',l) } $$
+{ \Gamma\ \types\ \Lterm(C,d,k,k',l) : C(k,k',l) } \]
 and with associated computation rule $\PiIdcomp$ concluding:
 \[ \Lterm(C,d, \lambda h, \lambda h, \lambda ( r \circ h)) = d(h) : C( \lambda h, \lambda h, \lambda (r \circ h)).\]
 
@@ -602,7 +600,7 @@ This is perhaps the place to mention a homotopy-theoretic take on the difference
 
 
 
-\section{Contractible operads; weak $\omega$-categories from $\DTT$} \label{sec:contractibility}
+\section{Contractible operads; weak \pdfomega-categories from \texorpdfstring{$\DTT$}{DTT}} \label{sec:contractibility}
 
 % \comment{Include:  General contractibility of operads.  Give in terms of pylon diagrams.  Prune/contract pasting diagrams.  Recall L09/GvdB ``if whole glob obj is nice, then co-points of pds are ctrble''.  Refine that!  Reduce to more 1-d filling problem.}
 
@@ -682,7 +680,7 @@ This is perhaps the place to mention a homotopy-theoretic take on the difference
 \efig\]
 \end{figure}
 
-\subsection*{$\End(\globes)$, in theories with $\Id$-types}
+\subsection*{\texorpdfstring{$\End(\globes)$}{End(G.)} in theories with \pdfId-types}
 
 \renewcommand{\stuff}{\Id}
 \begin{theorem} \label{thm:ctrble-operad-for-id} If $\Jbar$ holds for $\Id$, then $\End(\globes^\Id)$ is contractible.
@@ -694,7 +692,7 @@ As seen in section \ref{sec:endo-operads}, contractibility for this operad deman
 
 The cases $n= 0,1$ are dealt with by the discussion of \ref{para:map-from-cat} above.
 
-On the other hand, when $n > 0$, it is immediate from the axiomatisations given that the map $\del \globe[n] \to/ >->/ \globe[n]$ is a term-extension.  Also, according to the pruning procedure described \ref{para:pruning} above, we can obtain $\T_\stuff[\hat{\pi}]$ as an extension of $\T_\stuff[\widehat{s_1\pi}]$ by propositional copies; so \emph{provided $\Jbar$ holds for $\DTT_\stuff$}, the retraction
+On the other hand, when $n > 0$, it is immediate from the axiomatisations given that the map $\del \globe[n] \to/ >->/ \globe[n]$ is a term-extension.  Also, according to the pruning procedure described \ref{para:pruning-pds} above, we can obtain $\T_\stuff[\hat{\pi}]$ as an extension of $\T_\stuff[\widehat{s_1\pi}]$ by propositional copies; so \emph{provided $\Jbar$ holds for $\DTT_\stuff$}, the retraction
 \[\T_\stuff[\hat{\pi}] \epi \T_\stuff[\widehat{s_1\pi}]\]
 (interpreting all identity cells as reflexivity terms) is term-contractible.
 
@@ -706,7 +704,7 @@ i.e.\ to complete a triangle of the form
 But now $s_1\pi$ is just some $\pathpd_l$, so as in \ref{para:map-from-cat}, \ref{para:canonicity-of-Tpath} we have an explicit axiomatisation of $\T_\Id(\widehat{s_1 \pi})$, and we know that this theory enjoys canonicity.  So in trying to extend $[F_i,G_i]$ along $ \del \globe[n] \mono \globe[n]$, we have interpreted $i$-$\sourcerule$ and $i$-$\targetrule$ in $\T_\stuff[\widehat{s_1\pi}]$, for $i < n$, and wish to interpret $n$-$\cellrule$; i.e.\ we wish to prove a propositional equality between the interpretations of $s_{n-1}(x)$ and $t_{n-1}(x)$.   But by canonicity, and the simplicity of our set of constructors, any two terms of the same type in $\T_\stuff[\widehat{s_1\pi}]$ are \emph{definitionally} equal; so interpreting $c_n$ as a reflexivity term, we are done.  (Specifically, $s_1$, $t_1$ must both be interpreted as the obvious composite of basic constructors described in \ref{para:map-from-cat}, and for $i > 1$, $s_i$ and $t_i$ must be interpreted as the reflexivity term over $s_{i-1}$, $t_{i-1}$.)
 \end{proof}
 
-\subsection*{$\End(\globes)$, in theories with $\Piextapp$}
+\subsection*{\texorpdfstring{$\End(\globes)$}{End(G.)} in theories with \texorpdfstring{$\Piextapp$}{Π-ext-app}}
 
 \renewcommand{\stuff}{\Piextapp}  % augh! doing it this way was a terrible idea!
 \begin{para} By turning our attention to theories with not only $\Id$-types but also $\Pi$-types, $\Piext$, and $\Piextapp$, we ensure that $\Jbar$ holds unconditionally.  However, this comes at the possible cost of normalisation and canonicity.  Thus, in trying to repeat the argument above to show that $\End(\globes)$ is contractible, we fall at the last hurdle: we do not know that $[F_i,G_i]$ gives the ``correct'' map $\del \globe[n] \to \T_\stuff[\widehat{\pathpd_l}]$.
@@ -791,7 +789,7 @@ But the overall rectangle commutes, so the desired filler follows by $\Jbar$.
 
 \renewcommand{\stuff}{\Phi}  % augh! doing it this way was a terrible idea!
 
-\subsection*{$\End(\piglobes)$, in theories with $\Id$, $\Pi$, $\Pi$-$\eta$}
+\subsection*{\texorpdfstring{$\End(\piglobes)$}{End(ΠG.)} in theories with \pdfId, \pdfPi, \pdfPi-\pdfeta}
 
 Turning our attention to $\piglobes$, and taking considering theories with the rules $(\Id,\Pi,\Pi\mbox{-}\eta)$, we are now well set up to construct a contractible sub-operad $Q_\Pi$ of $\End(\piglobes)$.  Specifically, take $Q_\Pi$ to be the normalised core of $\End(\piglobes)$---that is, all those operations whose $0$-dimensional source and target are the operad unit $1_{\piglobe[0]}$.  Since we have canonicity, we do not need to restrict further as we did in the construction of $Q_\Piextapp$.
 
@@ -803,14 +801,13 @@ The operad $Q_\Pi$ is contractible.
 The proof of Theorem \ref{thm:ctrble-operad-for-id} goes through almost verbatim.  The only difference is that the type-contractibility of the maps into which we factor $\T_\stuff[\widehat{\pi}]^\Pi \epi \T_\stuff[\widehat{s_1 \pi}]^\Pi$ does not depend on $\Jbar$, instead following just from Example \ref{ex:elim-gives-contraction}. 
 \end{proof}
 
-\subsection*{Classifying weak $\omega$-categories}
+\subsection*{Classifying weak \pdfomega-categories}
 % TODO: should be \\\texorpdfstring here
 
 \begin{para} Theorems \ref{thm:ctrble-operad-for-id}, \ref{thm:ctrble-operad-for-piidelim}, and \ref{thm:ctrble-operad-for-pi} give  three situations in which there is a map from some contractible operad $Q$ into $\End(\globes)$ (or $\End(\piglobes)$).  In each case, this induces a map $L \to Q \to \End(\maybepiglobes)$, and hence a functor (``restriction of scalars'') $\Alg{\End(\maybepiglobes)} \to \Alg{L} = \wkwCat$.  We thus have:
 \end{para}
 
-\begin{corollary} \label{cor:main-thm-classifying}
-
+\begin{corollary} \label{cor:main-thm-classifying} $\ $
 \begin{enumerate}
 \item There is a functor $\cl_\omega \colon \DTT_{\Piextapp} \to \wkwCat$, as outlined in the introduction, giving the ``classifying weak $\omega$-category'' of any theory with at least $\Id$-types, $\Pi$-types, and the $\Piext$, $Piextapp$ rules.
 \item If $\Jbar$ holds for $\Id$, then we moreover have $\cl_\omega \colon \DTT_{\Id} \to \wkwCat$, giving the classifying weak $\omega$-category for any theory with at least $\Id$-types.
@@ -880,10 +877,10 @@ What we can at least see is that (by the normalisation results used in \ref{thm:
 \arrow[L`EndGId;]
 \arrow[EndGId`Q;]
 \arrow[L`Q;]
-\place(300,2)[(?)]
+\place(380,200)[(?)]
 \efig\]
 
-But this will hold just if $\End(\globes^\Id) \to Q_\Piextapp$ is a map of operads-with-contraction, i.e.\ iff it preserves the contraction; and it is fairly routine (though rather notationally fiddly) to show that if the forgetful functor $U \colon \DTT_\Piextapp \to \DTT_\Id$ ``preserves the implementation of $\Jbar$'' in an appropriate sense, then this will be the case.  
+This will certainly hold if $\End(\globes^\Id) \to Q_\Piextapp$ is a map of operads-with-contraction, i.e.\ iff it preserves the contraction; and it is fairly routine (though rather notationally fiddly) to show that if the forgetful functor $U \colon \DTT_\Piextapp \to \DTT_\Id$ ``preserves the implementation of $\Jbar$'' in an appropriate sense, then this will be the case.  
 
 % \todo{[in fact, I think it's impossible; check this out if time allows!]}
 However, it seems unlikely to the present author that the implementation of $\Jbar$ given above for theories with $\Piextapp$ could be preserved by $U$.  This defect can (as often in problems with contractions) be finessed by some ad hoc modification of the contractions on the operads involved; but essentially, this is a problem that should be resolved not by strict-higher-categorical fiddling, but by the theory of weak higher-categorical equivalence, under which the squares marked (?) would commute \emph{up to weak equivalence}.  In lieu of the development of this theory, then, we leave a resolution of this problem aside for now.

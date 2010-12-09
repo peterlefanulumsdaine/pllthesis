@@ -12,6 +12,7 @@
 \usepackage[unicode]{hyperref}
 \usepackage{stmaryrd}
 \usepackage{mathtools}
+\usepackage{doi}
 
 
 \xyoption{2cell}
@@ -36,6 +37,7 @@
 % \makeindex
 
 
+
 %%
 %% PDFJUNK
 %% Can add /CreationDate, /Creator, /Subject, /Keywords
@@ -55,6 +57,7 @@
 \frontmatter
 
 %% TITLE INFORMATION
+% \pagestyle{empty}
 
 
 \title{Higher Categories from Type Theories \\~\\ \normalsize (PhD thesis)}
@@ -73,20 +76,19 @@
   \vspace{.5cm}
   Peter LeFanu Lumsdaine\\
   \vspace{.5cm}
-  July 2010\\
+  \today\\
   \vspace{3cm}
   \textbf{Committee}\\~\\
   Steve Awodey (advisor)\\
   \todo{Please let me know if you would prefer your name given differently!}
-  Peter Andrews \\
+%  Peter Andrews \\
   James Cummings \\
   Richard Garner \\
-  Robert Harper \\
+%  Robert Harper \\
   Richard Statman \\
 
 \end{center}
  
-\setcounter{page}{3}
 
 
 % \clearpage
@@ -106,6 +108,11 @@
 %\include{ack}
 %\include{decl}
 
+\chapter*{Acknowledgements}
+% \thispagestyle{empty}
+\input{0-1-acknowledgements}
+
+\mainmatter
 
 \chapter*{Introduction}
 \input{0-introduction}
@@ -113,9 +120,9 @@
 % Main Matter
 
 
-\mainmatter
 
 \chapter{Type-theoretic background}
+\label{ch:dtt-background}
 \input{1-dtt-background}
 
 
@@ -131,6 +138,7 @@
 \chapter{The classifying weak \texorpdfstring{$\omega$}{ω}-category of a theory} \label{ch:classifying}
 \input{4-classifying-w-cat}
 
+% \chapter{Further outlook}
 
 
 
@@ -155,7 +163,7 @@
 
 %% Bibliography Info
 
-\bibliographystyle{amsalpha}
+\bibliographystyle{amsalphaurl}
 \bibliography{pll-thesis-bib}
 
 

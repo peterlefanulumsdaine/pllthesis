@@ -23,32 +23,41 @@
   \popQED\endtrivlist\@endpefalse
 }
 
+\@addtoreset{paragraph}{section}
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\renewcommand{\theparagraph}{\thesection.\arabic{paragraph}}
+
 \makeatother
 
 
 
 \theoremstyle{mytheorem} 
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{theorem}[thm]{Theorem}
-\newtheorem{proposition}[thm]{Proposition}
-\newtheorem{lemma}[thm]{Lemma}
-\newtheorem{corollary}[thm]{Corollary}
-\newtheorem{scholium}[thm]{Scholium}
-\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{thm}[paragraph]{Theorem}
+\newtheorem{theorem}[paragraph]{Theorem}
+\newtheorem{proposition}[paragraph]{Proposition}
+\newtheorem{lemma}[paragraph]{Lemma}
+\newtheorem{corollary}[paragraph]{Corollary}
+\newtheorem{scholium}[paragraph]{Scholium}
+\newtheorem{conjecture}[paragraph]{Conjecture}
+% horrible hack for convenience, I’m sorry Donald Knuth:
+\newtheorem*{mainthmfund}{Theorem \ref{thm:main-thm-fundamental}}
+\newtheorem*{mainthmclass}{Corollary \ref{cor:main-thm-classifying}}
 
 \theoremstyle{mydefinition}
-\newtheorem{definition}[thm]{Definition}
-\newtheorem{para}[thm]{}
-\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{definition}[paragraph]{Definition}
+\newtheorem{para}[paragraph]{}
+\newtheorem{exercise}[paragraph]{Exercise}
 
 %\theoremstyle{remark}
-\newtheorem{remark}[thm]{Remark}
-\newtheorem{remarks}[thm]{Remarks}
-\newtheorem{notation}[thm]{Notations}
-\newtheorem{example}[thm]{Example}
-\newtheorem{examples}[thm]{Examples}
+\newtheorem{remark}[paragraph]{Remark}
+\newtheorem{remarks}[paragraph]{Remarks}
+\newtheorem{notation}[paragraph]{Notations}
+\newtheorem{example}[paragraph]{Example}
+\newtheorem{examples}[paragraph]{Examples}
 
-\newtheorem{mydefinition}[thm]{Definition}
+\newtheorem{mydefinition}[paragraph]{Definition}
+
+
 
 
 \setcounter{tocdepth}{3}

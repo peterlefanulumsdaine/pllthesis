@@ -37,6 +37,7 @@
 \newcommand{\A}{A_\bullet}
 \newcommand{\abar}{\overline{a}}
 \newcommand{\uA}{\underline{A}}
+\newcommand{\uAbu}{\underline{A}_\bullet}
 \newcommand{\B}{B_\bullet}
 % \newcommand{\ML}{\mathit{ML_I}}
 % \newcommand{\MLfrag}{\mathit{ML}^\Id}
@@ -62,6 +63,7 @@
 \newcommand{\g}{\vec g}
 \newcommand{\gbf}{\mathbf{g}}
 \renewcommand{\G}{\mathbb{G}}  % renewed from hyperref.sty unicode option.
+\newcommand{\h}{\vec h}
 \newcommand{\I}{\mathcal{I}}   % generating cofibrations.  mathscr is prettier,
 \newcommand{\J}{\mathcal{J}}   % but I find its I, J confusing.
 \newcommand{\K}{\mathcal{K}}    % A class of left maps
@@ -86,7 +88,7 @@
 \newcommand{\tsf}{\mathsf{t}}
 \renewcommand{\u}{\vec u}
 \newcommand{\V}{\mathcal{V}}
-\renewcommand{\v}{\vec v}
+% \renewcommand{\v}{\vec v}
 \newcommand{\W}{\mathcal{W}}
 \newcommand{\WW}{\mathbb{W}}
 \newcommand{\w}{\vec w}
@@ -95,6 +97,7 @@
 \newcommand{\Xbullet}{X_\bullet}
 \newcommand{\x}{\vec x}
 \newcommand{\uX}{\underline{X}}
+\newcommand{\uXbu}{\underline{X}_\bullet}
 \newcommand{\Ycal}{\mathcal{Y}}
 \newcommand{\Y}{Y_\bullet}
 \newcommand{\y}{\vec y}
@@ -114,7 +117,7 @@
 \newcommand{\intCat}[1][-]{\mathbf{Cat}(#1)}
 \newcommand{\enrCat}[1][\V]{#1\mbox{-}\mathbf{Cat}}
 \newcommand{\nCat}[1][n]{#1\mbox{-}\mathbf{Cat}}
-\newcommand{\cl}{\mathcal{C}}
+\newcommand{\cl}{\mathcal{C}\! \ell}
 \newcommand{\clpi}{{}^\Pi \mathbf{cl}}
 \newcommand{\ClovFib}{\mathbf{ClovFib}}
 \newcommand{\Coll}{\mathbf{Coll}}
@@ -156,7 +159,7 @@
 \renewcommand{\lim}{\varprojlim}
 \newcommand{\Lan}{\mathrm{Lan}}
 \newcommand{\lax}{\mathrm{lax}}
-\newcommand{\Mon}{\mathrm{Mon}}
+\newcommand{\Mon}{\mathbf{Mon}}
 \newcommand{\MonGlobCat}{\mathbf{MonGlobCat}}
 \newcommand{\ML}{\textsf{\textbf{ML}}}
 \newcommand{\MLId}{\textsf{\textbf{ML}}^{\Id}}
@@ -178,6 +181,12 @@
 \newcommand{\Spansplain}{\mathbf{Spans}}
 \newcommand{\str}{\mathrm{str}}
 \newcommand{\strat}{\textrm{strat}}
+\newcommand{\pdfDTT}{\texorpdfstring{$\DTT$}{DTT}}
+\newcommand{\pdfeta}{\texorpdfstring{$\eta$}{η}}
+\newcommand{\pdfId}{\texorpdfstring{$\Id$}{Id}}
+\newcommand{\pdfJbar}{\texorpdfstring{$\Jbar$}{J-bar}}
+\newcommand{\pdfPi}{\texorpdfstring{$\Pi$}{Π}}
+\newcommand{\pdfomega}{\texorpdfstring{$\omega$}{ω}}
 \renewcommand{\th}{\mathbf{th}}
 \newcommand{\Th}{\mathbf{Th}}
 \newcommand{\ThId}{\mathbf{Th}^{\Id}}
@@ -208,14 +217,14 @@
 \newcommand{\comp}{\textsc{comp}}
 \newcommand{\CONG}{\textsc{cong}}
 \newcommand{\contr}{\textsc{contr}}
-\newcommand{\cons}{\mathsf{cons}}
+\newcommand{\cons}{\textsc{cons}}
 \newcommand{\cxt}{\mathsf{cxt}}
 \newcommand{\cxtmap}{\mathsf{cxtmap}}
 \newcommand{\cxtrule}{\cxt}
 \newcommand{\defrule}{\textsc{def}}
 \newcommand{\exch}{\textsc{exch}}
 \newcommand{\elim}{\textsc{elim}}
-\newcommand{\empt}{\mathsf{empty}}
+\newcommand{\empt}{\textsc{empty}}
 \newcommand{\extrule}{\textsc{ext}}
 \newcommand{\extterm}{\mathsf{ext}}
 \newcommand{\form}{\textsc{form}}
@@ -306,8 +315,9 @@
 % \place(400,100)[\po]
 % \efig$$
 
-
-\newcommand{\todo}[1]{\marginpar{\textcolor{red}{#1}}}
-\newcommand{\oldtodo}[1]{}
-\newcommand{\padding}[1]{\textcolor{purple}{#1}}
-\newcommand{\comment}[1]{\textcolor{blue}{#1}}
+% \newcommand{\todo}[1]{\marginpar{\textcolor{red}{#1}}}
+\newcommand{\todo}[1]{}
+\newcommand{\oldtodo}[1]{\todo{#1}}
+% \newcommand{\padding}[1]{\textcolor{purple}{#1}}
+% \newcommand{\comment}[1]{\textcolor{blue}{#1}}
+\newcommand{\comment}[1]{}
