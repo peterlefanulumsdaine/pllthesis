@@ -6,7 +6,7 @@ A fundamental construction in all flavours of type theory is the \emph{classifyi
 
 The uses of this construction are manifold.  First of all, it provides a tool for structural analysis of theories, allowing type-theoretic constructors and rules to be understood as presentations of categorical structure (products, sums, exponential objects, \ldots) familiar from elsewhere in mathematics.
 
-Next, this allows us to model the type theory in any suitably structured category, via a right adjoint $\Lang$ to the functor $\cl$, the \emph{internal language} of a structured category.
+Next, this allows us to model the type theory in any suitably structured category, via a right adjoint $\Lang$ to the functor $\cl$, giving the \emph{internal language} of a structured category.
 
 Putting these together, it allows us to represent type theories as \emph{equivalent} to appropriately structured categories, giving us an alternate presentation with different strengths to the traditional syntax.
 \end{para}
@@ -23,13 +23,13 @@ a decidable, quite fine syntactic relation---this covers essentially $\alpha$-eq
 
 Secondly, since one does need some kind of equality which can be reasoned about internally, there is \emph{propositional} (sometimes aka \emph{extensional}) equality, which is represented by a dependent type, the \emph{identity type} over each type:
 \[ x, y : A\ \types\ \Id_A(x,y)\ \type\]
-An inhabitant of this type is seen as a \emph{proof of equality} between $y$ and $x$.  This is a coarser equality than the definitional; it is axiomatised simply by $\intro$/$\elim$ rules of the usual form for an inductive type, but they turn out to yield remarkably subtle consequences.
+An inhabitant of this type is seen as a \emph{proof of equality} between $x$ and $y$.  This is a coarser equality than the definitional; it is axiomatised simply by $\intro$/$\elim$ rules of the usual form for an inductive type, but they turn out to yield remarkably subtle consequences.
 \end{para}
 
 \begin{para}
-In the extensional theory, the two equalities coincide by fiat (the \emph{reflection} rule).  This makes reasoning about equality within the theory much simpler, but at the cost of desirable computational properties: for instance, type-checking becomes undecidable, since it depends (because of the dependency of types on terms) on definitional equality, which is now reduced to propositional, i.e.\ to inhabitation of types, which is undecidable in any sufficiently rich system.  Relatedly, the computational content of terms is lost: terms of different computational behaviour may become identified in this stronger definitonal equality.  In these and other proof-theoretic respects, the intensional theory is significantly preferable.
+In the extensional theory, the two equalities coincide by fiat (the \emph{reflection} rule).  This makes reasoning about equality within the theory much simpler, but at the cost of desirable computational properties: for instance, type-checking becomes undecidable, since it depends (because of the dependency of types on terms) on definitional equality, which is now reduced to propositional, i.e.\ to inhabitation of types, which is undecidable in any sufficiently rich system.  Relatedly, the computational content of terms is lost: terms of different computational behaviour may become identified in this stronger definitional equality.  In these and other proof-theoretic respects, the intensional theory is significantly preferable.
 
-As mentioned above, however, categorical analysis of constructors in the intensional theory is much less clear.  For instance, a unit type\footnote{as usually axiomatised in ITT, i.e.\ as an inductive type with one nullary constructor.} does \emph{not} give a terminal object of the syntactic category.  It may have multiple morphisms from other objects, at least up to definitional equality.  Internally, these terms will be equal, but only up to \emph{propostional} equality---so we need to incorporate this somehow into the structure of the syntactic category.  
+As mentioned above, however, categorical analysis of constructors in the intensional theory is much less clear.  For instance, a unit type\footnote{as usually axiomatised in ITT, i.e.\ as an inductive type with one nullary constructor.} does \emph{not} give a terminal object of the syntactic category.  It may have multiple morphisms from other objects, at least up to definitional equality.  Internally, these terms will be equal, but only up to \emph{propositional} equality---so we need to incorporate this somehow into the structure of the syntactic category.  
 
 (Of course, propositional equality is already present in the classifying category, but as terms of some other type; but we want a description which makes more apparent its rôle in the categorical analysis of the constructors.)
 
@@ -40,19 +40,19 @@ A naïve approach might be to simply quotient by propositional equality; but thi
 
 In the globular approach to higher categories, a higher category has objects (``0-cells'') and arrows (``1-cells'') between objects, as in a category, but also 2-cells between 1-cells, and so on, with various composition operations and laws depending on the kind of category in question (strict or weak, $n$- or $\omega$-, $\ldots$).
 
-Now we see propositional equalities between terms as \emph{2-cells} between morphisms; and also, since propositional equalities themselves are terms of a possibly non-trivial type, we treat further propositional equalities between them as higher cells, and so on \emph{ad infinitum}.  Binary composition of these higher cells corresponds now to the transitivity of equality; higher identitity cells, to reflexivity; symmetry of equality, to having some sort of inverses for cells.
+Now we see propositional equalities between terms as \emph{2-cells} between morphisms; and also, since propositional equalities themselves are terms of a possibly non-trivial type, we treat further propositional equalities between them as higher cells, and so on \emph{ad infinitum}.  Binary composition of these higher cells corresponds now to the transitivity of equality; higher identity cells, to reflexivity; symmetry of equality, to having some sort of inverses for cells.
 
 There is a compelling analogy here with homotopy theory.  The higher fundamental groupoid of a space consists of points of the space, paths between points, homotopies between paths, \ldots\ Homotopies are composable, and have units, and inverses.
 
 A type, therefore, can be seen as something like a space: a category with cells of arbitrarily high dimension, in which all cells are invertible, i.e.\ an \emph{$\omega$-groupoid}.  An entire theory now looks something like a category of spaces: an $\omega$ category in which all cells of dimension $> 1$ are invertible, i.e.\ an \emph{($\omega,1)$-category} (also known as $(\infty,1)$).
 
-However, in the fundamental groupoid example, it is a familiar fact that associativty of composition, and other laws, hold only up to homotopy, i.e.\ only up to a cell of higher dimension.  We find the same situation in type theory: composition is generally associative, unital etc.\ only up to propositional equality.  (Of course, in the presence of extra axioms, or in certain models, it can sometimes be strict.)  For the fully intensional theory we thus have to work not with strict but with \emph{weak} higher categories.
+However, in the fundamental groupoid example, it is a familiar fact that associativity of composition, and other laws, hold only up to homotopy, i.e.\ only up to a cell of higher dimension.  We find the same situation in type theory: composition is generally associative, unital etc.\ only up to propositional equality.  (Of course, in the presence of extra axioms, or in certain models, it can sometimes be strict.)  For the fully intensional theory we thus have to work not with strict but with \emph{weak} higher categories.
 
 Various different definitions of weak $\omega$-categories exist; we use the \emph{globular operadic} definition of Batanin, as modified by Leinster. 
 \end{para}
 
 \begin{para}
-Since \cite{hofmann-streicher}, ideas along these lines have been explored by various authors in various directions.  For ``two-dimensional ITT'' and certain weak 2-categories, the full correspondence is worked out in detail in \cite{garner:2-d-models}.  On the semantic side, models of ITT in various higher categorical/homotopical settings are investigated in \cite{awodey-warren}, \cite{warren:thesis}, and \cite{garner-van-den-berg:top-and-simp-models}.  In the converse direction, the structures formed from the syntax of theories have been previously investigated in \cite{gambino-garner}, \cite{lumsdaine:weak-w-cats-from-itt-lmcs}, \cite{garner-van-den-berg}, \cite{awodey-hofstra-warren}.  This dissertation continues the latter line of investigation: the main goal is to construct the \emph{classifying weak $\omega$-category} of a theory.
+Since \cite{hofmann-streicher}, ideas along these lines have been explored by various authors in various directions.  For ``two-dimensional ITT'' and certain weak 2-categories, the full correspondence is worked out in detail in \cite{garner:2-d-models}.  In the semantic direction, models of ITT in various higher categorical/homotopical settings are investigated in \cite{awodey-warren}, \cite{warren:thesis}, \cite{garner-van-den-berg:top-and-simp-models}, and \cite{voevodsky:univalent-notes}.  Conversely, the structures formed from the syntax of theories have been previously investigated in \cite{gambino-garner}, \cite{lumsdaine:weak-w-cats-from-itt-lmcs}, \cite{garner-van-den-berg}, \cite{awodey-hofstra-warren}.  This dissertation continues the latter line of investigation: the main goal is to construct the \emph{classifying weak $\omega$-category} of a theory.
 \end{para}
 
 
@@ -64,10 +64,10 @@ Since \cite{hofmann-streicher}, ideas along these lines have been explored by va
 
 Specifically, we show that for any type $A$ and context $\Delta$ in a type theory $\T$ with at least the $\Id$-type rules, there is a weak $\omega$-category in which 0-cells are terms of type $A$ in context $\Delta$, 1-cells are terms of type $\Id_A$ between these, 2-cells are terms of type $\Id_{\Id_A}$ between 1-cells, and so on.
 
-(Note that for this construction the dimensions of cells are always one lower than in the classfying category sketched above.  This comes from the general rule that if $X$, $A$ are objects of an $n$-category $\C$, then $\C(X,A)$ forms an $(n-1)$-category, whose 0-cells are 1-cells of $\C$, and so on.)
+(Note that for this construction the dimensions of cells are always one lower than in the classifying category sketched above.  This comes from the general rule that if $X$, $A$ are objects of an $n$-category $\C$, then $\C(X,A)$ forms an $(n-1)$-category, whose 0-cells are 1-cells of $\C$, and so on.)
 \end{para}
 
-\begin{para}Before sketching the construction, we roughly recall the globular oberadic definition of weak higher categories.  (The full background required on this material is set out in Ch.~\ref{ch:cat-background}.)
+\begin{para}Before sketching the construction, we roughly recall the globular operadic definition of weak higher categories.  (The full background required on this material is set out in Ch.~\ref{ch:cat-background}.)
 
 An $\omega$-category $\C$ has a set\footnote{for the present work, we consider \emph{small} higher categories only.} $C_n$ of ``$n$-cells'' for each $n > 0$.  The $0$- and $1$-cells correspond to the objects and arrows of an ordinary category: each arrow $f$ has source and target objects $a = s(f)$, $b = t(f)$.  Similarly, the source and target of a 2-cell $\alpha$ are a parallel pair of 1-cells $f,g: a \two b$, and generally the source and target of an $(n+1)$-cell are a parallel pair of $n$-cells.
 
@@ -105,11 +105,15 @@ Cells of each dimension can be composed along a common boundary in any lower dim
 &
 \ \xy
 (0,0)*+{\bullet}="a";
+(0,80)*{\scriptstyle a};
 (600,0)*+{\bullet}="b";
+(600,80)*{\scriptstyle b};
 {\ar@/^1.75pc/^{f} "a";"b"};
 {\ar@/_1.75pc/_{g} "a";"b"};
-{\ar@2{->}@/_0.5pc/|{\alpha} (220,140);(220,-140)} ;
-{\ar@2{->}@/^0.5pc/|{\beta} (380,140);(380,-140)} ;
+{\ar@2{->}@/_0.5pc/ (220,140);(220,-140)} ;
+{\ar@2{-}@/_0.5pc/|{\alpha} (203,120);(203,-120)} ;
+{\ar@2{->}@/^0.5pc/ (380,140);(380,-140)} ;
+{\ar@2{-}@/^0.5pc/|{\beta} (397,120);(397,-120)} ;
 {\ar@3{->} (225,-20);(375,-20)};
 (300,60)*{\Theta};
 \endxy \ 
@@ -213,9 +217,9 @@ a(r,q,p) : \Id ( c(r,c(q,p))\,,\,c(c(r,q),p) ).
 Accordingly, we would like to find an operad-with-contraction $P_\Id$ of all such type-theoretically definable composition laws, acting on terms of any type and its identity types.  Formally, we consider $\T_\Id[X]$, the theory axiomatised just by the structural and $\Id$-rules plus a single generic base type $X$.  The operad $P_\Id$ of definable composition laws therein may then be formally constructed as an endomorphism operad in (presheaves on) its syntactic category $\cl(\T_\Id [X])$; and by some analysis of $\T_\Id[X]$, we show that $P_\Id$ is contractible.
 \end{para}
 
-Since $X$ is generic, composition laws defined on it can be implemented on all other types, giving the main result of this chapter:  \todo{``star'' these theorems, make them unnumbered!}
+Since $X$ is generic, composition laws defined on it can be implemented on all other types, giving the main result of Chapter \ref{ch:fundamental}: 
 
-\begin{mainthmfund}Let $\T$ be any type theory extending $\T_\Id$, and $A$ any type of $\T$.  Then the system of types $(A, Id_A, Id_{Id_A}, \ldots)$ is equipped naturally with a $P_\Id$-action, and hence with the structure of an internal weak $\omega$-category in $\C(\T)$.
+\begin{mainthmfund}Let $\T$ be any type theory extending $\T_\Id$, and $A$ any type of $\T$.  Then the system of types $(A, \Id_A, \Id_{\Id_A}, \ldots)$ is equipped naturally with a $P_\Id$-action, and hence with the structure of an internal weak $\omega$-category in $\C(\T)$.
 \end{mainthmfund}
 
 From this it follows that the terms of these types in any fixed context form an (external) $P_\Id$ algebra and weak $\omega$-category.  Indeed, one can construct, using the $\Id$-rules, \emph{identity contexts} $\Id_\Gamma$ over all contexts, satisfying rules analogous to those for identity types; so for any contexts $\Delta$, $\Gamma$, there is an $\omega$-category of context morphisms from $\Delta$ into $\Gamma$ and its identity types.
@@ -242,15 +246,15 @@ To carry this out, we require two main additional pieces of technical machinery.
 
 This type-theoretic background is set out in Ch.~\ref{ch:dtt-background}.  In order to facilitate the categorical analysis of $\DTT$, we recall the representation of theories as certain \emph{categories with attributes}, and the equivalence of this with more traditional syntactic presentations.
 
-On the other hand, for showing contractiblity of the operads in these categories, we need analogues in $\DTT_\stuff$ of $\Id$-elimination in syntactic categories.  To this end, we introduce a weak factorisation system in $\DTT_\stuff$, of \emph{term-extensions} and \emph{term-contractible maps}, and a type-theoretic principle $\Jbar$, giving (in terms of these maps) the required analogue in $\DTT_\stuff$ of the identity-type eliminator $\Jterm$.
+On the other hand, for showing contractibility of the operads in these categories, we need analogues in $\DTT_\stuff$ of $\Id$-elimination in syntactic categories.  To this end, we introduce a weak factorisation system in $\DTT_\stuff$, of \emph{term-extensions} and \emph{term-contractible maps}, and a type-theoretic principle $\Jbar$, giving (in terms of these maps) the required analogue in $\DTT_\stuff$ of the identity-type eliminator $\Jterm$.
 \end{para}
 
 \begin{para}
-This leads us to the main restrictions on our eventual result.  As an external form of $\Jterm$, and particularly as one concerning propositional identity of open terms, it comes as no surprise that $\Jterm$ is intimately related to the various \emph{functional extensionality} rules that can be imposed in ITT.
+This leads us to the main restrictions on our eventual result.  As an external form of $\Jterm$, and particularly as one concerning propositional identity of open terms, it comes as no surprise that $\Jbar$ is intimately related to the various \emph{functional extensionality} rules that can be imposed in ITT.
 
 (Despite the names, these are not to be confused with the extra rules of \emph{extensional type theory} discussed earlier, which trivialise identity types.  These rules just force the $\Id$-types over function types to be \emph{extensional} in the sense that two functions are propositionally equal if they provably give propositionally equal outputs.)
 
-In particular, we show that $\Jbar$ (and hence our construction of a contractibile operad) holds in the category of theories with suitably extensional $\Pi$-types, but does \emph{not} hold in the category of theories with $\Pi$-types but without extensionality rules.  
+In particular, we show that $\Jbar$ (and hence our construction of a contractible operad) holds in the category of theories with suitably extensional $\Pi$-types, but does \emph{not} hold in the category of theories with $\Pi$-types but without extensionality rules.  
 
 We conjecture that in fact $\Jbar$ holds in $\DTT_\Id$, and hence that $\Id$-types alone are sufficient to construct a contractible operad acting on $\cl_\omega$; but we are unable to prove this.
 \end{para}
@@ -263,4 +267,26 @@ Our main eventual result is thus: \todo{``star'' these theorems, make them unnum
 \end{enumerate}
 \end{mainthmclass}
 
-Additionally, we give a variant construction $\clpi_\omega$, with a slightly different underlying set (using closed terms of $\Pi$-types, rather than open terms), which works for theories withjust $\Id$-types, $\Pi$-types, and the $\eta$ rule for $\Pi$-types, giving an alternative candidate for the classifying $\omega$-categories of these theories in lieu of a proof of $\Jbar$ for $\DTT_\Id$.
+Additionally, we give a variant construction $\clpi_\omega$, with a slightly different underlying set (using closed terms of $\Pi$-types, rather than open terms), which works for theories with just $\Id$-types, $\Pi$-types, and the $\eta$ rule for $\Pi$-types, giving an alternative candidate for the classifying $\omega$-categories of these theories in lieu of a proof of $\Jbar$ for $\DTT_\Id$.
+
+this is an xypic test and should be removed: 
+$$\xy 0;/r.22pc/:
+(0,15)*{};
+(0,-15)*{};
+(0,8)*{}="A";
+(0,-8)*{}="B";
+{\ar@{=>}@/_.75pc/ "A"+(-4,1) ; "B"+(-3,0)};
+(-10,0)*{\alpha};
+{\ar@{=}@/_.75pc/ "A"+(-4,1) ; "B"+(-4,1)};
+{\ar@{=>}@/^.75pc/ "A"+(4,1) ; "B"+(3,0)};
+(10,0)*{\beta};
+{\ar@{=}@/^.75pc/ "A"+(4,1) ; "B"+(4,1)};
+{\ar@3{->} (-6,0)*{} ; (6,0)*+{}};
+(0,4)*{\vartheta};
+(-15,0)*+{\bullet}="1";
+(-15,4)*{\scriptstyle a};
+(15,0)*+{\bullet}="2";
+(15,4)*{\scriptstyle b};
+{\ar@/^2.75pc/^{f} "1";"2"};
+{\ar@/_2.75pc/_{g} "1";"2"};
+\endxy$$

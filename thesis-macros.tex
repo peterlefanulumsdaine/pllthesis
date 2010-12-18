@@ -218,6 +218,8 @@
 \newcommand{\CONG}{\textsc{cong}}
 \newcommand{\contr}{\textsc{contr}}
 \newcommand{\cons}{\textsc{cons}}
+\newcommand{\Cterm}{\mathsf{C}}
+\newcommand{\cterm}{\mathsf{c}}
 \newcommand{\cxt}{\mathsf{cxt}}
 \newcommand{\cxtmap}{\mathsf{cxtmap}}
 \newcommand{\cxtrule}{\cxt}
@@ -253,6 +255,8 @@
 \newcommand{\subst}{\textsc{subst}}
 \newcommand{\substterm}{\mathsf{subst}}
 \newcommand{\src}{\mathsf{src}}
+\newcommand{\Sterm}{\mathsf{S}}
+\newcommand{\sterm}{\mathsf{s}}
 % \newcommand{\scterm}{\textsc{term}}
 \newcommand{\sym}{\textsc{sym}}
 \newcommand{\targetrule}{\mathsf{tgt}}
@@ -260,6 +264,8 @@
 \newcommand{\term}{\mathsf{term}}
 \newcommand{\tgt}{\mathsf{tgt}}
 \newcommand{\trans}{\textsc{trans}}
+\newcommand{\Tterm}{\mathsf{T}}
+\newcommand{\tterm}{\mathsf{t}}
 \newcommand{\type}{\mathsf{type}}
 \newcommand{\typerule}{\textsc{type}}
 % \newcommand{\sctype}{\textsc{type}}
@@ -288,9 +294,13 @@
 %%%
 
 
-\newdir{|>}{!/4.7pt/\dir{|}
-        *:(1,-.2)\dir^{>}
-        *:(1,+.2)\dir_{>}}
+%\newdir{|>}{!/4.7pt/@{|}
+%        *:(1,-.2)\dir^{>}
+%        *:(1,+.2)@_{>}}
+
+\newdir{|>}{!/4.5pt/@{|}*:(1,-.2)@^{>}*:(1,+.2)@_{>}}
+       
+\newdir{ |>}{{}*!/-1pt/@{|}*!/-6pt/:(1,-.2)@^{>}*!/-6pt/:(1,+.2)@_{>}}
 
 \newbox\pbbox
 \setbox\pbbox=\hbox{\xy \POS(75,0)\ar@{-} (0,0) \ar@{-} (75,75)\endxy}

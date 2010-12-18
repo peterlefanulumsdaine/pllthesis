@@ -1,8 +1,8 @@
 \section{Weak factorisation systems} \label{sec:wfs-bgd}
 
-The study of \emph{weak factorisation systems} originated in homotopy theory, and has since become important in higher category theory, especially with recent devlopments in \emph{algebraic\footnote{often (and originally) called \emph{natural}} weak factorisation systems}.  We will not require any of the more sophisticated results of this theory; but there are a couple of basic constructions from it which we will meet repeatedly, so which we now recall here.  See \cite[Ch.~1]{hovey:book} for further background on the classical theory, and \cite{garner:understanding} for the algebraic case.
+The study of \emph{weak factorisation systems} originated in homotopy theory, and has since become important in higher category theory, especially with recent developments in \emph{algebraic\footnote{often (and originally) called \emph{natural}} weak factorisation systems}.  We will not require any of the more sophisticated results of this theory; but there are a couple of basic constructions from it which we will meet repeatedly, so which we now recall here.  See \cite[Ch.~1]{hovey:book} for further background on the classical theory, and \cite{garner:understanding} for the algebraic case.
 
-\begin{definition}For maps $f, g$ in a category $\C$, we say $f$ is (weakly)\footnote{We will never require the strong counterparts of these properties, so will assume weak by deafult.} \emph{(left) orthogonal to $g$}, written \emph{$f \pitchfork g$}, if every commutative square from $f$ to $g$ has a filler:
+\begin{definition}For maps $f, g$ in a category $\C$, we say $f$ is (weakly)\footnote{We will never require the strong counterparts of these properties, so will assume weak by default.} \emph{(left) orthogonal to $g$}, written \emph{$f \pitchfork g$}, if every commutative square from $f$ to $g$ has a filler:
 \[\xymatrix{D \ar[r] \ar[d]_f & Y \ar[d]^g \\ C \ar[r] \ar@{..>}[ur]^\exists & X}\]
 
 There are several synonyms: ``$f$ has the (weak) \emph{left lifting property} against $g$'', and corresponding right-handed versions phrasing it as a property of of $g$. 
@@ -10,18 +10,18 @@ There are several synonyms: ``$f$ has the (weak) \emph{left lifting property} ag
 If $\L$, $\R$ are classes of maps in $\C$, we say $\L \pitchfork \R$ if $f \pitchfork g$ for every $f \in \L$, $g \in \R$.
 \end{definition}
 
-Simple examples of such classes are given in $\Sets$ by $\L =$ all maps, $\R =$ split surjections (so all surjections, if we assume choice); or $\L =$ split injections (equivalently, injections $S \mono X$ where if $S$ is empty then so is $X$), $\R = $ all maps.
+Simple examples of such classes are given in $\Sets$ by $\L =$ surjections, $\R =$ injections; or $\L =$ injections, $\R = $ surjections.  (In a constructive foundation, the latter system has to be restricted to (\emph{decidable} injections; \emph{split} surjections).)
 
 \begin{para} \label{para:cofib-generated-wfs} A more powerful example, in $\Top$, takes $\L$ to be retracts of relative cell complexes, and $\R$ to be trivial fibrations in the Quillen model structure,  sometimes called weakly contractible maps.
 
-The definition of these is easiest given as an example of a very general construction: if $\J$ is any class of maps, we define $\J^\pitchfork$ to be the class of maps weakly right orthogonal to all maps in $\J$; and dually we define ${}^\pitchfork \J$.
+The definition of these is most clearly given as an example of a very general construction: if $\J$ is any class of maps, we define $\J^\pitchfork$ to be the class of maps weakly right orthogonal to all maps in $\J$; and dually we define ${}^\pitchfork \J$.
 
 It is easy to check that a class $\J^\pitchfork$ must contain all identities, and be closed under composition, retracts, and pullback along arbitrary maps.  Dually, ${}^\pitchfork \J$ is closed under identities, composition, retracts, and pushouts.  A little more thought shows that the classes are closed under (co-)transfinite composition (i.e.\ under colimits of colimit-preserving diagrams indexed by ordinals, or under dually defined limits).
 
 Most typically we start with a \emph{set} of maps $\J$ in a category $\C$, then form $\R = \J^\pitchfork$ (``$\J$-fibrations''), $\L = {}^\pitchfork (\J^\pitchfork)$ (``$\J$-cofibrations'').
 
-For the case of Serre trivial cofibrations, we start with the inclusions of spheres into discs (\emph{cells}), as their boundaries:
-\[\J = \{\,S^i \mono D^i\ |\ i \in \N\,\}.\]
+For the case of Serre trivial fibrations, we start with the inclusions of spheres into discs (\emph{cells}), as their boundaries:
+\[\J = \{\,S^{i-1} \mono D^i\ |\ i \in \N\,\}.\]
 
 Then a map $p \colon Y \to X$ is in $\J^\pitchfork$ just if whenever we are given a cell in $X$ and a lift of its boundary to $Y$, we can lift the whole cell to $Y$, with the given boundary.  So any loop in $Y$ that is null-homotopic in $X$ must be null-homotopic in $Y$, and so on: $p$ is forced in particular to be a weak homotopy equivalence.
 
@@ -103,15 +103,18 @@ The above is all that will be needed in the sequel; but a curious observation is
 &
 \ \xy
 (0,0)*+{\bullet}="a";
+(0,80)*{\scriptstyle a};
 (600,0)*+{\bullet}="b";
+(600,80)*{\scriptstyle b};
 {\ar@/^1.75pc/^{f} "a";"b"};
 {\ar@/_1.75pc/_{g} "a";"b"};
-{\ar@2{->}@/_0.5pc/|{\alpha} (220,140);(220,-140)} ;
-{\ar@2{->}@/^0.5pc/|{\beta} (380,140);(380,-140)} ;
+{\ar@2{->}@/_0.5pc/ (220,140);(220,-140)} ;
+{\ar@2{-}@/_0.5pc/|{\alpha} (203,120);(203,-120)} ;
+{\ar@2{->}@/^0.5pc/ (380,140);(380,-140)} ;
+{\ar@2{-}@/^0.5pc/|{\beta} (397,120);(397,-120)} ;
 {\ar@3{->} (225,-20);(375,-20)};
 (300,60)*{\Theta};
-\endxy \ 
-\end{array} \\
+\endxy \ \end{array} \\
 \begin{array}{ccc}
 \ \xy(0,0)*{\bullet}="a";
 (0,80)*{\scriptstyle a};
@@ -204,15 +207,15 @@ such that $ s_i \tightcdot s_{i+1} = s_i \tightcdot t_{i+1} $ and $t_i  \tightcd
 
 Some notation we will use throughout the sequel: we will often drop the subscripts on arrows as far as possible, writing just $s$ and $t$; $s^i$, $t^i$ will denote $i$-fold iterations of these operations, as usual; and for $c \in A_n$ and $k \leq n$, we take $s_k(c) := s^{n-k}(c)$, $t_k(c) := t^{n-k}(c)$, the $k$-dimensional source and target of $c$.  (Of course when $n = k+1$, this agrees with the original usage of $s_k,t_k$.)
 
-A map of globular sets $f_\bullet \colon \A \to \B$ is a sequence of functions $f_n \colon A_n \to B_n$, preserving the globular structure, in that $s_i \tightcdot f_{i+1} = f_i \tightcdot s_i$ and $t_i \tightcdot f_{i+1} = f_i \tightcdot t_i$, or more compactly, $sf = fs$, $tf = ft$.
+A map of globular sets $f_\bullet \colon \A \to \B$ consists of a sequence of functions $f_n \colon A_n \to B_n$, preserving the globular structure, in that $s_i \tightcdot f_{i+1} = f_i \tightcdot s_i$ and $t_i \tightcdot f_{i+1} = f_i \tightcdot t_i$, or more compactly, $sf = fs$, $tf = ft$.
 
 \begin{para} More generally, let $\G$ be the category with objects $\N$ and arrows generated by
 \[ 0 \two^{s_0}_{t_0} 1 \two^{s_1}_{t_1} 2 \two^{s_2}_{t_2} 3 \two \ldots \]
 subject to the equations $ss = ts$, $st = tt$.  Then a \emph{globular object} in a category $\E$ is a functor $\A \colon \G^\op \to \E$, and a map of these is a natural transformation between such functors.
 
-Now the category of globular sets is just the category $\GSets$ of presheaves on $\G$.  The Yoneda embedding $\yon \colon \G \to \GSets$ yields some specific globular sets which will be of particular use and importance to us: the \emph{basic $n$-cells} or \emph{$n$-globes} $\yon(n)$, and their boundaries $\del (n) \subseteq \yon(n)$, the maximal proper subobject of $\yon(n)$, consisting of all \emph{non-identity} maps into $n$.  Note that for $n < 0$, we have $\del(n) \iso \yon(n-1) +_{\del(n-1)} \yon(n-1)$, a \emph{parallel pair} of $n-1$-cells.
+Now the category of globular sets is just the category $\GSets$ of presheaves on $\G$.  The Yoneda embedding $\yon \colon \G \to \GSets$ yields some specific globular sets which will be of particular use and importance to us: the \emph{basic $n$-cells} or \emph{$n$-globes} $\yon(n)$, and their boundaries $\del (n) \subseteq \yon(n)$, the maximal proper subobject of $\yon(n)$, consisting of all \emph{non-identity} maps into $n$.  Note that for $n > 0$, we have $\del(n) \iso \yon(n-1) +_{\del(n-1)} \yon(n-1)$, a \emph{parallel pair} of $(n-1)$-cells.
 
-(For the finite-dimensional versions of all the above, and all that follows, $\G$ is replaced by the category $\G_n$, defined just as $\G$ except with no objects or arrows above $n$; and $n$-globular set is a presheaf $\A \colon \G_n \to \Sets$, and so on.)
+(For the finite-dimensional versions of all the above, and all that follows, $\G$ is replaced by the category $\G_n$, defined just as $\G$ except with no objects or arrows above $n$; an $n$-globular set is a presheaf $\A \colon \G_n^\op \to \Sets$, and so on.)
 \end{para}
 
 To complete the definition of strict $\omega$-categories, we simply add the structure of composition on top of this basic data.  As illustrated in Figure \ref{fig:assoc-laws}, we want to compose cells whenever the target of one is the source of another in any lower dimension.  Specifically, for any $k < n$, the set of $k$-composable $n$-cells is the pullback
@@ -234,7 +237,7 @@ A \emph{strict $\omega$-category} $\Cbf$ is a globular set $\Cbu$ together with 
 and unit maps
 \[r_n \colon C_{n-1} \to C_n\]
 (for which we use index conventions analogous to those for $s$, $t$),
- such that for each $j < k < l$, $(C_j,C_k,C_l \circ_j, r_k, \circ_k, r_l)$ forms a strict 2-category.  Unwinding a bit further, this says that:
+ such that for each $j < k < l$, $(C_j,C_k,C_l, \circ_j, r_k, \circ_k, r_l)$ forms a strict 2-category.  Unwinding a bit further, this says that:
 \begin{itemize}
 \item for each $k < n$, $(C_k,C_n, \circ_k, r_n)$ forms a category, i.e.\ the source and target of composites and units are ``what one would expect'', and the associativity and unit laws
 \[ c \circ_k (b \circ_k a) = (c \circ_k b) \circ_k a\]
@@ -280,13 +283,13 @@ Here, for instance, the element $(((),(),()),(),(())) \in \pd_2$ represents the 
 % (0,250)*{\ };
 % (0,-220)*{\ };
 (1200,0)*+{\bullet}="d";
-{\ar@/^1.65pc/ "c";"d"};
+{\ar@/^1.70pc/ "c";"d"};
 {\ar@/^0.55pc/ "c";"d"};
 {\ar@/_0.55pc/ "c";"d"};
-{\ar@/_1.65pc/ "c";"d"};
-{\ar@{=>} (1000,185)*{};(1000,85)*{}} ;
-{\ar@{=>} (1000,50)*{};(1000,-50)*{}};
-{\ar@{=>} (1000,-85)*{};(1000,-185)*{}};
+{\ar@/_1.70pc/ "c";"d"};
+{\ar@{=>} (1000,170)*{};(1000,80)*{}} ;
+{\ar@{=>} (1000,45)*{};(1000,-45)*{}};
+{\ar@{=>} (1000,-80)*{};(1000,-170)*{}};
 \endxy\]
 This representation may be seen syntactically as a normal form theorem: every formal expression in the operations $r_n$, $\circ_k$ may be put into normal form by eliminating identities wherever possible and moving lowest-dimensional composition outermost.
 
@@ -369,7 +372,7 @@ Actions may also be reformulated in terms of endomorphism operads:
 The \emph{endomorphism operad} $\End_{\GSets}(A)$ of a globular set $A$ has underlying set $\sum_{\pi : T1} [TX_\pi,X]$ (interpreted in the internal language of $\GSets$, i.e.\ computed as the internal hom $[TX,X \times T1]$ in the slice $\GSets/T1$), and structure maps constructed using the universal property of the internal hom, together with the monad structure of $T$.
 \end{definition}
 
-Actions of an operad $P$ on a globular set $A$ then correspond to operad maps $P \to \End_{\GSets}(A)$.  Via either definition, there is an evident category of $P$-algebras $\Alg{P}$.
+Actions of an operad $P$ on a globular set $A$ then correspond to operad maps $P \to \End_{\GSets}(A)$.  Via either definition, there is an evident category $\Alg{P}$ of $P$-algebras.
 
 \begin{example}The object $T1$ itself carries a natural operad structure, making it the terminal operad; its associated monad is just $T$, and its algebras are strict $\omega$-categories. 
 \end{example}
@@ -381,13 +384,13 @@ A \emph{contraction} on a map of globular sets $f \colon Y \to X$ is a diagonal 
 \[\bfig
 \node dn(0,400)[\del(n)]
 \node yn(0,0)[\yon(n)]
-\node X(500,400)[X]
-\node Y(500,0)[Y]
+\node Y(500,400)[Y]
+\node X(500,0)[X]
 \arrow[dn`X;]
 \arrow/@{ >->}/[dn`yn;]
-\arrow|r|[X`Y;f]
-\arrow[yn`Y;]
-\arrow/@{.>}/[yn`X;]
+\arrow|r|[Y`X;f]
+\arrow[yn`X;]
+\arrow/@{.>}/[yn`Y;]
 \efig\]
 A map is \emph{contractible} if it admits a contraction.  Contractible maps are distinguished diagrammatically as $f \colon Y \to/{-|>}/ X$.
 \end{definition}
@@ -437,7 +440,7 @@ It is straightforward to see that $Q^0$ is contractible if $Q$ is, and so is in 
 The preceding elegant presentation of globular operads in terms of cartesian monads is due to Leinster.  However, for most of our purposes below it will be easier to construct the desired operads using the original machinery of \cite{batanin:natural-environment}.  We thus take a brief detour to set up the machinery of \emph{monoidal globular categories}, and to investigate pasting diagrams further, before returning to operads in this setting.
 
 \begin{definition}
-(See \cite[2.3]{batanin:natural-environment} for the details here elided.)  A \emph{monoidal globular category} $\E$ is a globular category 
+(See \cite[2.3]{batanin:natural-environment} for the details here elided.)  A \emph{monoidal globular category} $\E$ is a globular category $\E_\bullet$
 \[ \E_0 \two/<-`<-/^S_T \E_1 \two/<-`<-/^S_T \E_2 \two/<-`<-/^S_T \E_3 \two/<-`<-/ \ldots \]
 equipped with composition functors
 \[\tensor_k \colon \E_n \times_k \E_n \to \E_n\]
@@ -449,10 +452,10 @@ satisfying the same source and target conditions as units and composition in a c
 \[ \chi \colon (D \tensor_j C) \tensor_k (B \tensor_j A) \iso (D \tensor_k B) \tensor_j (C \tensor_k A)\]
 satisfying various coherence axioms.
 
-A \emph{monoidal globular functor} between monoidal globular categories $\E, \F$  is a globular functor $F_\bullet \cdot \E_\bullet \to \F_\bullet$, commuting with the composition and units up to coherent isomorphism.  Together with \emph{monoidal globular transformations}, these form a 2-category $\MonGlobCat$.   
+A \emph{monoidal globular functor} between monoidal globular categories $\E, \F$  is a globular functor $F_\bullet \colon \E_\bullet \to \F_\bullet$, commuting with the composition and units up to coherent isomorphism.  Together with \emph{monoidal globular transformations}, these form a 2-category $\MonGlobCat$.   
 \end{definition}
 
-So monoidal globular categories bear essentially the same relationship to strict $\omega$-categories as a monoidal categories do to monoids: sets are replaced by categories, and axioms hold just up to coherent isomorphism.
+So monoidal globular categories bear essentially the same relationship to strict $\omega$-categories as monoidal categories do to monoids: sets are replaced by categories, and axioms hold just up to coherent isomorphism.
 
 This is made precise by Mark Weber in \cite{weber:operads-within}: $\MonGlobCat$ is (2-equivalent to) the 2-category of normalised pseudo-algebras for the ``internal strict $\omega$-category'' 2-monad $\Tcal$ on $[\G^\op,\Cat]$.  \todo{[diagram cosmetics: vdots placement]}
 
@@ -604,7 +607,7 @@ Although of course formally equivalent, there is an important difference in intu
 The crucial function of monoidal globular categories is as the setting within which one can define globular operads and their algebras.  We will not need the former in the present work, only the latter.
 
 \begin{definition}
-A \emph{globular object} $\A$ of a monoidal globular category $\E$ is a globular functor $1 \to \E_\bullet$, where $1$ is the terminal globular gategory.  Concretely, a globular object in $\E$ is a sequence of objects $A_i \in \E_i$, with $S(A_{i+1}) = T(A_{i+1}) = A_i$.
+A \emph{globular object} $\A$ of a monoidal globular category $\E$ is a globular functor $1 \to \E_\bullet$, where $1$ is the terminal globular category.  Concretely, a globular object in $\E$ is a sequence of objects $A_i \in \E_i$, with $S(A_{i+1}) = T(A_{i+1}) = A_i$.
 \end{definition}
 
 Globular objects in $\Spans[\C]$ correspond precisely to globular objects in $\C$.  (We often abuse notation here by writing $A_n$ both for a span and for the object at its apex.)
@@ -705,8 +708,8 @@ A slightly more careful calculation shows that diagram objects are computed by t
 \end{para}
 
 We can now use this to define internal algebras for globular operads, in monoidal globular categories:
-\begin{definition}[\protect{\cite[7.2]{batanin:natural-environment}}] \label{def:endo-operads}
-If $\A$ is a globular object in a monoidal globular category $\E$, there is a globular operad $\End_\E(\A)$, the \emph{enromorphism operad} of $\A$, given by $\End_\E(\A)(\pi) = \E_n(A^\pi,A_n)$, for each $\pi \in \pd_n$.
+\begin{definition}[\protect{\cite[7.2]{batanin:natural-environment}}] \label{def:endo-operad}
+If $\A$ is a globular object in a monoidal globular category $\E$, there is a globular operad $\End_\E(\A)$, the \emph{endomorphism operad} of $\A$, given by $\End_\E(\A)(\pi) = \E_n(A^\pi,A_n)$, for each $\pi \in \pd_n$.
 
 A monoidal globular functor $F \colon \E \to \F$ induces a map of endomorphism operads $\End_\E(\A) \to \End_\F(F \A)$.
 \end{definition}
@@ -749,15 +752,14 @@ Roughly, this operation removes the leftmost cell (in algebraic order, or rightm
 % (0,250)*{\ };
 % (0,-220)*{\ };
 (1200,0)*+{\bullet}="d";
-{\ar@/^1.65pc/ "c";"d"};
+{\ar@/^1.70pc/ "c";"d"};
 {\ar@/^0.55pc/ "c";"d"};
 {\ar@/_0.55pc/ "c";"d"};
-{\ar@/_1.65pc/ "c";"d"};
-{\ar@{=>} (1000,185)*{};(1000,85)*{}} ;
-{\ar@{=>} (1000,50)*{};(1000,-50)*{}};
-{\ar@{=>} (1000,-85)*{};(1000,-185)*{}};
+{\ar@/_1.70pc/ "c";"d"};
+{\ar@{=>} (1000,170)*{};(1000,80)*{}} ;
+{\ar@{=>} (1000,45)*{};(1000,-45)*{}};
+{\ar@{=>} (1000,-80)*{};(1000,-170)*{}};
 (600,-250)*+{\pi};
-
 \endxy
   \qquad \to/{|->}/ \qquad 
 \xy
@@ -771,24 +773,24 @@ Roughly, this operation removes the leftmost cell (in algebraic order, or rightm
 % (0,250)*{\ };
 % (0,-220)*{\ };
 (1200,0)*+{\bullet}="d";
-{\ar@/^1.65pc/ "c";"d"};
+{\ar@/^1.70pc/ "c";"d"};
 {\ar@/^0.55pc/ "c";"d"};
 {\ar@/_0.55pc/ "c";"d"};
-% {\ar@/_1.65pc/ "c";"d"};
-{\ar@{=>} (1000,185)*{};(1000,85)*{}} ;
-{\ar@{=>} (1000,50)*{};(1000,-50)*{}};
-% {\ar@{=>} (1000,-85)*{};(1000,-185)*{}};
+% {\ar@/_1.70pc/ "c";"d"};
+{\ar@{=>} (1000,170)*{};(1000,80)*{}} ;
+{\ar@{=>} (1000,45)*{};(1000,-45)*{}};
+% {\ar@{=>} (1000,-80)*{};(1000,-170)*{}};
 (600,-250)*+{\pi^-};
 \endxy\]
 \end{para}
 
-\begin{para} \label{para:pruning-realisation} We wil need to know a little about the realisations of these; in fact, some apparently very crude statements will be enough.
+\begin{para} \label{para:pruning-realisation} We will need to know a little about the realisations of these; in fact, some apparently very crude statements will be enough.
 
 For any non-trivial pasting diagram $\pi$, there is an inclusion
 \[\widehat{\pi^-} \to/{ >->}/ \widehat{\pi}\]
 whose image consists of all of $\pi$ except for two cells, one the target of the other.  When $\pi$ is just a path, this condition determines what the inclusion must be; otherwise it is constructed by recursion on $\pi^-$, using the recursive definition of $\pi^-$ together with the explicit description of $\widehat{\pi}$ in \ref{def:pasting-diagrams}. 
 
-It follows from this description of the image that we have a pushout square:
+It follows from this description of the image that we have a pushout square, attaching a $k$-cell along a $(k-1)$-cell:
 \[\bfig
 \node yk1(0,400)[\yon(k-1)]
 \node yk(0,0)[\yon(k)]
@@ -825,9 +827,9 @@ Hence if $\A$ (resp.\ $C_\bullet$) is a globular (co-globular) object in any (co
 \arrow[Cpim`Cpi;]
 \place(400,100)[\po]
 \efig\]
-(again, a slightly more careful calculation avoids the need for (co-)completeness, but for our purposes the (co-)complete case wil suffice).
+(again, a slightly more careful calculation avoids the need for (co-)completeness, but for our purposes the (co-)complete case will suffice).
 
-Finally, for any non-trivial $\pi$, we either have $s(\pi^-) = (s\pi)^-$, or $s(\pi^-) = s\pi$; the resulting square
+Finally, for any non-trivial $\pi$, we either have $s(\pi^-) = s\pi$, if the dimension of the cell removed is the dimension of $\pi$, or $s(\pi^-) = (s\pi)^-$ otherwise; in either case, the resulting square
 \[\bfig
 \node spim(0,400)[\widehat{s(\pi^-)}]
 \node spi(0,0)[\widehat{s(\pi)}]
