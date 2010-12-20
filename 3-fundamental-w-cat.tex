@@ -156,9 +156,9 @@ The genericity of $X$ becomes a universal mapping property of $\T_\Id[X]$: for a
 \[P_\Id := \End_{\T_\Id[X]}(\uXbu),\] the operad of all definable composition laws on the generic type. 
 \end{definition}
 
-\begin{para} \label{para:fundamental-contractibility-sketch}For general $\T,A$, we should not expect $\End_\T(\uAbu)$ to be contractible: contractibility implies for instance that any two elements of $\End_\T(\uAbu)(\bullet)$ are connected by an element of $\End_\T(\uAbu)(\bullet \to \bullet)$, or in other words that any two terms $x:A \types f(x), f'(x) : A$ are propositionally equal, which clearly will usually fail.
+\begin{para} \label{para:fundamental-contractibility-sketch}For general $\T,A$, we should not expect $\End_\T(\uAbu)$ to be contractible: contractibility implies for instance that any two elements of $\End_\T(\uAbu)(\bullet)$ are connected by an element of $\End_\T(\uAbu)(\bullet \to \bullet)$, or in other words that any two terms $x:A \types f(x), f'(x) : A$ are propositionally equal, which clearly may fail.
 
-However, in the specific case of $P_\Id$, we do wish to show contractibility, since this is the operad which naturally acts on every type; and it seems plausible, since obvious counterexamples to contractibility such as the one above require assuming extra term-constructors for $A$ or its identity types.
+However, in the specific case of $P_\Id$, we do wish to show contractibility, since this is the operad which naturally acts on every type; and it seems plausible, since obvious failures of contractibility require assuming extra term-constructors for $A$ or its identity types.
 
 What precisely does contractibility mean, here?  For every pasting diagram $\pi$ and every parallel pair of composition laws $\vec f, \vec g  \in P_\Id(d(\pi))$, we need to find some filler $\vec h \in P_\Id(\pi)$, with $s(\vec h) = \vec f$, $t(\vec h) = \vec g$.
 
@@ -352,12 +352,12 @@ Once again, we offer both an elementary syntactic argument and a categorical glo
 \[\x : \Gamma_\pi \types h(\x) : \Id (f_{n-1}(\src\, \x),g_{n-1}(\tgt\, \x))\]
 We show this by induction on the number of cells in $\pi$, reducing cells by the ``pruning'' process of \ref{para:pruning-pds}. 
 
-Suppose $\pi$ has more than one cell.  Then as in \ref{para:pruning-pds}, consider the pasting diagram $\pi^-$, obtained (up to isomorphism) from that of $\pi$ by removing some cell $c$ and identifying $s(c)$ and $t(c)$.
+Suppose $\pi$ has cells in some dimension greater $0$.  Then as in \ref{para:pruning-pds}, consider the pasting diagram $\pi^-$, obtained (up to isomorphism) from that of $\pi$ by removing some cell $c$ and identifying $s(c)$ and $t(c)$.
 
 \newcommand{\rcxtmap}{{\vec r}}
-Then by our explicit description of the cells of $\pi^-$, the context $\Gamma_{\pi^-}$ is exactly (up to renaming of variables, and possibly re-ordering if we do not assume that we chose compatible orderings of the cells of pasting diagrams) the context obtained from $\Gamma_\pi$ by removing the variables $x^k_c$ and $x^{k-1}_{t(c)}$, and substituting $x^{k-1}_{s(c)}$ for any occurrences of the latter in subsequent types; and we have a natural context map $\rcxtmap \colon \Gamma_{\pi^-} \to \Gamma_\pi$ given by plugging in $x^{k-1}_{s(c)}$ for $x^{k-1}_{t(c)}$ and $r(x^{k-1}_{s(c)})$ for $x^k_c$; and these are exactly right for
+Then by our explicit description of the cells of $\pi^-$, the context $\Gamma_{\pi^-}$ is exactly (up to renaming of variables, and possibly re-ordering if we do not assume that we chose compatible orderings of the cells of pasting diagrams) the context obtained from $\Gamma_\pi$ by removing the variables $x^k_c$ and $x^{k-1}_{t(c)}$, and substituting $x^{k-1}_{s(c)}$ for any occurrences of the latter in subsequent types; and we have a natural context map $\rcxtmap_\pi \colon \Gamma_{\pi^-} \to \Gamma_\pi$ given by plugging in $x^{k-1}_{s(c)}$ for $x^{k-1}_{t(c)}$ and $r(x^{k-1}_{s(c)})$ for $x^k_c$; and these are exactly right for
 \[\inferrule*{\x:\Gamma_{\pi^-} \types h^-(\x) : \Id (f_{n-1}(\src\, \rcxtmap(\x)), g_{n-1}(\tgt\,\rcxtmap(\x)))}{\x : \Gamma_\pi \types \idelim{x^{k-1}_{s(c)}}{h^-}{x^{k-1}_{s(c)}}{x^{k-1}_{t(c)}}{x^k_c} : \Id (f_{n-1}(\src\,\x),g_{n-1}(\tgt\,\x))}\]
-to be (the main hypothesis of) an instance of $\Id$-$\elim^+$.  So to derive the desired filler $h$, it is enough to derive $h^-$ with
+to be, up to reordering, the main hypothesis of an instance of $\Id$-$\elim$.  So to derive the desired filler $h$, it is enough to derive $h^-$ with
 \[\x:\Gamma_{\pi^-} \types h^-(\x) : \Id (f_{n-1}(\src\, \rcxtmap(\x)),g_{n-1}(\tgt\,\rcxtmap(\x))).\]
 
 But now note that
@@ -369,7 +369,7 @@ moreover, we can construct context maps
 \[\x : \Gamma_{d^{n-i}(\pi^-)} \types g_i(\rcxtmap(\x)) : \Id (f_{n-1}(\rcxtmap(\src\,\x)),g_{i-1}(\rcxtmap(\tgt\,\x))),\]
 i.e.\ the sequence of terms $(\rcxtmap^*(f_i),\rcxtmap^*(g_i))_{i<n}$ are a parallel pair for $\pi^-$.  So by induction (since $\pi^-$ has fewer cells than $\pi$), these terms have a filler; but this filler is exactly the desired term $h^-$.
 
-Thus it is enough to show the existence of fillers in the case where $\pi$ has just one cell, i.e.\ where $\pi = ( \bullet )$.  But in this case, $\Gamma_\pi = \Gamma_{d^i(\pi)} = \Gamma_{d^i(\pi)} = (x \tightcolon X)$ for each $i < n$, and so by the initiality of $(x\tightcolon X)$ we must have $f_i(x) = g_i(x) = r^i(x)$ for each $i$; so now $h := r^n(x)$ gives the filler, and we are done.
+Thus it is enough to show the existence of fillers in the case where $\pi$ consists of just a single 0-cell, i.e.\ $\pi = \bullet $.  But in this case, $\Gamma_\pi = \Gamma_{d^i(\pi)} = \Gamma_{d^i(\pi)} = (x \tightcolon X)$ for each $i < n$, and so by the initiality of $(x\tightcolon X)$ we must have $f_i(x) = g_i(x) = r^i(x)$ for each $i$; so now $h := r^n(x)$ gives the filler, and we are done.
 \end{proof}
 
 Unwinding this induction, we can see that it exactly formalises the process described in \ref{para:fundamental-contractibility-sketch}, of repeatedly plugging in higher reflexivity terms for all variables, knowing that the given composites will themselves eventually compute down to higher reflexivity terms.
@@ -380,9 +380,9 @@ According to the categorical description of an endomorphism operad, we need to s
 For this it is enough to show that we can find a top edge for the square
 \[\bfig
 \node Gpi(0,400)[\Gamma_\pi]
-\node Gdpi(0,0)[\Gamma_{\delta \pi}]
+\node Gdpi(0,0)[\Gamma_{\del \pi}]
 \node Xn(500,400)[\uX_n]
-\node Xn1(500,0)[\uX_{n-1}]
+\node Xn1(500,0)[\Gamma_{\del(n)}]
 \arrow/@{->>}/[Gpi`Gdpi;]
 \arrow/@{.>}/[Gpi`Xn;]
 \arrow/@{->>}/[Xn`Xn1;]
@@ -392,7 +392,7 @@ or, more generally, that we can complete any triangle of the form
 \[\bfig
 \node Gpi(-200,0)[\Gamma_\pi]
 \node Xn(500,400)[\uX_n]
-\node Xn1(500,0)[\uX_{n-1}]
+\node Xn1(500,0)[\Gamma_{\del(n)}]
 \arrow/@{.>}/[Gpi`Xn;]
 \arrow/@{->>}/[Xn`Xn1;]
 \arrow[Gpi`Xn1;]
@@ -405,7 +405,7 @@ Otherwise, consider $\Gamma_\pi \to/{->>}/ \Gamma_{\pi^-}$.  By the descriptions
 \node Gpim(-400,0)[\Gamma_{\pi^-}]
 \node Gpi(50,0)[\Gamma_\pi]
 \node Xn(500,400)[\uX_n]
-\node Xn1(500,0)[\uX_{n-1}]
+\node Xn1(500,0)[\Gamma_{\del(n)}]
 \arrow/@{|>->}/[Gpim`Gpi;r]
 \arrow/@{.>}/[Gpim`Xn;]
 \arrow/@{->>}/[Xn`Xn1;]
@@ -416,7 +416,7 @@ and then, seeing the result as a square
 \node Gpim(0,400)[\Gamma_{\pi^-}]
 \node Gpi(0,0)[\Gamma_\pi]
 \node Xn(500,400)[\uX_n]
-\node Xn1(500,0)[\uX_{n-1}]
+\node Xn1(500,0)[\Gamma_{\del(n)}]
 \arrow/@{|>->}/[Gpim`Gpi;r]
 \arrow/@{->}/[Gpim`Xn;]
 \arrow/@{.>}/[Gpi`Xn;]
@@ -432,9 +432,9 @@ the elim-structure on $r$ gives us a filler, completing the original triangle as
  Also, besides just pulling back $\Gamma_\pi$ to $\Gamma_{\pi^-}$ in the categorical proof, we could have kept track of the boundaries as well
 \[\bfig
 \node Gpim(0,400)[\Gamma_{\pi^-}]
-\node Gdpim(0,0)[\Gamma_{\delta \pi^-}]
+\node Gdpim(0,0)[\Gamma_{\del \pi^-}]
 \node Gpi(500,400)[\Gamma_\pi]
-\node Gdpi(500,0)[\Gamma_{\delta \pi}]
+\node Gdpi(500,0)[\Gamma_{\del \pi}]
 \arrow/@{->>}/[Gpim`Gpi;]
 \arrow[Gpim`Gdpim;]
 \arrow[Gpi`Gdpi;]
@@ -449,7 +449,7 @@ An alternative point gloss on the categorical proof is given by the approach of 
 
 Putting the above results together, we obtain our main goal:
 
-\begin{theorem} \label{thm:main-thm-fundamental}Let $\T \in \DTT_\Id$ be any type theory with identity types, $A$ a closed type of $\T$.  Then the globular context $\uAbu$ carries the structure of an internal $P_\Id$-algebra in $\T$.
+\begin{theorem} \label{thm:main-thm-fundamental}Let $\T \in \DTT_\Id$ be any type theory with identity types, $A$ a closed type of $\T$.  Then the globular context $\uAbu$ carries the structure of an internal $P_\Id$-algebra in $\T$, and hence of an internal weak $\omega$-category.
 \end{theorem}
 
 \begin{proof} By the universal property of $\T_\Id[X]$, there is a unique translation $F_A \colon  \T_\Id[X] \to \T$ taking $X$ to $A$, and hence taking $\uXbu$ to $\uAbu$.  Now by the functoriality of $\End$ (\ref{def:endo-operad}), this induces an action of $P_\Id$ on $\uAbu$, and so, since by Theorem \ref{thm:p-is-contractible} $P_\Id$ admits a contraction, an action of $L$ (the initial operad-with-contraction) on $\uAbu$, as desired. 
@@ -468,15 +468,16 @@ Using the ``types to contexts'' endofunctor $(-)^\Cxt \slice \diamond$ of \ref{p
 \begin{corollary} \label{cor:fund-types-to-cxts}Let $\Theta$, $\Delta$ be contexts of some theory $\T \in \DTT_\Id$.  Then the globular set of terms of context maps from $\Delta$ into $\Theta$ and its higher identity contexts carries a natural weak $\omega$-category structure.
 \end{corollary}
 
-\begin{proof} By applying the previous corollary to $\Gamma$, considered as a closed type of $\T^\Cxt \slice \diamond$.
+\begin{proof} By applying the previous corollary to $\Theta$, considered as a closed type of $\T^\Cxt \slice \diamond$.
 \end{proof}
 
 Similarly, we may extend these to dependent types $A$ or contexts $\Theta$ over a base context $\Gamma$, by viewing them as closed types/contexts in the slice theory $\T \slice \Gamma$.
 
-\begin{remark}[Functoriality]  The construction of the $P_\Id$-algebra $\T(\Delta,\uAbu)$ is moreover covariantly functorial in $\T$, and contravariantly in $\Gamma$.  That is, translations $\T \to \T'$ and context maps $\Delta' \to \Delta$  induce \emph{strict} maps of $P_\Id$-algebras, composing appropriately.  However, both of these require somewhat more technical machinery to prove than we have developed here. The functoriality in $\T$ is perhaps most clearly seen by considering the monoidal globular category $\FibSpans(\T)$ introduced in \cite{garner-van-den-berg}, of spans in $\T$ consisting entirely of dependent projections; then the algebras we have considered live within these monoidal categories, and a translation of theories induces a monoidal globular functor between them.  Both these functoriality results also require a treatment of maps of operad algebras in the endomorphism-operad presentation, and hence of some slightly more involved globular structures than the operads we have considered so far.
+\begin{remark}[Functoriality]  The construction of the $P_\Id$-algebra $\T(\Delta,\uAbu)$ is moreover covariantly functorial in $\T$, and contravariantly in $\Delta$.  That is, translations $\T \to \T'$ and context maps $\Delta' \to \Delta$ each induce \emph{strict} maps of $P_\Id$-algebras, composing appropriately.\footnote{For precise statements, one has to be slightly careful due to the dependence of typing of $\Delta$ over $\T$.  Concisely, the $P_\Id$ algebra $\T(\Delta,\uAbu)$ is functorial over the total category $\int_{\T \in \DTT_\Id} \Cxt(\T)$ of the fibration of contexts.}  However, both of these require somewhat more technical machinery to prove than we have developed here. The functoriality in $\T$ is perhaps most clearly seen by considering the monoidal globular category $\FibSpans(\T)$ introduced in \cite{garner-van-den-berg}, of spans in $\T$ consisting entirely of dependent projections; then the algebras we have considered live within these monoidal categories, and a translation of theories induces a monoidal globular functor between them.  Both these functoriality results also require a treatment of maps of operad algebras in the endomorphism-operad presentation, and hence of some slightly more involved globular structures than the operads we have considered so far.
 
 More subtly, $\T(\Delta,\uAbu)$ should be functorial in $A$, but only to \emph{weak} maps:  a map of types $A \to A'$ should induce \emph{weak} maps of $P_\Id$- or $L$-algebras---that is, weak $\omega$-functors.  This seems an altogether trickier question, due partly but not only to the lack, until fairly recently (\cite{garner:homomorphisms}), of a suitable definition of weak $\omega$-functor.  However, as this theory becomes better developed, the weak functoriality of $\T(\Delta,\uAbu)$ in maps $f \colon A \to A'$ should become a corollary of the results of the next chapter: within the classifying $\omega$-category of the theory, this is just a whiskering operation between hom-$\omega$-categories
-\[\vec h_{(-)}\colon  \yon(\uAbu)_{\leq \pi} \to \yon(\uAbu)_{\leq n}.\]
+% \[\vec h_{(-)}\colon  \yon(\uAbu)_{\leq \pi} \to \yon(\uAbu)_{\leq n}.\]
+% RG says “remove display [here]: it doesn't add anything”, and I agree; it's almost illegible, including it was a horrible idea!
 and as such, should presumably be a weak functor.  Unfortunately, to the author's present knowledge, this whiskering statement (and similar results) do not yet appear in the literature; the theory of weak maps of operadic $\omega$-categories is as yet at a very early stage of development.
 
 \end{remark}

@@ -42,9 +42,9 @@ In the globular approach to higher categories, a higher category has objects (``
 
 Now we see propositional equalities between terms as \emph{2-cells} between morphisms; and also, since propositional equalities themselves are terms of a possibly non-trivial type, we treat further propositional equalities between them as higher cells, and so on \emph{ad infinitum}.  Binary composition of these higher cells corresponds now to the transitivity of equality; higher identity cells, to reflexivity; symmetry of equality, to having some sort of inverses for cells.
 
-There is a compelling analogy here with homotopy theory.  The higher fundamental groupoid of a space consists of points of the space, paths between points, homotopies between paths, \ldots\ Homotopies are composable, and have units, and inverses.
+There is a compelling analogy here with homotopy theory.  Any topological space has a \emph{higher fundamental groupoid} consisting of points of the space, paths between points, homotopies between paths, \ldots\ Homotopies are composable, and have units, and inverses.  More generally, the (1-)category $\Top$ underlies an $\omega$-category of spaces, continuous maps, homotopies between maps, homotopies between homotopies, and so on.
 
-A type, therefore, can be seen as something like a space: a category with cells of arbitrarily high dimension, in which all cells are invertible, i.e.\ an \emph{$\omega$-groupoid}.  An entire theory now looks something like a category of spaces: an $\omega$ category in which all cells of dimension $> 1$ are invertible, i.e.\ an \emph{($\omega,1)$-category} (also known as $(\infty,1)$).
+A type, therefore, can be seen as something like a space---a category with cells of arbitrarily high dimension, in which all cells are invertible, i.e.\ an \emph{$\omega$-groupoid}---and a theory as something like a category of spaces---an $\omega$-category in which all cells of dimension $> 1$ are invertible, i.e.\ an \emph{$(\omega,1)$-category} (also known as $(\infty,1)$).
 
 However, in the fundamental groupoid example, it is a familiar fact that associativity of composition, and other laws, hold only up to homotopy, i.e.\ only up to a cell of higher dimension.  We find the same situation in type theory: composition is generally associative, unital etc.\ only up to propositional equality.  (Of course, in the presence of extra axioms, or in certain models, it can sometimes be strict.)  For the fully intensional theory we thus have to work not with strict but with \emph{weak} higher categories.
 
@@ -203,7 +203,7 @@ g \cdot_0 f &
 \begin{para} \label{para:intro-examples} In a \emph{weak} $\omega$-category, we do not expect strict associativity, so may have multiple composites for a given pasting diagram, but we do demand that these composites agree up to cells of the next dimension (``up to homotopy''), and that these associativity cells satisfy certain coherence laws of their own, again up to cells of higher dimension, and so on.
 This is exactly the situation we find in intensional type theory.  For instance, even in constructing a term witnessing the transitivity of identity---that is, a composition law for the pasting diagram $(\xymatrix{ \bullet \ar[r] & \bullet \ar[r] & \bullet })$, or explicitly a term $c$ such that 
 \[x,y,z:X,\ p:\Id(x,y),\ q:\Id(y,z) \types c(q,p): \Id(x,z)\]
----one finds that there is no single canonical candidate: most obvious are the two equally natural terms $c_l$, $c_r$ obtained by applying ($\Id$-\elim) to $p$ or to $q$ respectively.  These are not definitionally equal, but are propositionally equal, i.e.\ equal up to a 2-cell: there is a term $e$ with
+---one finds that there is no single canonical candidate: most obvious are the two equally natural terms $c_l$, $c_r$ obtained by applying the $\Id$-elimination rule to $p$ or to $q$ respectively.  These are not definitionally equal, but are propositionally equal, i.e.\ equal up to a 2-cell: there is a term $e$ with
 \[x,y,z:X,\ p:\Id(x,y),\ q:\Id(y,z) \types e(q,p): \Id(c_l(q,p),c_r(q,p)).\]
 Similarly, for either of these operations (or any combination), we can derive a ``propositional associative law'':
 \begin{multline*}
@@ -214,15 +214,15 @@ a(r,q,p) : \Id ( c(r,c(q,p))\,,\,c(c(r,q),p) ).
 
 \begin{para}In Leinster's definition \cite{leinster:book}, a system of composition laws of this sort is wrapped up in the algebraic structure of a \emph{globular operad with contraction}, and a weak $\omega$-category is given by a globular set equipped with an \emph{action} of such an operad.  We generalise this slightly, to define an \emph{internal weak $\omega$-category} in any suitable category $\C$.
 
-Accordingly, we would like to find an operad-with-contraction $P_\Id$ of all such type-theoretically definable composition laws, acting on terms of any type and its identity types.  Formally, we consider $\T_\Id[X]$, the theory axiomatised just by the structural and $\Id$-rules plus a single generic base type $X$.  The operad $P_\Id$ of definable composition laws therein may then be formally constructed as an endomorphism operad in (presheaves on) its syntactic category $\cl(\T_\Id [X])$; and by some analysis of $\T_\Id[X]$, we show that $P_\Id$ is contractible.
+Accordingly, we would like to find an operad-with-contraction $P_\Id$ of all such type-theoretically definable composition laws, acting on terms of any type and its identity types.  Formally, we consider $\T_\Id[X]$, the theory axiomatised just by the structural and $\Id$-rules plus a single generic base type $X$.  The operad $P_\Id$ of definable composition laws therein may then be formally constructed as an endomorphism operad in its syntactic category $\cl(\T_\Id [X])$; and by some analysis of $\T_\Id[X]$, we show that $P_\Id$ is contractible.
 \end{para}
 
 Since $X$ is generic, composition laws defined on it can be implemented on all other types, giving the main result of Chapter \ref{ch:fundamental}: 
 
-\begin{mainthmfund}Let $\T$ be any type theory extending $\T_\Id$, and $A$ any type of $\T$.  Then the system of types $(A, \Id_A, \Id_{\Id_A}, \ldots)$ is equipped naturally with a $P_\Id$-action, and hence with the structure of an internal weak $\omega$-category in $\C(\T)$.
+\begin{mainthmfund}Let $\T$ be any type theory extending $\T_\Id$, and $A$ any type of $\T$.  Then the system of types $(A, \Id_A, \Id_{\Id_A}, \ldots)$ is equipped naturally with a $P_\Id$-action, and hence with the structure of an internal weak $\omega$-category in $\cl(\T)$.
 \end{mainthmfund}
 
-From this it follows that the terms of these types in any fixed context form an (external) $P_\Id$ algebra and weak $\omega$-category.  Indeed, one can construct, using the $\Id$-rules, \emph{identity contexts} $\Id_\Gamma$ over all contexts, satisfying rules analogous to those for identity types; so for any contexts $\Delta$, $\Gamma$, there is an $\omega$-category of context morphisms from $\Delta$ into $\Gamma$ and its identity types.
+From this it follows that the terms of these types in any fixed context form an (external) $P_\Id$-algebra and weak $\omega$-category.  Indeed, one can construct, using the $\Id$-rules, \emph{identity contexts} $\Id_\Gamma$ over all contexts, satisfying rules analogous to those for identity types; so for any contexts $\Delta$, $\Gamma$, there is an $\omega$-category of context morphisms from $\Delta$ into $\Gamma$ and its identity types.
 
 The material of this chapter is essentially based on my earlier paper \cite{lumsdaine:tlca-proceedings}/\cite{lumsdaine:weak-w-cats-from-itt-lmcs}.  A very similar construction (overlapping in some parts and using different techniques in others)  was discovered independently by Benno van den Berg and Richard Garner, and appears in \cite{garner-van-den-berg}. \\
 
@@ -256,7 +256,7 @@ This leads us to the main restrictions on our eventual result.  As an external f
 
 In particular, we show that $\Jbar$ (and hence our construction of a contractible operad) holds in the category of theories with suitably extensional $\Pi$-types, but does \emph{not} hold in the category of theories with $\Pi$-types but without extensionality rules.  
 
-We conjecture that in fact $\Jbar$ holds in $\DTT_\Id$, and hence that $\Id$-types alone are sufficient to construct a contractible operad acting on $\cl_\omega$; but we are unable to prove this.
+We conjecture that in fact $\Jbar$ holds in $\DTT_\Id$, and hence that a contractible operad acting on $\cl_\omega$ may be constructed from $\Id$-types alone ; but we are unable to prove this.
 \end{para}
 
 Our main eventual result is thus: \todo{``star'' these theorems, make them unnumbered!  and fix the alignment, here and in main body!}
@@ -268,25 +268,25 @@ Our main eventual result is thus: \todo{``star'' these theorems, make them unnum
 \end{mainthmclass}
 
 Additionally, we give a variant construction $\clpi_\omega$, with a slightly different underlying set (using closed terms of $\Pi$-types, rather than open terms), which works for theories with just $\Id$-types, $\Pi$-types, and the $\eta$ rule for $\Pi$-types, giving an alternative candidate for the classifying $\omega$-categories of these theories in lieu of a proof of $\Jbar$ for $\DTT_\Id$.
-
-this is an xypic test and should be removed: 
-$$\xy 0;/r.22pc/:
-(0,15)*{};
-(0,-15)*{};
-(0,8)*{}="A";
-(0,-8)*{}="B";
-{\ar@{=>}@/_.75pc/ "A"+(-4,1) ; "B"+(-3,0)};
-(-10,0)*{\alpha};
-{\ar@{=}@/_.75pc/ "A"+(-4,1) ; "B"+(-4,1)};
-{\ar@{=>}@/^.75pc/ "A"+(4,1) ; "B"+(3,0)};
-(10,0)*{\beta};
-{\ar@{=}@/^.75pc/ "A"+(4,1) ; "B"+(4,1)};
-{\ar@3{->} (-6,0)*{} ; (6,0)*+{}};
-(0,4)*{\vartheta};
-(-15,0)*+{\bullet}="1";
-(-15,4)*{\scriptstyle a};
-(15,0)*+{\bullet}="2";
-(15,4)*{\scriptstyle b};
-{\ar@/^2.75pc/^{f} "1";"2"};
-{\ar@/_2.75pc/_{g} "1";"2"};
-\endxy$$
+% 
+% this is an xypic test and should be removed: 
+% $$\xy 0;/r.22pc/:
+% (0,15)*{};
+% (0,-15)*{};
+% (0,8)*{}="A";
+% (0,-8)*{}="B";
+% {\ar@{=>}@/_.75pc/ "A"+(-4,1) ; "B"+(-3,0)};
+% (-10,0)*{\alpha};
+% {\ar@{=}@/_.75pc/ "A"+(-4,1) ; "B"+(-4,1)};
+% {\ar@{=>}@/^.75pc/ "A"+(4,1) ; "B"+(3,0)};
+% (10,0)*{\beta};
+% {\ar@{=}@/^.75pc/ "A"+(4,1) ; "B"+(4,1)};
+% {\ar@3{->} (-6,0)*{} ; (6,0)*+{}};
+% (0,4)*{\vartheta};
+% (-15,0)*+{\bullet}="1";
+% (-15,4)*{\scriptstyle a};
+% (15,0)*+{\bullet}="2";
+% (15,4)*{\scriptstyle b};
+% {\ar@/^2.75pc/^{f} "1";"2"};
+% {\ar@/_2.75pc/_{g} "1";"2"};
+% \endxy$$
