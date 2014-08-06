@@ -283,7 +283,7 @@ of type $\Id_R(\,g(f(x))\,,\,g'(f'(x))\,)$.  (The reader tempted to try actually
 Moreover, since $U$ reflects and the original $\cl^-_\omega$ preserves all limits, so does the lifted $\cl^-_\omega$, and it is easily seen to be finitary; so by the adjoint functor theorem for locally presentable categories \cite[1.66]{adamek-rosicky}, $\cl^-_\omega$ has a left adjoint, realising any $\End(\globes)$-algebra as a theory.  (Its cells are realised as types and terms as under $\T_\stuff[-]$, and the $\End(\globes)$-action specifies various definitional-equality axioms between them.)
 \end{para}
 
-\begin{para} \label{para:class-types-to-cxts} As mentioned before, this is not quite what we want; $\cl^-_\omega(\T)$ only has types as objects, where we would like contexts.  To remedy the situation, we can compose with the ``types to contexts'' endofunctor $(-)^\cxt \slice \diamond$ on $\DTT_\stuff$, and define $\cl(\T) := \cl^-_\omega(\T^\cxt \slice \diamond)$.
+\begin{para} \label{para:class-types-to-cxts} As mentioned before, this is not quite what we want; $\cl^-_\omega(\T)$ has only types as objects, where we would like contexts.  To remedy the situation, we can compose with the ``types to contexts'' endofunctor $(-)^\cxt \slice \diamond$ on $\DTT_\stuff$, and define $\cl(\T) := \cl^-_\omega(\T^\cxt \slice \diamond)$.
 
 Now the objects of $\cl(\T)$ are closed types of $\T^\cxt \slice \diamond$, i.e.\ closed contexts of $\T$, just as we wanted; and the fullness of the functor $\T^\cxt \slice \diamond \to \T$ ensures that higher cells also are as we intended.
 
@@ -527,9 +527,8 @@ In fact, although not explicitly stated there, the proof given also shows (since
 
 \begin{para} Since $\DTT$ is the category of models of an algebraic theory, and so is locally presentable, we can use the machinery of \cite{garner:understanding} (the ``algebraic small-object argument'') to construct an algebraic weak factorisation system\footnote{aka natural weak factorisation system} on $\DTT$, using the universal extensions (term, type, or both) as the generating left maps.  The algebraic right maps in the resulting system are then just maps equipped with (term-, type-) contractions; the algebraic left maps are maps presented as (term, type, term-and-type) extensions.
 
-We can think of the maps $i^\ty_n$, $i^\tm_n$ here as \emph{generating cofibrations} in a putative model structure on $\DTT$, and the contractible maps as the \emph{trivial fibrations}; this idea is discussed a little further in Section \ref{sec:model-strux} below.
-
-Example \ref{ex:elim-gives-contraction} suggests that this factorisation system on $\DTT$ is in some sense dual to the Gambino--Garner systems on the classifying categories of individual theories.  We will make this idea more precise in Section \ref{sec:fam-strux-on-DTT}.
+We can think of the maps $i^\ty_n$, $i^\tm_n$ here as \emph{generating cofibrations} in a putative model structure on $\DTT$, and the contractible maps as the \emph{trivial fibrations}; this idea will be powerful in our discussion of $\Jbar$ below.
+% Example \ref{ex:elim-gives-contraction} suggests that this factorisation system on $\DTT$ is in some sense dual to the Gambino--Garner systems on the classifying categories of individual theories.  We will make this idea more precise in Section \ref{sec:fam-strux-on-DTT}.
 \end{para}
 
 
@@ -566,7 +565,7 @@ Our principle $\Jbar$ describes one sense in which $\T[a'(\x) :\propeq a(\x)]$ m
 % \[\T_\stuff[\Gamma_{(n)} \types a: A] \mono \T_\stuff[\Gamma_{(n)} \types a: A][a'(\x) :\propeq a(\x)].\]
 %are absolutely term-contractible.  \todo{[Actually, ``absolutely term-contractible'' isn't quite right: that would imply $\overline{K}$!  Subtlety is in what kinds of pushouts we're considering.  Can this phrasing of $\Jbar$ be corrected?  Think on it, throw it out if not.]}
 
-(Actually, we will not need the full strength of the principle as stated here: for our purposes, it would be enough to show that this holds when $\T$ can be axiomatised over $\stuff$ without any definitional equality axioms, i.e.\ when $\T_\stuff \mono \T$ is a term-extension, or in homotopy-theoretic language, when $\T$ is a \emph{cofibrant} theory.)
+(Actually, we will not need the full strength of the principle as stated here: for our purposes, it would be enough to show that this holds when $\T$ can be axiomatised over $\stuff$ without any definitional equality axioms, i.e.\ when $\T_\stuff \mono \T$ is a term-extension, or in homotopy-theoretic language, when $\T$ is a \emph{cofibrant} theory; we will also only require the case where the term $a(x)$ adjoined is dependent over just a single type.)
 
 Why is this a plausible principle?  If we restrict to the case of adjoining copies of \emph{closed} terms, i.e.\ in the case where $\Gamma = \diamond$, then it is just (the one-ended form of) the $\Id$-$\elim$ rule.  Syntactically, this is the fact that working in an extension by closed terms is equivalent to working over an extended context, with the new variables.  Categorically, the extension and its retraction in this case are isomorphic to the maps of slices
 \[\bfig
@@ -595,7 +594,9 @@ Thus $\Jbar$ asserts that something which holds \emph{derivably} for closed term
 
 Unlike most type-theoretic principles, is important to note, however, that $\Jbar$ is \emph{not} a property of a theory in isolation, but of a \emph{category} of theories, of what I have here called a type system.\\
 
-So one way to prove $\Jbar$ is therefore to reduce the general case to the closed case, via $\Pi$-types.  This is possible, as long as we assume enough $\ext$ rules to make sure that their identity types are well-behaved:
+Another heuristic motivation for $\Jbar$ is homotopy-theoretic.  Above, we suggested that term-extensions and term-contractible maps could be the cofibrations and trivial fibrations of a model structure on $\DTT_\stuff$; now, the basic extensions by propositional copies may be taken as candidates for generating trivial cofibrations, so any composite of pushouts of these must again be a trivial cofibration. it is certainly always a term-extension, so to show it trivial, it would suffice to show that its retration is a trivial fibration, which is exactly what $\Jbar$ asserts. \\
+
+By the preceding remark, one way to prove $\Jbar$ is to reduce the general case to the closed case, via $\Pi$-types.  This is possible, as long as we assume enough $\ext$ rules to make sure that identity types on $\Pi$-types are well-behaved:
 
 \begin{proposition} \label{prop:jbar-holds-1}
 $\Jbar$ holds for $(\Id,\Pi,\Pi\mbox{-}\extrule,\Piextapp\mbox{-}\defrule)$ and any set of constructors extending this.
@@ -642,22 +643,64 @@ and its associated computation rule $\PiIdcomp$, concluding:
 
 (Recall that $(x \tightcolon A)B(x)$ and $[x \tightcolon A] b(x)$ denote type- and term-abstraction in the metalanguage, while $u \cdot x$ denotes application.)
 
-Correspondingly, a version of $\Jbar$ may be stated in second-order language as:
-\[ \inferrule*[right={$\Jbarrule$}]{
+There are three essentially independent differences between $\PiIdelim$ and the most natural second-order form of $\Jbar$: firstly, the essential difference, between open terms and terms of $\Pi$-type; secondly, the difference between one-ended and two-ended forms; and thirdly, the difference between a term dependent on one and on several variables.  We tackle these one at a time, via several intermediate rules.
+
+First, we consider a two-ended form of $\Jbar$, with the term adjoined dependent on just one variable:
+\[ \inferrule*[right={$\Jbarrule{2}$}]{
   \Gamma,\ \underline{k}, \underline{k}' : (x \tightcolon A) B(x),\ \underline{l} : (x \tightcolon A) \Id_{B(x)}(\underline{k}x,\underline{k}'x)\ \types\ \underline{C}(\underline{k},\underline{k}',\underline{l})\ \type \\ 
   \Gamma,\ \underline{f} : (x \tightcolon A) B(x)\ \types\ \underline{d}(\underline{f}) : \underline{C} ( \underline{f}, \underline{f}, r \circ \underline{f}) \\
 \Gamma\ \types\ \underline{k}, \underline{k}' : (x \tightcolon A) B(x) \qquad \Gamma\ \types\ \underline{l} : (x \tightcolon A) \Id_{B(x)}(\underline{k} x,\underline{k}' x) }
-{ \Gamma \types \Jbarterm(\underline{C},\underline{d},\underline{k},\underline{k}',\underline{l}) : \underline{C}(\underline{k},\underline{k}',\underline{l}) } \]
-and the corresponding computation rule concludes that
-\[ \Jbarterm(C,d,k,k,r \circ k) = d(k) : C(k,k',l) . \]
-
-(This is slightly stronger than the original, external formulation of $\Jbar$, since this rule implies stability in the ambient context $\Gamma$.) 
+{ \Gamma \types \Jbarterm^2(\underline{C},\underline{d},\underline{k},\underline{k}',\underline{l}) : \underline{C}(\underline{k},\underline{k}',\underline{l}) } \]
+with corresponding computation rule concluding that
+\[ \Jbarterm^2(\underline{C},\underline{d},\underline{k},\underline{k},r \circ \underline{k}) = \underline{d}(\underline{k}) : C(\underline{k},\underline{k},r \cdot \underline{k}). \]
 
 We can now define the eliminator $\Jbarterm$ in terms of $\Lterm$ by:
 \[\Jbarterm(\underline{C},\underline{d},\underline{k},\underline{k}',\underline{l})\ :=\  \Lterm(\, [k,k',l]\,\underline{C}([x]k \tightcdot x,\,[x] k' \tightcdot x,\,[x] l \tightcdot x) ,\ \underline{d},\ \lambda \underline{k},\ \lambda \underline{k}',\ \lambda \underline{l} ).\]
 It is routine to verify that under the hypotheses of the $\Jbar$ rule, this typechecks, and satisfies the required computational behaviour.
 
-We are not quite done yet: since we used second-order reasoning, this gives us contractibility not between a theory $\T$ and an extension $\T[a'(\x) :\propeq a(\x)]$, but between $\T_\LF$ and its extension by terms $a' : [\x]A$, $l : [\x]\Id(a'(\x),a(\x))$ (briefly, $\T_\LF[a',l]$).  But given any type to lift from $\T$ to $\T[a'(\x) :\propeq a(\x)]$, consider the diagram
+Next we pass to a one-ended form:
+\[ \inferrule*[right={$\Jbarrule{1}$}]{
+\Gamma\ \types \underline{k} : (x \tightcolon A) B(x) \\
+  \Gamma,\ \underline{k}' : (x \tightcolon A) B(x),\ \underline{l} : (x \tightcolon A) \Id_{B(x)}(\underline{k} x,\underline{k}'x)\ \types\ \underline{C}(\underline{k}',\underline{l})\ \type \\ 
+  \Gamma\ \types\ \underline{d} : \underline{C} ( \underline{k}, r \circ \underline{k}) \\
+\Gamma\ \types\ \underline{k}' : (x \tightcolon A) B(x) \qquad \Gamma\ \types\ \underline{l} : (x \tightcolon A) \Id_{B(x)}(\underline{k} x,\underline{k}' x) }
+{ \Gamma \types \Jbarterm^1(\underline{k},\underline{C},\underline{d},\underline{k}',\underline{l}) : \underline{C}(\underline{k}',\underline{l}) } \]
+with computation rule concluding $\Jbarterm^1(\underline{k},\underline{C},\underline{d},\underline{k},r \circ \underline{k}) = \underline{d}(\underline{k}) : C(\underline{k},r \cdot \underline{k})$.
+
+This can be derived from the previous form via a couple of auxiliary terms: under the hypotheses of $\Jbarrule{1}$, we define
+\begin{multline*} \Jbarterm^1(\underline{k},\underline{C},\underline{d},\underline{k}',\underline{l}) := \\ 
+\shoveleft{   \Jbarterm^2(\;       } \\
+\shoveleft{   \qquad  [k_1,k_2 : (x \tightcolon A)B(x),\; m : (x \tightcolon A) \Id(k_1 x, k_2 x)]\ } \\
+\shoveleft{   \qquad (\; l_1 : (x \tightcolon A) \Id(k x, k_1 x), l_2 : (x \tightcolon A) \Id(k x, k_2 x),\, } \\
+\shoveleft{   \qquad n : (x \tightcolon A) \Id ( (m x)^*(l_1 x), l_2 x ),\; w : C(k_2, (x \tightcolon A) (mx)^*(l_2 x))\;)\;  }\\
+\shoveleft{   \quad C(k_1,l_1), } \\
+\shoveleft{ \quad [f, l_1, l_2, n]\: \Jbarterm^1\mbox{-}\mathsf{aux}(f, l_1, l_2, n),\; } \\
+\shoveleft{ \quad k,\; k',\; l } \\
+\shoveleft{ )\ (r \circ k,\; l,\; \underline{\ \ },\; d ) \hfill}
+\end{multline*}
+where
+\begin{multline*} \Jbarterm^1\mbox{-}\mathsf{aux}(f, l_1, l_2, n) := \\ 
+\shoveleft{ \Jbarterm^2(   }\\
+\shoveleft{ \quad [u_1, u_2 : (x \tightcolon A) \Id(kx, fx),\; n : (x \tightcolon A) \Id(u_1 x, u_2 x) ]\; (w : C(f, u_2))\ C(f,l_1), }\\
+\shoveleft{ \quad [h : (x \tightcolon A) \Id(kx, fx)]\;([w : C(f, h)]\; w),\, } \\
+\shoveleft{ \quad l_1,\,l_2,\,n } \\
+\shoveleft{ ) \hfill }
+\end{multline*}
+in which $\underline{\ \ }$ and expressions of the form $y^* z$ denote various terms which are easy to derive once their type is inferred.
+
+(This is just analogous to the usual derivation of the one-ended form of $\Id$-$\elim$ from the two-ended.)
+
+Thirdly, to give a second-order version of the fully general form of $\Jbar$, we must replace the type $A$ in the rules above by a context $\Delta$:
+\[ \inferrule{
+\Gamma\ \types \underline{k} : (\x \tightcolon \Delta) B(\x) \\
+  \Gamma,\ \underline{k}' : (\x \tightcolon \Delta) B(\x),\ \underline{l} : (\x \tightcolon A) \Id_{B(\x)}(\underline{k} \x,\underline{k}'\x)\ \types\ \underline{C}(\underline{k}',\underline{l})\ \type \\ 
+  \Gamma\ \types\ \underline{d} : \underline{C} ( \underline{k}, r \circ \underline{k}) \\
+\Gamma\ \types\ \underline{k}' : (\x \tightcolon \Delta) B(\x) \qquad \Gamma\ \types\ \underline{l} : (\x \tightcolon \Delta) \Id_{B(\x)}(\underline{k} \x,\underline{k}' \x) }
+{ \Gamma \types \Jbarterm(\underline{k},\underline{C},\underline{d},\underline{k}',\underline{l}) : \underline{C}(\underline{k}',\underline{l}) } \]
+
+This is again straightforward but still lengthier than the preceding derivation; for this reason, and also since as remarked above we will only apply $\Jbar$ when $\Delta$ consists of a single type, we omit the details here.
+
+From this last second-order form we are ready to deduce the original form of $\Jbar$, but it is still not quite immediate.  Since we have used second-order reasoning, this form gives us contractibility not between a theory $\T$ and an extension $\T[a'(\x) :\propeq a(\x)]$, but between $\T_\LF$ and its extension by terms $a' : [\x]A$, $l : [\x]\Id(a'(\x),a(\x))$ (briefly, $\T_\LF[a',l]$).  But given any type to lift from $\T$ to $\T[a'(\x) :\propeq a(\x)]$, consider the diagram
 \[\bfig
 \node Tty(-700,400)[\bullet]
 \node Ttm(-700,0)[\bullet]

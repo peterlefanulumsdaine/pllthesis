@@ -26,6 +26,9 @@
 \@addtoreset{paragraph}{section}
 \renewcommand{\thesection}{\thechapter.\arabic{section}}
 \renewcommand{\theparagraph}{\thesection.\arabic{paragraph}}
+\renewcommand{\thefigure}{\thesection.\Alph{figure}}%
+
+\def\l@subsection{\@tocline{2}{0pt}{2pc}{5pc}{}}
 
 \makeatother
 

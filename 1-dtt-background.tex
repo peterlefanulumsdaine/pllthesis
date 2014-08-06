@@ -313,7 +313,7 @@ Of these, the most categorically flexible are probably Jacobs' \emph{comprehensi
 \begin{itemize}
 \item a category $\C$, with a distinguished terminal object $\diamond$;
 \item a functor $\Ty \colon \C^\op \to \Sets$; that is, for each object $\Gamma$, a set $\Ty(\Gamma)$, and for $f \colon \Delta \to \Gamma$, actions $f^* \colon \Ty(\Gamma) \to \Ty(\Delta)$, functorial in $\Gamma$;
-\item for each $A \in \Ty(\Gamma)$, an object $\Gamma . A$ and projection $\pi_{\Gamma;A} \colon \Gamma . A \to \Gamma$;
+\item for each $A \in \Ty(\Gamma)$, an object $\Gamma . A$ and map $\pi_{\Gamma;A} \colon \Gamma . A \to \Gamma$;
 \item for each $A \in \Ty(\Gamma)$ and $f \colon \Delta \to \Gamma$, a pullback square
 \[\bfig
 \node Delta(0,0)[\Delta]
@@ -332,9 +332,9 @@ again functorial in $f$, in that $q(1_\Gamma,A) = 1_{\Gamma . A}$, $q(f \circ g,
 
 \begin{para} \label{para:obvious-terminology} We will use a few pieces of obvious terminology for working in CwA's.  Objects and maps of $\C$ we call \emph{contexts}, and \emph{context maps}.  Elements of $\Ty(\Gamma)$ we call \emph{types over $\Gamma$}.
 
-For a type $A \in \Ty(\Gamma)$, a \emph{term of type $A$ in context $\Gamma$} is a section $a : \Gamma \to \Gamma.A$ of the dependent projection $\Gamma.A \to \Gamma$; we write $\Tm_\Gamma(A)$ for the set of these.
+For a type $A \in \Ty(\Gamma)$, the map $\pi_{\Gamma;A} \colon \Gamma . A \to \Gamma$ is called a \emph{basic dependent projection}.  Compositions of such maps are called a \emph{dependent projections}, and are denoted in diagrams as $\Gamma' \to/{->>}/ \Gamma$.  A \emph{term of type $A$ in context $\Gamma$} is a section $a : \Gamma \to \Gamma.A$ of the dependent projection $\pi_{\Gamma;A}$; we write $\Tm_\Gamma(A)$ for the set of these.
 
-For an object $\Gamma \in \C$, a \emph{dependent context} over $\Gamma$ is a sequence $A_1 \in \Ty(\Gamma)$, $A_2 \in \Ty(\Gamma.A_1)$, \ldots $A_l \in \Ty(\Gamma.A_1.\ldots.A_{l-1})$, for some $l \geq 0$; we write $\Cxt(\Gamma)$ for the set of these.
+For an object $\Gamma \in \C$, a \emph{dependent context} over $\Gamma$ is a sequence $A_1 \in \Ty(\Gamma)$, $A_2 \in \Ty(\Gamma.A_1)$, \ldots $A_l \in \Ty(\Gamma.A_1.\ldots.A_{l-1})$, for some $l \geq 0$; we write $\Cxt(\Gamma)$ for the set of these.  For any $\Delta \in \Cxt(\Gamma)$, there is an evident context extension $\Gamma . \Delta$, and dependent projection $\pi_{\Gamma ; \Delta} \colon \Gamma . \Delta \to/{->>}/ \Gamma$.
 \end{para}
 
 \begin{definition}A category with attributes $\C$ is \emph{contextual} if the natural map $\Cxt(\diamond) \to \ob \C$ is a bijection, and \emph{accessible} \cite{pitts:categorial-logic} when this map is a surjection.
