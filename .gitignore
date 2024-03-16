@@ -5,4 +5,6 @@
 *.blg
 *.pdf
 *.out
+*.fls
+*.fdb_latexmk
 .DS_Store
